@@ -1,9 +1,11 @@
 #include <Solution.h>
 #include <iostream>
 #include <unordered_map>
+#include <unordered_set>
 #include <climits>
 
 using std::unordered_map;
+using std::unordered_set;
 
 void dfs(vector<vector<int>>& stones, unordered_map<int, vector<int>>& xMap, unordered_map<int, vector<int>>& yMap, vector<int>& cur, vector<int>& flag) {
 	for (const auto& iter : xMap[cur[0]]) {
@@ -48,3 +50,35 @@ int Solution::removeStones(vector<vector<int>>& stones) {
 	}
 	return stones.size() - cnt;
 }
+
+void myUnion(int a, int b, vector<int>& parent) {
+	while (parent[a] != a) a = parent[a];
+	while (parent[b] != b) b = parent[b];
+	parent[a] = b;
+}
+
+int Solution::removeStones(vector<vector<int>>& stones) {
+	vector<int> parent;
+	unordered_map<int, vector<int>> xMap;
+	unordered_map<int, vector<int>> yMap;
+	for (int i = 0 ; i < stones.size() ; ++i) {
+		xMap[stones[i][0]].emplace_back(i);
+		yMap[stones[i][1]].emplace_back(i);
+	}
+
+	for (int i = 0 ; i < stones.size() ; ++i) parent.emplace_back(i);
+
+	for (int i = 0 ; i < stones.size() ; ++i) {
+		for (const auto& x : xMap[stones[i][0]]) myUnion(i, x, parent);
+		for (const auto& y : yMap[stones[i][1]]) myUnion(i, y, parent);
+	}
+
+	unordered_set<int> uSet;
+	for (const auto& iter : parent) {
+		int i = iter;
+		while (i != parent[i]) i = parent[i];
+		uSet.emplace(i);
+	}
+	return stones.size() - uSet.size();
+}
+
