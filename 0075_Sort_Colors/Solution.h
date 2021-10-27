@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	void sortColors(vector<int>& nums);
+	void sortColors2(vector<int>& nums);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
