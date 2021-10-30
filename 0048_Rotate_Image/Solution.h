@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	void rotate(vector<vector<int>>& matrix);
+	void rotate2(vector<vector<int>>& matrix);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
