@@ -28,7 +28,6 @@ bool Solution::canJump(vector<int>& nums) {
 */
 bool Solution::canJump(vector<int>& nums) {
 	int i = 0, reach = 0, size = nums.size();
-	vector<int> dp(size, 0);
 
 	for (; i < size && i <= reach ; ++i) {
 		reach = max(i + nums[i], reach);
