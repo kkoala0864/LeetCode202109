@@ -12,6 +12,7 @@ class Solution {
     public :
         Solution() {}
 	bool isValidBST(TreeNode* root);
+	bool isValidBST2(TreeNode* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
