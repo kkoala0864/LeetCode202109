@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	void setZeroes(vector<vector<int>>& matrix);
+	void setZeroes2(vector<vector<int>>& matrix);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
