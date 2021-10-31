@@ -3,9 +3,25 @@
 #include <algorithm>
 
 using std::max;
-using std::cout;
-using std::endl;
+using std::min;
 
+int Solution::maxProduct(vector<int>& nums) {
+	if (nums.empty()) return 0;
+	int maxVal = nums[0];
+	int minVal = nums[0];
+
+	int result = nums[0];
+	for (int i = 1 ; i < nums.size() ; ++i) {
+		int tmpMax = max({nums[i], nums[i] * maxVal, nums[i] * minVal});
+		minVal = min({nums[i], nums[i] * maxVal, nums[i] * minVal});
+		maxVal = tmpMax;
+		result = max(result, maxVal);
+	}
+	return result;
+}
+
+
+/*
 int Solution::maxProduct(vector<int>& nums) {
 	int maxVal = INT_MIN;
 	int product = 1;
@@ -34,4 +50,4 @@ int Solution::maxProduct(vector<int>& nums) {
 		}
 	}
 	return maxVal;
-}
+}*/
