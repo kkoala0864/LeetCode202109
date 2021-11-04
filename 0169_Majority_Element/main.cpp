@@ -5,7 +5,7 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<int> input = {2,2,1,1,1,2,2};
+	vector<int> input = {2,2,2,1,1,2,1};
 	Solution* test = new Solution();
 	cout << test->majorityElement(input) << endl;
 	return 0;
