@@ -13,6 +13,13 @@ int main(void) {
 		}
 		cout << endl;
 	}
+	cout << endl;
+	for (const auto iter : test->threeSum2(input)) {
+		for (const auto iter2 : iter) {
+			cout << iter2 << " ";
+		}
+		cout << endl;
+	}
 	return 0;
 }
 
