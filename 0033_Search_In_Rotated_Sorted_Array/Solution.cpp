@@ -2,13 +2,10 @@
 #include <iostream>
 
 //[ 4, 5, 6, 7, 0 ,1 ,2 ]
-using std::cout;
-using std::endl;
 
 int Solution::search(vector<int>& nums, int target) {
 	int mid = -1, left  = 0 , right = nums.size() - 1;
 	while (left <= right) {
-		cout << left << " : " << right << endl;
 		mid = (left + right) >> 1;
 		if (nums[mid] == target) return mid;
 
