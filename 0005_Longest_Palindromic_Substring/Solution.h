@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	string longestPalindrome(string s);
+	string longestPalindrome2(string s);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
