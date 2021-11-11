@@ -4,7 +4,7 @@
 using std::min;
 using std::max;
 
-vector<vector<int>> Solution::insert2(vector<vector<int>>& intervals, vector<int>& newInterval) {
+vector<vector<int>> Solution::insert3(vector<vector<int>>& intervals, vector<int>& newInterval) {
 	vector<vector<int>> result;
 	int idx = 0;
 	while (idx < intervals.size() && intervals[idx][1] < newInterval[0]) {
@@ -12,8 +12,8 @@ vector<vector<int>> Solution::insert2(vector<vector<int>>& intervals, vector<int
 	}
 
 	while (idx < intervals.size() && intervals[idx][0] <= newInterval[1]) {
-		newInterval[0] = min(newInterval[0], intervals[idx][0]);
-		newInterval[1] = max(newInterval[1], intervals[idx][1]);
+		newInterval[0] = min(intervals[idx][0], newInterval[0]);
+		newInterval[1] = max(intervals[idx][1], newInterval[1]);
 		++idx;
 	}
 
