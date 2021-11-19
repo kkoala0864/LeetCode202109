@@ -1,5 +1,8 @@
 #include <Solution.h>
 #include <iostream>
+#include <algorithm>
+
+using std::max;
 
 // Clarify : Does the list can start from non-leaf node ?
 // the number is unique?
@@ -15,8 +18,8 @@ int DFS(TreeNode* node, int& result) {
 	}
 
 	int sum(node->val);
-	int leftMaxSum = dfs(node->left, result);
-	int rightMaxSum = dfs(node->right, result);
+	int leftMaxSum = DFS(node->left, result);
+	int rightMaxSum = DFS(node->right, result);
 
 	if (leftMaxSum > 0) sum += leftMaxSum;
 	if (rightMaxSum > 0) sum += rightMaxSum;

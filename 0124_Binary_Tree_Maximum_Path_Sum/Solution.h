@@ -11,6 +11,7 @@ class Solution {
     public :
         Solution() {}
 	int maxPathSum(TreeNode* root);
+	int maxPathSum2(TreeNode* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
