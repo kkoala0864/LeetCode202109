@@ -11,6 +11,7 @@ class Solution {
     public :
         Solution() {}
 	void recoverTree(TreeNode* root);
+	void recoverTreeMorris(TreeNode* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
