@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	int maxSubArray(vector<int>& nums);
+	int maxSubArray2(vector<int>& nums);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
