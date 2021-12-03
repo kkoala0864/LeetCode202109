@@ -1,25 +1,24 @@
 #include <Solution.h>
 #include <iostream>
 
-using std::swap;
-
-ListNode* Solution::oddEvenList(ListNode* head) {
+ListNode* Solution::oddEvenList2(ListNode* head) {
 	if (!head || !head->next) return head;
+
 	ListNode* odd = head;
-	ListNode* event = head->next;
+	ListNode* even = head->next;
 
 	ListNode* add = odd;
-	ListNode* beAdd = event;
-
+	ListNode* beAdd = even;
 	while (beAdd) {
 		add->next = beAdd->next;
 		add = add->next;
 		swap(add, beAdd);
 	}
+
 	ListNode* iter = odd;
 	while (iter->next) {
 		iter = iter->next;
 	}
-	iter->next = event;
-	return odd;
+	iter->next = eveb;
+	return head;
 }
