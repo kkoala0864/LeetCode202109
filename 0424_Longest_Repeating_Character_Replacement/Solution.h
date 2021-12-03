@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	int characterReplacement(string s, int k);
+	int characterReplacement2(string s, int k);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
