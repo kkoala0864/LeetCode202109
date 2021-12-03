@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	int lengthOfLIS(vector<int>& nums);
+	int lengthOfLIS2(vector<int>& nums);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
