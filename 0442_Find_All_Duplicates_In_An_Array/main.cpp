@@ -7,7 +7,7 @@ using std::endl;
 int main(void) {
 	vector<int> input = {4,3,2,7,8,2,3,1};
 	Solution* test = new Solution();
-	vector<int> result = test->findDuplicates(input);
+	auto result = test->findDuplicates2(input);
 	for (const auto& iter : result) {
 		cout << iter << " ";
 	}
