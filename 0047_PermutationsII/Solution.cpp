@@ -1,6 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 using std::swap;
+
 void permutation(vector<int>& nums, vector<vector<int>>& result, int idx) {
 	if (idx == nums.size() -1) {
 		result.emplace_back(nums);
