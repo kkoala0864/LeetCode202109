@@ -4,7 +4,7 @@
 
 using std::max;
 
-void dfs(TreeNode* node, int& child, int& childleft, int& childright) {
+void dfs(TreeNode* node, int& child, int& prev) {
 	if (!node) return;
 
 	if (!node->left && !node->right) {
@@ -12,19 +12,19 @@ void dfs(TreeNode* node, int& child, int& childleft, int& childright) {
 		return;
 	}
 
-	int leftChildLeft = 0, leftChildRight = 0;
-	int rightChildLeft = 0, rightChildRight = 0;
+	int lchild = 0, rchild = 0, lprev = 0, rprev = 0;
 
-	dfs(node->left, childleft, leftChildLeft, leftChildRight);
-	dfs(node->right, childright, rightChildLeft, rightChildRight);
+	dfs(node->left, lchild, lprev);
+	dfs(node->right, rchild, rprev);
 
-	child = max(childleft + childright, node->val + leftChildLeft + leftChildRight + rightChildLeft + rightChildRight);
+	child = max(node->val + lprev + rprev, lchild + rchild);
+	prev = lchild + rchild;
 }
 
 int Solution::rob2(TreeNode* root) {
-	int child = 0, childLeft = 0, childRight = 0;
+	int child = 0, prev = 0;
 
-	dfs(root, child, childLeft, childRight);
+	dfs(root, child, prev);
 
-	return max(childLeft+childRight, child);
+	return child;
 }
