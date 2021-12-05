@@ -11,6 +11,7 @@ class Solution {
     public :
         Solution() {}
 	int rob(TreeNode* root);
+	int rob2(TreeNode* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
