@@ -12,6 +12,12 @@ int main(void) {
 		cout << iter << " ";
 	}
 	cout << endl;
+	cout << endl;
+	result = test->dailyTemperatures2(input);
+	for (const auto& iter : result) {
+		cout << iter << " ";
+	}
+	cout << endl;
 	return 0;
 }
 
