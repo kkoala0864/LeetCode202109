@@ -12,6 +12,11 @@ int main(void) {
 		cout << iter << " ";
 	}
 	cout << endl;
+	result = test->twoSum2(input, 6);
+	for (const auto iter : result) {
+		cout << iter << " ";
+	}
+	cout << endl;
 	return 0;
 }
 
