@@ -9,6 +9,7 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->longestPalindrome(input) << endl;
 	cout << test->longestPalindrome2(input) << endl;
+	cout << test->longestPalindrome3(input) << endl;
 	return 0;
 }
 
