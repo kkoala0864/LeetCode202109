@@ -8,6 +8,7 @@ class Solution {
         Solution() {}
 	int lengthOfLongestSubstring(string s);
 	int lengthOfLongestSubstring2(string s);
+	int lengthOfLongestSubstring3(string s);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
