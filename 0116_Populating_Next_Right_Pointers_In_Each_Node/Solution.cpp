@@ -5,7 +5,7 @@
 using std::queue;
 
 
-Node* connect(Node* root) {
+Node* Solution::connect(Node* root) {
 	if ((!root) || (!root->left && !root->right)) return root;
 
 	root->left->next = root->right;
