@@ -7,6 +7,7 @@ class Solution {
         Solution() {}
 	int search(vector<int>& nums, int target);
 	int search2(vector<int>& nums, int target);
+	int search3(vector<int>& nums, int target);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
