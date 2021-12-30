@@ -9,6 +9,7 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->maxArea(input) << endl;
 	cout << test->maxArea2(input) << endl;
+	cout << test->maxArea3(input) << endl;
 	return 0;
 }
 
