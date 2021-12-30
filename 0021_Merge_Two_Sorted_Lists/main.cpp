@@ -12,7 +12,7 @@ int main(void) {
 	ListNode *twothree = new ListNode(3,twofour);
 	ListNode *twoone = new ListNode(1, twothree);
 	Solution* test = new Solution();
-	ListNode* result = test->mergeTwoLists(oneone, twoone);
+	ListNode* result = test->mergeTwoLists2(oneone, twoone);
 	while (result) {
 		cout << result->val << " ";
 		result = result->next;
