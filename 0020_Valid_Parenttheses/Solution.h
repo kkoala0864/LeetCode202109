@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	bool isValid(string s);
+	bool isValid2(string s);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
