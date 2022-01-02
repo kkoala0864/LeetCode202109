@@ -14,7 +14,7 @@ int main(void) {
 	//}
 
 	//cout << endl;
-	auto result = test->insert3(input, insertVal);
+	auto result = test->insert4(input, insertVal);
 	for (const auto iter : result) {
 		cout << iter[0] << " : " << iter[1] << endl;
 	}
