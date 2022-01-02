@@ -9,6 +9,7 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->maxSubArray(input) << endl;
 	cout << test->maxSubArray2(input) << endl;
+	cout << test->maxSubArray3(input) << endl;
 	return 0;
 }
 
