@@ -9,6 +9,8 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->canJump(input) << endl;
 	cout << test->canJump2(input) << endl;
+	cout << test->canJump3(input) << endl;
+	cout << test->canJump4(input) << endl;
 	return 0;
 }
 
