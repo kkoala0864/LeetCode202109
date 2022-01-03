@@ -8,6 +8,7 @@ class Solution {
 	string minWindow(string s, string t);
 	string minWindow2(string s, string t);
 	string minWindow3(string s, string t);
+	string minWindow4(string s, string t);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
