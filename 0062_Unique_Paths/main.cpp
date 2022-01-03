@@ -8,6 +8,7 @@ int main(void) {
     Solution* test = new Solution();
     cout << test->uniquePaths(10, 10) << endl;
     cout << test->uniquePaths2(10, 10) << endl;
+    cout << test->uniquePaths3(10, 10) << endl;
     return 0;
 }
 
