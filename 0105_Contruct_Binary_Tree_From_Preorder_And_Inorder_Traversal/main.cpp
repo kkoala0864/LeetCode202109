@@ -5,10 +5,11 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<int> preorder = {3,9,20,15,7};
-	vector<int> inorder = {9,3,15,20,7};
+	vector<int> preorder = {1,2};
+	vector<int> inorder = {2,1};
 	Solution* test = new Solution();
 	test->buildTree(preorder, inorder);
+	test->buildTree2(preorder, inorder);
 	return 0;
 }
 
