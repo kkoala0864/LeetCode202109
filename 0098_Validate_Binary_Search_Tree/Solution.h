@@ -13,6 +13,7 @@ class Solution {
         Solution() {}
 	bool isValidBST(TreeNode* root);
 	bool isValidBST2(TreeNode* root);
+	bool isValidBST3(TreeNode* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
