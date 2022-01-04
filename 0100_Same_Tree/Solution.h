@@ -11,6 +11,7 @@ class Solution {
     public :
         Solution() {}
 	bool isSameTree(TreeNode* p, TreeNode* q);
+	bool isSameTree2(TreeNode* p, TreeNode* q);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
