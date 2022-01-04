@@ -9,6 +9,7 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->maxProfit(input) << endl;
 	cout << test->maxProfit2(input) << endl;
+	cout << test->maxProfit3(input) << endl;
 	return 0;
 }
 
