@@ -1,6 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 #include <algorithm>
+#include <climits>
 
 using std::max;
 

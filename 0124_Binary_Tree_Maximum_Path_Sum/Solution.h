@@ -12,6 +12,7 @@ class Solution {
         Solution() {}
 	int maxPathSum(TreeNode* root);
 	int maxPathSum2(TreeNode* root);
+	int maxPathSum3(TreeNode* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);

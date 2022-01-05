@@ -1,7 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 #include <algorithm>
-
+#include <climits>
 using std::max;
 
 // Clarify : Does the list can start from non-leaf node ?
