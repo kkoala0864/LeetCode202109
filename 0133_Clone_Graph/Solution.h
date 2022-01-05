@@ -23,6 +23,7 @@ class Solution {
     public :
         Solution() {}
 	Node* cloneGraph(Node* node);
+	Node* cloneGraph2(Node* node);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
