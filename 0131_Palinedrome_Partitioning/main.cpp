@@ -14,6 +14,13 @@ int main(void) {
 		}
 		cout << endl;
 	}
+	vector<vector<string>> result2 = test->partition2(input);
+	for (const auto& iter : result2) {
+		for (const auto& it : iter) {
+			cout << it << " ";
+		}
+		cout << endl;
+	}
 	return 0;
 }
 
