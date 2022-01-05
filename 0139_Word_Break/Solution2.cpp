@@ -3,7 +3,6 @@
 #include <vector>
 #include <unordered_set>
 
-using std::min;
 using std::vector;
 using std::unordered_set;
 

@@ -9,6 +9,7 @@ class Solution {
         Solution() {}
 	bool wordBreak(string s, vector<string>& wordDict);
 	bool wordBreak2(string s, vector<string>& wordDict);
+	bool wordBreak3(string s, vector<string>& wordDict);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
