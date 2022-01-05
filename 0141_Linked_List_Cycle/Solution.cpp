@@ -1,6 +1,6 @@
 #include <Solution.h>
 #include <iostream>
-
+#include <climits>
 
 bool Solution::hasCycle(ListNode *head) {
 	ListNode* iter = head;
