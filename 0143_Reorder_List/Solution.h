@@ -10,6 +10,7 @@ class Solution {
     public :
         Solution() {}
 	void reorderList(ListNode* head);
+	void reorderList2(ListNode* head);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
