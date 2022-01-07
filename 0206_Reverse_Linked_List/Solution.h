@@ -10,6 +10,7 @@ class Solution {
     public :
         Solution() {}
 	ListNode* reverseList(ListNode* head);
+	ListNode* reverseList2(ListNode* head);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);

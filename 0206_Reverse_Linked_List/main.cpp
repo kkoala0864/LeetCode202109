@@ -11,7 +11,7 @@ int main(void) {
 	ListNode* two = new ListNode(2, three);
 	ListNode* one = new ListNode(1, two);
     Solution* test = new Solution();
-    ListNode* ret = test->reverseList(one);
+    ListNode* ret = test->reverseList2(one);
     ListNode* iter = ret;
     while (iter) {
 	cout << iter->val << " ";
