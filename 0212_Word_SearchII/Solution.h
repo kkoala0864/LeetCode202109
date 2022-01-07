@@ -13,11 +13,11 @@ struct Trie {
 	}
 };
 
-
 class Solution {
     public :
         Solution() {}
 	vector<string> findWords(vector<vector<char>>& board, vector<string>& words);
+	vector<string> findWords2(vector<vector<char>>& board, vector<string>& words);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
