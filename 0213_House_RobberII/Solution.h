@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	int rob(vector<int>& nums);
+	int rob2(vector<int>& nums);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
