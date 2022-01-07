@@ -9,6 +9,7 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->canFinish(20, input) << endl;
 	cout << test->canFinish2(20, input) << endl;
+	cout << test->canFinish3(20, input) << endl;
     return 0;
 }
 
