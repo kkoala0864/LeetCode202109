@@ -12,7 +12,8 @@ int main(void) {
 		    {'0','0','0','1','1'}
 	};
     Solution* test = new Solution();
-    cout << test->numIslands(grid) << endl;
+    //cout << test->numIslands(grid) << endl;
+    cout << test->numIslands2(grid) << endl;
     return 0;
 }
 
