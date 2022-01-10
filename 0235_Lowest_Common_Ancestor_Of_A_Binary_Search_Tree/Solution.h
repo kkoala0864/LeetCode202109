@@ -9,6 +9,7 @@ class Solution {
     public :
         Solution() {}
 	TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q);
+	TreeNode* lowestCommonAncestor2(TreeNode* root, TreeNode* p, TreeNode* q);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
