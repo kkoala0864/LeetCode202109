@@ -12,7 +12,7 @@ int main(void) {
 		cout << iter << " ";
 	}
 	cout << endl;
-	result = test->productExceptSelf2(input);
+	result = test->productExceptSelf3(input);
 	for (const auto& iter : result) {
 		cout << iter << " ";
 	}
