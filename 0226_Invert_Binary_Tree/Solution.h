@@ -12,6 +12,7 @@ class Solution {
     public :
         Solution() {}
 	TreeNode* invertTree(TreeNode* root);
+	TreeNode* invertTree2(TreeNode* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
