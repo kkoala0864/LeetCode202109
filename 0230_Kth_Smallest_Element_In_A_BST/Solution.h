@@ -11,6 +11,7 @@ class Solution {
     public :
         Solution() {}
 	int kthSmallest(TreeNode* root, int k);
+	int kthSmallest2(TreeNode* root, int k);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
