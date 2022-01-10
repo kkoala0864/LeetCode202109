@@ -8,6 +8,7 @@ int main(void) {
 	string s("eat"), t("cat");
 	Solution* test = new Solution();
 	cout << test->isAnagram(s, t) << endl;
+	cout << test->isAnagram2(s, t) << endl;
 	return 0;
 }
 
