@@ -5,9 +5,10 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	string input("abc");
+	string input("aaa");
 	Solution* test = new Solution();
 	cout << test->countSubstrings(input) << endl;
+	cout << test->countSubstrings2(input) << endl;
 	return 0;
 }
 
