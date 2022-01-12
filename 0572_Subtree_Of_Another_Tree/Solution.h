@@ -11,6 +11,7 @@ class Solution {
     public :
         Solution() {}
 	bool isSubtree(TreeNode* root, TreeNode* subRoot);
+	bool isSubtree2(TreeNode* root, TreeNode* subRoot);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
