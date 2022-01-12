@@ -6,6 +6,7 @@
 using std::sort;
 using std::map;
 
+/*
 bool Solution::canAttendMeetings(vector<vector<int>>& intervals) {
 	if (intervals.empty()) return true;
 	auto cmp = [] (const vector<int>& lhs, const vector<int>& rhs) { return lhs[0] < rhs[0]; };
@@ -13,7 +14,7 @@ bool Solution::canAttendMeetings(vector<vector<int>>& intervals) {
 	for (int i = 1 ; i < intervals.size() ; ++i) if (intervals[i][0] < intervals[i-1][1]) return false;
 	return true;
 }
-
+*/
 bool Solution::canAttendMeetings(vector<vector<int>>& intervals) {
 	map<int, int> sMap;
 	for (const auto& interval : intervals) {
