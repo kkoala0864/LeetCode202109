@@ -7,6 +7,7 @@ class Solution {
         Solution() {}
 	int countComponents(int n, vector<vector<int>>& edges);
 	int countComponents2(int n, vector<vector<int>>& edges);
+	int countComponents3(int n, vector<vector<int>>& edges);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
