@@ -9,6 +9,7 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->minMeetingRooms(input) << endl;
 	cout << test->minMeetingRooms2(input) << endl;
+	cout << test->minMeetingRooms3(input) << endl;
 	return 0;
 }
 

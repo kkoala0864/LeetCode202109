@@ -7,6 +7,7 @@ class Solution {
         Solution() {}
 	int minMeetingRooms(vector<vector<int>>& intervals);
 	int minMeetingRooms2(vector<vector<int>>& intervals);
+	int minMeetingRooms3(vector<vector<int>>& intervals);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
