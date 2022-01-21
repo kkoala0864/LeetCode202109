@@ -9,6 +9,7 @@ int main(void) {
 	vector<int> cost = {4,4,1,5,1};
 	Solution* test = new Solution();
 	cout << test->canCompleteCircuit(gas, cost) << endl;
+	cout << test->canCompleteCircuit2(gas, cost) << endl;
 	return 0;
 }
 
