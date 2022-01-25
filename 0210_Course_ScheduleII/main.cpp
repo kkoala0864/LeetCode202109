@@ -12,7 +12,7 @@ int main(void) {
 		cout << iter << " ";
 	}
 	cout << endl;
-	result = test->findOrder2(2, input);
+	result = test->findOrder3(2, input);
 	for (const auto& iter : result) {
 		cout << iter << " ";
 	}
