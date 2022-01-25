@@ -12,7 +12,7 @@ int main(void) {
 		cout << iter << " ";
 	}
 	cout << endl;
-	result = test->findItinerary2(input);
+	result = test->findItinerary3(input);
 	for (const auto& iter : result) {
 		cout << iter << " ";
 	}
