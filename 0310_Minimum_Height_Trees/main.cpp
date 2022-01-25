@@ -12,7 +12,7 @@ int main(void) {
 		cout << iter << " ";
 	}
 	cout << endl;
-	result = test->findMinHeightTrees2(4, input);
+	result = test->findMinHeightTrees3(4, input);
 	for (const auto& iter : result) {
 		cout << iter << " ";
 	}
