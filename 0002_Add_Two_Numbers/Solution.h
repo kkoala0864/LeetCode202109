@@ -10,6 +10,7 @@ class Solution {
     public :
         Solution() {}
 	ListNode* addTwoNumbers(ListNode* l1, ListNode* l2);
+	ListNode* addTwoNumbers2(ListNode* l1, ListNode* l2);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
