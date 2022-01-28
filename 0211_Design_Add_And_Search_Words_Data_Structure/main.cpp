@@ -1,4 +1,4 @@
-#include <Solution.h>
+#include <Solution3.h>
 #include <iostream>
 
 using std::cout;
