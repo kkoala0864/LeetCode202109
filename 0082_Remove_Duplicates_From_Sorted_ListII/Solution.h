@@ -10,6 +10,7 @@ class Solution {
     public :
         Solution() {}
 	ListNode* deleteDuplicates(ListNode* head);
+	ListNode* deleteDuplicates2(ListNode* head);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
