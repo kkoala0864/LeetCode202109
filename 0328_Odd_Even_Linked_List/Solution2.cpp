@@ -1,6 +1,8 @@
 #include <Solution.h>
 #include <iostream>
 
+using std::swap;
+
 ListNode* Solution::oddEvenList2(ListNode* head) {
 	if (!head || !head->next) return head;
 
@@ -19,6 +21,6 @@ ListNode* Solution::oddEvenList2(ListNode* head) {
 	while (iter->next) {
 		iter = iter->next;
 	}
-	iter->next = eveb;
+	iter->next = even;
 	return head;
 }

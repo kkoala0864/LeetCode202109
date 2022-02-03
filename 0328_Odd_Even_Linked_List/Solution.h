@@ -11,6 +11,7 @@ class Solution {
         Solution() {}
 	ListNode* oddEvenList(ListNode* head);
 	ListNode* oddEvenList2(ListNode* head);
+	ListNode* oddEvenList3(ListNode* head);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
