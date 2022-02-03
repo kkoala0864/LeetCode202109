@@ -15,6 +15,7 @@ class Solution {
     public :
         Solution() {}
 	Node* copyRandomList(Node* head);
+	Node* copyRandomList2(Node* head);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
