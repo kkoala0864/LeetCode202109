@@ -8,6 +8,7 @@ int main(void) {
 	vector<int> input = {1,2,3,4,5};
 	Solution* test = new Solution();
 	cout << test->minSubArrayLen(15, input) << endl;
+	cout << test->minSubArrayLen2(15, input) << endl;
 	return 0;
 }
 
