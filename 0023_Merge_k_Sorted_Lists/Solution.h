@@ -15,6 +15,7 @@ class Solution {
         Solution() {}
 	ListNode* mergeKLists(vector<ListNode*>& lists);
 	ListNode* mergeKLists2(vector<ListNode*>& lists);
+	ListNode* mergeKLists3(vector<ListNode*>& lists);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
