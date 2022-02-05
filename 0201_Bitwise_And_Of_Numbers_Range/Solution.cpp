@@ -1,7 +1,5 @@
 #include <Solution.h>
 #include <iostream>
-using std::cout;
-using std::endl;
 int Solution::rangeBitwiseAnd(int left, int right) {
 	int result = 0;
 	int mask = (1 << 31);

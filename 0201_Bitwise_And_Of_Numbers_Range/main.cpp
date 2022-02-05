@@ -6,7 +6,8 @@ using std::endl;
 
 int main(void) {
     Solution* test = new Solution();
-    cout << test->rangeBitwiseAnd(10, 16) << endl;
+    cout << test->rangeBitwiseAnd(5, 7) << endl;
+    cout << test->rangeBitwiseAnd2(5, 7) << endl;
     return 0;
 }
 
