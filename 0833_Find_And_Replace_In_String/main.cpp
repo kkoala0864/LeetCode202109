@@ -10,6 +10,7 @@ int main(void) {
 	vector<string> targets = {"eee", "ffff"};
 	Solution* test = new Solution();
 	cout << test->findReplaceString("abcd", indices, sources, targets) << endl;
+	cout << test->findReplaceString2("abcd", indices, sources, targets) << endl;
 	return 0;
 }
 
