@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	bool checkInclusion(string s1, string s2);
+	bool checkInclusion2(string s1, string s2);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);

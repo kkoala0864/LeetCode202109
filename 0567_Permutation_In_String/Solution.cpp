@@ -33,4 +33,4 @@ bool Solution::checkInclusion(string s1, string s2) {
 		if ((end - start + 1) > s1.size()) return true;
 	}
 	return false;
-
+}
