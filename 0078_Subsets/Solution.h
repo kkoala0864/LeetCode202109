@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	vector<vector<int>> subsets(vector<int>& nums);
+	vector<vector<int>> subsets2(vector<int>& nums);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);

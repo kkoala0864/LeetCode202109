@@ -14,6 +14,13 @@ int main(void) {
 		}
 		cout << endl;
 	}
+	vector<vector<int>> result2 = test->subsets2(input);
+	for (const auto& vec : result2) {
+		for (const auto& iter : vec) {
+			cout << iter << " ";
+		}
+		cout << endl;
+	}
 	return 0;
 }
 
