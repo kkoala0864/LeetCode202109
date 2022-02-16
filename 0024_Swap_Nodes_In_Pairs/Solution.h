@@ -10,6 +10,7 @@ class Solution {
     public :
         Solution() {}
 	ListNode* swapPairs(ListNode* head);
+	ListNode* swapPairs2(ListNode* head);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
