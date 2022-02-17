@@ -21,3 +21,19 @@ vector<vector<int>> Solution::combinationSum3(vector<int>& candidates, int targe
 	combineSum(candidates, target, local, result, 0);
 	return result;
 }
+/*
+ * DP Version
+vector<vector<int>> Solution::combinationSum3(vector<int>& candidates, int target) {
+	vector<vector<vector<int>>> dp(target+1, vector<vector<int>>());
+	dp[0].push_back({});
+	for (const auto& candidate : candidates) {
+		for (int j = candidate ; j <= target ; ++j) {
+			for (auto& ele : dp[j-candidate]) {
+				vector<int> tmp = ele;
+				tmp.emplace_back(candidate);
+				dp[j].emplace_back(tmp);
+			}
+		}
+	}
+	return dp[target];
+}*/
