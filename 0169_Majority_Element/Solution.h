@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	int majorityElement(vector<int>& nums);
+	int majorityElement2(vector<int>& nums);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
