@@ -8,6 +8,7 @@ class Solution {
     public :
         Solution() {}
 	int maxProduct(vector<string>& words);
+	int maxProduct2(vector<string>& words);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);

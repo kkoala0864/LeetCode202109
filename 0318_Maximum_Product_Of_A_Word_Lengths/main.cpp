@@ -8,6 +8,7 @@ int main(void) {
 	vector<string> input = {"a","ab","abc","d","cd","bcd","abcd"};
 	Solution* test = new Solution();
 	cout << test->maxProduct(input) << endl;
+	cout << test->maxProduct2(input) << endl;
 	return 0;
 }
 
