@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	bool validUtf8(vector<int>& data);
+	bool validUtf82(vector<int>& data);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
