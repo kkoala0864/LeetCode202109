@@ -8,6 +8,7 @@ class Solution {
     public :
         Solution() {}
 	vector<string> findRepeatedDnaSequences(string s);
+	vector<string> findRepeatedDnaSequences2(string s);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
