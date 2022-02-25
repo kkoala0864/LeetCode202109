@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	int hIndex(vector<int>& citations);
+	int hIndex2(vector<int>& citations);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
