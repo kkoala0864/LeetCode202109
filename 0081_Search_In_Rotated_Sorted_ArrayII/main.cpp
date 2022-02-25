@@ -8,6 +8,7 @@ int main(void) {
 	vector<int> input = {1,0,1,1,1};
 	Solution* test = new Solution();
 	cout << test->search(input, 0) << endl;
+	cout << test->search2(input, 0) << endl;
 	return 0;
 }
 
