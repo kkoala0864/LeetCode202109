@@ -5,9 +5,10 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<vector<int>> input = {{1,1},{-1,-1}};
+	vector<vector<int>> input = {{1,1}, {-1,-1}};
 	Solution* test = new Solution();
 	cout << test->isReflected(input) << endl;
+	cout << test->isReflected2(input) << endl;
 	return 0;
 }
 

@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <map>
 #include <string>
+#include <climits>
 
 using std::min;
 using std::max;
