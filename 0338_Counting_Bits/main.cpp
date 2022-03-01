@@ -11,7 +11,7 @@ int main(void) {
 		cout << iter << " ";
 	}
 	cout << endl;
-	result = test->countBits2(7);
+	result = test->countBits3(7);
 	for (const auto& iter : result) {
 		cout << iter << " ";
 	}
