@@ -12,7 +12,7 @@ int main(void) {
 	ListNode* four = new ListNode(4, three);
 	ListNode* one = new ListNode(1, four);
 	Solution* test = new Solution();
-	ListNode* result = test->partition(one, 3);
+	ListNode* result = test->partition2(one, 3);
 	while (result) {
 		cout << result->val << " ";
 		result = result->next;
