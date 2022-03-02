@@ -8,6 +8,7 @@ class Solution {
     public :
         Solution() {}
 	ListNode *getIntersectionNode(ListNode *headA, ListNode *headB);
+	ListNode *getIntersectionNode2(ListNode *headA, ListNode *headB);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
