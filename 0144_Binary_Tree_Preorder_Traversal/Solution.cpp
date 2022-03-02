@@ -18,7 +18,7 @@ vector<int> Solution::preorderTraversal(TreeNode* root) {
 }
 */
 vector<int> Solution::preorderTraversal(TreeNode* root) {
-	if (!root) return vector<int>()
+	if (!root) return vector<int>();
 	stack<TreeNode*> st;
 	vector<int> result;
 

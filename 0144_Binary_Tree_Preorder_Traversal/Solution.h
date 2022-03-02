@@ -14,6 +14,7 @@ class Solution {
     public :
         Solution() {}
 	vector<int> preorderTraversal(TreeNode* root);
+	vector<int> preorderTraversal2(TreeNode* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
