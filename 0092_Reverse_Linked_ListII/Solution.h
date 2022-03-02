@@ -10,6 +10,7 @@ class Solution {
     public :
         Solution() {}
 	ListNode* reverseBetween(ListNode* head, int left, int right);
+	ListNode* reverseBetween2(ListNode* head, int left, int right);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
