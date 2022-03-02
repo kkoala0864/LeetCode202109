@@ -11,6 +11,7 @@ class Solution {
         Solution() {}
 	ListNode* swapPairs(ListNode* head);
 	ListNode* swapPairs2(ListNode* head);
+	ListNode* swapPairs3(ListNode* head);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
