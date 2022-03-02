@@ -10,6 +10,7 @@ class Solution {
     public :
         Solution() {}
 	ListNode* removeElements(ListNode* head, int val);
+	ListNode* removeElements2(ListNode* head, int val);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
