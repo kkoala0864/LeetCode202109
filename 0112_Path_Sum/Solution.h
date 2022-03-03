@@ -11,6 +11,7 @@ class Solution {
     public :
         Solution() {}
 	bool hasPathSum(TreeNode* root, int targetSum);
+	bool hasPathSum2(TreeNode* root, int targetSum);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
