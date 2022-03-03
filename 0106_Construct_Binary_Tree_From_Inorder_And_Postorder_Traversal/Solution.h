@@ -15,6 +15,7 @@ class Solution {
     public :
         Solution() {}
 	TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder);
+	TreeNode* buildTree2(vector<int>& inorder, vector<int>& postorder);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
