@@ -15,6 +15,7 @@ class Solution {
     public :
         Solution() {}
 	vector<vector<int>> pathSum(TreeNode* root, int targetSum);
+	vector<vector<int>> pathSum2(TreeNode* root, int targetSum);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
