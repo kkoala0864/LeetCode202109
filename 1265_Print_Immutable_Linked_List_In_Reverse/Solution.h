@@ -8,6 +8,7 @@ class Solution {
     public :
         Solution() {}
 	void printLinkedListInReverse(ImmutableListNode* head);
+	void printLinkedListInReverse2(ImmutableListNode* head);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
