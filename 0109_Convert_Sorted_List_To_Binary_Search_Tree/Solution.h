@@ -20,6 +20,7 @@ class Solution {
     public :
         Solution() {}
 	TreeNode* sortedListToBST(ListNode* head);
+	TreeNode* sortedListToBST2(ListNode* head);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);

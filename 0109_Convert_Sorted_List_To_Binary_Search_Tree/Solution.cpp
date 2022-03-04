@@ -3,6 +3,8 @@
 #include <vector>
 #include <stack>
 
+using std::vector;
+
 TreeNode* construct(const vector<int>& nums, int start, int end) {
 	if (start > end) return nullptr;
 	int mid = (start + end) / 2;
