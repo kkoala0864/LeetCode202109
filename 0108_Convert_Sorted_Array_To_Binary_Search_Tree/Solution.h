@@ -15,6 +15,7 @@ class Solution {
     public :
         Solution() {}
 	TreeNode* sortedArrayToBST(vector<int>& nums);
+	TreeNode* sortedArrayToBST2(vector<int>& nums);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
