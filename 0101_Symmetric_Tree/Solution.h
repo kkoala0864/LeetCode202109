@@ -11,6 +11,7 @@ class Solution {
     public :
         Solution() {}
 	bool isSymmetric(TreeNode* root);
+	bool isSymmetric2(TreeNode* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
