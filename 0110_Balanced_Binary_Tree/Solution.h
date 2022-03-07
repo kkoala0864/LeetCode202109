@@ -11,6 +11,7 @@ class Solution {
     public :
         Solution() {}
 	bool isBalanced(TreeNode* root);
+	bool isBalanced2(TreeNode* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
