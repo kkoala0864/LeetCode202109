@@ -11,6 +11,7 @@ class Solution {
     public :
         Solution() {}
 	int minDepth(TreeNode* root);
+	int minDepth2(TreeNode* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
