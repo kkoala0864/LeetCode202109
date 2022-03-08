@@ -10,6 +10,7 @@ int main(void) {
 	cout << test->hasCycle(head) << endl;
 	cout << test->hasCycle2(head) << endl;
 	cout << test->hasCycle3(head) << endl;
+	cout << test->hasCycle4(head) << endl;
 	return 0;
 }
 

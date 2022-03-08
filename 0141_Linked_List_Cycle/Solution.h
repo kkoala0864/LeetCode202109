@@ -10,6 +10,7 @@ class Solution {
 	bool hasCycle(ListNode *head);
 	bool hasCycle2(ListNode *head);
 	bool hasCycle3(ListNode *head);
+	bool hasCycle4(ListNode *head);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
