@@ -1,34 +1,25 @@
 #include <Solution.h>
 #include <iostream>
-#include <stack>
-
-using std::stack;
 
 bool Solution::backspaceCompare(string s, string t) {
-	stack<char> ss;
-	stack<char> st;
+	string ss, ts;
 
 	for (const auto& iter : s) {
 		if (iter != '#') {
-			ss.emplace(iter);
+			ss.push_back(iter);
 		} else {
-			if (!ss.empty()) ss.pop();
+			if (!ss.empty()) ss.pop_back();
 		}
 	}
 
 	for (const auto& iter : t) {
 		if (iter != '#') {
-			st.emplace(iter);
+			ts.push_back(iter);
 		} else {
-			if (!st.empty()) st.pop();
+			if (!ts.empty()) ts.pop_back();
 		}
 	}
 
-	if (ss.size() != st.size()) return false;
-	while (!ss.empty()) {
-		if (ss.top() != st.top()) return false;
-		ss.pop();
-		st.pop();
-	}
-	return true;
+	if (ss.size() != ts.size()) return false;
+	return ss == ts;
 }

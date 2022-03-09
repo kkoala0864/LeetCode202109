@@ -6,9 +6,10 @@ using std::endl;
 
 int main(void) {
 	string s("ab#c");
-	string t("b");
-    Solution* test = new Solution();
-    cout << test->backspaceCompare(s, t) << endl;
-    return 0;
+	string t("ad#c");
+	Solution* test = new Solution();
+	cout << test->backspaceCompare(s, t) << endl;
+	cout << test->backspaceCompare2(s, t) << endl;
+	return 0;
 }
 
