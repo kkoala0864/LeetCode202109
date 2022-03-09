@@ -22,7 +22,7 @@ void dfs(const vector<int>& candidates, int start, int target, vector<int>& loca
 	}
 }
 
-vector<vector<int>> Solution::combinationSum2(vector<int>& candidates, int target) {
+vector<vector<int>> Solution::combinationSum(vector<int>& candidates, int target) {
 	sort(candidates.begin(), candidates.end());
 	vector<vector<int>> result;
 	vector<int> localResult;
