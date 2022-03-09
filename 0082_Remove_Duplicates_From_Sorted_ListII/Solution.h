@@ -11,6 +11,7 @@ class Solution {
         Solution() {}
 	ListNode* deleteDuplicates(ListNode* head);
 	ListNode* deleteDuplicates2(ListNode* head);
+	ListNode* deleteDuplicates3(ListNode* head);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
