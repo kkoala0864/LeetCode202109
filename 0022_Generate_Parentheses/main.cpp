@@ -10,6 +10,11 @@ int main(void) {
     for (const auto& iter : result) {
 	cout << iter << endl;
     }
+    cout << endl;
+    result = test->generateParenthesis2(3);
+    for (const auto& iter : result) {
+	cout << iter << endl;
+    }
     return 0;
 }
 
