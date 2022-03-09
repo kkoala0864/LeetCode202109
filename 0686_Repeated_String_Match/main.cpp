@@ -9,6 +9,7 @@ int main(void) {
 	string t("cdabcdab");
 	Solution* test = new Solution();
 	cout << test->repeatedStringMatch(s, t) << endl;
+	cout << test->repeatedStringMatch2(s, t) << endl;
 	return 0;
 }
 
