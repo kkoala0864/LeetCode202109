@@ -1,5 +1,6 @@
 #include <Solution.h>
 #include <iostream>
+#include <cmath>
 /*
 bool Solution::isPowerOfThree(int n) {
 	if (n <= 0) return false;
