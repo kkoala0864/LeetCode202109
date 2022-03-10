@@ -11,6 +11,7 @@ class Solution {
     public :
         Solution() {}
 	bool isCousins(TreeNode* root, int x, int y);
+	bool isCousins2(TreeNode* root, int x, int y);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
