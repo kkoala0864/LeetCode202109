@@ -10,7 +10,6 @@ Example 2:
 Input: wordsDict = ["practice", "makes", "perfect", "coding", "makes"], word1 = "makes", word2 = "coding"
 Output: 1
  
-
 Constraints:
 
 1 <= wordsDict.length <= 3 * 104
