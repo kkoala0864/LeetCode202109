@@ -15,6 +15,7 @@ class Solution {
     public :
         Solution() {}
 	vector<int> rightSideView(TreeNode* root);
+	vector<int> rightSideView2(TreeNode* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
