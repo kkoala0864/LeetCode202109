@@ -50,7 +50,7 @@ int Solution::removeStones(vector<vector<int>>& stones) {
 	}
 	return stones.size() - cnt;
 }
-
+/*
 void myUnion(int a, int b, vector<int>& parent) {
 	while (parent[a] != a) a = parent[a];
 	while (parent[b] != b) b = parent[b];
@@ -81,4 +81,4 @@ int Solution::removeStones(vector<vector<int>>& stones) {
 	}
 	return stones.size() - uSet.size();
 }
-
+*/
