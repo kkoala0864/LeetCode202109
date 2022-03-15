@@ -10,6 +10,7 @@ using std::min;
 // p or q is currnet node and the other is in subtree
 
 
+/*
 bool DFS(TreeNode* root, int target, vector<TreeNode*>& path) {
 	if (!root) return false;
 
@@ -37,8 +38,7 @@ TreeNode* Solution::lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* 
 
 	return pRecord[i-1];
 }
-
-
+*/
 TreeNode* Solution::lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
 	if (!root) return nullptr;
 	if (root == p || root == q) return root;
