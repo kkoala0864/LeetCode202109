@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	int findDuplicate(vector<int>& nums);
+	int findDuplicate2(vector<int>& nums);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
