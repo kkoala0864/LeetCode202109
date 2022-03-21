@@ -12,7 +12,7 @@ int main(void) {
 		cout << iter << " ";
 	}
 	cout << endl;
-	result = test->partitionLabels2(input);
+	result = test->partitionLabels3(input);
 	for (const auto& iter : result) {
 		cout << iter << " ";
 	}
