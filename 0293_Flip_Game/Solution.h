@@ -8,6 +8,7 @@ class Solution {
     public :
 	    Solution() {}
 	    vector<string> generatePossibleNextMoves(string currentState);
+	    vector<string> generatePossibleNextMoves2(string currentState);
     private :
 	    virtual ~Solution() {}
 	    Solution& operator=(const Solution& source);
