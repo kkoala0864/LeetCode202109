@@ -4,6 +4,7 @@
 using std::cout;
 using std::endl;
 
+// LeetCode #704
 int Solution::general(vector<int>& list, int target) {
 	int start = 0, end = list.size() - 1;
 	int mid = 0;
