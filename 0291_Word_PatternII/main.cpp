@@ -9,6 +9,7 @@ int main(void) {
 	string s("dogcatcatdog");
 	Solution* test = new Solution();
 	cout << test->wordPatternMatch(pattern, s) << endl;
+	cout << test->wordPatternMatch2(pattern, s) << endl;
 	return 0;
 }
 
