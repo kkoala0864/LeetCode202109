@@ -7,6 +7,7 @@ class Solution {
         Solution() {}
 	int general(vector<int>& list, int target);
 	int findFirstBiggerThanMe(vector<int>& list, int target);
+	int findMinimalValInRotatedArray(vector<int>& list);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);

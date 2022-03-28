@@ -37,3 +37,16 @@ int Solution::findFirstBiggerThanMe(vector<int>& list, int target) {
 	}
 	return start;
 }
+
+// LeetCode #153
+int Solution::findMinimalValInRotatedArray(vector<int>& list) {
+	int start = 0, end = list.size() - 1;
+	int mid = 0;
+
+	while (start < end) {
+		mid = (end - start) / 2 + start;
+		if (list[mid] > list[end]) start = mid + 1;
+		else end = mid;
+	}
+	return list[start];
+}

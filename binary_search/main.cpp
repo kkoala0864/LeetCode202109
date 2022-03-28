@@ -13,6 +13,7 @@ int main(void) {
 	cout << test->findFirstBiggerThanMe(input, 12) << endl;
 	cout << test->findFirstBiggerThanMe(input, 18) << endl;
 	cout << test->findFirstBiggerThanMe(input, 0) << endl;
+	cout << test->findMinimalValInRotatedArray(input) << endl;
 	return 0;
 }
 
