@@ -9,6 +9,7 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->findDuplicate(input) << endl;
 	cout << test->findDuplicate2(input) << endl;
+	cout << test->findDuplicate3(input) << endl;
 	return 0;
 }
 
