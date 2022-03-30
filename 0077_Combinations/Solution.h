@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	vector<vector<int>> combine(int n, int k);
+	vector<vector<int>> combine2(int n, int k);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
