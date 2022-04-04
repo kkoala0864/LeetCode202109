@@ -5,9 +5,16 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<int> input = {1,2,3};
+	vector<int> input = {2,3,1};
 	Solution* test = new Solution();
 	test->nextPermutation(input);
+	for (const auto iter : input) {
+		cout << iter << " ";
+	}
+	cout << endl;
+	cout << endl;
+	input = {2,3,1};
+	test->nextPermutation2(input);
 	for (const auto iter : input) {
 		cout << iter << " ";
 	}

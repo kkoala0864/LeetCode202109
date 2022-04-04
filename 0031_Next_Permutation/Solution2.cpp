@@ -7,7 +7,7 @@ using std::swap;
 using std::cout;
 using std::endl;
 
-void Solution::nextPermutation(vector<int>& nums) {
+void Solution::nextPermutation2(vector<int>& nums) {
 	int i = nums.size() - 1;
 	for (; i > 0 ; --i) {
 		if (nums[i] > nums[i-1]) break;
@@ -23,9 +23,5 @@ void Solution::nextPermutation(vector<int>& nums) {
 			break;
 		}
 	}
-	for (const auto& iter : nums) {
-		cout << iter << " ";
-	}
-	cout << endl;
-	reverse(nums.begin() + i , nums.end());
+	reverse(nums.begin() + i, nums.end());
 }
