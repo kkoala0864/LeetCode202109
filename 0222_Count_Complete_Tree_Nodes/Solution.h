@@ -11,6 +11,7 @@ class Solution {
     public :
         Solution() {}
 	int countNodes(TreeNode* root);
+	int countNodes2(TreeNode* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
