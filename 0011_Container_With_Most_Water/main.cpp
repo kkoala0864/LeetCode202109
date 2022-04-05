@@ -10,6 +10,7 @@ int main(void) {
 	cout << test->maxArea(input) << endl;
 	cout << test->maxArea2(input) << endl;
 	cout << test->maxArea3(input) << endl;
+	cout << test->maxArea4(input) << endl;
 	return 0;
 }
 

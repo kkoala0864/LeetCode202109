@@ -7,6 +7,7 @@ class Solution {
 	int maxArea(vector<int>& height);
 	int maxArea2(vector<int>& height);
 	int maxArea3(vector<int>& height);
+	int maxArea4(vector<int>& height);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
