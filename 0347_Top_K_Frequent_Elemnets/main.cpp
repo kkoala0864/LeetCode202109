@@ -12,7 +12,7 @@ int main(void) {
 		cout << iter << " ";
 	}
 	cout << endl;
-	result = test->topKFrequent2(input, 2);
+	result = test->topKFrequent3(input, 2);
 	for (const auto& iter : result) {
 		cout << iter << " ";
 	}
