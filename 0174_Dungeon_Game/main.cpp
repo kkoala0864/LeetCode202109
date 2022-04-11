@@ -5,9 +5,10 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-    vector<vector<int>> input = {{-2,-3,3},{-5,-10,1},{10,30,-5}};
+    vector<vector<int>> input = {{-3, 5}};
     Solution* test = new Solution();
     cout << test->calculateMinimumHP(input) << endl;
+    cout << test->calculateMinimumHP2(input) << endl;
     return 0;
 }
 
