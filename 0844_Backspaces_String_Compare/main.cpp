@@ -10,6 +10,7 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->backspaceCompare(s, t) << endl;
 	cout << test->backspaceCompare2(s, t) << endl;
+	cout << test->backspaceCompare3(s, t) << endl;
 	return 0;
 }
 
