@@ -8,6 +8,7 @@ int main(void) {
 	vector<int> input = {10, 2};
 	Solution* test = new Solution();
 	cout << test->largestNumber(input) << endl;
+	cout << test->largestNumber2(input) << endl;
 	return 0;
 }
 

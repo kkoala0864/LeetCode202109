@@ -8,6 +8,7 @@ class Solution {
     public :
         Solution() {}
 	string largestNumber(vector<int>& nums);
+	string largestNumber2(vector<int>& nums);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
