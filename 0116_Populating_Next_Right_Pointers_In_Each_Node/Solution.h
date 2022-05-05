@@ -19,6 +19,7 @@ class Solution {
 	Node* connect(Node* root);
 	Node* connect2(Node* root);
 	Node* connectNoSpace(Node* root);
+	Node* connect3(Node* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
