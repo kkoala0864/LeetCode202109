@@ -9,6 +9,7 @@ class Solution {
         Solution() {}
 	vector<string> letterCombinations(string digits);
 	vector<string> letterCombinations2(string digits);
+	vector<string> letterCombinations3(string digits);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
