@@ -17,6 +17,7 @@ class Solution {
     public :
         Solution() {}
 	Node* connect(Node* root);
+	Node* connect2(Node* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
