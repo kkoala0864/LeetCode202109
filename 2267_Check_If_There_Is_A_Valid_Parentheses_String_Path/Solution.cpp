@@ -5,7 +5,7 @@ bool Solution::hasValidPath(vector<vector<char>>& grid) {
 	int m = grid.size();
 	int n = grid[0].size();
 
-	if (grid[0][0] == ')' && (m + n - 1) & 1) return false;
+	if (grid[0][0] == ')' || (m + n - 1) & 1) return false;
 	int limit = (m + n - 1) / 2;
 	vector<vector<vector<bool>>> dp(m, vector<vector<bool>>(n, vector<bool>(limit+1, false)));
 
