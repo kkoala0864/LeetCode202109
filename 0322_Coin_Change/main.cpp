@@ -10,5 +10,6 @@ int main(void) {
 	cout << test->coinChange(input, 11) << endl;
 	cout << test->coinChange2(input, 11) << endl;
 	cout << test->coinChange3(input, 11) << endl;
+	cout << test->coinChange4(input, 11) << endl;
 	return 0;
 }
