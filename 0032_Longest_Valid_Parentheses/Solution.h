@@ -7,6 +7,8 @@ class Solution {
         Solution() {}
 	int longestValidParentheses(string s);
 	int longestValidParentheses2(string s);
+	int longestValidParentheses3(string s);
+	int DP(string s);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);

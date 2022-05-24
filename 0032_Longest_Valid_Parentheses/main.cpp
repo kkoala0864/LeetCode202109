@@ -5,10 +5,10 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	string input("()(()");
+	string input("())");
 	Solution* test = new Solution();
-	cout << test->longestValidParentheses(input) << endl;
-	cout << test->longestValidParentheses2(input) << endl;
+	cout << test->longestValidParentheses3(input) << endl;
+	cout << test->DP(input) << endl;
 	return 0;
 }
 
