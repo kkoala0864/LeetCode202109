@@ -9,6 +9,7 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->hammingWeight(input) << endl;
 	cout << test->hammingWeight2(input) << endl;
+	cout << test->hammingWeight3(input) << endl;
 	return 0;
 }
 
