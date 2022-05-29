@@ -9,6 +9,7 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->maxProduct(input) << endl;
 	cout << test->maxProduct2(input) << endl;
+	cout << test->maxProduct3(input) << endl;
 	return 0;
 }
 
