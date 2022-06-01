@@ -1,34 +1,50 @@
 #include <Solution.h>
 #include <iostream>
 #include <unordered_map>
-
 using std::unordered_map;
 
-vector<int> Solution::findSubstring(string s, vector<string>& words) {
-	vector<int> result;
-	if (words.empty()) return result;
-	int size = words[0].size();
-	int totalSize = size * words.size();
-	if (s.size() < totalSize) return result;
+void sliding_window(int left, string& s, const int wSize, const int wsSize,
+		const int sn, vector<int>& result, unordered_map<string, int>& wCnt) {
+	int wordUsed = wsSize;
+	bool excessWord = false;
 	unordered_map<string, int> cnt;
-	vector<bool> firstC(26, false);
 
-	for (const auto& word : words) {
-		++cnt[word];
-		firstC[word[0]-'a'] = true;
-	}
-
-	for (int i = 0 ; i < (s.size() - totalSize + 1) ; ++i) {
-		if (!firstC[s[i]-'a']) continue;
-		unordered_map<string, int> cntTmp = cnt;
-		int offset = 0;
-		while (offset < totalSize) {
-			string cur = s.substr(i + offset, size);
-			if (cntTmp.find(cur) == cntTmp.end() || cntTmp[cur] == 0) break;
-			--cntTmp[cur];
-			offset += size;
+	for (int right = left ; right <= (sn - wSize)  ; right += wSize) {
+		string str = s.substr(right, wSize);
+		if (wCnt.find(str) == wCnt.end()) {
+			cnt.clear();
+			wordUsed = wsSize;
+			excessWord = false;
+			left = right + wSize;
+		} else {
+			while (right - left == (wSize * wsSize) || excessWord) {
+				string lMostStr = s.substr(left, wSize);
+				left += wSize;
+				--cnt[lMostStr];
+				if (cnt[lMostStr] == wCnt[lMostStr]) excessWord = false;
+				else ++wordUsed;
+			}
+			++cnt[str];
+			if (cnt[str] <= wCnt[str]) --wordUsed;
+			else excessWord = true;
+			if (wordUsed == 0 && !excessWord) result.emplace_back(left);
 		}
-		if (offset == totalSize) result.emplace_back(i);
 	}
+}
+
+vector<int> Solution::findSubstring(string s, vector<string>& words) {
+	int sn = s.size();
+	int wsSize = words.size(), wSize = words[0].size();
+
+	unordered_map<string, int> wCnt;
+	vector<int> result;
+	for (auto& word : words) ++wCnt[word];
+
+	for (int i = 0 ; i < wSize ; ++i) {
+		sliding_window(i, s, wSize, wsSize, sn, result, wCnt);
+	}
+
 	return result;
 }
+
+

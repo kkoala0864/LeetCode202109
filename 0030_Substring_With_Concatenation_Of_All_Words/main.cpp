@@ -5,8 +5,8 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	string input = "wordgoodgoodgoodbestword";
-	vector<string> words = {"word","good","best","good"};
+	string input = "barfoothefoobarman";
+	vector<string> words = {"foo","bar"};
 	Solution* test = new Solution();
 	auto result = test->findSubstring(input, words);
 	for (const auto& str : result) {
