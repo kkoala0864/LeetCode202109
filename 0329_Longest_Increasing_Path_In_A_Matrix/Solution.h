@@ -7,6 +7,7 @@ class Solution {
         Solution() {}
 	int longestIncreasingPath(vector<vector<int>>& matrix);
 	int topologicalSort(vector<vector<int>>& matrix);
+	int longestIncreasingPath2(vector<vector<int>>& matrix);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
