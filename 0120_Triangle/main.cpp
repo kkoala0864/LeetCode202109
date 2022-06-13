@@ -9,6 +9,7 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->minimumTotal(input) << endl;
 	cout << test->minimumTotal2(input) << endl;
+	cout << test->minimumTotal3(input) << endl;
 	return 0;
 }
 
