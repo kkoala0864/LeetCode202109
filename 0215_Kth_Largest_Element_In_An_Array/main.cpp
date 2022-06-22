@@ -9,6 +9,7 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->findKthLargest(input, 2) << endl;
 	cout << test->findKthLargest2(input, 2) << endl;
+	cout << test->findKthLargest3(input, 2) << endl;
 	return 0;
 }
 
