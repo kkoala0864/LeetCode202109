@@ -11,6 +11,7 @@ int main(void) {
 	cout << test->canJump2(input) << endl;
 	cout << test->canJump3(input) << endl;
 	cout << test->canJump4(input) << endl;
+	cout << test->canJump5(input) << endl;
 	return 0;
 }
 
