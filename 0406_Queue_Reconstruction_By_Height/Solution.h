@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	vector<vector<int>> reconstructQueue(vector<vector<int>>& people);
+	vector<vector<int>> reconstructQueue2(vector<vector<int>>& people);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);

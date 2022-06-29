@@ -12,6 +12,11 @@ int main(void) {
 			cout << "[" << vec[0] << " : " << vec[1] << "]" << endl;
 	}
 	cout << endl;
+	result = test->reconstructQueue2(input);
+	for (const auto& vec : input) {
+			cout << "[" << vec[0] << " : " << vec[1] << "]" << endl;
+	}
+	cout << endl;
 	return 0;
 }
 
