@@ -10,6 +10,7 @@ int main(void) {
 	cout << test->longestConsecutive(input) << endl;
 	cout << test->longestConsecutive2(input) << endl;
 	cout << test->longestConsecutive3(input) << endl;
+	cout << test->longestConsecutive4(input) << endl;
 	return 0;
 }
 
