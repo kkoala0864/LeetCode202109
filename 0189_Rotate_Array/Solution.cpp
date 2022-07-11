@@ -1,7 +1,10 @@
 #include <Solution.h>
 #include <iostream>
+#include <algorithm>
 
 using std::swap;
+using std::reverse;
+
 void Solution::rotate(vector<int>& nums, int k) {
 	if ((k % nums.size()) == 0) return;
 	k = k % nums.size();

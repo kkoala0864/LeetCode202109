@@ -5,9 +5,9 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<int> input = {1,2,3,4,5,6,7};
+	vector<int> input = {1,2,3,4,5};
 	Solution* test = new Solution();
-	test->rotate(input, 3);
+	test->rotate2(input, 2);
 	for (const auto& iter : input) {
 		cout << iter << " ";
 	}
