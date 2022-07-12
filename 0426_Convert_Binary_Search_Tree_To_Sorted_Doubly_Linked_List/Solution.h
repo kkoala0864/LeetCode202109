@@ -23,6 +23,7 @@ class Solution {
     public :
         Solution() {}
 	Node* treeToDoublyList(Node* root);
+	Node* treeToDoublyList2(Node* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
