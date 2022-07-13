@@ -9,6 +9,7 @@ int main(void) {
 	string input2 = "ace";
 	Solution* test = new Solution();
 	cout << test->longestCommonSubsequence(input1, input2) << endl;
+	cout << test->longestCommonSubsequence2(input1, input2) << endl;
 	return 0;
 }
 
