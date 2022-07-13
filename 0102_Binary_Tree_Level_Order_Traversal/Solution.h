@@ -16,6 +16,7 @@ class Solution {
         Solution() {}
 	vector<vector<int>> levelOrder(TreeNode* root);
 	vector<vector<int>> levelOrder2(TreeNode* root);
+	vector<vector<int>> levelOrder3(TreeNode* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
