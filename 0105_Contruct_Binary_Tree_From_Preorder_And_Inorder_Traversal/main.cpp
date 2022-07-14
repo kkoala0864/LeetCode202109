@@ -10,6 +10,7 @@ int main(void) {
 	Solution* test = new Solution();
 	test->buildTree(preorder, inorder);
 	test->buildTree2(preorder, inorder);
+	test->buildTree3(preorder, inorder);
 	return 0;
 }
 
