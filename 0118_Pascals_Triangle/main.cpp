@@ -13,6 +13,14 @@ int main(void) {
 	}
 	cout << endl;
     }
+    cout << endl;
+    result = test->generate2(5);
+    for (const auto& vec : result) {
+	for (const auto& val : vec) {
+		cout << val << " ";
+	}
+	cout << endl;
+    }
     return 0;
 }
 
