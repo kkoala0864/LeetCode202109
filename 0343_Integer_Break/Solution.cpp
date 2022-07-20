@@ -13,10 +13,8 @@ int Solution::integerBreak(int n) {
 
 	for (int i = 3 ; i <= n ; ++i) {
 		for (int j = 1 ; j < i ; ++j) {
-			dp[i] = max(dp[i], dp[j] * dp[i-j]);
-			dp[i] = max(dp[i], dp[j] * (i-j));
 			dp[i] = max(dp[i], j * dp[i-j]);
-			dp[i] = max(dp[i], j*(i-j));
+			dp[i] = max(dp[i], j * (i-j));
 		}
 	}
 	return dp[n];
