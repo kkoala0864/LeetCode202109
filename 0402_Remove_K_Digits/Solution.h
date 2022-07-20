@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	string removeKdigits(string num, int k);
+	string removeKdigits2(string num, int k);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
