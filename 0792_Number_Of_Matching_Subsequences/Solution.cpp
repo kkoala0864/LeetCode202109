@@ -4,6 +4,28 @@
 
 using std::upper_bound;
 
+int Solution::numMatchingSubseq2(string s, vector<string>& words) {
+	vector<vector<const char*>> vec(26, vector<const char*>());
+
+	for (const auto& w : words) {
+		vec[w[0]-'a'].emplace_back(w.c_str());
+	}
+
+	int result = 0;
+	for (const auto& c : s) {
+		auto cur = vec[c-'a'];
+		vec[c-'a'].clear();
+		for (auto& w : cur) {
+			const char* a = w + 1;
+			if (*a == '\0') ++result;
+			else {
+				vec[*a-'a'].emplace_back(a);
+			}
+		}
+	}
+	return result;
+}
+
 int Solution::numMatchingSubseq(string s, vector<string>& words) {
 	vector<vector<int>> iVec(26, vector<int>());
 
