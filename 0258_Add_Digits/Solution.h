@@ -2,6 +2,7 @@ class Solution {
     public :
         Solution() {}
 	int addDigits(int num);
+	int addDigits2(int num);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);

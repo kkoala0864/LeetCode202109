@@ -7,6 +7,7 @@ using std::endl;
 int main(void) {
     Solution* test = new Solution();
     cout << test->addDigits(38) << endl;
+    cout << test->addDigits2(38) << endl;
     return 0;
 }
 
