@@ -11,6 +11,7 @@ class Solution {
         Solution() {}
 	ListNode* partition(ListNode* head, int x);
 	ListNode* partition2(ListNode* head, int x);
+	ListNode* partition3(ListNode* head, int x);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
