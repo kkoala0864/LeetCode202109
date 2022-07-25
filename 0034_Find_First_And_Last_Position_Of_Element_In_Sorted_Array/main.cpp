@@ -11,6 +11,8 @@ int main(void) {
 	cout << result[0] << " : " << result[1] << endl;
 	result = test->searchRange2(input, 8);
 	cout << result[0] << " : " << result[1] << endl;
+	result = test->searchRange3(input, 8);
+	cout << result[0] << " : " << result[1] << endl;
 	return 0;
 }
 
