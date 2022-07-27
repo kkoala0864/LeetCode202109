@@ -2,6 +2,8 @@
 #include <iostream>
 #include <algorithm>
 #include <queue>
+#include <climits>
+#include <tuple>
 
 using std::min;
 using std::queue;
@@ -39,6 +41,7 @@ int Solution::minimumObstacles(vector<vector<int>>& grid) {
 	queue<pair<int, int>> que;
 	int m = grid.size(), n = grid[0].size();
 	vector<vector<int>> cnt(m, vector<int>(n, INT_MAX));
+	vector<int> axis = {-1, 0, 1, 0, -1};
 	cnt[0][0] = 0;
 	que.push({0,0});
 
