@@ -1,6 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 #include <queue>
+#include <climits>
 
 using std::max;
 using std::min;
