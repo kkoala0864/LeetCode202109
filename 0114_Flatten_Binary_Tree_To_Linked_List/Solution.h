@@ -12,6 +12,7 @@ class Solution {
         Solution() {}
 	void flatten(TreeNode* root);
 	void flatten2(TreeNode* root);
+	void flatten3(TreeNode* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
