@@ -16,6 +16,7 @@ class Solution {
         Solution() {}
 	vector<vector<int>> findLeaves(TreeNode* root);
 	vector<vector<int>> findLeaves2(TreeNode* root);
+	vector<vector<int>> findLeaves3(TreeNode* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
