@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	int orangesRotting(vector<vector<int>>& grid);
+	int orangesRotting2(vector<vector<int>>& grid);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
