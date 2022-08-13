@@ -2,8 +2,6 @@ You are given a string s and an array of strings words of the same length. Retur
 
 You can return the answer in any order.
 
- 
-
 Example 1:
 
 Input: s = "barfoothefoobarman", words = ["foo","bar"]
