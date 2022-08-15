@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	int lastStoneWeight(vector<int>& stones);
+	int lastStoneWeight2(vector<int>& stones);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
