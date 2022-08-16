@@ -11,6 +11,7 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->ladderLength(bw, ew, list) << endl;
 	cout << test->ladderLength2(bw, ew, list) << endl;
+	cout << test->ladderLength3(bw, ew, list) << endl;
 	return 0;
 }
 
