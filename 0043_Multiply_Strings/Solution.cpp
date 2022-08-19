@@ -1,9 +1,11 @@
 #include <Solution.h>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using std::vector;
 using std::to_string;
+using std::reverse;
 
 string Solution::multiply(string num1, string num2) {
 	if (num1 == "0" || num2 == "0") return "0";
