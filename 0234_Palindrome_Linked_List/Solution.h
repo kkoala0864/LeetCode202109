@@ -10,6 +10,7 @@ class Solution {
     public :
         Solution() {}
 	bool isPalindrome(ListNode* head);
+	bool isPalindrome2(ListNode* head);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
