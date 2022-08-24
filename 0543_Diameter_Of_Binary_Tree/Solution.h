@@ -12,6 +12,7 @@ class Solution {
         Solution() {}
 	int diameterOfBinaryTree(TreeNode* root);
 	int diameterOfBinaryTree2(TreeNode* root);
+	int diameterOfBinaryTree3(TreeNode* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
