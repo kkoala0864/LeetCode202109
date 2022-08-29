@@ -13,7 +13,7 @@ int main(void) {
 	};
     Solution* test = new Solution();
     //cout << test->numIslands(grid) << endl;
-    cout << test->numIslands2(grid) << endl;
+    cout << test->numIslands3(grid) << endl;
     return 0;
 }
 
