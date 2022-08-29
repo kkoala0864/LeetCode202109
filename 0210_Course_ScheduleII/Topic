@@ -20,7 +20,6 @@ Example 3:
 
 Input: numCourses = 1, prerequisites = []
 Output: [0]
- 
 
 Constraints:
 
