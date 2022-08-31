@@ -8,7 +8,7 @@ using std::min;
 int Solution::maxProduct4(vector<int>& nums) {
 	int maxVal = 1;
 	int minVal = 1;
-	int result = 0;
+	int result = INT_MIN;
 
 	for (int i = 0 ; i < nums.size() ; ++i) {
 		int lastMax = maxVal;
