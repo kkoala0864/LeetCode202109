@@ -7,6 +7,7 @@ class Solution {
         Solution() {}
 	int threeSumClosest(vector<int>& nums, int target);
 	int threeSumClosest2(vector<int>& nums, int target);
+	int threeSumClosest3(vector<int>& nums, int target);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);

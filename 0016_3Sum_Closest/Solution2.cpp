@@ -4,6 +4,7 @@
 #include <climits>
 
 using std::sort;
+using std::min;
 
 int Solution::threeSumClosest2(vector<int>& nums, int target) {
 	sort(nums.begin(), nums.end());
