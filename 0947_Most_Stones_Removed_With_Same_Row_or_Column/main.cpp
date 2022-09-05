@@ -9,6 +9,7 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->removeStones(input) << endl;
 	cout << test->removeStones2(input) << endl;
+	cout << test->removeStones3(input) << endl;
 	return 0;
 }
 
