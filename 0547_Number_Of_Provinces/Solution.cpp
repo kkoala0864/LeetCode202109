@@ -3,8 +3,6 @@
 #include <algorithm>
 
 using std::min;
-using std::cout;
-using std::endl;
 
 int find(vector<int>& c, int val) {
 	if (c[val] == val) return val;
