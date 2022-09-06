@@ -15,7 +15,7 @@ int main(void) {
 		cout << endl;
 	}
 	cout << endl;
-	result = test->combinationSum3(input, 8);
+	result = test->combinationSum4(input, 8);
 	for (const auto iter : result) {
 		for ( const auto iter2 : iter ) {
 			cout << iter2 << " ";
