@@ -12,6 +12,7 @@ class Solution {
         Solution() {}
 	int longestConsecutive(TreeNode* root);
 	int longestConsecutive2(TreeNode* root);
+	int longestConsecutive3(TreeNode* root);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
