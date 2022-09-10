@@ -15,8 +15,8 @@ int main(void) {
 		cout << endl;
 	}
 	cout << endl;
-	vector<vector<int>> result2 = test->pacificAtlantic3(input);
-	for (const auto& outer : result2) {
+	result = test->pacificAtlantic4(input);
+	for (const auto& outer : result) {
 		for (const auto& inter : outer) {
 			cout << inter << " ";
 		}
