@@ -9,6 +9,7 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->shortestPathBinaryMatrix(input) << endl;
 	cout << test->shortestPathBinaryMatrix2(input) << endl;
+	cout << test->shortestPathBinaryMatrix3(input) << endl;
 	return 0;
 }
 
