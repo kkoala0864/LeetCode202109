@@ -8,6 +8,7 @@ int main(void) {
 	vector<vector<int>> input = {{1,3},{3,0,1},{2},{0}};
 	Solution* test = new Solution();
 	cout << test->canVisitAllRooms(input) << endl;
+	cout << test->canVisitAllRooms2(input) << endl;
 	return 0;
 }
 
