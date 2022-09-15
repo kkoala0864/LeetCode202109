@@ -10,6 +10,7 @@ int main(void) {
     vector<int> informTime = {0,6,5,4,3,2,1};
     cout << test->numOfMinutes(7, 6, manager, informTime) << endl;
     cout << test->numOfMinutes2(7, 6, manager, informTime) << endl;
+    cout << test->numOfMinutes3(7, 6, manager, informTime) << endl;
     return 0;
 }
 
