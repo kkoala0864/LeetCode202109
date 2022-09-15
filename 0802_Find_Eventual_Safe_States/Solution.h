@@ -7,6 +7,7 @@ class Solution {
         Solution() {}
 	vector<int> eventualSafeNodes(vector<vector<int>>& graph);
 	vector<int> eventualSafeNodes2(vector<vector<int>>& graph);
+	vector<int> eventualSafeNodes3(vector<vector<int>>& graph);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
