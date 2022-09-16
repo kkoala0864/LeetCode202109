@@ -2,6 +2,7 @@
 #include <iostream>
 #include <queue>
 #include <algorithm>
+#include <climits>
 
 using std::queue;
 using std::pair;

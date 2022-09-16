@@ -14,6 +14,11 @@ int main(void) {
 		cout << v << " ";
 	}
 	cout << endl;
+	result = test->shortestAlternatingPaths2(3, red, blue);
+	for (const auto& v : result) {
+		cout << v << " ";
+	}
+	cout << endl;
 	return 0;
 }
 
