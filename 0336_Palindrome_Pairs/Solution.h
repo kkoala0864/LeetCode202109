@@ -19,6 +19,7 @@ class Solution {
     public :
         Solution() {}
 	vector<vector<int>> palindromePairs(vector<string>& words);
+	vector<vector<int>> palindromePairs2(vector<string>& words);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);

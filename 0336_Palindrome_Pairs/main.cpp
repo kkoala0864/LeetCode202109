@@ -11,6 +11,11 @@ int main(void) {
 	for (const auto& iter : result) {
 		cout << "[" << iter[0] << " : " << iter[1] << "]" << endl;
 	}
+	cout << endl;
+	result = test->palindromePairs2(input);
+	for (const auto& iter : result) {
+		cout << "[" << iter[0] << " : " << iter[1] << "]" << endl;
+	}
 	return 0;
 }
 

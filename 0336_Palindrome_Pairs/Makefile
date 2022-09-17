@@ -3,7 +3,7 @@ CXX=clang++
 SRC=$(filter-out main.cpp,$(wildcard *.cpp))
 STATIC_OBJ=$(SRC:%.cpp=%.o)
 CFLAGS+=-O3
-CXXFLAGS+=-O0 -std=c++11 -Weffc++ -g
+CXXFLAGS+=-O3 -std=c++11 -Weffc++
 INC_PATH=.
 deps := $(SRC:%.cpp=.%.o.d)
 
