@@ -5,9 +5,10 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<int> input = {4,2,0,3,2,5};
+	vector<int> input = {5,2,1,2,1,5};
 	Solution* test = new Solution();
 	cout << test->trap(input) << endl;
+	cout << test->trap2(input) << endl;
 	return 0;
 }
 
