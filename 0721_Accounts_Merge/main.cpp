@@ -14,6 +14,14 @@ int main(void) {
 		}
 		cout << endl;
 	}
+	cout << endl;
+	result = test->accountsMerge(input);
+	for (const auto& person : result) {
+		for (const auto& info : person) {
+			cout << info << " ";
+		}
+		cout << endl;
+	}
 	return 0;
 }
 
