@@ -10,6 +10,9 @@ int main(void) {
 	auto result = test->findSmallestSetOfVertices(6, input);
 	for (const auto& v : result) cout << v << " ";
 	cout << endl;
+	result = test->findSmallestSetOfVertices2(6, input);
+	for (const auto& v : result) cout << v << " ";
+	cout << endl;
 	return 0;
 }
 
