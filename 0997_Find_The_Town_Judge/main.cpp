@@ -9,6 +9,7 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->findJudge(3, input) << endl;
 	cout << test->findJudge2(3, input) << endl;
+	cout << test->findJudge3(3, input) << endl;
 	return 0;
 }
 
