@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	bool canPartition(vector<int>& nums);
+	bool canPartition2(vector<int>& nums);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
