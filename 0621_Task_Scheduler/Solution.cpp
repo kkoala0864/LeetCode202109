@@ -1,39 +1,17 @@
 #include <Solution.h>
 #include <iostream>
-#include <queue>
+#include <algorithm>
 
-using std::priority_queue;
-using std::pair;
+using std::max;
 
 int Solution::leastInterval(vector<char>& tasks, int n) {
-	priority_queue<pair<int, int>> pq;
-	vector<int> cnt(26, 0);
-	for (const auto& t : tasks) ++cnt[t-'A'];
+	vector<int> frequency(26, 0);
+	for (const auto& t : tasks) ++frequency[t-'A'];
 
-	for (int i = 0 ; i < 26 ; ++i) {
-		if (cnt[i] > 0) pq.emplace(pair<int, int>(cnt[i], i));
-	}
-	vector<int> sch(26, -n);
-	vector<pair<int, int>> cache;
+	sort(frequency.begin(), frequency.end(), std::greater<int>());
+	int fMax = frequency[0];
+	int i = 1;
+	while (i < frequency.size() && frequency[i] == fMax) ++i;
 
-	int T = 0;
-	while (!pq.empty()) {
-		while (!pq.empty() && (T - sch[pq.top().second]) < (n+1)) {
-			cache.emplace_back(pq.top());
-			pq.pop();
-		}
-		if (!pq.empty()) {
-			auto cur = pq.top();
-			pq.pop();
-			sch[cur.second] = T;
-			--cur.first;
-			if (cur.first > 0) pq.emplace(cur);
-		}
-		while (!cache.empty()) {
-			pq.emplace(cache.back());
-			cache.pop_back();
-		}
-		++T;
-	}
-	return T-1;
+	return max((fMax - 1) * (n + 1) + i, (int)tasks.size());
 }
