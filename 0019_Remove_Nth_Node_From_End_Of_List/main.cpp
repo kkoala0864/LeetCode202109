@@ -12,7 +12,7 @@ int main(void) {
 	ListNode *one = new ListNode(1, two);
 	//ListNode *one = new ListNode(1);
 	Solution* test = new Solution();
-	ListNode* result = test->removeNthFromEnd2(one, 1);
+	ListNode* result = test->removeNthFromEnd3(one, 2);
 	while (result != nullptr) {
 		cout << result->val << " ";
 		result = result->next;
