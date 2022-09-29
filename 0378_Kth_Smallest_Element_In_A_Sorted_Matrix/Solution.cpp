@@ -20,7 +20,6 @@ int Solution::kthSmallest(vector<vector<int>>& matrix, int k) {
 	while (--k > 0) {
 		auto cur = pq.top();
 		pq.pop();
-		cout << cur.first << endl;
 		++iv[cur.second];
 		if (iv[cur.second] != matrix[cur.second].end()) pq.emplace(*iv[cur.second], cur.second);
 	}
