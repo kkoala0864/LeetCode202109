@@ -8,6 +8,7 @@ class Solution {
 	int numDecodings(string s);
 	int numDecodings2(string s);
 	int numDecodings3(string s);
+	int numDecodings4(string s);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
