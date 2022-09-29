@@ -10,6 +10,7 @@ int main(void) {
 	cout << test->maxSubArray(input) << endl;
 	cout << test->maxSubArray2(input) << endl;
 	cout << test->maxSubArray3(input) << endl;
+	cout << test->maxSubArray4(input) << endl;
 	return 0;
 }
 
