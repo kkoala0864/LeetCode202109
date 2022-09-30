@@ -11,6 +11,7 @@ int main(void) {
 	cout << test->maxProduct2(input) << endl;
 	cout << test->maxProduct3(input) << endl;
 	cout << test->maxProduct4(input) << endl;
+	cout << test->maxProduct5(input) << endl;
 	return 0;
 }
 
