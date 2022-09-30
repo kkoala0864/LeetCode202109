@@ -11,6 +11,7 @@ int main(void) {
 	cout << test->wordBreak(input, wordDict) << endl;
 	cout << test->wordBreak2(input, wordDict) << endl;
 	cout << test->wordBreak3(input, wordDict) << endl;
+	cout << test->wordBreak4(input, wordDict) << endl;
 	return 0;
 }
 
