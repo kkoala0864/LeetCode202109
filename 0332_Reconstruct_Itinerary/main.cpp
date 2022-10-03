@@ -5,14 +5,14 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<vector<string>> input = {{"MUC","LHR"},{"JFK","MUC"},{"SFO","SJC"},{"LHR","SFO"}};
+	vector<vector<string>> input = {{"JFK","SFO"},{"JFK","ATL"},{"SFO","ATL"},{"ATL","JFK"},{"ATL","SFO"}};
 	Solution* test = new Solution();
 	vector<string> result = test->findItinerary(input);
 	for (const auto& iter : result) {
 		cout << iter << " ";
 	}
 	cout << endl;
-	result = test->findItinerary3(input);
+	result = test->findItinerary4(input);
 	for (const auto& iter : result) {
 		cout << iter << " ";
 	}
