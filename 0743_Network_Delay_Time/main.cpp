@@ -9,6 +9,7 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->networkDelayTime(input, 5, 5) << endl;
 	cout << test->networkDelayTime2(input, 5, 5) << endl;
+	cout << test->networkDelayTime3(input, 5, 5) << endl;
 	//cout << test->Dijkstra(input, 5, 5) << endl;
 	return 0;
 }
