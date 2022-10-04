@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	int shortestPathLength(vector<vector<int>>& graph);
+	int shortestPathLength2(vector<vector<int>>& graph);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
