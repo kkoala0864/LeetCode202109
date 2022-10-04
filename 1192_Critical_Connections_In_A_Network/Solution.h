@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	vector<vector<int>> criticalConnections(int n, vector<vector<int>>& connections);
+	vector<vector<int>> criticalConnections2(int n, vector<vector<int>>& connections);
 	vector<vector<int>> Tarjan(int n, vector<vector<int>>& connections);
     private :
         virtual ~Solution() {}
