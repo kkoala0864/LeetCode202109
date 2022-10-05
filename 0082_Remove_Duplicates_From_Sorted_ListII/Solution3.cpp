@@ -5,27 +5,16 @@
 using std::stack;
 
 ListNode* Solution::deleteDuplicates3(ListNode* head) {
-	if (!head) return head;
-	stack<ListNode*> st;
-	st.emplace(head);
-	ListNode* iter = head->next;
-	while (iter) {
-		if (st.top()->val != iter->val) {
-			st.emplace(iter);
-			iter = iter->next;
-		} else {
-			while (iter && st.top()->val == iter->val) iter = iter->next;
+	if (!head) return nullptr;
 
-			st.pop();
-			if (!st.empty()) st.top()->next = iter;
-			else head = iter;
+	ListNode* next = head->next;
+	while (next && head->val == next->val) next = next->next;
 
-			if (iter) {
-				st.emplace(iter);
-				iter = iter->next;
-			}
-		}
+	if (head->next == next) {
+		head->next = deleteDuplicates3(next);
+		return head;
+	} else {
+		return deleteDuplicates3(next);
 	}
-	return head;
 }
 
