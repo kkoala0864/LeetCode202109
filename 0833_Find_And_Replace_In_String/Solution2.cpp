@@ -5,25 +5,25 @@
 using std::unordered_map;
 
 string Solution::findReplaceString2(string s, vector<int>& indices, vector<string>& sources, vector<string>& targets) {
-	string result("");
-	int idx = 0;
 	unordered_map<int, int> uMap;
-	for (int i = 0 ; i < indices.size() ; ++i) {
-		size_t sz = sources[i].size();
-		if (s.substr(indices[i], sz) == sources[i]) {
-			uMap[indices[i]] = i;;
-		}
+	for (int i = 0 ; i < sources.size() ; ++i) {
+		uMap[indices[i]] = i;
 	}
 
-	while (idx < s.size()) {
-		if (uMap.find(idx) != uMap.end()) {
-			size_t sz = sources[uMap[idx]].size();
-			result += targets[uMap[idx]];
-			idx += (sz - 1);
-		} else {
-			result.push_back(s[idx]);
+	string result;
+	for (int i = 0 ; i < s.size() ; ++i) {
+		if (uMap.find(i) != uMap.end()) {
+			int size = sources[uMap[i]].size();
+			if ((i + size - 1) < s.size()) {
+				string cmpStr = s.substr(i, size);
+				if (cmpStr == sources[uMap[i]]) {
+					result += targets[uMap[i]];
+					i += (size - 1);
+					continue;
+				}
+			}
 		}
-		++idx;
+		result.push_back(s[i]);
 	}
 	return result;
 }
