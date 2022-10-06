@@ -5,14 +5,13 @@ using namespace std;
 
 int Solution::singleNumber2(vector<int>& nums) {
 	int result = 0;
-	for (int j = 31 ; j >= 0 ; --j) {
+	for (int i = 0 ; i < 32 ; ++i) {
 		int cnt = 0;
-		for (int i = 0 ; i < nums.size() ; ++i) {
-			int val = nums[i];
-			cnt += ((val >> j) & 1);
+		for (const auto& v : nums) {
+			cnt += ((v >> i) & 1);
 		}
-		result = result << 1;
-		result += (cnt % 3);
+		cnt %= 3;
+		result |= (cnt << i);
 	}
 	return result;
 }
