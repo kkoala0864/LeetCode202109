@@ -1,16 +1,19 @@
 #include <Solution.h>
 #include <iostream>
 
-TreeNode* dfs(TreeNode* root) {
-	if (!root) return nullptr;
-	if (!root->left && !root->right) return root;
-	TreeNode* llast = dfs(root->left);
-	TreeNode* rlast = dfs(root->right);
+TreeNode* dfs(TreeNode* node) {
+	if (!node) return node;
 
-	if (llast) llast->right = root->right;
-	if (root->left) root->right = root->left;
-	root->left = nullptr;
-	return rlast ? rlast : llast;
+	auto le = dfs(node->left);
+	auto re = dfs(node->right);
+
+	if (le) {
+		le->right = node->right;
+		node->right = node->left;
+		node->left = nullptr;
+	}
+
+	return re ? re : le ? le : node;
 }
 
 void Solution::flatten3(TreeNode* root) {
