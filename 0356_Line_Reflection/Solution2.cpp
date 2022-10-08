@@ -7,23 +7,25 @@
 using std::unordered_map;
 using std::unordered_set;
 using std::sort;
+using std::min;
+using std::max;
 
 bool Solution::isReflected2(vector<vector<int>>& points) {
-	unordered_map<int, unordered_set<int>> uMap;
+	int minX = INT_MAX, maxX = INT_MIN;
+	unordered_map<int, unordered_set<double>> uMap;
+	for (const auto& p : points) {
+		minX = min(minX, p[0]);
+		maxX = max(maxX, p[0]);
+		uMap[p[1]].emplace(p[0]);
+	}
 
-	for (const auto& iter : points) uMap[iter[1]].emplace(iter[0]);
+	double midX = (double)(maxX + minX) / 2;
 
-	double gX = 100000001;
-	for (const auto& iter : uMap) {
-		vector<int> y;
-		for (const auto& iter : iter.second) y.emplace_back(iter);
-		sort(y.begin(), y.end());
-		int start = 1, end = y.size() - 2;
-		if (gX == 100000001) gX = ((double)y[0] + (double)y.back()) / 2;
-		else if (gX != ((double)y[0] + (double)y.back()) / 2) return false;
-		while (start <= end) {
-			double local = ((double)y[start++] + (double)y[end--]) / 2;
-			if (local != gX) return false;
+	for (const auto& p : points) {
+		double diff = midX - p[0];
+		double reflectX = midX + diff;
+		if (uMap[p[1]].find(reflectX) == uMap[p[1]].end()) {
+			return false;
 		}
 	}
 	return true;
