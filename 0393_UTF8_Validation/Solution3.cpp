@@ -2,19 +2,20 @@
 #include <iostream>
 
 bool Solution::validUtf83(vector<int>& data) {
-	int idx = 0;
-	while (idx < data.size()) {
-		int cnt = 0;
-		for (int i = 7 ; i >= 3 ; --i) {
-			if (data[idx] & (1 << i)) ++cnt;
-			else break;
+	for (int i = 0 ; i < data.size() ; ++i) {
+		int prefixOne = 0;
+		int prefixIdx = 7;
+		while (prefixIdx >= 0 && (data[i] >> prefixIdx) & 1) {
+			++prefixOne;
+			--prefixIdx;
 		}
-		if (cnt == 1 || cnt > 4) return false;
-		if ((cnt + idx) > data.size()) return false;
-		for (int i = idx + 1 ; i < (idx + cnt) ; ++i) {
-			if (data[i] >> 6 != 2) return false;
+		if (prefixOne == 0) continue;
+		if (prefixOne == 1 || prefixOne > 4) return false;
+		if (i + prefixOne > data.size()) return false;
+		for (int j = 1 ; j < prefixOne ; ++j) {
+			if (((data[i+j] >> 6) & 3) != 2) return false;
 		}
-		idx += cnt == 0 ? 1 : cnt;
+		i += (prefixOne - 1);
 	}
 	return true;
 }
