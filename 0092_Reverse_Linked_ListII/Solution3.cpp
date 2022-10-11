@@ -1,30 +1,38 @@
 #include <Solution.h>
 #include <iostream>
 
-// 1 2 3 4 5 6 7 8   3  7
+using std::cout;
+using std::endl;
+// how long is this list ?
+// what's the range of the value in this list?
+// what's the l and r range ?
+// 1 2 3 4 5  2, 4
 ListNode* Solution::reverseBetween3(ListNode* head, int left, int right) {
 	if (left == right || !head) return head;
+	int cnt = 1;
 
-	ListNode* dummy = new ListNode();
+	ListNode* dummy = new ListNode(-1);
 	dummy->next = head;
-
-	ListNode* iter = dummy;
 	ListNode* prev = nullptr;
-	for (int i = 0 ; i < left ; ++i) {
-		prev = iter;
-		iter = iter->next;
-	}
+	ListNode* next = nullptr;
+	ListNode* appendPrev = dummy;
+	ListNode* iter = head;
 
-	ListNode* rPrev = nullptr;
-	ListNode* rNext = nullptr;
-	for (int i = left ; i <= right ; ++i) {
-		rNext = iter->next;
-		iter->next = rPrev;
-		rPrev = iter;
-		iter = rNext;
+	while (iter) {
+		if (left <= cnt && cnt <= right) {
+			next = iter->next;
+			iter->next = prev;
+			prev = iter;
+			iter = next;
+			if (cnt == right) {
+				appendPrev->next->next = iter;
+				appendPrev->next = prev;
+			}
+		} else {
+			appendPrev = iter;
+			iter = iter->next;
+		}
+		++cnt;
 	}
-
-	prev->next->next = iter;
-	prev->next = rPrev;
 	return dummy->next;
 }
