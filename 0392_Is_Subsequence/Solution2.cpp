@@ -2,14 +2,10 @@
 #include <iostream>
 
 bool Solution::isSubsequence2(string s, string t) {
-	if (s.empty() && t.empty()) return true;
-	if (s.size() > t.size()) return false;
-	int sIter = 0, tIter = 0;
-	while (sIter < s.size()) {
-		 while (tIter < t.size() && s[sIter] != t[tIter]) ++tIter;
-		 if (tIter == t.size()) return false;
-		 ++tIter;
-		 ++sIter;
+	int si = 0, ti = 0;
+	while (ti < t.size()) {
+		if (s[si] == t[ti]) ++si;
+		++ti;
 	}
-	return true;
+	return si == s.size();
 }
