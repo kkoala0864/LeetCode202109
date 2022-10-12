@@ -1,18 +1,28 @@
 #include <Solution.h>
 #include <iostream>
 
-void dfs2(string local, int left, int right, vector<string>& result) {
-	if (left == 0 && right == 0) {
+void dfs2(int lcnt, int rcnt, string& local, vector<string>& result) {
+	if (lcnt == 0 && rcnt == 0) {
 		result.emplace_back(local);
 		return;
 	}
-	if (left > 0) dfs2(local + "(", left - 1, right, result);
-	if (right > left) dfs2(local + ")", left , right - 1, result);
+
+	if (lcnt > 0) {
+		local.push_back('(');
+		dfs2(lcnt - 1, rcnt, local, result);
+		local.pop_back();
+	}
+
+	if (lcnt < rcnt) {
+		local.push_back(')');
+		dfs2(lcnt, rcnt - 1, local,result);
+		local.pop_back();
+	}
 }
 
 vector<string> Solution::generateParenthesis2(int n) {
-	int left = n, right = n;
 	vector<string> result;
-	dfs2("", n, n, result);
+	string local;
+	dfs2(n, n, local, result);
 	return result;
 }
