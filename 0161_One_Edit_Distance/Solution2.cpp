@@ -4,24 +4,30 @@
 
 using std::unordered_map;
 
+// aba, abc
+// ab, acb
+// abc, acd
+// ac, adb
+
 bool Solution::isOneEditDistance2(string s, string t) {
 	if (s == t) return false;
-	string ls = s.size() > t.size() ? s : t;
-	string ss = ls == s ? t : s;
-	if ((ls.size() - ss.size()) > 1) return false;
+	int sn = s.size();
+	int tn = t.size();
+	if (abs(sn - tn) > 1) return false;
 
-	int liter = 0, siter = 0;
+	string longer = sn > tn ? s : t;
+	string shorter = longer == s ? t : s;
+
+	int li = 0, si = 0;
 	int cnt = 0;
-	while (liter < ls.size()) {
-		if (ls[liter] != ss[siter]) {
+
+	while (li < longer.size() && cnt < 2) {
+		if (longer[li] != shorter[si]) {
 			++cnt;
-			if (cnt > 1) return false;
-			++liter;
-			if (s.size() == t.size()) ++siter;
-		} else {
-			++liter;
-			++siter;
+			if (tn != sn) --si;
 		}
+		++li;
+		++si;
 	}
 	return cnt == 1;
 }
