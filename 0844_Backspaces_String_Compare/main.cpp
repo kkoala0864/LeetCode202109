@@ -5,8 +5,8 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	string s("ab#c");
-	string t("ad#c");
+	string s("a##c");
+	string t("#a#c");
 	Solution* test = new Solution();
 	cout << test->backspaceCompare(s, t) << endl;
 	cout << test->backspaceCompare2(s, t) << endl;
