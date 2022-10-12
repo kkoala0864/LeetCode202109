@@ -4,24 +4,30 @@
 
 using std::unordered_map;
 
-void dfs(TreeNode* node, int targetSum, int sum, unordered_map<int, int>& ps, int& result) {
+// what's total number of nodes
+// what's the range of the node's val
+// what's targetSum's range
+// does it contain duplicate node's val ?
+
+void dfs(TreeNode* node, long curSum, long targetSum, unordered_map<long, int>& sumMap, int& result) {
 	if (!node) return;
-	sum += node->val;
+	curSum += node->val;
 
-	if (ps.find(sum - targetSum) != ps.end()) {
-		result += ps[sum - targetSum];
-	}
+	if (curSum == targetSum) ++result;
 
-	++ps[sum];
-	if (node->left) dfs(node->left, targetSum, sum, ps, result);
-	if (node->right) dfs(node->right, targetSum, sum, ps, result);
-	--ps[sum];
+	result += sumMap[curSum - targetSum];
+	++sumMap[curSum];
+
+	dfs(node->left, curSum, targetSum, sumMap, result);
+	dfs(node->right, curSum, targetSum, sumMap, result);
+
+	--sumMap[curSum];
 }
 
 int Solution::pathSum3(TreeNode* root, int targetSum) {
-	unordered_map<int, int> ps;
-	++ps[0];
+	if (!root) return 0;
 	int result = 0;
-	dfs(root, targetSum, 0, ps, result);
+	unordered_map<long, int> sumMap;
+	dfs(root, 0, targetSum, sumMap, result);
 	return result;
 }
