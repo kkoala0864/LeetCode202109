@@ -1,5 +1,6 @@
 #include <Solution.h>
 #include <iostream>
+using std::swap;
 
 void Solution::deleteNode(ListNode* node) {
 	ListNode* iter = node;
