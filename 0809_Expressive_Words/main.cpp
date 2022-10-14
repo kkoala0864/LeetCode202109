@@ -9,6 +9,7 @@ int main(void) {
 	Solution* test = new Solution();
 	cout << test->expressiveWords("dddiiiinnssssssoooo", input) << endl;
 	cout << test->expressiveWords2("dddiiiinnssssssoooo", input) << endl;
+	cout << test->expressiveWords3("dddiiiinnssssssoooo", input) << endl;
 	return 0;
 }
 
