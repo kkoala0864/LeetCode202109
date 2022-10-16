@@ -11,8 +11,7 @@ int main(void) {
 	cout << iter << " ";
     }
     cout << endl;
-    cout << endl;
-    result = test->lexicalOrder2(321);
+    result = test->lexicalOrder3(321);
     for (const auto& iter : result) {
 	cout << iter << " ";
     }
