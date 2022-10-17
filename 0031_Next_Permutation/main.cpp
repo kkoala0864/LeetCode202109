@@ -14,7 +14,7 @@ int main(void) {
 	cout << endl;
 	cout << endl;
 	input = {2,3,1};
-	test->nextPermutation2(input);
+	test->nextPermutation3(input);
 	for (const auto iter : input) {
 		cout << iter << " ";
 	}

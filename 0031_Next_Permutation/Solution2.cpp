@@ -4,8 +4,6 @@
 
 using std::reverse;
 using std::swap;
-using std::cout;
-using std::endl;
 
 void Solution::nextPermutation2(vector<int>& nums) {
 	int i = nums.size() - 1;
