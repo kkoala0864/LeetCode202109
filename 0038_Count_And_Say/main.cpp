@@ -6,7 +6,10 @@ using std::endl;
 
 int main(void) {
     Solution* test = new Solution();
-    cout << test->countAndSay(30) << endl;
+    int input = 30;
+    cout << test->countAndSay(input) << endl;
+    cout << endl;
+    cout << test->countAndSay2(input) << endl;
     return 0;
 }
 
