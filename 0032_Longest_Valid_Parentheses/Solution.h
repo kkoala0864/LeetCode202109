@@ -9,6 +9,7 @@ class Solution {
 	int longestValidParentheses2(string s);
 	int longestValidParentheses3(string s);
 	int longestValidParentheses4(string s);
+	int longestValidParentheses5(string s);
 	int DP(string s);
     private :
         virtual ~Solution() {}
