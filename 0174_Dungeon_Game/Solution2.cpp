@@ -5,6 +5,7 @@
 
 using std::min;
 
+// dp means the min health we need in i,j
 int Solution::calculateMinimumHP2(vector<vector<int>>& dungeon) {
 	int m = dungeon.size(), n = dungeon[0].size();
 
