@@ -14,7 +14,7 @@ int main(void) {
 		cout << endl;
 	}
 	cout << endl;
-	test->solve(input);
+	test->solve2(input);
 	for (const auto& iter : input) {
 		for (const auto& it : iter) {
 			cout << it << " ";
