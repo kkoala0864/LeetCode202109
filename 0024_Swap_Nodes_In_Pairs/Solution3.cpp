@@ -2,23 +2,19 @@
 #include <iostream>
 
 ListNode* Solution::swapPairs3(ListNode* head) {
-	if (!head || !head->next) return head;
-
 	ListNode* iter = head;
-	ListNode* prev = nullptr;
+	ListNode* dummy = new ListNode();
+	dummy->next = head;
+	ListNode* prev = dummy;
+	ListNode* next = nullptr;
 
 	while (iter && iter->next) {
-		ListNode* tmp = iter->next;
-		iter->next = tmp->next;
-		tmp->next = iter;
-		if (prev) {
-			prev->next = tmp;
-		} else {
-			head = tmp;
-		}
+		next = iter->next->next;
+		iter->next->next = iter;
+		prev->next = iter->next;
+		iter->next = next;
 		prev = iter;
 		iter = iter->next;
 	}
-
-	return head;
+	return dummy->next;
 }
