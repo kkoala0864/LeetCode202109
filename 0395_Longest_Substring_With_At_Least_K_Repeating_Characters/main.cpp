@@ -8,6 +8,7 @@ int main(void) {
 	string input("ababbc");
 	Solution* test = new Solution();
 	cout << test->longestSubstring(input, 2) << endl;
+	cout << test->longestSubstring2(input, 2) << endl;
 	return 0;
 }
 
