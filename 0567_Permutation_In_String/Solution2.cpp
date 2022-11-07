@@ -3,41 +3,21 @@
 #include <vector>
 
 using std::vector;
-using std::cout;
-using std::endl;
 
 bool Solution::checkInclusion2(string s1, string s2) {
-	if (s1.size() > s2.size()) return false;
-	vector<int> map(26, -1);
-	for (const auto& iter : s1) {
-		if (map[iter-'a'] > 0) {
-			++map[iter-'a'];
-		} else {
-			map[iter-'a'] = 1;
-		}
-	}
+	if (s2.size() < s1.size()) return false;
+	vector<int> cnt(26, 0);
 
-	int iter = 0;
-	int start = 0;
-	int cnt = s1.size();
-	vector<int> cmp = map;
-	while (iter < s2.size()) {
-		int idx = s2[iter] - 'a';
-		if (cmp[idx] == -1) {
-			cnt = s1.size();
-			cmp = map;
-			start = iter + 1;
-		} else {
-			while (cmp[idx] == 0) {
-				++cmp[s2[start++]-'a'];
-				++cnt;
-			}
-			--cmp[idx];
-			--cnt;
-		}
-		++iter;
-		if (cnt == 0) return true;
+	for (const auto& c : s1) ++cnt[c-'a'];
 
+	for (int i = 0 ; i < s1.size() - 1 ; ++i) --cnt[s2[i]-'a'];
+
+	for (int i = s1.size() - 1 ; i < s2.size() ; ++i) {
+		--cnt[s2[i]-'a'];
+		if (i >= s1.size()) ++cnt[s2[i-s1.size()]-'a'];
+		int ci = 0;
+		for (; ci < 26 ; ++ci) if (cnt[ci] != 0) break;
+		if (ci == 26) return true;
 	}
 	return false;
 }
