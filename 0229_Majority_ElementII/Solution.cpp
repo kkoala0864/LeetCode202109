@@ -1,5 +1,6 @@
 #include <Solution.h>
 #include <iostream>
+#include <climits>
 
 vector<int> Solution::majorityElement(vector<int>& nums) {
 	int m1 = INT_MAX;
