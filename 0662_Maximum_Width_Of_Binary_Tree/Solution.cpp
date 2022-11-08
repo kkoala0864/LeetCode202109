@@ -15,7 +15,7 @@ int Solution::widthOfBinaryTree(TreeNode* root) {
 
 	que.push({root, 0});
 	while (!que.empty()) {
-		int mostFront = que.front().second;
+		unsigned int mostFront = que.front().second;
 		int curSize = que.size();
 		pair<TreeNode*, unsigned int> cur;
 		for (int i = 0 ; i < curSize ; ++i) {
