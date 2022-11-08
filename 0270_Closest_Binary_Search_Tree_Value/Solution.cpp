@@ -1,5 +1,6 @@
 #include <Solution.h>
 #include <iostream>
+#include <climits>
 
 void dfs(TreeNode* node, const double& target, int& result) {
 	if (!node) return;

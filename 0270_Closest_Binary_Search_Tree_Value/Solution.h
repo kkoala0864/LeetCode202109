@@ -11,6 +11,7 @@ class Solution {
     public :
         Solution() {}
 	int closestValue(TreeNode* root, double target);
+	int closestValue2(TreeNode* root, double target);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
