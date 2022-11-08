@@ -8,6 +8,7 @@ class Solution {
     public :
         Solution() {}
 	string kthLargestNumber(vector<string>& nums, int k);
+	string kthLargestNumber2(vector<string>& nums, int k);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
