@@ -15,7 +15,9 @@ int main(void) {
 		}
 		cout << endl;
 	}
-	result = test->criticalConnections2(6, input);
+
+	cout << endl;
+	result = test->criticalConnections3(6, input);
 
 	for (const auto& vec : result) {
 		for (const auto& val : vec) {
