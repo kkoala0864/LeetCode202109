@@ -1,4 +1,6 @@
-#include <unordered_map>
+#include <vector>
+
+using std::vector;
 
 struct Node{
 	int val;
@@ -9,8 +11,6 @@ struct Node{
 	Node(int k, int v) : key(k), val(v) {}
 };
 
-using std::unordered_map;
-
 class LRUCache {
     public :
 	LRUCache(int capacity) {
@@ -19,49 +19,50 @@ class LRUCache {
 		head->next = tail;
 		tail->prev = head;
 		size = capacity;
+		uMap = vector<Node*>(10001, nullptr);
+		curSize = 0;
 	}
 
-	void Add(int key, int val, Node* prev) {
-		Node* node = new Node(key, val);
-		node->prev = prev;
-		node->next = prev->next;
-		prev->next->prev = node;
-		prev->next = node;
-		uMap[key] = node;
+	void Add(Node* node) {
+		node->prev = head;
+		node->next = head->next;
+		head->next->prev = node;
+		head->next = node;
+		uMap[node->key] = node;
 	}
 
 	void remove(Node* node) {
-		uMap.erase(node->key);
-		Node* next = node->next;
-		Node* prev = node->prev;
-		prev->next = next;
-		next->prev = prev;
-		delete(node);
+		uMap[node->key] = nullptr;
+		node->prev->next = node->next;
+		node->next->prev = node->prev;
 	}
 
 	int get(int key) {
-		if (uMap.count(key) == 0) return -1;
+		if (uMap[key] == nullptr) return -1;
 		Node* node = uMap[key];
-		int val = node->val;
 		remove(node);
-		Add(key, val, head);
-		return val;
+		Add(node);
+		return node->val;
 	}
 
 	void put(int key, int value) {
-		if (uMap.count(key) == 0) {
-			while (uMap.size() >= size) {
+		if (uMap[key] == nullptr) {
+			while (curSize >= size) {
+				--curSize;
 				remove(tail->prev);
 			}
 		} else {
+			--curSize;
 			remove(uMap[key]);
 		}
 
-		Add(key, value, head);
+		++curSize;
+		Add(new Node(key, value));
 	}
     private :
 	Node* head, *tail;
-	unordered_map<int, Node*> uMap;
+	vector<Node*> uMap;
+	int curSize;
 	int size;
         virtual ~LRUCache() {}
         LRUCache& operator=(const LRUCache& source);
