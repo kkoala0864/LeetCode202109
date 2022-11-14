@@ -1,40 +1,48 @@
 #include <Solution.h>
 #include <iostream>
 #include <unordered_map>
+#include <algorithm>
 
 using std::unordered_map;
+using std::min;
 
-void dfs3(vector<vector<int>>& stones, int i, unordered_map<int, vector<int>>& col, unordered_map<int, vector<int>>& row, vector<bool>& fix) {
-	for (const auto& xi : row[stones[i][0]]) {
-		if (fix[xi]) continue;
-		fix[xi] = true;
-		dfs3(stones, xi, col, row, fix);
-	}
-
-	for (const auto& yi : col[stones[i][1]]) {
-		if (fix[yi]) continue;
-		fix[yi] = true;
-		dfs3(stones, yi, col, row, fix);
-	}
+int find(vector<int>& root, int val) {
+	if (root[val] == val) return val;
+	return root[val] = find(root, root[val]);
 }
 
 int Solution::removeStones3(vector<vector<int>>& stones) {
-	int size = stones.size();
-	unordered_map<int, vector<int>> col, row;
-	vector<bool> fix(size, false);
+	unordered_map<int, vector<int>> rows, cols;
+	vector<int> root;
+	int result = 0;
 
-	for (int i = 0 ; i < size ; ++i) {
-		row[stones[i][0]].emplace_back(i);
-		col[stones[i][1]].emplace_back(i);
+	for (int i = 0 ; i < stones.size() ; ++i) {
+		rows[stones[i][0]].emplace_back(i);
+		cols[stones[i][1]].emplace_back(i);
+		root.emplace_back(i);
 	}
 
-	int take = 0;
-
-	for (int i = 0 ; i < size ; ++i) {
-		if (fix[i]) continue;
-		++take;
-		fix[i] = true;
-		dfs3(stones, i, col, row, fix);
+	for (const auto& r : rows) {
+		for (int i = 0 ; i < r.second.size() ; ++i) {
+			for (int j = i + 1 ; j < r.second.size() ; ++j) {
+				int lr = find(root, r.second[i]);
+				int rr = find(root, r.second[j]);
+				if (lr == rr) continue;
+				++result;
+				root[lr] = root[rr] = min(lr, rr);
+			}
+		}
 	}
-	return stones.size() - take;
+	for (const auto& c : cols) {
+		for (int i = 0 ; i < c.second.size() ; ++i) {
+			for (int j = i + 1 ; j < c.second.size() ; ++j) {
+				int lr = find(root, c.second[i]);
+				int rr = find(root, c.second[j]);
+				if (lr == rr) continue;
+				++result;
+				root[lr] = root[rr] = min(lr, rr);
+			}
+		}
+	}
+	return result;
 }
