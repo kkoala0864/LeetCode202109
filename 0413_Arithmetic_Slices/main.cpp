@@ -8,6 +8,7 @@ int main(void) {
 	vector<int> input = {1,2,3,4};
 	Solution* test = new Solution();
 	cout << test->numberOfArithmeticSlices(input) << endl;
+	cout << test->numberOfArithmeticSlices2(input) << endl;
 	return 0;
 }
 
