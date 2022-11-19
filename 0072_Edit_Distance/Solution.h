@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	int minDistance(string word1, string word2);
+	int minDistance2(string word1, string word2);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
