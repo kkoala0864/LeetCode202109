@@ -11,16 +11,13 @@ int Solution::sumSubarrayMins(vector<int>& arr) {
 	vector<int> st;
 
 	for (int i = 0 ; i < arr.size() ; ++i) {
-		dp[i] += arr[i];
-		dp[i] %= mod;
 		while (!st.empty() && arr[st.back()] >= arr[i]) {
-			int offset = st.back();
 			st.pop_back();
-			offset -= (st.empty() ? -1 : st.back());
-			dp[i] += arr[i] * offset;
-			dp[i] %= mod;
 		}
-		if (!st.empty()) {
+		if (st.empty()) {
+			dp[i] += arr[i] * (i + 1);
+		} else {
+			dp[i] += arr[i] * (i - st.back());
 			dp[i] += dp[st.back()];
 			dp[i] %= mod;
 		}
