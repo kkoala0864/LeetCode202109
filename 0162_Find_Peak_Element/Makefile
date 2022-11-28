@@ -13,7 +13,7 @@ all: exe
 exe : main.cpp $(STATIC_OBJ)
 	$(CXX) $(CXXFLAGS) -o exe $< $(STATIC_OBJ) -I$(INC_PATH)
 
-%.o : %.cpp %.h
+%.o : %.cpp
 	$(CXX) $(CXXFLAGS) -o $@ -c $< -I$(INC_PATH) -MMD -MF .$@.d
 
 clean :
