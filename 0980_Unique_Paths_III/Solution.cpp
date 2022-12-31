@@ -1,6 +1,9 @@
 #include <Solution.h>
 #include <iostream>
 
+
+// TC : O(3 ^ N) where N is total number of cell
+// SC : O(N) : recursive stack space
 vector<int> dir = {1, 0 ,-1, 0, 1};
 
 void dfs(vector<vector<int>>& grid, int visited, int cur, int end, const int& m, const int& n, int& result) {
