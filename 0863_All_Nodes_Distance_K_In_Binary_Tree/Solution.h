@@ -12,6 +12,7 @@ class Solution {
     public :
         Solution() {}
 	vector<int> distanceK(TreeNode* root, TreeNode* target, int k);
+	vector<int> distanceK2(TreeNode* root, TreeNode* target, int k);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
