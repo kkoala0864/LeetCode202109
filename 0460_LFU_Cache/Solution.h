@@ -3,104 +3,94 @@
 using std::unordered_map;
 
 struct Node {
-	int key;
-	int val;
-	int cnt;
-	Node* next;
 	Node* prev;
-	Node(int k, int v) : key(k), val(v) {
-		cnt = 1;
-	}
+	Node* next;
+	int key;
+	int cnt;
+	Node(int k) : key(k), cnt(0) {}
 };
 
 struct List {
 	int len;
-	Node* head, *tail;
-
-	List() {
-		head = new Node(0, 0);
-		tail = new Node(0, 0);
-		head->next = tail;
-		tail->prev = head;
-		len = 0;
+	Node* head;
+	Node* tail;
+	List() : len(0) {
+		head = new Node(-1);
+		tail = new Node(-1);
+		head->next = head->prev = tail;
+		tail->next = tail->prev = head;
 	}
 
 	void addNode(Node* node) {
+		node->prev = tail->prev;
+		node->next = tail;
+		node->prev->next = node;
+		tail->prev = node;
 		++len;
-		node->next = head->next;
-		node->prev = head->next->prev;
-		head->next->prev = node;
-		head->next = node;
 	}
 
 	void deleteNode(Node* node) {
+		--len;
 		node->prev->next = node->next;
 		node->next->prev = node->prev;
-		--len;
+		node->next = node->prev = nullptr;
 	}
 };
 
 class LFUCache {
     public :
-	    void updateFreqMap(Node* node) {
-		addrOfKey.erase(node->key);
-		freqListMap[node->cnt]->deleteNode(node);
-		if (node->cnt == minFreq && freqListMap[node->cnt]->len == 0) {
-			++minFreq;
-		}
+	    void updateFreq(Node* node) {
+		    List* l = freqList[node->cnt];
+		    l->deleteNode(p[node->key]);
+		    if (node->cnt == minFreq && l->len == 0) ++minFreq;
 
-		List* list = freqListMap.count(node->cnt + 1) > 0 ? freqListMap[node->cnt + 1] : new List();
-
-		++node->cnt;
-		list->addNode(node);
-		freqListMap[node->cnt] = list;
-		addrOfKey[node->key] = node;
+		    l = freqList.count(node->cnt + 1) > 0 ? freqList[node->cnt + 1] : new List();
+		    l->addNode(node);
+		    ++node->cnt;
+		    freqList[node->cnt] = l;
 	    }
 
 	    LFUCache(int capacity) {
-		    cacheSize = capacity;
+		    size = capacity;
 		    minFreq = 0;
-		    curSize = 0;
 	    }
 
 	    int get(int key) {
-		    if (addrOfKey.count(key) == 0) return -1;
-		    Node* node = addrOfKey[key];
-		    int result = node->val;
-		    updateFreqMap(node);
+		    if (m.count(key) == 0) return -1;
+		    int result = m[key];
+		    updateFreq(p[key]);
 		    return result;
 	    }
 
 	    void put(int key, int value) {
-		    if (cacheSize == 0) return;
-
-		    if (addrOfKey.count(key) != 0) {
-			    addrOfKey[key]->val = value;
-			    updateFreqMap(addrOfKey[key]);
+		    if (size == 0) return;
+		    if (m.count(key) != 0) {
+			    m[key] = value;
+			    updateFreq(p[key]);
 		    } else {
-			    if (cacheSize == curSize) {
-				    List* list = freqListMap[minFreq];
-				    Node* removeNode = list->tail->prev;
-				    int removeKey = removeNode->key;
-				    addrOfKey.erase(removeKey);
-				    freqListMap[minFreq]->deleteNode(removeNode);
-				    --curSize;
+			    if (m.size() == size) {
+				    Node* removeNode = freqList[minFreq]->head->next;
+				    p.erase(removeNode->key);
+				    m.erase(removeNode->key);
+				    freqList[minFreq]->deleteNode(removeNode);
 			    }
 
-			    ++curSize;
+			    m[key] = value;
 			    minFreq = 1;
-			    List* list = freqListMap.count(minFreq) > 0 ? freqListMap[minFreq] : new List();
-			    Node* node = new Node(key, value);
-			    list->addNode(node);
-			    addrOfKey[key] = node;
-			    freqListMap[minFreq] = list;
+			    List* l = freqList.count(minFreq) > 0 ? freqList[minFreq] : new List();
+			    Node* node = new Node(key);
+			    l->addNode(node);
+			    p[key] = node;
+			    ++node->cnt;
+			    freqList[minFreq] = l;
 		    }
 	    }
     private :
-	    unordered_map<int, Node*> addrOfKey;
-	    unordered_map<int, List*> freqListMap;
-	    int minFreq, curSize;
-	    int cacheSize;
+	    unordered_map<int, List*> freqList;
+	    unordered_map<int, Node*> p;
+	    unordered_map<int, int> m;
+	    int minFreq;
+	    int size;
 	    virtual ~LFUCache() {}
 	    LFUCache& operator=(const LFUCache& source);
 	    LFUCache(const LFUCache&);
