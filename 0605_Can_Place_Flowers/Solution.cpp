@@ -2,24 +2,19 @@
 #include <iostream>
 
 bool Solution::canPlaceFlowers(vector<int>& flowerbed, int n) {
-	int start = 0;
-	int end = flowerbed.size() - 1;
-	int totalSize = 0;
+	int cnt = 0;
+	for (int i = 0 ; i < flowerbed.size() ; ++i) {
+		if (flowerbed[i] == 1) continue;
 
-	while (start < flowerbed.size() && flowerbed[start] == 0) ++start;
-	totalSize += (start / 2);
-	if (start == flowerbed.size()) return ((start + 1) / 2) >= n;
-
-	while (end >= start && flowerbed[end] == 0) --end;
-	totalSize += (flowerbed.size() - end - 1) / 2;
-
-	for (int i = start+1 ; i <= end ; ++i) {
-		int cnt = 0;
-		while (i <= end && flowerbed[i] == 0) {
-			++cnt;
-			++i;
+		if (i > 0) {
+			if (flowerbed[i-1] == 1) continue;
 		}
-		totalSize += (cnt-1) / 2;
+		if (i < flowerbed.size() - 1) {
+			if (flowerbed[i+1] == 1) continue;
+		}
+
+		flowerbed[i] = 1;
+		++cnt;
 	}
-	return totalSize >= n;
+	return cnt >= n;
 }
