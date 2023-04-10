@@ -6,16 +6,20 @@ using std::sort;
 
 int Solution::numRescueBoats(vector<int>& people, int limit) {
 	sort(people.begin(), people.end());
-	int end = people.size() - 1;
-	int start = 0;
+
+	int l = 0, r = people.size() - 1;
+
 	int result = 0;
-	while (start <= end) {
-		int val = people[start] + people[end];
-		if (val <= limit) {
-			++start;
-		}
-		--end;
+	int sum = 0;
+	while (l < r) {
+		sum = people[l] + people[r];
+
 		++result;
+		--r;
+		if (sum <= limit) {
+			++l;
+		}
 	}
+	result += (l == r ? 1 : 0);
 	return result;
 }
