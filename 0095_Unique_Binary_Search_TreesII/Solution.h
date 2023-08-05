@@ -16,6 +16,7 @@ class Solution {
         Solution() {}
 	vector<TreeNode*> generateTrees(int n);
 	vector<TreeNode*> generateTrees2(int n);
+	vector<TreeNode*> generateTrees3(int n);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
