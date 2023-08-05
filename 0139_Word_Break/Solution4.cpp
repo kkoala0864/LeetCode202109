@@ -10,18 +10,18 @@ bool Solution::wordBreak4(string s, vector<string>& wordDict) {
 	vector<bool> dp(s.size() + 1, false);
 	dp[0] = true;
 
-	for (int i = 0 ; i < s.size() ; ++i) {
-		for (const auto& word : wordDict) {
-			int wSize = word.size();
-			if (i < wSize - 1) continue;
-			if (dp[i - wSize + 1]) {
-				string cmpStr = s.substr(i - wSize + 1, wSize);
-				if (cmpStr == word) dp[i + 1] = true;
+	for (int i = 1 ; i <= s.size() ; ++i) {
+		for (const auto& w : wordDict) {
+			if (i >= w.size()) {
+				string tmpStr = s.substr(i - w.size(), w.size());
+				if (tmpStr == w) {
+					dp[i] = dp[i-w.size()];
+				}
 			}
-			if (dp[i + 1]) continue;
+			if (dp[i]) break;
 		}
 	}
-	return dp[s.size()];
+	return dp.back();
 }
 
 
