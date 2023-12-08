@@ -1,3 +1,5 @@
+#include <data_type.h>
+
 class Solution {
     public :
         Solution() {}
