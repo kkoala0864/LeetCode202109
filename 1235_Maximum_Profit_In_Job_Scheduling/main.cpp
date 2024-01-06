@@ -10,6 +10,7 @@ int main(void) {
 	vector<int> p = {20,20,100,70,60};
 	Solution* test = new Solution();
 	cout << test->jobScheduling(s, e, p) << endl;
+	cout << test->jobScheduling2(s, e, p) << endl;
 	return 0;
 }
 
