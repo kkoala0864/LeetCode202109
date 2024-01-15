@@ -13,6 +13,12 @@ int main(void) {
 		cout << endl;
 	}
 	cout << endl;
+	result = test->findWinners2(input);
+	for (const auto& v : result) {
+		for (const auto& c : v) cout << c << " ";
+		cout << endl;
+	}
+	cout << endl;
 	return 0;
 }
 
