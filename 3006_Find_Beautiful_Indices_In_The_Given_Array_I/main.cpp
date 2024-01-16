@@ -5,10 +5,10 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	string s = "frkxslnnn";
-	string a = "rkxsl";
-	string b = "n";
-	int k = 2;
+	string s = "isawsquirrelnearmysquirrelhouseohmy";
+	string a = "my";
+	string b = "squirrel";
+	int k = 15;
 	Solution* test = new Solution();
 	auto result = test->beautifulIndices(s, a, b, k);
 	for (const auto& idx : result) {
