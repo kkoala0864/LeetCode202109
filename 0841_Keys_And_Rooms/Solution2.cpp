@@ -6,22 +6,23 @@ using std::queue;
 
 bool Solution::canVisitAllRooms2(vector<vector<int>>& rooms) {
 	queue<int> que;
-	vector<bool> visited(rooms.size(), false);
-
+	int cnt = 0;
+	vector<bool> open(rooms.size(), false);
+	for (int i = 0 ; i < rooms.size() ; ++i) {
+		if (rooms.empty()) ++cnt;
+	}
+	open[0] = true;
 	que.emplace(0);
-	int size = rooms.size() - 1;
-	visited[0] = true;
-
 	while (!que.empty()) {
 		int cur = que.front();
 		que.pop();
 
-		for (const auto& r : rooms[cur]) {
-			if (visited[r]) continue;
-			visited[r] = true;
-			--size;
-			que.emplace(r);
+		++cnt;
+		for (const auto& k : rooms[cur]) {
+			if (open[k]) continue;
+			open[k] = true;
+			que.emplace(k);
 		}
 	}
-	return size == 0;
+	return cnt == rooms.size();
 }
