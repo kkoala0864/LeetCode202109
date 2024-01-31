@@ -10,6 +10,9 @@ int main(void) {
 	auto result = test->eventualSafeNodes3(input);
 	for (const auto& v : result) cout << v << " ";
 	cout << endl;
+	result = test->eventualSafeNodes3(input);
+	for (const auto& v : result) cout << v << " ";
+	cout << endl;
 	return 0;
 }
 
