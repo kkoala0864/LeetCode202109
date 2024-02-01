@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	string gcdOfStrings(string str1, string str2);
+	string gcdOfStrings2(string str1, string str2);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
