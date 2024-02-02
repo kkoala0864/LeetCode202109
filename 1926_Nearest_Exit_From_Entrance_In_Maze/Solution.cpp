@@ -30,7 +30,6 @@ int Solution::nearestExit(vector<vector<char>>& maze, vector<int>& entrance) {
 		int x = que.front().first;
 		int y = que.front().second;
 		if (x == entrance[0] && y == entrance[1]) return result;
-		cout <<x << " : "<< y << endl;
 
 		que.pop();
 		for (int i = 0 ; i < 4 ; ++i) {
