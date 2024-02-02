@@ -11,6 +11,11 @@ int main(void) {
 	cout << iter << " ";
     }
     cout << endl;
+    result = test->sequentialDigits2(100, 300);
+    for (const auto& iter : result) {
+	cout << iter << " ";
+    }
+    cout << endl;
     return 0;
 }
 
