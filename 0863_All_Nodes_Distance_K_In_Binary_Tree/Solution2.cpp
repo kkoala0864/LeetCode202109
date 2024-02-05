@@ -2,62 +2,52 @@
 #include <iostream>
 #include <unordered_map>
 #include <unordered_set>
-#include <queue>
+#include <vector>
 
-using std::unordered_map;
+using std::vector;
 using std::unordered_set;
-using std::queue;
+using std::unordered_map;
 
-void dfs2(TreeNode* node, unordered_map<TreeNode*, TreeNode*>& parent) {
+void dfs2(TreeNode* node, unordered_map<int, vector<int>>& graph) {
 	if (!node) return;
-
 	if (node->left) {
-		parent[node->left] = node;
-		dfs2(node->left, parent);
+		graph[node->val].emplace_back(node->left->val);
+		graph[node->left->val].emplace_back(node->val);
+		dfs2(node->left, graph);
 	}
 	if (node->right) {
-		parent[node->right] = node;
-		dfs2(node->right, parent);
+		graph[node->val].emplace_back(node->right->val);
+		graph[node->right->val].emplace_back(node->val);
+		dfs2(node->right, graph);
 	}
 }
 
 vector<int> Solution::distanceK2(TreeNode* root, TreeNode* target, int k) {
-	unordered_map<TreeNode*, TreeNode*> parent;
-	dfs2(root, parent);
+	unordered_map<int, vector<int>> graph;
 
-	unordered_set<TreeNode*> visited;
+	unordered_set<int> visited;
+	dfs2(root, graph);
 
-	queue<TreeNode*> que, next;
-
-	vector<int> result;
-	que.emplace(target);
-	visited.emplace(target);
+	vector<int> que,next;
+	que.emplace_back(target->val);
+	visited.emplace(target->val);
+	if (k == 0) return que;
 
 	while (!que.empty()) {
-		auto node = que.front();
-		que.pop();
+		int node = que.back();
+		que.pop_back();
 
-		result.emplace_back(node->val);
-		if (node->left && !visited.count(node->left)) {
-			visited.emplace(node->left);
-			next.emplace(node->left);
+		for (const auto& n : graph[node]) {
+			if (visited.count(n)) continue;
+			visited.emplace(n);
+			next.emplace_back(n);
 		}
-		if (node->right && !visited.count(node->right)) {
-			visited.emplace(node->right);
-			next.emplace(node->right);
-		}
-
-		if (parent[node] && !visited.count(parent[node])) {
-			visited.emplace(parent[node]);
-			next.emplace(parent[node]);
-		}
-
 		if (que.empty()) {
-			if (k == 0) break;
 			--k;
+			if (k == 0) return next;
 			que = move(next);
-			result.clear();
 		}
 	}
-	return result;
+	return vector<int>();
+
 }
