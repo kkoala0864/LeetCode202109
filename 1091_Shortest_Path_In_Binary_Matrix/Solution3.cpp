@@ -1,37 +1,39 @@
 #include <Solution.h>
 #include <iostream>
 #include <queue>
-#include <climits>
 
-using std::queue;
 using std::pair;
+using std::queue;
 
 int Solution::shortestPathBinaryMatrix3(vector<vector<int>>& grid) {
 	if (grid[0][0] == 1) return -1;
-	int m = grid.size();
-	int n = grid[0].size();
+	queue<pair<int, int>> que, next;
 
-	vector<vector<int>> cnt(m, vector<int>(n, INT_MAX));
-	queue<int> que;
+	int result = 0;
 
-	vector<int> axis = {1, 0, -1, 0, 1, -1, -1, 1, 1};
-	cnt[0][0] = 1;
-	que.emplace(0);
+	que.emplace(pair<int, int>(0, 0));
+	vector<int> dir = {1, 0, -1, 0, 1, -1, -1, 1, 1};
+	grid[0][0] = 1;
+
 	while (!que.empty()) {
-		int x = que.front() / n;
-		int y = que.front() % n;
+		int x = que.front().first;
+		int y = que.front().second;
 		que.pop();
 
+		if (x == grid.size() - 1 && y == grid[0].size() - 1) return result + 1;
+
 		for (int i = 0 ; i < 8 ; ++i) {
-			int nx = x + axis[i];
-			int ny = y + axis[i+1];
-			if (nx < 0 || ny < 0 || nx >= m || ny >= n || grid[nx][ny] == 1) continue;
-			if (cnt[nx][ny] > cnt[x][y] + 1) {
-				cnt[nx][ny] = cnt[x][y] + 1;
-				que.emplace(nx * n + ny);
-			}
+			int nx = x + dir[i];
+			int ny = y + dir[i+1];
+			if (nx < 0 || ny < 0 || nx >= grid.size() || ny >= grid[0].size() || grid[nx][ny] == 1) continue;
+			grid[nx][ny] = 1;
+			next.emplace(pair<int, int>(nx, ny));
+		}
+		if (que.empty()) {
+			que = move(next);
+			++result;
 		}
 	}
-	return cnt[m-1][n-1] == INT_MAX ? -1 : cnt[m-1][n-1];
+	return -1;
 }
 
