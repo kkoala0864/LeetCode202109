@@ -5,7 +5,7 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<string> input = {"z", "z"};
+	vector<string> input = {"wrt","wrf","er","ett","rftt"};
 	Solution* test = new Solution();
 	cout << test->alienOrder(input) << endl;
 	cout << test->alienOrder2(input) << endl;
