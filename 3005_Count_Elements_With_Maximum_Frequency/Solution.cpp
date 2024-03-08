@@ -7,18 +7,17 @@ using std::max;
 using std::unordered_map;
 
 int Solution::maxFrequencyElements(vector<int>& nums) {
-	unordered_map<int, int> m;
-	int maxF = 0;
+	vector<int> cnt(101, 0);
+	for (const auto& v : nums) ++cnt[v];
 
-	for (const auto& v : nums) {
-		++m[v];
-		maxF = max(maxF, m[v]);
+	vector<int> freq(101, 0);
+	for (const auto& c : cnt) {
+		if (c == 0) continue;
+		++freq[c];
 	}
-
-	int result = 0;
-	for (const auto& v : m) {
-		if (v.second == maxF) ++result;
+	for (int i = 100 ; i >= 1 ; --i) {
+		if (freq[i] == 0) continue;
+		return freq[i] * i;
 	}
-
-	return result * maxF;
+	return 0;
 }
