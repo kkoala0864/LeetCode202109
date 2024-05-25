@@ -11,6 +11,10 @@ int main(void) {
 	for (const auto& s : result) {
 		cout << s << endl;
 	}
+	result = test->wordBreak2("catsanddog", dictionary);
+	for (const auto& s : result) {
+		cout << s << endl;
+	}
 	return 0;
 }
 
