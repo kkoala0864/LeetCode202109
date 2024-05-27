@@ -10,17 +10,15 @@ int Solution::specialArray(vector<int>& nums) {
 	int l = 1, r = nums.size();
 	int size = nums.size();
 
-	while (l <= r) {
+	while (l < r) {
 		int mid = l + ((r - l) / 2);
-		int v = (lower_bound(nums.begin(), nums.end(), mid) - nums.begin());
-		v = size - v;
+		int v = size - (lower_bound(nums.begin(), nums.end(), mid) - nums.begin());
 		if (v > mid) {
 			l = mid + 1;
-		} else if (v == mid) {
-			return mid;
 		} else {
-			r = mid - 1;
+			r = mid;
 		}
 	}
-	return -1;
+	int v = size - (lower_bound(nums.begin(), nums.end(), l) - nums.begin());
+	return v == l ? l : -1;
 }
