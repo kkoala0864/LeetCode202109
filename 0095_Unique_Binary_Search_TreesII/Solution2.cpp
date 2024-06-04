@@ -1,29 +1,28 @@
 #include <Solution.h>
 #include <iostream>
 
-vector<TreeNode*> dfs(int s, int e, vector<vector<vector<TreeNode*>>>& cache) {
-	if (s > e) return { nullptr };
-	if (s == e) return vector<TreeNode*>(1, new TreeNode(s));
+void dfs(int start, int end, vector<vector<vector<TreeNode*>>>& dp) {
+	if (!dp[start][end].empty()) return;
+	if (start > end) {
+		dp[start][end].emplace_back(nullptr);
+		return;
+	}
 
-	if (!cache[s][e].empty()) return cache[s][e];
+	for (int i = start ; i <= end ; ++i) {
+		dfs(start, i - 1, dp);
+		dfs(i + 1, end, dp);
 
-	for (int i = s ; i <= e ; ++i) {
-		auto lr = dfs(s, i-1, cache);
-		auto rr = dfs(i + 1, e, cache);
-		for (auto& l : lr) {
-			for (auto& r : rr) {
-				TreeNode* node = new TreeNode(i);
-				node->left = l;
-				node->right = r;
-				cache[s][e].emplace_back(node);
+		for (const auto& ln : dp[start][i-1]) {
+			for (const auto& rn : dp[i+1][end]) {
+				TreeNode* cur = new TreeNode(i, ln, rn);
+				dp[start][end].emplace_back(cur);
 			}
 		}
 	}
-
-	return cache[s][e];
 }
 
 vector<TreeNode*> Solution::generateTrees2(int n) {
-	vector<vector<vector<TreeNode*>>> cache(n+1, vector<vector<TreeNode*>>(n+1, vector<TreeNode*>()));
-	return dfs(1, n, cache);
+	vector<vector<vector<TreeNode*>>> dp(n + 2, vector<vector<TreeNode*>>(n + 2, vector<TreeNode*>()));
+	dfs(1, n, dp);
+	return dp[1][n];
 }
