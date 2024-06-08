@@ -5,18 +5,15 @@
 using std::unordered_map;
 
 bool Solution::checkSubarraySum(vector<int>& nums, int k) {
-	int curSum = 0;
-	unordered_map<int, int> sumToIdx;
-	sumToIdx[0] = 0;
+	unordered_map<int, int> m;
 
+	int mod = 0;
 	for (int i = 0 ; i < nums.size() ; ++i) {
-		curSum += nums[i];
-		if (sumToIdx.find(curSum % k) != sumToIdx.end()) {
-			if (sumToIdx[curSum % k] < i) return true;
-		} else {
-			sumToIdx[curSum % k] = i + 1;
-		}
-
+		mod += nums[i];
+		mod %= k;
+		if (i >= 1 && mod == 0) return true;
+		if (m.count(mod) && (i - m[mod]) > 1) return true;
+		if (m.count(mod) == 0) m[mod] = i;
 	}
 	return false;
 }
