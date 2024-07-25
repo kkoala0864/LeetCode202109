@@ -1,5 +1,6 @@
 #include <Solution.h>
 #include <iostream>
+#include <cmath>
 
 void quickSort(vector<int>& nums, int start, int end) {
 	if (start >= end) return;
@@ -18,7 +19,27 @@ void quickSort(vector<int>& nums, int start, int end) {
 	quickSort(nums, r + 1, end);
 }
 
+void quickSort_Without_SwapPivot(vector<int>& nums, int start, int end) {
+	if (start >= end) return;
+	int pivot = nums[start + rand() % (start - end)];
+
+	int l = start;
+	int r = end;
+	for (int i = start ; i <= end ; ++i) {
+		if (nums[i] < pivot) {
+			swap(nums[i], nums[l++]);
+		}
+	}
+	for (int i = end ; i >= l ; --i) {
+		if (nums[i] > pivot) {
+			swap(nums[i], nums[r--]);
+		}
+	}
+	quickSort_Without_SwapPivot(nums, start, l - 1);
+	quickSort_Without_SwapPivot(nums, r + 1, end);
+}
+
 vector<int> Solution::Quick_Sort(vector<int>& nums) {
-	quickSort(nums, 0, nums.size() - 1);
+	quickSort_Without_SwapPivot(nums, 0, nums.size() - 1);
 	return nums;
 }
