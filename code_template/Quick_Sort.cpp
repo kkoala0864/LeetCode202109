@@ -21,7 +21,7 @@ void quickSort(vector<int>& nums, int start, int end) {
 
 void quickSort_Without_SwapPivot(vector<int>& nums, int start, int end) {
 	if (start >= end) return;
-	int pivot = nums[start + rand() % (start - end)];
+	int pivot = nums[start + rand() % (end - start)];
 
 	int l = start;
 	int r = end;
@@ -39,7 +39,7 @@ void quickSort_Without_SwapPivot(vector<int>& nums, int start, int end) {
 	quickSort_Without_SwapPivot(nums, r + 1, end);
 }
 
-vector<int> Solution::Quick_Sort(vector<int>& nums) {
+vector<int> Solution::quick_sort(vector<int>& nums) {
 	quickSort_Without_SwapPivot(nums, 0, nums.size() - 1);
 	return nums;
 }

@@ -6,7 +6,8 @@ using namespace std;
 class Solution {
     public :
         Solution() {}
-	vector<int> Quick_Sort(vector<int>& nums);
+	vector<int> quick_sort(vector<int>& nums);
+	int quick_select(vector<int>& nums, int k);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
