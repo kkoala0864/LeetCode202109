@@ -16,6 +16,11 @@ int main(void) {
 	cout << endl;
 	cout << test->quick_select(nums, 3) << endl;
 
+	nums = {3, 5, 6, 7, 8, 9, 19};
+	for (const auto& v : nums) cout << v << " ";
+	cout << endl;
+	cout << test->binary_search(nums, 8) << endl;
+
 	vector<vector<int>> edges = {{0,1,3},{1,2,1},{1,3,4},{2,3,1}};
 	result = test->dijstra(edges, 4, 0);
 	for (const auto& v : result) cout << v << " ";

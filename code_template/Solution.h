@@ -8,6 +8,8 @@ class Solution {
         Solution() {}
 	vector<int> quick_sort(vector<int>& nums);
 	int quick_select(vector<int>& nums, int k);
+
+	int binary_search(vector<int>& nums, int target);
 	vector<int> dijstra(vector<vector<int>>& edges, int n, int start);
     private :
         virtual ~Solution() {}
