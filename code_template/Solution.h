@@ -8,6 +8,7 @@ class Solution {
         Solution() {}
 	vector<int> quick_sort(vector<int>& nums);
 	int quick_select(vector<int>& nums, int k);
+	vector<int> dijstra(vector<vector<int>>& edges, int n, int start);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
