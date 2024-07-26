@@ -16,6 +16,10 @@ int main(void) {
 	cout << endl;
 	cout << test->quick_select(nums, 3) << endl;
 
+	vector<vector<int>> edges = {{0,1,3},{1,2,1},{1,3,4},{2,3,1}};
+	result = test->dijstra(edges, 4, 0);
+	for (const auto& v : result) cout << v << " ";
+	cout << endl;
 	return 0;
 }
 
