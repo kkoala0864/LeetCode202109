@@ -5,29 +5,19 @@
 using std::vector;
 
 int Solution::nonSpecialCount(int l, int r) {
-	vector<int> pl;
-	int i = 2;
-	for (; i <= sqrt(l-1) ; ++i) {
-		bool find = false;
-		for (const auto& v : pl) {
-			if (i % v == 0) {
-				find = true;
-				break;
-			}
+	int ls = sqrt(l);
+	int rs = sqrt(r);
+	vector<int> prime(rs + 1, true);
+	int result = r - l + 1;
+	prime[0] = prime[1] = false;
+	for (int i = 2 ; i <= rs ; ++i) {
+		if (!prime[i]) continue;
+		int v = i * i;
+		if (l <= v && v <= r) --result;
+
+		for (int j = 2 ; (j * i) <= rs ; ++j) {
+			prime[j * i] = false;
 		}
-		if (!find) pl.emplace_back(i);
 	}
-	int ls = pl.size();
-	for (; i <= sqrt(r) ; ++i) {
-		bool find = false;
-		for (const auto& v : pl) {
-			if (i % v == 0) {
-				find = true;
-				break;
-			}
-		}
-		if (!find) pl.emplace_back(i);
-	}
-	int rs = pl.size();
-	return (r - l + 1) - (rs - ls);
+	return result;
 }
