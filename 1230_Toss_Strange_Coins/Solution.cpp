@@ -5,18 +5,18 @@
 using std::unordered_map;
 
 double Solution::probabilityOfHeads(vector<double>& prob, int target) {
-	int size = prob.size();
-	vector<unordered_map<int, double>> dp(size, unordered_map<int ,double>());
+	vector<double> dp(target + 1, 0);
 
-	dp[0][0] = 1 - prob[0];
-	dp[0][1] = prob[0];
-
-	for (int i = 1 ; i < size ; ++i) {
-		for (const auto& iter : dp[i-1]) {
-			if (iter.first < target) dp[i][iter.first + 1] += (iter.second * prob[i]);
-			dp[i][iter.first] += (iter.second * (1 - prob[i]));
+	dp[0] = 1;
+	for (int i = 0 ; i < prob.size() ; ++i) {
+		vector<double> tmp = dp;
+		for (int j = 0 ; j <= target ; ++j) {
+			tmp[j] = dp[j] * (1-prob[i]);
+			if (j > 0) {
+				tmp[j] += dp[j-1] * prob[i];
+			}
 		}
+		dp = move(tmp);
 	}
-
-	return dp.back().count(target) ? dp.back()[target] : 0;
+	return dp[target];
 }
