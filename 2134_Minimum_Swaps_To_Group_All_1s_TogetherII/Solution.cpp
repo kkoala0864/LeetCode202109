@@ -1,23 +1,30 @@
 #include <Solution.h>
 #include <iostream>
 #include <algorithm>
+#include <climits>
 
-using std::max;
+using std::min;
 
 int Solution::minSwaps(vector<int>& nums) {
-	int ones = 0;
-	int oneCnt = 0;
-	int maxOneCnt = 0;
-	int n = nums.size();
-	for (const auto& iter : nums) if (iter == 1) ++ones;
-
-	vector<int> nums2(n * 2, 0);
-	for (int i = 0 ; i < n * 2 ; ++i) nums2[i] = nums[i%n];
-
-	for (int i = 0 ; i < n * 2 ; ++i) {
-		if (i >= ones && nums2[i-ones] == 1) --oneCnt;
-		if (nums2[i] == 1) ++oneCnt;
-		maxOneCnt = max(maxOneCnt, oneCnt);
+	int totalOne = 0;
+	for (const auto& v : nums) {
+		if (v == 1) ++totalOne;
 	}
-	return ones - maxOneCnt;
+
+	int oneCnt = 0;
+	int result = INT_MAX;
+	int size = nums.size();
+	for (int i = 0 ; i < size * 2 ; ++i) {
+		int oi = i % size;
+		if (nums[oi] == 1) ++oneCnt;
+
+		if (i >= totalOne) {
+			int lastIdx = (i - totalOne) % size;
+			if (nums[lastIdx] == 1) --oneCnt;
+		}
+		if (i >= (totalOne - 1)) {
+			result = min(result, totalOne - oneCnt);
+		}
+	}
+	return result;
 }
