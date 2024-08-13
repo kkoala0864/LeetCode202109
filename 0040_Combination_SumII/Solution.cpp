@@ -4,28 +4,27 @@
 
 using std::sort;
 
-void dfs(const vector<int>& candidates, int start, int target, vector<int>& localResult, vector<vector<int>>& result) {
-	if (target < 0) return;
-	if (target == 0) {
-		result.emplace_back(localResult);
+void recur(vector<int>& candidates, int idx, int sum, int target, vector<int>& cur, vector<vector<int>>& result) {
+	if (sum > target) return;
+	if (sum == target) {
+		result.emplace_back(cur);
 		return;
 	}
+	if (idx >= candidates.size()) return;
 
-	for (int i = start ; i < candidates.size() ; ++i) {
-		if (target < candidates[i]) continue;
-		localResult.emplace_back(candidates[i]);
-		dfs(candidates, i + 1, target - candidates[i], localResult, result);
-		while (i < candidates.size()-1 && candidates[i] == candidates[i+1]) {
-			++i;
-		}
-		localResult.pop_back();
+
+	for (int i = idx ; i < candidates.size() ; ++i) {
+		cur.emplace_back(candidates[i]);
+		recur(candidates, i + 1, sum + candidates[i], target, cur, result);
+		cur.pop_back();
+		while (i < candidates.size() - 1 && candidates[i] == candidates[i+1]) ++i;
 	}
 }
 
 vector<vector<int>> Solution::combinationSum(vector<int>& candidates, int target) {
 	sort(candidates.begin(), candidates.end());
 	vector<vector<int>> result;
-	vector<int> localResult;
-	dfs(candidates, 0, target, localResult, result);
+	vector<int> cur;
+	recur(candidates, 0, 0, target, cur, result);
 	return result;
 }
