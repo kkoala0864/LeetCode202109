@@ -1,34 +1,20 @@
 #include <Solution.h>
 #include <iostream>
 #include <algorithm>
+#include <climits>
 
+using std::min;
 using std::max;
-using std::pair;
 
 int Solution::maxDistance(vector<vector<int>>& arrays) {
-	vector<pair<int, int>> s;
-	vector<pair<int, int>> b;
-
-	for (int i = 0 ; i < arrays.size() ; ++i) {
-		s.emplace_back(pair<int, int>(arrays[i][0], i));
-		b.emplace_back(pair<int, int>(arrays[i].back(), i));
-
-		sort(s.begin(), s.end());
-		sort(b.begin(), b.end(), std::greater<pair<int, int>>());
-		while (s.size() > 2) {
-			s.pop_back();
-		}
-		while (b.size() > 2) {
-			b.pop_back();
-		}
-	}
-
+	int curMax = arrays[0].back();
+	int curMin = arrays[0][0];
 	int result = 0;
-	for (int i = 0 ; i < 2 ; ++i) {
-		for(int j = 0 ; j < 2; ++j) {
-			if (s[i].second == b[j].second) continue;
-			result = max(result, b[j].first - s[i].first);
-		}
+
+	for (int i = 1 ; i < arrays.size() ; ++i) {
+		result = max({result, abs(curMax - arrays[i][0]), abs(arrays[i].back() - curMin)});
+		curMax = max(curMax, arrays[i].back());
+		curMin = min(curMin, arrays[i][0]);
 	}
 	return result;
 }
