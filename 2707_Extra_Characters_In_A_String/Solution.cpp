@@ -7,29 +7,23 @@ using std::endl;
 using std::max;
 
 int Solution::minExtraChar(string s, vector<string>& dictionary) {
-	vector<vector<string>> dics(26, vector<string>());
+	int size = s.size();
 
-	for (const auto& d : dictionary) {
-		dics[d.back() - 'a'].emplace_back(d);
-	}
+	vector<int> dp(size + 1, 0);
+	vector<int> preMax(size + 1, 0);
+	vector<vector<string>> dic(26, vector<string>());
 
-	vector<int> dp(s.size() + 1, 0);
-	vector<int> preMax(s.size() + 1, 0);
-	int maxVal = 0;
+	for (const auto& d : dictionary) dic[d.back()-'a'].emplace_back(d);
 
 	for (int i = 0 ; i < s.size() ; ++i) {
-		int idx = s[i] - 'a';
-		if (dics[idx].size() > 0) {
-			for (const auto& d : dics[idx]) {
-				int ds = d.size();
-				if (i < (ds - 1)) continue;
-				string curStr = s.substr(i - ds + 1, ds);
-				if (curStr != d) continue;
-				dp[i + 1] = max(dp[i + 1], preMax[i - ds + 1] + ds);
-			}
+		for (const auto& d : dic[s[i]-'a']) {
+			int ds = d.size();
+			if ((ds - 1) > i) continue;
+			string cur = s.substr(i - ds + 1, ds);
+			if (cur != d) continue;
+			dp[i+1] = max(dp[i+1], preMax[i-ds+1] + ds);
 		}
-		maxVal = max(maxVal, dp[i + 1]);
-		preMax[i + 1] = maxVal;
+		preMax[i+1] = max(dp[i+1], preMax[i]);
 	}
-	return s.size() - preMax.back();
+	return size - preMax.back();
 }
