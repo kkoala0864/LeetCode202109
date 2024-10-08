@@ -6,6 +6,7 @@ class Solution {
     public :
         Solution() {}
 	int minSwaps(string s);
+	int minSwaps2(string s);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);

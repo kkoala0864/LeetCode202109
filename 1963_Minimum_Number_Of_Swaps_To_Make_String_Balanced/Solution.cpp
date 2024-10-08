@@ -1,5 +1,6 @@
 #include <Solution.h>
 #include <iostream>
+
 int Solution::minSwaps(string s) {
 	int start = -1, end = s.size();
 	int sCnt = 0, eCnt = 0;
