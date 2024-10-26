@@ -8,7 +8,11 @@ using std::vector;
 using std::unordered_map;
 
 struct Trie {
-	unordered_map<string, Trie*> child;
+	Trie() : isEnd(false) {
+		child = vector<Trie*>(27, nullptr);
+	}
+
+	vector<Trie*> child;
 	bool isEnd;
 };
 
