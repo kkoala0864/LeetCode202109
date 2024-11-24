@@ -5,8 +5,8 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<int> input = {4,3,2,1};
-	vector<vector<int>> query = {{1,3},{0,2}};
+	vector<int> input = {4,6};
+	vector<vector<int>> query = {{0,0},{0,1},{1,1},{0,0},{1,1},{1,1},{0,0},{1,1},{1,1},{1,1},{0,0},{1,1},{0,1},{0,0},{1,1}};
 	Solution* test = new Solution();
 	cout << test->isZeroArray(input, query) << endl;
 	return 0;
