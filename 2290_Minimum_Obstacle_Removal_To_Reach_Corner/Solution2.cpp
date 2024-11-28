@@ -1,41 +1,41 @@
 #include <Solution.h>
 #include <iostream>
-#include <climits>
 #include <queue>
+#include <climits>
 
 using std::priority_queue;
 using std::pair;
-using std::cout;
-using std::endl;
 
 int Solution::minimumObstacles2(vector<vector<int>>& grid) {
-	int n = grid[0].size();
 	int m = grid.size();
-	vector<int> cost (m * n, INT_MAX);
+	int n = grid[0].size();
 
-	vector<int> axis = {1, 0, -1, 0, 1};
+	vector<vector<int>> minObs(m, vector<int>(n, INT_MAX));
+	minObs[0][0] = grid[0][0];
 
-	cost[0] = 0;
-	priority_queue<pair<int, int>, vector<pair<int, int>>, std::greater<pair<int, int>>> pq;
+	priority_queue<vector<int>, vector<vector<int>>, std::greater<vector<int>>> pq;
 
-	pq.emplace(pair<int, int>(0, 0));
+	vector<int> dir = {1, 0, -1, 0, 1};
+
+	pq.emplace(vector<int>({minObs[0][0], 0, 0}));
+
 	while (!pq.empty()) {
-		int curX = pq.top().second / n;
-		int curY = pq.top().second % n;
-		int curC = pq.top().first;
-		int curIdx = pq.top().second;
+		int oc = pq.top()[0];
+		int x = pq.top()[1];
+		int y = pq.top()[2];
 		pq.pop();
 
+		if (x == m-1 && y == n-1) return oc;
+		if (minObs[x][y] > oc) continue;
+
 		for (int i = 0 ; i < 4 ; ++i) {
-			int nx = curX + axis[i];
-			int ny = curY + axis[i+1];
-			if (nx < 0 || ny < 0 || nx >= m || ny >= n || curC > cost[curIdx]) continue;
-			int idx = nx * n + ny;
-			if (cost[idx] > (cost[curIdx] + grid[nx][ny])) {
-				cost[idx] = cost[curIdx] + grid[nx][ny];
-				pq.emplace(pair<int, int>(cost[idx], idx));
-			}
+			int nx = x + dir[i];
+			int ny = y + dir[i+1];
+			if (nx < 0 || ny < 0 || nx >= m || ny >= n) continue;
+			if (minObs[nx][ny] <= oc + grid[nx][ny]) continue;
+			minObs[nx][ny] = oc + grid[nx][ny];
+			pq.emplace(vector<int>({minObs[nx][ny], nx, ny}));
 		}
 	}
-	return cost[m * n -1];
+	return -1;
 }
