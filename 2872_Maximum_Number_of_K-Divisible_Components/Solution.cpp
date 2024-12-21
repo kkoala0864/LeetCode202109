@@ -19,29 +19,31 @@ int Solution::maxKDivisibleComponents(int n, vector<vector<int>>& edges, vector<
 	vector<bool> visited(n, false);
 	int result = 0;
 
-	vector<int> list, next;
+	queue<int> que, next;
 	for (int i = 0 ; i < n ; ++i) {
 		if (id[i] > 1) continue;
-		list.emplace_back(i);
+		que.emplace(i);
 		visited[i] = true;
 	}
 
-	while (!list.empty()) {
-		for (const auto& v : list) {
-			if (values[v] % k == 0) {
-				++result;
-			}
-			for (const auto& nv : od[v]) {
-				--id[nv];
-				values[nv] += values[v];
-				values[nv] %= k;
-				if (id[nv] < 2 && !visited[nv]) {
-					visited[nv] = true;
-					next.emplace_back(nv);
-				}
+	while (!que.empty()) {
+		int cur = que.front();
+		que.pop();
+		if (values[cur] % k == 0) {
+			++result;
+		}
+		for (const auto& nv : od[cur]) {
+			--id[nv];
+			values[nv] += values[cur];
+			values[nv] %= k;
+			if (id[nv] < 2 && !visited[nv]) {
+				visited[nv] = true;
+				next.emplace(nv);
 			}
 		}
-		list = move(next);
+		if (que.empty()) {
+			que = move(next);
+		}
 	}
 	return result;
 }
