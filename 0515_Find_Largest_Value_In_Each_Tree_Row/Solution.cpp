@@ -14,21 +14,20 @@ vector<int> Solution::largestValues(TreeNode* root) {
 	queue<TreeNode*> que, next;
 
 	que.emplace(root);
-	int lv = INT_MIN;
+	int v = INT_MIN;
 
 	while (!que.empty()) {
 		auto cur = que.front();
 		que.pop();
-
-		lv = max(lv, cur->val);
+		v = max(v, cur->val);
 
 		if (cur->left) next.emplace(cur->left);
 		if (cur->right) next.emplace(cur->right);
 
 		if (que.empty()) {
+			result.emplace_back(v);
+			v = INT_MIN;
 			que = move(next);
-			result.emplace_back(lv);
-			lv = INT_MIN;
 		}
 	}
 	return result;
