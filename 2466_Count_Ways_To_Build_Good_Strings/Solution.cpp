@@ -7,20 +7,21 @@ using std::vector;
 int Solution::countGoodStrings(int low, int high, int zero, int one) {
 	vector<int> dp(high + 1, 0);
 
-	int result = 0;
 	int mod = 1e9 + 7;
 	dp[0] = 1;
+	int result = 0;
 
-	for (int i = 0 ; i <= high ; ++i) {
-		if (i + zero <= high) {
-			dp[i + zero] += dp[i];
-			dp[i + zero] %= mod;
+	for (int i = 1 ; i <= high ; ++i) {
+		if (i - zero >= 0) {
+			dp[i] += dp[i-zero];
+			dp[i] %= mod;
 		}
-		if (i + one <= high) {
-			dp[i + one] += dp[i];
-			dp[i + one] %= mod;
+		if (i - one >= 0) {
+			dp[i] += dp[i-one];
+			dp[i] %= mod;
 		}
-		if (i >= low && i <= high) {
+
+		if (i >= low) {
 			result += dp[i];
 			result %= mod;
 		}
