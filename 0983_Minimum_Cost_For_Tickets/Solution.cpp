@@ -3,8 +3,6 @@
 #include <algorithm>
 
 using std::min;
-using std::cout;
-using std::endl;
 
 int Solution::mincostTickets(vector<int>& days, vector<int>& costs) {
 	int size = days.size();
@@ -14,7 +12,6 @@ int Solution::mincostTickets(vector<int>& days, vector<int>& costs) {
 	for (int i = 0 ; i < size ; ++i) {
 		int curMin = INT_MAX;
 		for (int oi = 0 ; oi < 3 ; ++oi) {
-			int mc = INT_MAX;
 			int j = i - 1;
 			for (; j >= 0 && (days[i] - days[j]) < offset[oi] ; --j) {}
 			int v = j >= 0 ? dp[j] : 0;
