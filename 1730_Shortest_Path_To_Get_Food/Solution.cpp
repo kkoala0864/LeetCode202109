@@ -3,37 +3,38 @@
 #include <queue>
 
 using std::queue;
+using std::pair;
 
 int Solution::getFood(vector<vector<char>>& grid) {
 	int m = grid.size();
 	int n = grid[0].size();
 
-	queue<int> que, next;
-
-	for (int r = 0 ; r < m ; ++r) {
-		for (int c = 0 ; c < n ; ++c) {
-			if (grid[r][c] == '*') {
-				que.emplace(r * n + c);
-				grid[r][c] = 'X';
+	queue<pair<int, int>> que, next;
+	for (int i = 0 ; i < m ; ++i) {
+		for (int j = 0 ; j < n ; ++j) {
+			if (grid[i][j] == '*') {
+				que.emplace(pair<int, int>(i, j));
+				grid[i][j] = 'X';
 				break;
 			}
 		}
+		if (!que.empty()) break;
 	}
+	int result = 0;
 
 	vector<int> dir = {1, 0, -1, 0, 1};
-	int result = 0;
 	while (!que.empty()) {
-		int x = que.front() / n;
-		int y = que.front() % n;
+		int x = que.front().first;
+		int y = que.front().second;
 		que.pop();
 
-		for (int di = 0 ; di < 4 ; ++di) {
-			int nx = x + dir[di];
-			int ny = y + dir[di+1];
+		for (int i = 0 ; i < 4 ; ++i) {
+			int nx = x + dir[i];
+			int ny = y + dir[i+1];
 			if (nx < 0 || ny < 0 || nx >= m || ny >= n || grid[nx][ny] == 'X') continue;
 			if (grid[nx][ny] == '#') return result + 1;
 			grid[nx][ny] = 'X';
-			next.emplace(nx * n + ny);
+			next.emplace(pair<int, int>(nx, ny));
 		}
 		if (que.empty()) {
 			++result;
