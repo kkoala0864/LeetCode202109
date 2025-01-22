@@ -1,19 +1,22 @@
 #include <Solution.h>
 #include <iostream>
 #include <queue>
+#include <climits>
 
 using std::queue;
 using std::pair;
 
 vector<vector<int>> Solution::highestPeak(vector<vector<int>>& isWater) {
-	vector<vector<int>> result = isWater;
-	queue<pair<int, int>> que;
+	int m = isWater.size();
+	int n = isWater[0].size();
 
-	for (int i = 0 ; i < isWater.size() ; ++i) {
-		for (int j = 0 ; j < isWater[0].size() ; ++j) {
-			if (isWater[i][j] == 0) continue;
-			que.emplace(pair<int, int>(i, j));
-			result[i][j] = 0;
+	queue<pair<int, int>> que;
+	for (int i = 0 ; i < m ; ++i) {
+		for (int j = 0 ; j < n ; ++j) {
+			if (isWater[i][j]) {
+				que.emplace(pair<int, int>(i, j));
+			}
+			isWater[i][j] = isWater[i][j] == 1 ? 0 : INT_MAX;
 		}
 	}
 
@@ -26,10 +29,10 @@ vector<vector<int>> Solution::highestPeak(vector<vector<int>>& isWater) {
 		for (int i = 0 ; i < 4 ; ++i) {
 			int nx = x + dir[i];
 			int ny = y + dir[i+1];
-			if (nx < 0 || ny < 0 || nx >= isWater.size() || ny >= isWater[0].size() || result[nx][ny] != 0 || isWater[nx][ny] == 1) continue;
-			result[nx][ny] = result[x][y] + 1;
+			if (nx < 0 || ny < 0 || nx >= m || ny >= n || isWater[nx][ny] != INT_MAX) continue;
+			isWater[nx][ny] = isWater[x][y] + 1;
 			que.emplace(pair<int, int>(nx, ny));
 		}
 	}
-	return result;
+	return isWater;
 }
