@@ -3,32 +3,31 @@
 #include <algorithm>
 
 using std::max;
+using std::pair;
+using std::cout;
+using std::endl;
 
 int Solution::findMaxForm(vector<string>& strs, int m, int n) {
+	vector<pair<int, int>> list;
 	vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
-	vector<vector<int>> next;
-	int result = 0;
-	for (const auto& str : strs) {
-		int zCnt = 0, oCnt = 0;
-		next = dp;
-		for (const auto& c : str) {
-			if (c == '0') ++zCnt;
-			else ++oCnt;
+	auto next = dp;
+	for (const auto& s : strs) {
+		int cnt0 = 0, cnt1 = 0;
+		for (const auto& c : s) {
+			if (c == '0') ++cnt0;
+			else ++cnt1;
 		}
-		if (zCnt > m || oCnt > n) continue;
-		for (int i = 0 ; i <= (m - zCnt) ; ++i) {
-			for (int j = 0 ; j <= (n - oCnt) ; ++j) {
-				if (dp[i][j] == 0) continue;
-				int nz = zCnt + i;
-				int no = oCnt + j;
-				if (nz > m || no > n) continue;
-				next[nz][no] = max(dp[nz][no], dp[i][j] + 1);
-				result = max(result, next[nz][no]);
+		list.emplace_back(pair<int, int>(cnt0, cnt1));
+	}
+	int result = 0;
+	for (const auto& v : list) {
+		for (int i = v.first ; i <= m ; ++i) {
+			for (int j = v.second ; j <= n ; ++j) {
+				next[i][j] = max(next[i][j], dp[i-v.first][j-v.second] + 1);
+				result = max(result, next[i][j]);
 			}
 		}
-		next[zCnt][oCnt] = max(dp[zCnt][oCnt], 1);
-		result = max(next[zCnt][oCnt], result);
-		dp = move(next);
+		dp = next;
 	}
 	return result;
 }
