@@ -4,7 +4,7 @@ SRC=$(filter-out main.cpp,$(wildcard *.cpp))
 STATIC_OBJ=$(SRC:%.cpp=%.o)
 HEADER=$(wildcard *.h)
 CFLAGS+=-O3
-CXXFLAGS+=-O3 -std=c++11 -Weffc++
+CXXFLAGS+=-O3 -std=c++17 -Weffc++
 INC_PATH=.
 DATA_TYPE_INCLUDE_PATH=../data_type
 deps := $(SRC:%.cpp=.%.o.d)
