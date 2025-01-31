@@ -3,17 +3,30 @@
 #include <vector>
 
 using std::vector;
+using std::pair;
 
 int Solution::numTilings(int n) {
+	vector<pair<long, long>> dp(n + 1, pair<long, long>(0, 0));
 	int mod = 1e9 + 7;
-	vector<vector<long>> dp(n + 1, vector<long>(3, 0));
+	dp[0].first = 1;
 
-	dp[0][0] = dp[1][0] = 1;
+	for (int i = 1 ; i <= n ; ++i) {
+		// two pieces
+		dp[i].first += dp[i-1].first;
+		dp[i].second += dp[i-1].second;
+		if (i > 1) {
+			dp[i].first += dp[i-2].first;
+		}
+		dp[i].first %= mod;
+		dp[i].second %= mod;
 
-	for (int i = 2 ; i <= n ; ++i) {
-		dp[i][0] = (dp[i-1][0] + dp[i-2][0] + dp[i-1][1] + dp[i-1][2]) % mod;
-		dp[i][1] = (dp[i-1][1] + dp[i-2][0]) % mod;
-		dp[i][2] = (dp[i-1][2] + dp[i-2][0]) % mod;
+		// three pieces
+		dp[i].first += dp[i-1].second;
+		if (i > 1) {
+			dp[i].second += (2 * dp[i-2].first);
+		}
+		dp[i].first %= mod;
+		dp[i].second %= mod;
 	}
-	return dp[n][0];
+	return dp.back().first;
 }
