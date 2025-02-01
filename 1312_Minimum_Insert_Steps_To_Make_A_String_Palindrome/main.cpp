@@ -5,7 +5,7 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	string input = "leetcode";
+	string input = "zjveiiwvc";
 	Solution* test = new Solution();
 	cout << test->minInsertions(input) << endl;
 	return 0;
