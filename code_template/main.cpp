@@ -25,6 +25,18 @@ int main(void) {
 	result = test->dijstra(edges, 4, 0);
 	for (const auto& v : result) cout << v << " ";
 	cout << endl;
+
+	string text = "ABABDABACDABABCABAB";
+	string pattern = "ABABCABAB";
+
+	vector<int> matches = test->KMPsearch(text, pattern);
+
+	cout << "Pattern found at index: ";
+	for (int idx : matches) {
+		cout << idx << " ";
+	}
+	cout << endl;
+
 	return 0;
 }
 
