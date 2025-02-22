@@ -6,7 +6,6 @@ class Solution {
     public :
         Solution() {}
 	int findMaxConsecutiveOnes(vector<int>& nums);
-	int findMaxConsecutiveOnes2(vector<int>& nums);
     private :
         virtual ~Solution() {}
         Solution& operator=(const Solution& source);
