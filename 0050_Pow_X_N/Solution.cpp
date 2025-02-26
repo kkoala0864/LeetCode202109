@@ -2,11 +2,8 @@
 #include <iostream>
 
 double Solution::myPow(double x, int n) {
-	double result = 1;
-	while (n) {
-		if (n % 2) result = n > 0 ? result * x : result / x;
-		x *= x;
-		n /= 2;
-	}
-	return result;
+	if (n == 0) return 1;
+	double one = n < 0 ? 1 / x : x;
+	double v = myPow(x, n / 2);
+	return n & 1 ? one * v * v : v * v;
 }
