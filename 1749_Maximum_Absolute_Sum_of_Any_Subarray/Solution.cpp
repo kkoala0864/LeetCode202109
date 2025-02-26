@@ -6,7 +6,6 @@
 using std::max;
 using std::min;
 
-//kadane algorithm
 int Solution::maxAbsoluteSum(vector<int>& nums) {
 	int minV = nums[0];
 	int maxV = nums[0];
