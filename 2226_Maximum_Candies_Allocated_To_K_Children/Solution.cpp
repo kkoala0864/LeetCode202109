@@ -1,20 +1,34 @@
 #include <Solution.h>
 #include <iostream>
+#include <algorithm>
+
+using std::max;
+using std::cout;
+using std::endl;
+
+long long check(vector<int>& c, long long mid) {
+	long long result = 0;
+	for (const auto& v : c) {
+		result += ((long long)v / mid);
+	}
+	return result;
+}
 
 int Solution::maximumCandies(vector<int>& candies, long long k) {
-	int start = 0, end = 10000000;
-	int mid = 0;
-	while (start < end) {
-		int mid = (end + start+1) / 2;
-		long long cnt = 0;
-		for (const auto& iter : candies) {
-			cnt += iter/mid;
-		}
-		if (cnt < k) {
-			end = mid - 1;
+	long long sum = 0;
+	for (const auto& c : candies) sum += (long long)c;
+
+	long long l = 0, r = sum / k;
+	long long mid = 0;
+
+	while (l < r) {
+		mid = r - (r - l) / 2;
+
+		if (check(candies, mid) >= k) {
+			l = mid;
 		} else {
-			start = mid;
+			r = mid - 1;
 		}
 	}
-	return start;
+	return l;
 }
