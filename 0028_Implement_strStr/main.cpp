@@ -9,8 +9,6 @@ int main(void) {
 	string needle = "leeto";
 	Solution* test = new Solution();
 	cout << test->strStr(input, needle) << endl;
-	cout << test->strStr2(input, needle) << endl;
-	cout << test->strStr3(input, needle) << endl;
 	return 0;
 }
 

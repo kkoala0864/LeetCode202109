@@ -1,21 +1,41 @@
 #include <Solution.h>
 #include <iostream>
+#include <vector>
+
+using std::vector;
+using std::cout;
+using std::endl;
+
+vector<int> getLPS(const string& p) {
+	int size = p.size();
+	vector<int> lps(size, 0);
+
+	for (int i = 1 ; i < size ; ++i) {
+		int j = lps[i-1];
+		while (j > 0 && p[i] != p[j]) {
+			j = lps[j-1];
+		}
+		lps[i] = j + (p[i] == p[j]);
+	}
+	return lps;
+}
 
 int Solution::strStr(string haystack, string needle) {
-	if (needle == "") return 0;
-	if (haystack.size() < needle.size()) return -1;
-	int hi = 0;
-	while (hi <= (haystack.size() - needle.size())) {
-		if (haystack[hi] == needle[0]) {
-			int ni = 0;
-			int thi = hi;
-			while (ni < needle.size() && haystack[thi] == needle[ni]) {
-				++ni;
-				++thi;
+	vector<int> lps = getLPS(needle);
+	vector<int> kmp;
+
+	for (int i = 0; i < haystack.size(); ++i) {
+		if (i == 0) {
+			kmp.emplace_back(haystack[0] == needle[0]);
+		} else {
+			int j = kmp[i - 1];
+			while (j > 0 && haystack[i] != needle[j]) {
+				j = lps[j - 1];
 			}
-			if (ni == needle.size()) return hi;
+			kmp.emplace_back(j + (haystack[i] == needle[j]));
 		}
-		++hi;
+		if (kmp.back() == needle.size())
+			break;
 	}
-	return -1;
+	return kmp.back() == needle.size() ? kmp.size() - needle.size() : -1;
 }
