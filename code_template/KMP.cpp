@@ -22,8 +22,7 @@ vector<int> Solution::KMPsearch(const string &text, const string &pattern) {
 
 	result[0] = (text[0] == pattern[0]);
 	for (int i = 1 ; i < text.size() ; ++i) {
-		int j = lps[i-1];
-
+		int j = result[i-1];
 		while (j > 0 && text[i] != pattern[j]) {
 			j = lps[j-1];
 		}
