@@ -1,14 +1,6 @@
 #include <Solution.h>
 #include <iostream>
 
-bool checkEmpty(const string& s) {
-	for (const auto& c : s) {
-		if (c == ' ') continue;
-		return false;
-	}
-	return true;
-}
-
 vector<string> Solution::removeComments(vector<string>& source) {
 	vector<string> result;
 	bool bc = false;
