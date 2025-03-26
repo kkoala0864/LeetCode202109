@@ -5,8 +5,8 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<vector<int>> input = {{2,4},{6,8}};
-	int x = 2;
+	vector<vector<int>> input = {{931,128},{639,712}};
+	int x = 73;
 	Solution* test = new Solution();
 	cout << test->minOperations(input, x) << endl;
 	return 0;
