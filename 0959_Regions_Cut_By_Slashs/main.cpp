@@ -5,9 +5,8 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<string> input = {" /","/ "};
-	Solution* test = new Solution();
+	vector<string> input = {" /", "/ "};
+	Solution *test = new Solution();
 	cout << test->regionsBySlashes(input) << endl;
 	return 0;
 }
-

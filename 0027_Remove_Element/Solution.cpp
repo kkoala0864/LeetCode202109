@@ -1,7 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 
-int Solution::removeElement(vector<int>& nums, int val) {
+int Solution::removeElement(vector<int> &nums, int val) {
 	int idx = 0;
 	int iter = 0;
 	while (iter < nums.size()) {

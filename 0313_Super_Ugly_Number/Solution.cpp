@@ -3,18 +3,19 @@
 #include <algorithm>
 #include <queue>
 
-using std::priority_queue;
 using std::pair;
+using std::priority_queue;
 
-int Solution::nthSuperUglyNumber(int n, vector<int>& primes) {
-	if (n == 1) return 1;
+int Solution::nthSuperUglyNumber(int n, vector<int> &primes) {
+	if (n == 1)
+		return 1;
 
 	vector<int> p(primes.size(), 0);
 	priority_queue<pair<long, int>, vector<pair<long, int>>, std::greater<pair<long, int>>> pq;
 
 	vector<long> dp = {1};
 
-	for (int i = 0 ; i < primes.size() ; ++i) {
+	for (int i = 0; i < primes.size(); ++i) {
 		pq.emplace(pair<long, int>(dp[p[i]] * (long)primes[i], i));
 	}
 
@@ -22,7 +23,8 @@ int Solution::nthSuperUglyNumber(int n, vector<int>& primes) {
 		long cur = pq.top().first;
 		int idx = pq.top().second;
 		pq.pop();
-		if (cur > dp.back()) dp.emplace_back(cur);
+		if (cur > dp.back())
+			dp.emplace_back(cur);
 
 		++p[idx];
 		pq.emplace(pair<long, int>(dp[p[idx]] * (long)primes[idx], idx));

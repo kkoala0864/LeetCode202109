@@ -7,9 +7,10 @@ using std::vector;
 int Solution::minimumLength(string s) {
 
 	vector<int> cnt(26, 0);
-	for (const auto& c : s) ++cnt[c-'a'];
+	for (const auto &c : s)
+		++cnt[c - 'a'];
 	int result = 0;
-	for (const auto& v : cnt) {
+	for (const auto &v : cnt) {
 		if (v < 3) {
 			result += v;
 		} else {

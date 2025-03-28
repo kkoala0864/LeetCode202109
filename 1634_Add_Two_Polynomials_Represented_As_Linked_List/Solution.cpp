@@ -1,12 +1,12 @@
 #include <Solution.h>
 #include <iostream>
 
-PolyNode* Solution::addPoly(PolyNode* poly1, PolyNode* poly2) {
+PolyNode *Solution::addPoly(PolyNode *poly1, PolyNode *poly2) {
 	auto i1 = poly1;
 	auto i2 = poly2;
 
-	PolyNode* iter = new PolyNode();
-	PolyNode* result = iter;
+	PolyNode *iter = new PolyNode();
+	PolyNode *result = iter;
 
 	while (i1 && i2) {
 		if (i1->power == i2->power) {

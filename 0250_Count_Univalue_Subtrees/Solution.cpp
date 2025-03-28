@@ -1,8 +1,9 @@
 #include <Solution.h>
 #include <iostream>
 
-bool dfs(TreeNode* node, int& result) {
-	if (!node) return true;
+bool dfs(TreeNode *node, int &result) {
+	if (!node)
+		return true;
 
 	int lv = node->left ? node->left->val : node->val;
 	int rv = node->right ? node->right->val : node->val;
@@ -17,7 +18,7 @@ bool dfs(TreeNode* node, int& result) {
 	return false;
 }
 
-int Solution::countUnivalSubtrees(TreeNode* root) {
+int Solution::countUnivalSubtrees(TreeNode *root) {
 	int result = 0;
 	dfs(root, result);
 	return result;

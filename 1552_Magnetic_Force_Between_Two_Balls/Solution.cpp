@@ -4,11 +4,11 @@
 
 using std::sort;
 
-bool getResult(vector<int>& p, int m, int k) {
+bool getResult(vector<int> &p, int m, int k) {
 	int last = p[0];
 	int cnt = 1;
 
-	for (int i = 1 ; i < p.size() && cnt < m ; ++i) {
+	for (int i = 1; i < p.size() && cnt < m; ++i) {
 		if (p[i] - last >= k) {
 			++cnt;
 			last = p[i];
@@ -17,7 +17,7 @@ bool getResult(vector<int>& p, int m, int k) {
 	return cnt == m;
 }
 
-int Solution::maxDistance(vector<int>& position, int m) {
+int Solution::maxDistance(vector<int> &position, int m) {
 	sort(position.begin(), position.end());
 	int diff = position.back() - position[0] + 1;
 

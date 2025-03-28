@@ -6,8 +6,7 @@ using std::endl;
 
 int main(void) {
 	string input = "lEetcOde";
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->sortVowels(input) << endl;
 	return 0;
 }
-

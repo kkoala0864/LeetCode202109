@@ -1,12 +1,12 @@
 #include <Solution.h>
 #include <iostream>
 
-using std::min;
-using std::max;
 using std::cout;
 using std::endl;
+using std::max;
+using std::min;
 
-vector<vector<int>> Solution::insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
+vector<vector<int>> Solution::insert(vector<vector<int>> &intervals, vector<int> &newInterval) {
 	vector<vector<int>> result;
 
 	int idx = 0;

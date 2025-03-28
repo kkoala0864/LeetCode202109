@@ -6,8 +6,7 @@ using std::endl;
 
 int main(void) {
 	string input = "leetcode";
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->firstUniqChar(input) << endl;
 	return 0;
 }
-

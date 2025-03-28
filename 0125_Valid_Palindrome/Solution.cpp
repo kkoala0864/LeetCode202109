@@ -9,18 +9,23 @@ bool isAlphaNum(char c) {
 }
 
 bool Solution::isPalindrome(string s) {
-	if (s.size() < 2) return true;
+	if (s.size() < 2)
+		return true;
 	int left = 0;
 	int right = s.size() - 1;
 
 	while (true) {
-		while(left < right && !isAlphaNum(s[left])) ++left;
-		while(right > left && !isAlphaNum(s[right])) --right;
-		if (left > right) return true;
+		while (left < right && !isAlphaNum(s[left]))
+			++left;
+		while (right > left && !isAlphaNum(s[right]))
+			--right;
+		if (left > right)
+			return true;
 		if (tolower(s[left]) == tolower(s[right])) {
 			++left;
 			--right;
-		} else break;
+		} else
+			break;
 	}
 
 	return false;

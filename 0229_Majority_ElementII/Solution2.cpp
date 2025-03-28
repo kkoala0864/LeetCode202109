@@ -1,13 +1,13 @@
 #include <Solution.h>
 #include <iostream>
 
-vector<int> Solution::majorityElement2(vector<int>& nums) {
+vector<int> Solution::majorityElement2(vector<int> &nums) {
 	int val1 = INT_MAX;
 	int val2 = INT_MAX;
 	int cnt1 = 0;
 	int cnt2 = 0;
 
-	for (int i = 0 ; i < nums.size() ; ++i) {
+	for (int i = 0; i < nums.size(); ++i) {
 		if (val1 == nums[i]) {
 			++cnt1;
 		} else if (val2 == nums[i]) {
@@ -26,11 +26,15 @@ vector<int> Solution::majorityElement2(vector<int>& nums) {
 	cnt1 = 0;
 	cnt2 = 0;
 	vector<int> result;
-	for (const auto& v : nums) {
-		if (v == val1) ++cnt1;
-		if (v == val2) ++cnt2;
+	for (const auto &v : nums) {
+		if (v == val1)
+			++cnt1;
+		if (v == val2)
+			++cnt2;
 	}
-	if (cnt1 > nums.size() / 3) result.emplace_back(val1);
-	if (cnt2 > nums.size() / 3) result.emplace_back(val2);
+	if (cnt1 > nums.size() / 3)
+		result.emplace_back(val1);
+	if (cnt2 > nums.size() / 3)
+		result.emplace_back(val2);
 	return result;
 }

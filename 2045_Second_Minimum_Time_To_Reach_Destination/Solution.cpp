@@ -5,12 +5,12 @@
 using std::pair;
 using std::queue;
 
-int Solution::secondMinimum(int n, vector<vector<int>>& edges, int time, int change) {
+int Solution::secondMinimum(int n, vector<vector<int>> &edges, int time, int change) {
 	vector<vector<int>> od(n, vector<int>());
 
-	for (const auto& e : edges) {
-		od[e[0]-1].emplace_back(e[1]-1);
-		od[e[1]-1].emplace_back(e[0]-1);
+	for (const auto &e : edges) {
+		od[e[0] - 1].emplace_back(e[1] - 1);
+		od[e[1] - 1].emplace_back(e[0] - 1);
 	}
 
 	vector<vector<int>> minTime(n, vector<int>());
@@ -28,13 +28,16 @@ int Solution::secondMinimum(int n, vector<vector<int>>& edges, int time, int cha
 		if (cv & 1) {
 			curTime = (cv + 1) * change;
 		}
-		for (const auto& nextNode : od[curNode]) {
-			if (minTime[nextNode].size() == 2) continue;
-			if (!minTime[nextNode].empty() && minTime[nextNode].back() == (curTime + time)) continue;
+		for (const auto &nextNode : od[curNode]) {
+			if (minTime[nextNode].size() == 2)
+				continue;
+			if (!minTime[nextNode].empty() && minTime[nextNode].back() == (curTime + time))
+				continue;
 			minTime[nextNode].emplace_back(curTime + time);
 			que.emplace(pair<int, int>(nextNode, curTime + time));
 		}
-		if (minTime[n-1].size() == 2) break;
+		if (minTime[n - 1].size() == 2)
+			break;
 	}
-	return minTime[n-1].back();
+	return minTime[n - 1].back();
 }

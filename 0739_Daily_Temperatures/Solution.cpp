@@ -4,7 +4,7 @@
 
 using std::stack;
 
-vector<int> Solution::dailyTemperatures(vector<int>& temperatures) {
+vector<int> Solution::dailyTemperatures(vector<int> &temperatures) {
 	stack<int> st;
 	vector<int> result(temperatures.size(), 0);
 	int i = 0;

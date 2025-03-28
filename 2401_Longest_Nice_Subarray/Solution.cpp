@@ -4,12 +4,12 @@
 
 using std::max;
 
-int Solution::longestNiceSubarray(vector<int>& nums) {
+int Solution::longestNiceSubarray(vector<int> &nums) {
 	int bitmask = 0;
 
 	int l = 0;
 	int result = 1;
-	for (int i = 0 ; i < nums.size() ; ++i) {
+	for (int i = 0; i < nums.size(); ++i) {
 		while (bitmask & nums[i]) {
 			bitmask = bitmask & ~nums[l++];
 		}
@@ -17,5 +17,4 @@ int Solution::longestNiceSubarray(vector<int>& nums) {
 		result = max(result, i - l + 1);
 	}
 	return result;
-
 }

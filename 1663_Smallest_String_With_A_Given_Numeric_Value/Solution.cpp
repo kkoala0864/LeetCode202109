@@ -14,13 +14,15 @@ string Solution::getSmallestString(int n, int k) {
 			k = 0;
 		}
 	}
-	if (end < 0) return result;
+	if (end < 0)
+		return result;
 
 	int i = 0;
-	for (int i = 0 ; i < end ; ++i) {
+	for (int i = 0; i < end; ++i) {
 		result[i] = 'a';
 		--result[end];
-		if (result[end]-'a' == -1) ++end;
+		if (result[end] - 'a' == -1)
+			++end;
 	}
 	return result;
 }

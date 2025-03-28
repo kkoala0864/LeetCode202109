@@ -7,7 +7,7 @@ using std::to_string;
 
 int Solution::findNthDigit(int n) {
 	int rest = n;
-	for (int i = 0 ; pow(10, i) < (INT_MAX / 10) ; ++i) {
+	for (int i = 0; pow(10, i) < (INT_MAX / 10); ++i) {
 		long int lower = pow(10, i);
 		long int upper = pow(10, i + 1);
 		int offset = i + 1;
@@ -19,10 +19,10 @@ int Solution::findNthDigit(int n) {
 			int last = rest / offset;
 			int idx = rest % offset;
 			if (idx > 0) {
-				string str = to_string(lower+last);
-				return str[idx-1] - '0';
+				string str = to_string(lower + last);
+				return str[idx - 1] - '0';
 			} else {
-				string str = to_string(lower+last-1);
+				string str = to_string(lower + last - 1);
 				return str[i] - '0';
 			}
 		}

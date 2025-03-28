@@ -5,7 +5,7 @@
 using std::cout;
 using std::endl;
 
-vector<int> Solution::findClosestElements2(vector<int>& arr, int k, int x) {
+vector<int> Solution::findClosestElements2(vector<int> &arr, int k, int x) {
 	int idx = lower_bound(arr.begin(), arr.end(), x) - arr.begin();
 
 	int sIdx = idx - 1;
@@ -22,7 +22,7 @@ vector<int> Solution::findClosestElements2(vector<int>& arr, int k, int x) {
 			++bIdx;
 		}
 	}
-	for(int i = sIdx + 1 ; i < bIdx ; ++i) {
+	for (int i = sIdx + 1; i < bIdx; ++i) {
 		result.emplace_back(arr[i]);
 	}
 	return result;

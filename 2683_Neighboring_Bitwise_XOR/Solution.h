@@ -4,12 +4,14 @@
 using std::vector;
 
 class Solution {
-    public :
-        Solution() {}
-	bool doesValidArrayExist(vector<int>& derived);
-    private :
-        virtual ~Solution() {}
-        Solution& operator=(const Solution& source);
-        Solution(const Solution&);
-};
+public:
+	Solution() {
+	}
+	bool doesValidArrayExist(vector<int> &derived);
 
+private:
+	virtual ~Solution() {
+	}
+	Solution &operator=(const Solution &source);
+	Solution(const Solution &);
+};

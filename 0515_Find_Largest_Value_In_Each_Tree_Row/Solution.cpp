@@ -4,14 +4,15 @@
 #include <algorithm>
 #include <climits>
 
-using std::queue;
 using std::max;
+using std::queue;
 
-vector<int> Solution::largestValues(TreeNode* root) {
+vector<int> Solution::largestValues(TreeNode *root) {
 	vector<int> result;
-	if (!root) return result;
+	if (!root)
+		return result;
 
-	queue<TreeNode*> que, next;
+	queue<TreeNode *> que, next;
 
 	que.emplace(root);
 	int v = INT_MIN;
@@ -21,8 +22,10 @@ vector<int> Solution::largestValues(TreeNode* root) {
 		que.pop();
 		v = max(v, cur->val);
 
-		if (cur->left) next.emplace(cur->left);
-		if (cur->right) next.emplace(cur->right);
+		if (cur->left)
+			next.emplace(cur->left);
+		if (cur->right)
+			next.emplace(cur->right);
 
 		if (que.empty()) {
 			result.emplace_back(v);

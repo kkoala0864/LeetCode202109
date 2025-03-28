@@ -7,8 +7,7 @@ using std::endl;
 int main(void) {
 	string input1 = "abc";
 	string input2 = "pqr";
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->mergeAlternately(input1, input2) << endl;
 	return 0;
 }
-

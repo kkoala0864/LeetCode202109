@@ -2,27 +2,29 @@
 #include <algorithm>
 #include <map>
 
-using std::max;
 using std::map;
+using std::max;
 
 class MyCalendarThree {
-    public :
-	MyCalendarThree() {}
+public:
+	MyCalendarThree() {
+	}
 
 	int book(int start, int end) {
 		int cur = 0, result = 0;
 		++_m[start];
 		--_m[end];
-		for (const auto& e : _m) {
+		for (const auto &e : _m) {
 			cur += e.second;
 			result = max(result, cur);
 		}
 		return result;
 	}
-    private :
-	map<int, int> _m;
-        virtual ~MyCalendarThree() {}
-        MyCalendarThree& operator=(const MyCalendarThree& source);
-        MyCalendarThree(const MyCalendarThree&);
-};
 
+private:
+	map<int, int> _m;
+	virtual ~MyCalendarThree() {
+	}
+	MyCalendarThree &operator=(const MyCalendarThree &source);
+	MyCalendarThree(const MyCalendarThree &);
+};

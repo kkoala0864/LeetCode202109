@@ -9,12 +9,11 @@ int main(void) {
 	string a = "my";
 	string b = "squirrel";
 	int k = 15;
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	auto result = test->beautifulIndices(s, a, b, k);
-	for (const auto& idx : result) {
+	for (const auto &idx : result) {
 		cout << idx << " ";
 	}
 	cout << endl;
 	return 0;
 }
-

@@ -3,7 +3,7 @@
 
 //[ 4, 5, 6, 7, 0 ,1 ,2 ]
 
-int Solution::search2(vector<int>& nums, int target) {
+int Solution::search2(vector<int> &nums, int target) {
 	int start = 0;
 	int end = nums.size() - 1;
 

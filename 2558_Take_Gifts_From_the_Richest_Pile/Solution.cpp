@@ -5,12 +5,12 @@
 
 using std::priority_queue;
 
-long long Solution::pickGifts(vector<int>& gifts, int k) {
+long long Solution::pickGifts(vector<int> &gifts, int k) {
 	priority_queue<int> pq;
 
 	long long result = 0;
 
-	for (const auto& g : gifts) {
+	for (const auto &g : gifts) {
 		pq.emplace(g);
 		result += g;
 	}
@@ -19,7 +19,7 @@ long long Solution::pickGifts(vector<int>& gifts, int k) {
 		int c = pq.top();
 		pq.pop();
 		int r = sqrt(c);
-		result -= (long long)(c-r);
+		result -= (long long)(c - r);
 		pq.emplace(r);
 	}
 	return result;

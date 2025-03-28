@@ -2,16 +2,16 @@
 #include <iostream>
 #include <queue>
 
-using std::priority_queue;
-using std::pair;
-using std::make_pair;
 using std::cout;
 using std::endl;
+using std::make_pair;
+using std::pair;
+using std::priority_queue;
 
-vector<int> Solution::kthSmallestPrimeFraction(vector<int>& arr, int k) {
+vector<int> Solution::kthSmallestPrimeFraction(vector<int> &arr, int k) {
 	priority_queue<pair<double, pair<int, int>>, vector<pair<double, pair<int, int>>>, std::greater<pair<double, pair<int, int>>>> pq;
 
-	for (int i = 1 ; i < arr.size() ; ++i) {
+	for (int i = 1; i < arr.size(); ++i) {
 		pq.emplace(make_pair((double)arr[0] / (double)arr[i], make_pair(0, i)));
 	}
 	vector<int> result = {0, 0};

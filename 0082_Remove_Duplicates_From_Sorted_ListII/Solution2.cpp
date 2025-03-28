@@ -3,10 +3,11 @@
 #include <stack>
 using std::stack;
 
-ListNode* Solution::deleteDuplicates2(ListNode* head) {
-	if (!head) return head;
-	stack<ListNode*> st;
-	ListNode* iter = head;
+ListNode *Solution::deleteDuplicates2(ListNode *head) {
+	if (!head)
+		return head;
+	stack<ListNode *> st;
+	ListNode *iter = head;
 	while (iter) {
 		if (!st.empty() && iter->val == st.top()->val) {
 			while (iter && iter->val == st.top()->val) {
@@ -27,4 +28,3 @@ ListNode* Solution::deleteDuplicates2(ListNode* head) {
 	}
 	return st.empty() ? nullptr : head;
 }
-

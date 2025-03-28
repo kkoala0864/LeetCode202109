@@ -5,7 +5,6 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-    MovingAverage* test = new MovingAverage();
-    return 0;
+	MovingAverage *test = new MovingAverage();
+	return 0;
 }
-

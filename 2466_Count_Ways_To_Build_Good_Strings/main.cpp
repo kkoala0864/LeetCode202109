@@ -5,8 +5,7 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-    Solution* test = new Solution();
-    cout << test->countGoodStrings(3,3,1,1) << endl;
-    return 0;
+	Solution *test = new Solution();
+	cout << test->countGoodStrings(3, 3, 1, 1) << endl;
+	return 0;
 }
-

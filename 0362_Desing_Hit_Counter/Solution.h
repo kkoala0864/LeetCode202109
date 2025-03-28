@@ -3,7 +3,7 @@
 using std::deque;
 
 class HitCounter {
-    public :
+public:
 	HitCounter() {
 		list = deque<int>();
 		cnt = 0;
@@ -21,11 +21,12 @@ class HitCounter {
 		}
 		return cnt;
 	}
-    private :
+
+private:
 	deque<int> list;
 	int cnt;
-        virtual ~HitCounter() {}
-        HitCounter& operator=(const HitCounter& source);
-        HitCounter(const HitCounter&);
+	virtual ~HitCounter() {
+	}
+	HitCounter &operator=(const HitCounter &source);
+	HitCounter(const HitCounter &);
 };
-

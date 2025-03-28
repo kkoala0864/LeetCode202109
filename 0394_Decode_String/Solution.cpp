@@ -4,18 +4,19 @@
 using std::cout;
 using std::endl;
 
-string recur(string s, int& i) {
+string recur(string s, int &i) {
 	string local("");
 	string num("");
 
-	for (; i < s.size() ; ++i) {
+	for (; i < s.size(); ++i) {
 		if (s[i] == ']') {
 			return local;
 		} else if (s[i] == '[') {
 			string substr = recur(s, ++i);
 			int n = num == "" ? 1 : stoi(num);
 			num = "";
-			while (n--) local += substr;
+			while (n--)
+				local += substr;
 		} else if (s[i] >= 'a' && s[i] <= 'z') {
 			local.push_back(s[i]);
 		} else {

@@ -6,12 +6,11 @@ using std::endl;
 
 int main(void) {
 	vector<int> input = {0};
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->removeElement2(input, 0) << endl;
-	for (const auto& iter : input) {
+	for (const auto &iter : input) {
 		cout << iter << " ";
 	}
 	cout << endl;
 	return 0;
 }
-

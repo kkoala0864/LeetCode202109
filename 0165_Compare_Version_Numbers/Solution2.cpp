@@ -3,8 +3,8 @@
 #include <vector>
 #include <algorithm>
 
-using std::vector;
 using std::max;
+using std::vector;
 
 int Solution::compareVersion2(string version1, string version2) {
 	int idx1 = 0, idx2 = 0;
@@ -25,7 +25,8 @@ int Solution::compareVersion2(string version1, string version2) {
 		int val1 = 0, val2 = 0;
 		val1 = s1.empty() ? 0 : stoi(s1);
 		val2 = s2.empty() ? 0 : stoi(s2);
-		if (val1 == val2) continue;
+		if (val1 == val2)
+			continue;
 		return val1 < val2 ? -1 : 1;
 	}
 	return 0;

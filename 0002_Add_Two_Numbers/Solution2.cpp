@@ -4,10 +4,10 @@
 
 using std::queue;
 
-ListNode* Solution::addTwoNumbers2(ListNode* l1, ListNode* l2) {
+ListNode *Solution::addTwoNumbers2(ListNode *l1, ListNode *l2) {
 	int carry = 0;
-	ListNode* result = new ListNode();
-	ListNode* iter = result;
+	ListNode *result = new ListNode();
+	ListNode *iter = result;
 	while (l1 || l2) {
 		int val = carry;
 		if (l1) {
@@ -23,7 +23,7 @@ ListNode* Solution::addTwoNumbers2(ListNode* l1, ListNode* l2) {
 		iter = iter->next;
 	}
 
-	if (carry > 0) iter->next = new ListNode(carry);
+	if (carry > 0)
+		iter->next = new ListNode(carry);
 	return result->next;
-
 }

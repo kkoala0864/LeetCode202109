@@ -5,10 +5,9 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<int> input = {2,2,1};
-    Solution* test = new Solution();
-    cout << test->singleNumber(input) << endl;
-    cout << test->singleNumber2(input) << endl;
-    return 0;
+	vector<int> input = {2, 2, 1};
+	Solution *test = new Solution();
+	cout << test->singleNumber(input) << endl;
+	cout << test->singleNumber2(input) << endl;
+	return 0;
 }
-

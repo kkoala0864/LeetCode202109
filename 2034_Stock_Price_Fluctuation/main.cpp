@@ -5,7 +5,7 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	StockPrice* test = new StockPrice();
+	StockPrice *test = new StockPrice();
 	test->update(1, 10);
 	test->update(2, 5);
 	cout << test->current() << endl;
@@ -16,4 +16,3 @@ int main(void) {
 	cout << test->minimum() << endl;
 	return 0;
 }
-

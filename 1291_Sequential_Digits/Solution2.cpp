@@ -14,10 +14,10 @@ vector<int> Solution::sequentialDigits2(int low, int high) {
 	int ll = getDLen(low), hl = getDLen(high);
 
 	vector<int> result;
-	for (int i = ll ; i <= hl ; ++i) {
+	for (int i = ll; i <= hl; ++i) {
 		int v = 0;
 		int mask = 0;
-		for (int j = 1 ; j <= i ; ++j) {
+		for (int j = 1; j <= i; ++j) {
 			v *= 10;
 			v += j;
 			mask *= 10;
@@ -26,8 +26,9 @@ vector<int> Solution::sequentialDigits2(int low, int high) {
 		if (v >= low && v <= high) {
 			result.emplace_back(v);
 		}
-		if (v > high) return result;
-		for (int j = 2 ; j <= (9 - i + 1) ; ++j) {
+		if (v > high)
+			return result;
+		for (int j = 2; j <= (9 - i + 1); ++j) {
 			v += mask;
 			if (v >= low && v <= high) {
 				result.emplace_back(v);

@@ -4,7 +4,7 @@
 int Solution::partitionString(string s) {
 	int bitset = 0;
 	int result = 1;
-	for (const auto& c : s) {
+	for (const auto &c : s) {
 		if (bitset & (1 << (c - 'a'))) {
 			++result;
 			bitset = 0;

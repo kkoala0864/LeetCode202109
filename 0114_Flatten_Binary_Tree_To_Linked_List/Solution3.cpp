@@ -1,8 +1,9 @@
 #include <Solution.h>
 #include <iostream>
 
-TreeNode* dfs(TreeNode* node) {
-	if (!node) return node;
+TreeNode *dfs(TreeNode *node) {
+	if (!node)
+		return node;
 
 	auto le = dfs(node->left);
 	auto re = dfs(node->right);
@@ -13,9 +14,10 @@ TreeNode* dfs(TreeNode* node) {
 		node->left = nullptr;
 	}
 
-	return re ? re : le ? le : node;
+	return re ? re : le ? le
+	                    : node;
 }
 
-void Solution::flatten3(TreeNode* root) {
+void Solution::flatten3(TreeNode *root) {
 	dfs(root);
 }

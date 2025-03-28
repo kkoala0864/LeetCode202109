@@ -2,7 +2,7 @@
 #include <iostream>
 
 // 1, 1, 1, 4, 5, 6, 7
-void Solution::wiggleSort(vector<int>& nums) {
+void Solution::wiggleSort(vector<int> &nums) {
 	sort(nums.begin(), nums.end());
 
 	vector<int> result = nums;

@@ -3,16 +3,17 @@
 #include <unordered_map>
 #include <algorithm>
 
-using std::unordered_map;
-using std::swap;
 using std::min;
+using std::swap;
+using std::unordered_map;
 
-int Solution::longestPalindrome(vector<string>& words) {
+int Solution::longestPalindrome(vector<string> &words) {
 	unordered_map<string, int> uMap;
-	for (const auto& w : words) ++uMap[w];
+	for (const auto &w : words)
+		++uMap[w];
 
 	int result = 0;
-	for (auto& e : uMap) {
+	for (auto &e : uMap) {
 		if (e.first[0] == e.first[1]) {
 			if (e.second > 1) {
 				result += ((e.second / 2) * 4);
@@ -28,7 +29,7 @@ int Solution::longestPalindrome(vector<string>& words) {
 			}
 		}
 	}
-	for (const auto& e : uMap) {
+	for (const auto &e : uMap) {
 		if (e.second > 0 && e.first[0] == e.first[1]) {
 			result += 2;
 			break;

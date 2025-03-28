@@ -2,26 +2,27 @@
 #include <iostream>
 #include <algorithm>
 
-using std::reverse;
 using std::cout;
 using std::endl;
+using std::reverse;
 
-bool check(const string& golden, const string& str) {
-	for (int i = 0 ; i < golden.size() ; ++i) {
-		if (str[i] == ' ' || golden[i] == str[i]) continue;
+bool check(const string &golden, const string &str) {
+	for (int i = 0; i < golden.size(); ++i) {
+		if (str[i] == ' ' || golden[i] == str[i])
+			continue;
 		return false;
 	}
 	return true;
 }
 
-bool Solution::placeWordInCrossword(vector<vector<char>>& board, string word) {
+bool Solution::placeWordInCrossword(vector<vector<char>> &board, string word) {
 	int m = board.size();
 	int n = board[0].size();
 
 	vector<string> candidate;
-	for (int i = 0 ; i < m ; ++i) {
+	for (int i = 0; i < m; ++i) {
 		string tmp;
-		for (int j = 0 ; j < n ; ++j) {
+		for (int j = 0; j < n; ++j) {
 			if (board[i][j] == '#') {
 				if (tmp.size() == word.size()) {
 					candidate.emplace_back(tmp);
@@ -35,11 +36,11 @@ bool Solution::placeWordInCrossword(vector<vector<char>>& board, string word) {
 			candidate.emplace_back(tmp);
 		}
 	}
-	for (int i = 0 ; i < n ; ++i) {
+	for (int i = 0; i < n; ++i) {
 		string tmp;
-		for (int j = 0 ; j < m ; ++j) {
+		for (int j = 0; j < m; ++j) {
 			if (board[j][i] == '#') {
-				if (tmp.size()== word.size()) {
+				if (tmp.size() == word.size()) {
 					cout << tmp << endl;
 					candidate.emplace_back(tmp);
 				}
@@ -54,9 +55,11 @@ bool Solution::placeWordInCrossword(vector<vector<char>>& board, string word) {
 	}
 	string rev = word;
 	reverse(rev.begin(), rev.end());
-	for (const auto& c : candidate) {
-		if (check(word, c)) return true;
-		if (check(rev, c)) return true;
+	for (const auto &c : candidate) {
+		if (check(word, c))
+			return true;
+		if (check(rev, c))
+			return true;
 	}
 	return false;
 }

@@ -4,9 +4,9 @@
 
 using std::sort;
 
-int geth(const vector<int>& piles, int k) {
+int geth(const vector<int> &piles, int k) {
 	int ret = 0;
-	for (const auto& iter : piles) {
+	for (const auto &iter : piles) {
 		if (iter % k) {
 			ret += (iter / k) + 1;
 		} else {
@@ -16,10 +16,10 @@ int geth(const vector<int>& piles, int k) {
 	return ret;
 }
 
-
-int Solution::minEatingSpeed(vector<int>& piles, int h) {
+int Solution::minEatingSpeed(vector<int> &piles, int h) {
 	sort(piles.begin(), piles.end());
-	if (piles.size() == h) return piles.back();
+	if (piles.size() == h)
+		return piles.back();
 
 	int start = 1, end = piles.back(), mid = 0;
 	while (start <= end) {

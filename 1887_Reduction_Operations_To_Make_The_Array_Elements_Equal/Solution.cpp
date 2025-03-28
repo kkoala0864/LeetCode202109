@@ -4,9 +4,10 @@
 
 using std::map;
 
-int Solution::reductionOperations(vector<int>& nums) {
+int Solution::reductionOperations(vector<int> &nums) {
 	map<int, int, std::greater<int>> m;
-	for (const auto& v : nums) ++m[v];
+	for (const auto &v : nums)
+		++m[v];
 
 	int result = 0;
 	int pre = 0;

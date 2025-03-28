@@ -3,8 +3,9 @@
 
 using std::min;
 
-bool Solution::find132pattern(vector<int>& nums) {
-	if (nums.size() < 3) return false;
+bool Solution::find132pattern(vector<int> &nums) {
+	if (nums.size() < 3)
+		return false;
 	stack<int> stk;
 	vector<int> min_array(nums.size());
 	min_array[0] = nums[0];

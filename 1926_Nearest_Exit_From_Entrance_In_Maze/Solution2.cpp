@@ -5,17 +5,21 @@
 using std::pair;
 using std::queue;
 
-int Solution::nearestExit2(vector<vector<char>>& maze, vector<int>& entrance) {
+int Solution::nearestExit2(vector<vector<char>> &maze, vector<int> &entrance) {
 	int m = maze.size();
 	int n = maze[0].size();
 
-	for (int i = 0 ; i < m ; ++i) {
-		if (maze[i][0] == '.') maze[i][0] = '*';
-		if (maze[i][n-1] == '.') maze[i][n-1] = '*';
+	for (int i = 0; i < m; ++i) {
+		if (maze[i][0] == '.')
+			maze[i][0] = '*';
+		if (maze[i][n - 1] == '.')
+			maze[i][n - 1] = '*';
 	}
-	for (int j = 0 ; j < n ; ++j) {
-		if (maze[0][j] == '.') maze[0][j] = '*';
-		if (maze[m-1][j] == '.') maze[m-1][j] = '*';
+	for (int j = 0; j < n; ++j) {
+		if (maze[0][j] == '.')
+			maze[0][j] = '*';
+		if (maze[m - 1][j] == '.')
+			maze[m - 1][j] = '*';
 	}
 
 	queue<pair<int, int>> que, next;
@@ -28,13 +32,16 @@ int Solution::nearestExit2(vector<vector<char>>& maze, vector<int>& entrance) {
 		int x = que.front().first;
 		int y = que.front().second;
 		que.pop();
-		if (maze[x][y] == '*') return result;
+		if (maze[x][y] == '*')
+			return result;
 
-		for (int i = 0 ; i < 4 ; ++i) {
+		for (int i = 0; i < 4; ++i) {
 			int nx = x + dir[i];
-			int ny = y + dir[i+1];
-			if (nx >= m || ny >= n || nx < 0 || ny < 0 || maze[nx][ny] == '+') continue;
-			if (maze[nx][ny] == '.') maze[nx][ny] = '+';
+			int ny = y + dir[i + 1];
+			if (nx >= m || ny >= n || nx < 0 || ny < 0 || maze[nx][ny] == '+')
+				continue;
+			if (maze[nx][ny] == '.')
+				maze[nx][ny] = '+';
 			next.emplace(pair<int, int>(nx, ny));
 		}
 
@@ -45,4 +52,3 @@ int Solution::nearestExit2(vector<vector<char>>& maze, vector<int>& entrance) {
 	}
 	return -1;
 }
-

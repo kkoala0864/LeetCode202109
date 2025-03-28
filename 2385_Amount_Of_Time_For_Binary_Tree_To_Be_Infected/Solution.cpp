@@ -6,12 +6,13 @@
 #include <unordered_set>
 
 using std::queue;
-using std::vector;
 using std::unordered_map;
 using std::unordered_set;
+using std::vector;
 
-void dfs(TreeNode* node, unordered_map<int, vector<int>>& o) {
-	if (!node) return;
+void dfs(TreeNode *node, unordered_map<int, vector<int>> &o) {
+	if (!node)
+		return;
 	if (node->left) {
 		o[node->val].emplace_back(node->left->val);
 		o[node->left->val].emplace_back(node->val);
@@ -24,7 +25,7 @@ void dfs(TreeNode* node, unordered_map<int, vector<int>>& o) {
 	}
 }
 
-int Solution::amountOfTime(TreeNode* root, int start) {
+int Solution::amountOfTime(TreeNode *root, int start) {
 	unordered_map<int, vector<int>> o;
 	unordered_set<int> s;
 
@@ -39,8 +40,9 @@ int Solution::amountOfTime(TreeNode* root, int start) {
 	while (!que.empty()) {
 		int cur = que.front();
 		que.pop();
-		for (const auto& n : o[cur]) {
-			if (s.count(n) > 0) continue;
+		for (const auto &n : o[cur]) {
+			if (s.count(n) > 0)
+				continue;
 			s.emplace(n);
 			next.emplace(n);
 		}

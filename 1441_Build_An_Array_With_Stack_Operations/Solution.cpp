@@ -4,7 +4,7 @@
 
 using std::reverse;
 
-vector<string> Solution::buildArray(vector<int>& target, int n) {
+vector<string> Solution::buildArray(vector<int> &target, int n) {
 	vector<string> result;
 
 	int base = target.back();

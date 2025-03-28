@@ -3,20 +3,21 @@
 
 using std::swap;
 
-ListNode* Solution::oddEvenList(ListNode* head) {
-	if (!head || !head->next) return head;
-	ListNode* odd = head;
-	ListNode* event = head->next;
+ListNode *Solution::oddEvenList(ListNode *head) {
+	if (!head || !head->next)
+		return head;
+	ListNode *odd = head;
+	ListNode *event = head->next;
 
-	ListNode* add = odd;
-	ListNode* beAdd = event;
+	ListNode *add = odd;
+	ListNode *beAdd = event;
 
 	while (beAdd) {
 		add->next = beAdd->next;
 		add = add->next;
 		swap(add, beAdd);
 	}
-	ListNode* iter = odd;
+	ListNode *iter = odd;
 	while (iter->next) {
 		iter = iter->next;
 	}

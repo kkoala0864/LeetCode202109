@@ -2,13 +2,15 @@
 using std::vector;
 
 class Solution {
-    public :
-        Solution() {}
-	bool canVisitAllRooms(vector<vector<int>>& rooms);
-	bool canVisitAllRooms2(vector<vector<int>>& rooms);
-    private :
-        virtual ~Solution() {}
-        Solution& operator=(const Solution& source);
-        Solution(const Solution&);
-};
+public:
+	Solution() {
+	}
+	bool canVisitAllRooms(vector<vector<int>> &rooms);
+	bool canVisitAllRooms2(vector<vector<int>> &rooms);
 
+private:
+	virtual ~Solution() {
+	}
+	Solution &operator=(const Solution &source);
+	Solution(const Solution &);
+};

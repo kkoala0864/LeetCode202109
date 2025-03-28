@@ -5,7 +5,7 @@
 using std::reverse;
 using std::swap;
 
-void Solution::rotate2(vector<int>& nums, int k) {
+void Solution::rotate2(vector<int> &nums, int k) {
 	int n = nums.size();
 	k %= n;
 

@@ -4,12 +4,14 @@
 using std::vector;
 
 class Solution {
-    public :
-        Solution() {}
-	vector<int> sortTransformedArray(vector<int>& nums, int a, int b, int c);
-    private :
-        virtual ~Solution() {}
-        Solution& operator=(const Solution& source);
-        Solution(const Solution&);
-};
+public:
+	Solution() {
+	}
+	vector<int> sortTransformedArray(vector<int> &nums, int a, int b, int c);
 
+private:
+	virtual ~Solution() {
+	}
+	Solution &operator=(const Solution &source);
+	Solution(const Solution &);
+};

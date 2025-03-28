@@ -3,10 +3,10 @@
 #include <algorithm>
 #include <unordered_map>
 
-using std::unordered_map;
-using std::reverse;
 using std::cout;
 using std::endl;
+using std::reverse;
+using std::unordered_map;
 
 string Solution::intToRoman(int num) {
 	string result;
@@ -23,16 +23,16 @@ string Solution::intToRoman(int num) {
 		int val = num % 10;
 		if (val >= 5) {
 			if (val == 9) {
-				result = string(1, charMap[base*10]) + result;
+				result = string(1, charMap[base * 10]) + result;
 				result = string(1, charMap[base]) + result;
 			} else {
 				val -= 5;
 				result = string(val, charMap[base]) + result;
-				result = string(1, charMap[base*5]) + result;
+				result = string(1, charMap[base * 5]) + result;
 			}
 		} else {
 			if (val == 4) {
-				result = string(1, charMap[base*5]) + result;
+				result = string(1, charMap[base * 5]) + result;
 				result = string(1, charMap[base]) + result;
 			} else {
 				result = string(val, charMap[base]) + result;

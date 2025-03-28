@@ -5,7 +5,6 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	MRUQueue* test = new MRUQueue(10);
+	MRUQueue *test = new MRUQueue(10);
 	return 0;
 }
-

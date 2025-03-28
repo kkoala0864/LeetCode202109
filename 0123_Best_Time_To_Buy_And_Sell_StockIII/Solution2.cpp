@@ -3,16 +3,16 @@
 #include <algorithm>
 #include <climits>
 
-using std::min;
 using std::max;
+using std::min;
 
-int Solution::maxProfit2(vector<int>& prices) {
+int Solution::maxProfit2(vector<int> &prices) {
 	int cost1 = INT_MAX;
 	int profit1 = 0;
 	int cost2 = INT_MAX;
 	int profit2 = 0;
 
-	for (int i = 0 ; i < prices.size() ; ++i) {
+	for (int i = 0; i < prices.size(); ++i) {
 		cost1 = min(cost1, prices[i]);
 		profit1 = max(profit1, prices[i] - cost1);
 		cost2 = min(cost2, prices[i] - profit1);

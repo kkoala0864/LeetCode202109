@@ -7,20 +7,20 @@
 
 using std::queue;
 using std::sort;
-using std::vector;
-using std::unordered_map;
 using std::swap;
+using std::unordered_map;
+using std::vector;
 
-int help(vector<int>& list) {
+int help(vector<int> &list) {
 	unordered_map<int, int> idx;
 
-	for (int i = 0 ; i < list.size() ; ++i) {
+	for (int i = 0; i < list.size(); ++i) {
 		idx[list[i]] = i;
 	}
 	auto ori = list;
 	sort(list.begin(), list.end());
 	int ret = 0;
-	for (int i = 0 ; i < list.size() ; ++i) {
+	for (int i = 0; i < list.size(); ++i) {
 		if (list[i] != ori[i]) {
 			int curIdx = idx[list[i]];
 			swap(idx[ori[i]], idx[list[i]]);
@@ -31,8 +31,8 @@ int help(vector<int>& list) {
 	return ret;
 }
 
-int Solution::minimumOperations(TreeNode* root) {
-	queue<TreeNode*> que, next;
+int Solution::minimumOperations(TreeNode *root) {
+	queue<TreeNode *> que, next;
 	vector<int> list;
 
 	que.emplace(root);
@@ -43,8 +43,10 @@ int Solution::minimumOperations(TreeNode* root) {
 		que.pop();
 		list.emplace_back(cur->val);
 
-		if (cur->left) next.emplace(cur->left);
-		if (cur->right) next.emplace(cur->right);
+		if (cur->left)
+			next.emplace(cur->left);
+		if (cur->right)
+			next.emplace(cur->right);
 
 		if (que.empty()) {
 			que = move(next);

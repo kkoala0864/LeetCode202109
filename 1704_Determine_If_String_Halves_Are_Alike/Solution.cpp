@@ -10,17 +10,16 @@ bool Solution::halvesAreAlike(string s) {
 
 	int cnt = 0;
 	int i = 0;
-	for (; i < (size >> 1) ; ++i) {
+	for (; i < (size >> 1); ++i) {
 		if (vowels.count(s[i]) > 0) {
 			++cnt;
 		}
 	}
 
-	for (; i < size ; ++i) {
+	for (; i < size; ++i) {
 		if (vowels.count(s[i]) > 0) {
 			--cnt;
 		}
 	}
 	return cnt == 0;
-
 }

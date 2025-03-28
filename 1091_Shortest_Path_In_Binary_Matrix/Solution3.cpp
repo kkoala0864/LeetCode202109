@@ -5,8 +5,9 @@
 using std::pair;
 using std::queue;
 
-int Solution::shortestPathBinaryMatrix3(vector<vector<int>>& grid) {
-	if (grid[0][0] == 1) return -1;
+int Solution::shortestPathBinaryMatrix3(vector<vector<int>> &grid) {
+	if (grid[0][0] == 1)
+		return -1;
 	queue<pair<int, int>> que, next;
 
 	int result = 0;
@@ -20,12 +21,14 @@ int Solution::shortestPathBinaryMatrix3(vector<vector<int>>& grid) {
 		int y = que.front().second;
 		que.pop();
 
-		if (x == grid.size() - 1 && y == grid[0].size() - 1) return result + 1;
+		if (x == grid.size() - 1 && y == grid[0].size() - 1)
+			return result + 1;
 
-		for (int i = 0 ; i < 8 ; ++i) {
+		for (int i = 0; i < 8; ++i) {
 			int nx = x + dir[i];
-			int ny = y + dir[i+1];
-			if (nx < 0 || ny < 0 || nx >= grid.size() || ny >= grid[0].size() || grid[nx][ny] == 1) continue;
+			int ny = y + dir[i + 1];
+			if (nx < 0 || ny < 0 || nx >= grid.size() || ny >= grid[0].size() || grid[nx][ny] == 1)
+				continue;
 			grid[nx][ny] = 1;
 			next.emplace(pair<int, int>(nx, ny));
 		}
@@ -36,4 +39,3 @@ int Solution::shortestPathBinaryMatrix3(vector<vector<int>>& grid) {
 	}
 	return -1;
 }
-

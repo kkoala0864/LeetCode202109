@@ -1,10 +1,10 @@
 #include <Solution.h>
 #include <iostream>
 
-ListNode* Solution::getIntersectionNode(ListNode *headA, ListNode *headB) {
+ListNode *Solution::getIntersectionNode(ListNode *headA, ListNode *headB) {
 	int aSize = 0, bSize = 0;
 
-	ListNode* iter = headA;
+	ListNode *iter = headA;
 	while (iter) {
 		++aSize;
 		iter = iter->next;
@@ -15,8 +15,8 @@ ListNode* Solution::getIntersectionNode(ListNode *headA, ListNode *headB) {
 		iter = iter->next;
 	}
 
-	ListNode* moreIter = nullptr;
-	ListNode* lessIter = nullptr;
+	ListNode *moreIter = nullptr;
+	ListNode *lessIter = nullptr;
 	int diff = 0;
 	if (aSize > bSize) {
 		moreIter = headA;
@@ -28,10 +28,12 @@ ListNode* Solution::getIntersectionNode(ListNode *headA, ListNode *headB) {
 		diff = bSize - aSize;
 	}
 
-	while(diff--) moreIter = moreIter->next;
+	while (diff--)
+		moreIter = moreIter->next;
 
 	while (moreIter) {
-		if (moreIter == lessIter) return moreIter;
+		if (moreIter == lessIter)
+			return moreIter;
 		moreIter = moreIter->next;
 		lessIter = lessIter->next;
 	}

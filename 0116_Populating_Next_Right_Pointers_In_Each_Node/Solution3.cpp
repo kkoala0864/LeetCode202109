@@ -1,8 +1,8 @@
 #include <Solution.h>
 #include <iostream>
 
-Node* Solution::connect3(Node* root) {
-	Node* head = root, *iter = head;
+Node *Solution::connect3(Node *root) {
+	Node *head = root, *iter = head;
 	while (head) {
 		iter = head;
 		if (iter->left) {
@@ -18,4 +18,3 @@ Node* Solution::connect3(Node* root) {
 	}
 	return root;
 }
-

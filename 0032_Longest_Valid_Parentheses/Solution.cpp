@@ -4,8 +4,8 @@
 #include <algorithm>
 #include <climits>
 
-using std::stack;
 using std::max;
+using std::stack;
 
 int Solution::longestValidParentheses(string s) {
 	int result = 0;
@@ -13,7 +13,7 @@ int Solution::longestValidParentheses(string s) {
 	int size = s.size();
 	stack<int> st;
 
-	for (int i = 0 ; i < size ; ++i) {
+	for (int i = 0; i < size; ++i) {
 		if (s[i] == '(') {
 			st.emplace(i);
 		} else {
@@ -24,8 +24,9 @@ int Solution::longestValidParentheses(string s) {
 		}
 	}
 
-	for (int i = 0 ; i < size ; ++i) {
-		if (s[i] == '*') ++cnt;
+	for (int i = 0; i < size; ++i) {
+		if (s[i] == '*')
+			++cnt;
 		else {
 			result = max(result, cnt);
 			cnt = 0;

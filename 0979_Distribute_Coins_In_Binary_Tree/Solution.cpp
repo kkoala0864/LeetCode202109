@@ -1,8 +1,9 @@
 #include <Solution.h>
 #include <iostream>
 
-int dfs(TreeNode* node, int& result) {
-	if (!node) return 0;
+int dfs(TreeNode *node, int &result) {
+	if (!node)
+		return 0;
 
 	int lr = dfs(node->left, result);
 	int rr = dfs(node->right, result);
@@ -12,7 +13,7 @@ int dfs(TreeNode* node, int& result) {
 	return node->val + lr + rr - 1;
 }
 
-int Solution::distributeCoins(TreeNode* root) {
+int Solution::distributeCoins(TreeNode *root) {
 	int result = 0;
 	dfs(root, result);
 	return result;

@@ -5,20 +5,23 @@
 using std::string;
 using std::vector;
 
-struct Node{
-	vector<Node*> child;
+struct Node
+{
+	vector<Node *> child;
 	Node() {
-		child = vector<Node*>(26, nullptr);
+		child = vector<Node *>(26, nullptr);
 	}
 };
 
 class Solution {
-    public :
-        Solution() {}
-	string longestWord(vector<string>& words);
-    private :
-        virtual ~Solution() {}
-        Solution& operator=(const Solution& source);
-        Solution(const Solution&);
-};
+public:
+	Solution() {
+	}
+	string longestWord(vector<string> &words);
 
+private:
+	virtual ~Solution() {
+	}
+	Solution &operator=(const Solution &source);
+	Solution(const Solution &);
+};

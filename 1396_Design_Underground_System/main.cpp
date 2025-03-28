@@ -5,7 +5,6 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-    UndergroundSystem* test = new UndergroundSystem();
-    return 0;
+	UndergroundSystem *test = new UndergroundSystem();
+	return 0;
 }
-

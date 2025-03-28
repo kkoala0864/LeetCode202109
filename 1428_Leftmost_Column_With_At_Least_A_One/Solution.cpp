@@ -9,7 +9,7 @@ int Solution::leftMostColumnWithOne(BinaryMatrix &binaryMatrix) {
 	int rx = m;
 	int ry = n;
 
-	for (int i = 0 ; i < m ; ++i) {
+	for (int i = 0; i < m; ++i) {
 		int l = 0, r = n - 1;
 		int mid = 0;
 		while (l < r) {
@@ -20,7 +20,7 @@ int Solution::leftMostColumnWithOne(BinaryMatrix &binaryMatrix) {
 				r = mid;
 			}
 		}
-		if (binaryMatrix.get(i,l) == 1) {
+		if (binaryMatrix.get(i, l) == 1) {
 			if (ry > l) {
 				ry = l;
 				rx = i;

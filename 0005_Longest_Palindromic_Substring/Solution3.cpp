@@ -3,13 +3,14 @@
 #include <vector>
 #include <algorithm>
 
-using std::vector;
 using std::max;
+using std::vector;
 
-int findMaxPalindrome(string& s, int start, int end, int& size) {
+int findMaxPalindrome(string &s, int start, int end, int &size) {
 	size = 0;
 	while (start >= 0 && end < s.size()) {
-		if (s[start] != s[end]) break;
+		if (s[start] != s[end])
+			break;
 		size = end - start + 1;
 		--start;
 		++end;
@@ -22,7 +23,7 @@ string Solution::longestPalindrome3(string s) {
 	string str("");
 	int size = 0;
 	int start = 0;
-	for (int i = 0 ; i < s.size() ; ++i) {
+	for (int i = 0; i < s.size(); ++i) {
 		start = findMaxPalindrome(s, i, i, size);
 		if (size > result) {
 			result = size;
@@ -30,7 +31,7 @@ string Solution::longestPalindrome3(string s) {
 		}
 
 		if (i < (s.size() - 1)) {
-			start = findMaxPalindrome(s, i , i + 1, size);
+			start = findMaxPalindrome(s, i, i + 1, size);
 			if (size > result) {
 				result = size;
 				str = s.substr(start, size);

@@ -1,12 +1,14 @@
 #include <Solution.h>
 #include <iostream>
 
-vector<int> Solution::sumEvenAfterQueries(vector<int>& nums, vector<vector<int>>& queries) {
+vector<int> Solution::sumEvenAfterQueries(vector<int> &nums, vector<vector<int>> &queries) {
 	int sum = 0;
-	for (const auto& val : nums) if (!(val & 1)) sum += val;
+	for (const auto &val : nums)
+		if (!(val & 1))
+			sum += val;
 
 	vector<int> result;
-	for (const auto& q : queries) {
+	for (const auto &q : queries) {
 		int oriVal = nums[q[1]];
 		nums[q[1]] += q[0];
 		if (!(nums[q[1]] & 1)) {
@@ -18,4 +20,3 @@ vector<int> Solution::sumEvenAfterQueries(vector<int>& nums, vector<vector<int>>
 	}
 	return result;
 }
-

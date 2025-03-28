@@ -4,9 +4,8 @@
 
 using std::max;
 
-
-//kadane's algorithm
-int Solution::longestSubarray(vector<int>& nums) {
+// kadane's algorithm
+int Solution::longestSubarray(vector<int> &nums) {
 	int curMax = 0;
 	int maxLen = 0;
 
@@ -16,7 +15,7 @@ int Solution::longestSubarray(vector<int>& nums) {
 		int cnt = 0;
 		int j = i;
 
-		for (; j < nums.size() && cur == nums[j] ; ++j) {
+		for (; j < nums.size() && cur == nums[j]; ++j) {
 			++cnt;
 		}
 		i = j;
@@ -28,5 +27,4 @@ int Solution::longestSubarray(vector<int>& nums) {
 		}
 	}
 	return maxLen;
-
 }

@@ -3,10 +3,10 @@
 #include <queue>
 #include <unordered_map>
 
-using std::queue;
-using std::pair;
-using std::unordered_map;
 using std::min;
+using std::pair;
+using std::queue;
+using std::unordered_map;
 
 bool Solution::canMeasureWater(int jug1Capacity, int jug2Capacity, int targetCapacity) {
 	unordered_map<int, unordered_map<int, bool>> check;
@@ -20,7 +20,8 @@ bool Solution::canMeasureWater(int jug1Capacity, int jug2Capacity, int targetCap
 		int j2 = que.front().second;
 		que.pop();
 
-		if (j1 == targetCapacity || j2 == targetCapacity || (j1 + j2) == targetCapacity) return true;
+		if (j1 == targetCapacity || j2 == targetCapacity || (j1 + j2) == targetCapacity)
+			return true;
 		// j1 full
 		if (!check[jug1Capacity][j2]) {
 			check[jug1Capacity][j2] = true;
@@ -44,14 +45,14 @@ bool Solution::canMeasureWater(int jug1Capacity, int jug2Capacity, int targetCap
 
 		int min1 = min(j1, jug2Capacity - j2);
 		if (!check[j1 - min1][j2 + min1]) {
-			check[j1-min1][j2+min1] = true;
-			que.emplace(pair<int, int>(j1-min1, j2+min1));
+			check[j1 - min1][j2 + min1] = true;
+			que.emplace(pair<int, int>(j1 - min1, j2 + min1));
 		}
 
 		int min2 = min(jug1Capacity - j1, j2);
-		if (!check[j1+min2][j2 - min2]) {
-			check[j1+min2][j2-min2] = true;
-			que.emplace(pair<int, int>(j1+min2, j2-min2));
+		if (!check[j1 + min2][j2 - min2]) {
+			check[j1 + min2][j2 - min2] = true;
+			que.emplace(pair<int, int>(j1 + min2, j2 - min2));
 		}
 	}
 	return false;

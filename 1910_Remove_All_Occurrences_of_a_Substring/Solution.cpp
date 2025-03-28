@@ -2,11 +2,11 @@
 #include <iostream>
 #include <vector>
 
-using std::vector;
 using std::cout;
 using std::endl;
+using std::vector;
 
-void getLPS(const string& s, vector<int>& lps) {
+void getLPS(const string &s, vector<int> &lps) {
 	int i = 1;
 	int len = 0;
 
@@ -20,13 +20,13 @@ void getLPS(const string& s, vector<int>& lps) {
 				lps[i] = 0;
 				++i;
 			} else {
-				len = lps[len-1];
+				len = lps[len - 1];
 			}
 		}
 	}
 }
 
-int kmp_compare(const string& s, const string& pattern) {
+int kmp_compare(const string &s, const string &pattern) {
 	vector<int> lps(pattern.size(), 0);
 	getLPS(pattern, lps);
 
@@ -46,11 +46,12 @@ int kmp_compare(const string& s, const string& pattern) {
 			if (j == 0) {
 				++i;
 			} else {
-				j = lps[j-1];
+				j = lps[j - 1];
 			}
 		}
 	}
-	if (j == m) return i - j;
+	if (j == m)
+		return i - j;
 	return -1;
 }
 

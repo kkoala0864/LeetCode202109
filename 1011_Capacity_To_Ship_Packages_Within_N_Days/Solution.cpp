@@ -6,10 +6,10 @@ using std::cout;
 using std::endl;
 using std::max;
 
-int needDays(vector<int>& w, int size) {
+int needDays(vector<int> &w, int size) {
 	int result = 0;
 	int cur = 0;
-	for (const auto& v : w) {
+	for (const auto &v : w) {
 		if (cur + v > size) {
 			++result;
 			cur = 0;
@@ -19,10 +19,10 @@ int needDays(vector<int>& w, int size) {
 	return cur > 0 ? result + 1 : result;
 }
 
-int Solution::shipWithinDays(vector<int>& weights, int days) {
+int Solution::shipWithinDays(vector<int> &weights, int days) {
 	int r = 0;
 	int l = 0;
-	for (const auto& w : weights) {
+	for (const auto &w : weights) {
 		r += w;
 		l = max(l, w);
 	}

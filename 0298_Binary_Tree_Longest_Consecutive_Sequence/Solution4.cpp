@@ -4,9 +4,9 @@
 
 using std::max;
 
-
-void dfs4(TreeNode* node, int cnt, int& result) {
-	if (!node) return;
+void dfs4(TreeNode *node, int cnt, int &result) {
+	if (!node)
+		return;
 	result = max(result, cnt);
 
 	if (node->left) {
@@ -17,8 +17,7 @@ void dfs4(TreeNode* node, int cnt, int& result) {
 	}
 }
 
-
-int Solution::longestConsecutive4(TreeNode* root) {
+int Solution::longestConsecutive4(TreeNode *root) {
 	int result = 0;
 	dfs4(root, 1, result);
 	return result;

@@ -6,8 +6,7 @@ using std::endl;
 
 int main(void) {
 	vector<int> input = {75, 34, 30};
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->canSortArray(input) << endl;
 	return 0;
 }
-

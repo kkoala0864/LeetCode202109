@@ -4,11 +4,11 @@
 
 using std::max;
 
-long long Solution::minimumHealth(vector<int>& damage, int armor) {
+long long Solution::minimumHealth(vector<int> &damage, int armor) {
 	long long result = 0;
 	int maxVal = 0;
 
-	for (const auto& d : damage) {
+	for (const auto &d : damage) {
 		maxVal = max(d, maxVal);
 		result += d;
 	}

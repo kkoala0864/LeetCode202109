@@ -6,9 +6,10 @@
 using std::queue;
 using std::unordered_set;
 
-int Solution::minMutation(string start, string end, vector<string>& bank) {
+int Solution::minMutation(string start, string end, vector<string> &bank) {
 	unordered_set<string> uSet;
-	for (const auto& b : bank) uSet.emplace(b);
+	for (const auto &b : bank)
+		uSet.emplace(b);
 
 	queue<string> que, next;
 	string G = "ACGT";
@@ -20,14 +21,16 @@ int Solution::minMutation(string start, string end, vector<string>& bank) {
 		string cur = que.front();
 		que.pop();
 
-		if (cur == end) return result;
+		if (cur == end)
+			return result;
 
 		string tmp = cur;
-		for (int i = 0 ; i < 8 ; ++i) {
+		for (int i = 0; i < 8; ++i) {
 			tmp = cur;
-			for (int j = 0 ; j < 4 ; ++j) {
+			for (int j = 0; j < 4; ++j) {
 				tmp[i] = G[j];
-				if (tmp == cur || uSet.find(tmp) == uSet.end()) continue;
+				if (tmp == cur || uSet.find(tmp) == uSet.end())
+					continue;
 				uSet.erase(tmp);
 				next.emplace(tmp);
 			}

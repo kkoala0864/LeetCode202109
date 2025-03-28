@@ -5,9 +5,9 @@
 
 using std::priority_queue;
 
-int Solution::connectSticks(vector<int>& sticks) {
+int Solution::connectSticks(vector<int> &sticks) {
 	priority_queue<int, vector<int>, std::greater<int>> pq;
-	for (const auto& s : sticks) {
+	for (const auto &s : sticks) {
 		pq.emplace(s);
 	}
 

@@ -11,13 +11,13 @@ int Solution::countGoodStrings(int low, int high, int zero, int one) {
 	dp[0] = 1;
 	int result = 0;
 
-	for (int i = 1 ; i <= high ; ++i) {
+	for (int i = 1; i <= high; ++i) {
 		if (i - zero >= 0) {
-			dp[i] += dp[i-zero];
+			dp[i] += dp[i - zero];
 			dp[i] %= mod;
 		}
 		if (i - one >= 0) {
-			dp[i] += dp[i-one];
+			dp[i] += dp[i - one];
 			dp[i] %= mod;
 		}
 

@@ -13,7 +13,7 @@ long long Solution::wonderfulSubstrings(string word) {
 	long long result = 0;
 	int mask = 0;
 
-	for (const auto& c : word) {
+	for (const auto &c : word) {
 		mask = mask ^ (1 << (c - 'a'));
 
 		// all even case
@@ -24,7 +24,7 @@ long long Solution::wonderfulSubstrings(string word) {
 
 		++m[mask];
 
-		for (int j = 0 ; j < 10 ; ++j) {
+		for (int j = 0; j < 10; ++j) {
 			// each one odd number case
 			// only one bit is 1 => 0000000001, 0000000010, 0000000100 .....
 			// how to get one bit case from cur mask

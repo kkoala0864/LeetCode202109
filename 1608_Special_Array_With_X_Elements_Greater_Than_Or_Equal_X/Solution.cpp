@@ -4,7 +4,7 @@
 
 using std::sort;
 
-int Solution::specialArray(vector<int>& nums) {
+int Solution::specialArray(vector<int> &nums) {
 	sort(nums.begin(), nums.end());
 
 	int l = 1, r = nums.size();

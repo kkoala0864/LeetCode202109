@@ -2,17 +2,17 @@
 #include <iostream>
 #include <algorithm>
 
-using std::sort;
-using std::min;
 using std::max;
+using std::min;
+using std::sort;
 
-int Solution::findMinArrowShots(vector<vector<int>>& points) {
+int Solution::findMinArrowShots(vector<vector<int>> &points) {
 	vector<vector<int>> overlap;
 	sort(points.begin(), points.end());
 
 	overlap.emplace_back(points[0]);
 	int last = 0;
-	for (int i = 1 ; i < points.size() ; ++i) {
+	for (int i = 1; i < points.size(); ++i) {
 		if (points[i][0] > overlap[last][1]) {
 			overlap.emplace_back(points[i]);
 			++last;

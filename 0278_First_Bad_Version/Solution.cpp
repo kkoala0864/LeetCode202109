@@ -3,7 +3,7 @@
 
 int Solution::firstBadVersion(int n) {
 	unsigned int left = 0;
-	unsigned int right = n-1;
+	unsigned int right = n - 1;
 	unsigned int mid = 0;
 	while (left < right) {
 		mid = (left + right) / 2;

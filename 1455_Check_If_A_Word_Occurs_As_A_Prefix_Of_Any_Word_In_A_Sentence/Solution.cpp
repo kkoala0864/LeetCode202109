@@ -9,14 +9,16 @@ int Solution::isPrefixOfWord(string sentence, string searchWord) {
 	int si = 1;
 	string tmp;
 
-	for (int i = 0 ; i < sentence.size() ; ++i) {
+	for (int i = 0; i < sentence.size(); ++i) {
 		if (sentence[i] == ' ') {
 			if (tmp.size() >= ss) {
 				int j = 0;
-				for (; j < ss ; ++j) {
-					if (tmp[j] != searchWord[j]) break;
+				for (; j < ss; ++j) {
+					if (tmp[j] != searchWord[j])
+						break;
 				}
-				if (j == ss) return si;
+				if (j == ss)
+					return si;
 			}
 			tmp.clear();
 			++si;
@@ -26,10 +28,12 @@ int Solution::isPrefixOfWord(string sentence, string searchWord) {
 	}
 	if (tmp.size() >= ss) {
 		int j = 0;
-		for (; j < ss ; ++j) {
-			if (tmp[j] != searchWord[j]) break;
+		for (; j < ss; ++j) {
+			if (tmp[j] != searchWord[j])
+				break;
 		}
-		if (j == ss) return si;
+		if (j == ss)
+			return si;
 	}
 	return -1;
 }

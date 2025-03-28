@@ -10,10 +10,12 @@ using std::unordered_map;
 // ac, adb
 
 bool Solution::isOneEditDistance2(string s, string t) {
-	if (s == t) return false;
+	if (s == t)
+		return false;
 	int sn = s.size();
 	int tn = t.size();
-	if (abs(sn - tn) > 1) return false;
+	if (abs(sn - tn) > 1)
+		return false;
 
 	string longer = sn > tn ? s : t;
 	string shorter = longer == s ? t : s;
@@ -24,7 +26,8 @@ bool Solution::isOneEditDistance2(string s, string t) {
 	while (li < longer.size() && cnt < 2) {
 		if (longer[li] != shorter[si]) {
 			++cnt;
-			if (tn != sn) --si;
+			if (tn != sn)
+				--si;
 		}
 		++li;
 		++si;

@@ -2,11 +2,11 @@
 #include <iostream>
 #include <stack>
 
-using std::stack;
 using std::cout;
 using std::endl;
+using std::stack;
 
-int getVal(const string& s, int& i) {
+int getVal(const string &s, int &i) {
 	int val = 0;
 	while (i < s.size() && isdigit(s[i])) {
 		val *= 10;
@@ -16,7 +16,7 @@ int getVal(const string& s, int& i) {
 	return val;
 }
 
-int doCal(const string& s, int& i) {
+int doCal(const string &s, int &i) {
 	int result = 0;
 	while (i < s.size() && s[i] != ')') {
 		if (isdigit(s[i])) {
@@ -42,13 +42,16 @@ int doCal(const string& s, int& i) {
 			result += doCal(s, i);
 		}
 	}
-	if (s[i] == ')') ++i;
+	if (s[i] == ')')
+		++i;
 	return result;
 }
 
 int Solution::calculate(string s) {
 	int idx = 0;
 	string trimSpace;
-	for (const auto& c : s) if (c != ' ') trimSpace.push_back(c);
+	for (const auto &c : s)
+		if (c != ' ')
+			trimSpace.push_back(c);
 	return doCal(trimSpace, idx);
 }

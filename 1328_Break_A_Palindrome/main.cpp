@@ -6,8 +6,7 @@ using std::endl;
 
 int main(void) {
 	string input = "abccba";
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->breakPalindrome(input) << endl;
 	return 0;
 }
-

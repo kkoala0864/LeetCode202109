@@ -3,11 +3,11 @@
 #include <queue>
 #include <algorithm>
 
+using std::min;
 using std::pair;
 using std::queue;
-using std::min;
 
-int Solution::shortestPath(vector<vector<int>>& grid, int k) {
+int Solution::shortestPath(vector<vector<int>> &grid, int k) {
 	int m = grid.size();
 	int n = grid[0].size();
 
@@ -24,15 +24,15 @@ int Solution::shortestPath(vector<vector<int>>& grid, int k) {
 		int curK = que.front().second;
 		que.pop();
 
-
-		for (int i = 0 ; i < 4 ; ++i) {
+		for (int i = 0; i < 4; ++i) {
 			int nx = x + dir[i];
-			int ny = y + dir[i+1];
-			if (nx < 0 || ny < 0 || nx >= m || ny >= n) continue;
+			int ny = y + dir[i + 1];
+			if (nx < 0 || ny < 0 || nx >= m || ny >= n)
+				continue;
 			if (grid[nx][ny] == 1) {
 				if (curK < k) {
-					if (minStep[nx][ny][curK+1] > minStep[x][y][curK] + 1) {
-						minStep[nx][ny][curK+1] = minStep[x][y][curK] + 1;
+					if (minStep[nx][ny][curK + 1] > minStep[x][y][curK] + 1) {
+						minStep[nx][ny][curK + 1] = minStep[x][y][curK] + 1;
 						que.emplace(pair<int, int>(nx * n + ny, curK + 1));
 					}
 				}
@@ -42,12 +42,11 @@ int Solution::shortestPath(vector<vector<int>>& grid, int k) {
 					que.emplace(pair<int, int>(nx * n + ny, curK));
 				}
 			}
-
 		}
 	}
 	int result = INT_MAX;
-	for (int i = 0 ; i <= k ; ++i) {
-		result = min(minStep[m-1][n-1][i], result);
+	for (int i = 0; i <= k; ++i) {
+		result = min(minStep[m - 1][n - 1][i], result);
 	}
 	return result == INT_MAX ? -1 : result;
 }

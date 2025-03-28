@@ -3,8 +3,9 @@
 
 using std::swap;
 string Solution::reversePrefix(string word, char ch) {
-	for (int i = 0 ; i < word.size() ; ++i) {
-		if (word[i] != ch) continue;
+	for (int i = 0; i < word.size(); ++i) {
+		if (word[i] != ch)
+			continue;
 
 		int l = 0, r = i;
 		while (l < r) {

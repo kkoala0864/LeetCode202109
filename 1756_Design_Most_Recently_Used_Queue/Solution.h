@@ -4,8 +4,10 @@
 using std::vector;
 
 class FenwickTree {
-	public:
-	FenwickTree(int size) : tree(size + 1, 0) {}
+public:
+	FenwickTree(int size)
+	    : tree(size + 1, 0) {
+	}
 
 	int sum(int idx) {
 		int result = 0;
@@ -24,15 +26,15 @@ class FenwickTree {
 		}
 	}
 
-	private:
-		vector<int> tree;
+private:
+	vector<int> tree;
 };
 
-
 class MRUQueue {
-    public :
-	MRUQueue(int n) : size(n), tree(n + 2000), values(n + 2000, 0) {
-		for (int i = 0 ; i < n ; ++i) {
+public:
+	MRUQueue(int n)
+	    : size(n), tree(n + 2000), values(n + 2000, 0) {
+		for (int i = 0; i < n; ++i) {
 			tree.insert(i, 1);
 			values[i] = i + 1;
 		}
@@ -56,12 +58,13 @@ class MRUQueue {
 		++size;
 		return values[low - 1];
 	}
-    private :
+
+private:
 	int size;
 	FenwickTree tree;
 	vector<int> values;
-        virtual ~MRUQueue() {}
-        MRUQueue& operator=(const MRUQueue& source);
-        MRUQueue(const MRUQueue&);
+	virtual ~MRUQueue() {
+	}
+	MRUQueue &operator=(const MRUQueue &source);
+	MRUQueue(const MRUQueue &);
 };
-

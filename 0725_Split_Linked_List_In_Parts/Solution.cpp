@@ -1,7 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 
-vector<ListNode*> Solution::splitListToParts(ListNode* head, int k) {
+vector<ListNode *> Solution::splitListToParts(ListNode *head, int k) {
 
 	int cnt = 0;
 	ListNode *iter = head;
@@ -13,11 +13,11 @@ vector<ListNode*> Solution::splitListToParts(ListNode* head, int k) {
 	int base = cnt / k;
 	int mod = cnt % k;
 
-	vector<ListNode*> result;
-	ListNode* last = nullptr;
+	vector<ListNode *> result;
+	ListNode *last = nullptr;
 	while (iter) {
 		result.emplace_back(iter);
-		for (int i = 0 ; i < base ; ++i) {
+		for (int i = 0; i < base; ++i) {
 			last = iter;
 			iter = iter->next;
 		}

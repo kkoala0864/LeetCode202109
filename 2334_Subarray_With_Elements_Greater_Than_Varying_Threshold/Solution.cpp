@@ -2,11 +2,11 @@
 #include <iostream>
 #include <stack>
 
-using std::stack;
 using std::cout;
 using std::endl;
+using std::stack;
 
-int Solution::validSubarraySize(vector<int>& nums, int threshold) {
+int Solution::validSubarraySize(vector<int> &nums, int threshold) {
 	stack<int> st;
 	int result = 0;
 
@@ -14,7 +14,7 @@ int Solution::validSubarraySize(vector<int>& nums, int threshold) {
 	vector<int> preSmaller(size, -1);
 	vector<int> postSmaller(size, size);
 
-	for (int i = 0 ; i < nums.size() ; ++i) {
+	for (int i = 0; i < nums.size(); ++i) {
 		while (!st.empty() && nums[st.top()] > nums[i]) {
 			postSmaller[st.top()] = i;
 			st.pop();
@@ -24,9 +24,10 @@ int Solution::validSubarraySize(vector<int>& nums, int threshold) {
 		}
 		st.emplace(i);
 	}
-	for (int i = 0 ; i < nums.size() ; ++i) {
+	for (int i = 0; i < nums.size(); ++i) {
 		int cnt = postSmaller[i] - preSmaller[i] - 1;
-		if (nums[i] > (threshold / cnt)) return cnt;
+		if (nums[i] > (threshold / cnt))
+			return cnt;
 	}
 	return -1;
 }

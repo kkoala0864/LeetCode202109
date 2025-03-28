@@ -3,9 +3,11 @@
 
 using namespace std;
 
-ListNode* Solution::mergeTwoLists3(ListNode* l1, ListNode* l2) {
-	if (!l1) return l2;
-	if (!l2) return l1;
+ListNode *Solution::mergeTwoLists3(ListNode *l1, ListNode *l2) {
+	if (!l1)
+		return l2;
+	if (!l2)
+		return l1;
 
 	ListNode *head = nullptr, *iter = nullptr;
 	if (l1->val < l2->val) {
@@ -35,8 +37,10 @@ ListNode* Solution::mergeTwoLists3(ListNode* l1, ListNode* l2) {
 			}
 		}
 	}
-	if (l1) iter->next = l1;
-	else if (l2) iter->next = l2;
+	if (l1)
+		iter->next = l1;
+	else if (l2)
+		iter->next = l2;
 
 	return head;
 }

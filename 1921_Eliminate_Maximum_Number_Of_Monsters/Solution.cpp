@@ -5,10 +5,10 @@
 using std::cout;
 using std::endl;
 
-int Solution::eliminateMaximum(vector<int>& dist, vector<int>& speed) {
+int Solution::eliminateMaximum(vector<int> &dist, vector<int> &speed) {
 	int size = dist.size();
 	vector<int> t;
-	for (int i = 0 ; i < size ; ++i) {
+	for (int i = 0; i < size; ++i) {
 		int rest = dist[i] % speed[i] > 0 ? 1 : 0;
 		t.emplace_back((dist[i] / speed[i]) + rest);
 	}
@@ -18,7 +18,7 @@ int Solution::eliminateMaximum(vector<int>& dist, vector<int>& speed) {
 	int result = 0;
 	int baseT = 0;
 
-	for (int i = 0 ; i < size ; ++i) {
+	for (int i = 0; i < size; ++i) {
 		if (t[i] <= baseT) {
 			return i;
 		} else {

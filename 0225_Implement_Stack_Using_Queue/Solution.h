@@ -3,8 +3,9 @@
 using std::queue;
 
 class MyStack {
-    public :
-	MyStack() {}
+public:
+	MyStack() {
+	}
 
 	void push(int x) {
 		_que.emplace(x);
@@ -12,7 +13,7 @@ class MyStack {
 	}
 
 	int pop() {
-		for (int i = 1 ; i < _que.size() ; ++i) {
+		for (int i = 1; i < _que.size(); ++i) {
 			_que.emplace(_que.front());
 			_top = _que.front();
 			_que.pop();
@@ -29,11 +30,12 @@ class MyStack {
 	bool empty() {
 		return _que.empty();
 	}
-    private :
+
+private:
 	queue<int> _que;
 	int _top;
-        virtual ~MyStack() {}
-        MyStack& operator=(const MyStack& source);
-        MyStack(const MyStack&);
+	virtual ~MyStack() {
+	}
+	MyStack &operator=(const MyStack &source);
+	MyStack(const MyStack &);
 };
-

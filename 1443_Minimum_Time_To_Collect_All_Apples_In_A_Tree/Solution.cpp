@@ -1,10 +1,11 @@
 #include <Solution.h>
 #include <iostream>
 
-void dfs(vector<vector<int>>& edge, int cur, vector<bool>& visited, vector<bool>& hasApple, int& result) {
+void dfs(vector<vector<int>> &edge, int cur, vector<bool> &visited, vector<bool> &hasApple, int &result) {
 	visited[cur] = true;
-	for (const auto& n : edge[cur]) {
-		if (visited[n]) continue;
+	for (const auto &n : edge[cur]) {
+		if (visited[n])
+			continue;
 		dfs(edge, n, visited, hasApple, result);
 		if (hasApple[n]) {
 			result += 2;
@@ -13,9 +14,9 @@ void dfs(vector<vector<int>>& edge, int cur, vector<bool>& visited, vector<bool>
 	}
 }
 
-int Solution::minTime(int n, vector<vector<int>>& edges, vector<bool>& hasApple) {
+int Solution::minTime(int n, vector<vector<int>> &edges, vector<bool> &hasApple) {
 	vector<vector<int>> edge(n, vector<int>());
-	for (const auto& e : edges) {
+	for (const auto &e : edges) {
 		edge[e[0]].emplace_back(e[1]);
 		edge[e[1]].emplace_back(e[0]);
 	}

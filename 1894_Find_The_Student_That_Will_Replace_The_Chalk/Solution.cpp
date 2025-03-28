@@ -4,11 +4,11 @@
 
 using std::upper_bound;
 
-int Solution::chalkReplacer(vector<int>& chalk, int k) {
+int Solution::chalkReplacer(vector<int> &chalk, int k) {
 	vector<long long> preSum;
 
 	long long sum = 0;
-	for (const auto& c : chalk) {
+	for (const auto &c : chalk) {
 		sum += (long long)c;
 		preSum.emplace_back(sum);
 	}

@@ -7,20 +7,20 @@ using std::endl;
 // what's the range of the value in this list?
 // what's the l and r range ?
 // 1 2 3 4 5  2, 4
-ListNode* Solution::reverseBetween3(ListNode* head, int left, int right) {
-	ListNode* iter = head;
-	ListNode* li = nullptr;
-	ListNode* lp = nullptr;
-	ListNode* rs = nullptr;
-	ListNode* next = nullptr;
+ListNode *Solution::reverseBetween3(ListNode *head, int left, int right) {
+	ListNode *iter = head;
+	ListNode *li = nullptr;
+	ListNode *lp = nullptr;
+	ListNode *rs = nullptr;
+	ListNode *next = nullptr;
 
-	for (int i = 1 ; i < left ; ++i) {
+	for (int i = 1; i < left; ++i) {
 		li = iter;
 		iter = iter->next;
 	}
 	lp = li;
 	rs = iter;
-	for (int i = left ; i <= right ; ++i) {
+	for (int i = left; i <= right; ++i) {
 		next = iter->next;
 		iter->next = li;
 		li = iter;
@@ -34,4 +34,3 @@ ListNode* Solution::reverseBetween3(ListNode* head, int left, int right) {
 	}
 	return head;
 }
-

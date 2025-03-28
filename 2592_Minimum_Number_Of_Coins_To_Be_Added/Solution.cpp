@@ -4,7 +4,7 @@
 
 using std::max;
 
-int Solution::minimumAddedCoins(vector<int>& coins, int target) {
+int Solution::minimumAddedCoins(vector<int> &coins, int target) {
 	sort(coins.begin(), coins.end());
 	int result = 0;
 	long m = 0;
@@ -12,7 +12,7 @@ int Solution::minimumAddedCoins(vector<int>& coins, int target) {
 		++result;
 		m = 1;
 	}
-	for (const auto& c : coins) {
+	for (const auto &c : coins) {
 		while (m < (c - 1)) {
 			m = max(m, m + m + 1);
 			++result;

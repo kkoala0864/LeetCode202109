@@ -10,8 +10,9 @@ using std::max;
 // 1. contruct link from client to parent node and record the leaf node
 // 2. greedy algorithm from leaf node
 
-int dfs(TreeNode* node, int& result) {
-	if (!node) return 0;
+int dfs(TreeNode *node, int &result) {
+	if (!node)
+		return 0;
 	int lv = dfs(node->left, result);
 	int rv = dfs(node->right, result);
 	int cur = node->val;
@@ -26,8 +27,9 @@ int dfs(TreeNode* node, int& result) {
 	return node->val + child;
 }
 
-int Solution::maxPathSum(TreeNode* root) {
-	if (!root) return 0;
+int Solution::maxPathSum(TreeNode *root) {
+	if (!root)
+		return 0;
 	int result = INT_MIN;
 	dfs(root, result);
 	return result;

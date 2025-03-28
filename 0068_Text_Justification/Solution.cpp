@@ -1,7 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 
-void concateStr(int curSize, vector<string>& cur_line, int maxWidth, string& ret) {
+void concateStr(int curSize, vector<string> &cur_line, int maxWidth, string &ret) {
 	if (cur_line.size() == 1) {
 		ret = cur_line.back() + string(maxWidth - cur_line.back().size(), ' ');
 	} else {
@@ -9,7 +9,7 @@ void concateStr(int curSize, vector<string>& cur_line, int maxWidth, string& ret
 		int mod = emptySize % (cur_line.size() - 1);
 		int space = emptySize / (cur_line.size() - 1);
 		int scnt = cur_line.size() - 1;
-		for (const auto& cl : cur_line) {
+		for (const auto &cl : cur_line) {
 			ret += cl;
 			if (scnt-- > 0) {
 				ret += string(space, ' ');
@@ -21,12 +21,12 @@ void concateStr(int curSize, vector<string>& cur_line, int maxWidth, string& ret
 	}
 }
 
-vector<string> Solution::fullJustify(vector<string>& words, int maxWidth) {
+vector<string> Solution::fullJustify(vector<string> &words, int maxWidth) {
 	vector<string> result;
 
 	int curSize = 0;
 	vector<string> cur_line;
-	for (const auto& w : words) {
+	for (const auto &w : words) {
 		if (curSize + w.size() + cur_line.size() > maxWidth) {
 			string str;
 			concateStr(curSize, cur_line, maxWidth, str);
@@ -39,7 +39,7 @@ vector<string> Solution::fullJustify(vector<string>& words, int maxWidth) {
 	}
 	if (curSize > 0) {
 		string str;
-		for (const auto& cl : cur_line) {
+		for (const auto &cl : cur_line) {
 			str += cl + ' ';
 		}
 		str.pop_back();

@@ -1,12 +1,13 @@
 #include <stack>
 #include <algorithm>
-using std::stack;
-using std::pair;
 using std::min;
+using std::pair;
+using std::stack;
 
 class MinStack {
-    public :
-	MinStack() {}
+public:
+	MinStack() {
+	}
 
 	void push(int val) {
 		int minVal = _st.empty() ? val : min(_st.top().second, val);
@@ -24,10 +25,11 @@ class MinStack {
 	int getMin() {
 		return _st.top().second;
 	}
-    private :
-	stack<pair<int, int>> _st;
-        virtual ~MinStack() {}
-        MinStack& operator=(const MinStack& source);
-        MinStack(const MinStack&);
-};
 
+private:
+	stack<pair<int, int>> _st;
+	virtual ~MinStack() {
+	}
+	MinStack &operator=(const MinStack &source);
+	MinStack(const MinStack &);
+};

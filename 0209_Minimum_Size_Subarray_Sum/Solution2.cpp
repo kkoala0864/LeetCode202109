@@ -4,7 +4,7 @@
 
 using std::min;
 
-int Solution::minSubArrayLen2(int target, vector<int>& nums) {
+int Solution::minSubArrayLen2(int target, vector<int> &nums) {
 	int sum = 0;
 	int start = 0, iter = 0;
 	int result = INT_MAX;

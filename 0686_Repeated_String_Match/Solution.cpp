@@ -13,7 +13,9 @@ int Solution::repeatedStringMatch(string a, string b) {
 		s += a;
 		++cnt;
 	}
-	if (s.find(b) != std::string::npos) return cnt;
-	if ((s+a).find(b) != std::string::npos) return cnt+1;
+	if (s.find(b) != std::string::npos)
+		return cnt;
+	if ((s + a).find(b) != std::string::npos)
+		return cnt + 1;
 	return -1;
 }

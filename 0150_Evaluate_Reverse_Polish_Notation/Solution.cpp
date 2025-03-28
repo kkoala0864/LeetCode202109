@@ -4,12 +4,12 @@
 
 using std::stack;
 
-int Solution::evalRPN(vector<string>& tokens) {
+int Solution::evalRPN(vector<string> &tokens) {
 	stack<int> st;
 	int first = 0;
 	int second = 0;
 	int result = 0;
-	for (const auto& iter : tokens) {
+	for (const auto &iter : tokens) {
 		if (iter == "*" || iter == "-" || iter == "+" || iter == "/") {
 			second = st.top();
 			st.pop();

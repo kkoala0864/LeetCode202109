@@ -2,15 +2,15 @@
 #include <iostream>
 #include <queue>
 
-using std::queue;
 using std::cout;
 using std::endl;
+using std::queue;
 
-int Solution::maxKDivisibleComponents(int n, vector<vector<int>>& edges, vector<int>& values, int k) {
+int Solution::maxKDivisibleComponents(int n, vector<vector<int>> &edges, vector<int> &values, int k) {
 	vector<vector<int>> od(n, vector<int>());
 	vector<int> id(n, 0);
 
-	for (const auto& e : edges) {
+	for (const auto &e : edges) {
 		++id[e[0]];
 		++id[e[1]];
 		od[e[0]].emplace_back(e[1]);
@@ -20,8 +20,9 @@ int Solution::maxKDivisibleComponents(int n, vector<vector<int>>& edges, vector<
 	int result = 0;
 
 	queue<int> que, next;
-	for (int i = 0 ; i < n ; ++i) {
-		if (id[i] > 1) continue;
+	for (int i = 0; i < n; ++i) {
+		if (id[i] > 1)
+			continue;
 		que.emplace(i);
 		visited[i] = true;
 	}
@@ -32,7 +33,7 @@ int Solution::maxKDivisibleComponents(int n, vector<vector<int>>& edges, vector<
 		if (values[cur] % k == 0) {
 			++result;
 		}
-		for (const auto& nv : od[cur]) {
+		for (const auto &nv : od[cur]) {
 			--id[nv];
 			values[nv] += values[cur];
 			values[nv] %= k;

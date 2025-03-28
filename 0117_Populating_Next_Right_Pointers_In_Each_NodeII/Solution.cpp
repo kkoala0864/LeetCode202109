@@ -1,8 +1,9 @@
 #include <Solution.h>
 #include <iostream>
 
-void processChild(Node* node, Node*& prev, Node*& leftMost) {
-	if (!node) return;
+void processChild(Node *node, Node *&prev, Node *&leftMost) {
+	if (!node)
+		return;
 	if (prev) {
 		prev->next = node;
 	} else {
@@ -11,11 +12,12 @@ void processChild(Node* node, Node*& prev, Node*& leftMost) {
 	prev = node;
 }
 
-Node* Solution::connect(Node* root) {
-	if (!root) return nullptr;
-	Node* leftMost = root;
-	Node* prev = nullptr;
-	Node* cur = nullptr;
+Node *Solution::connect(Node *root) {
+	if (!root)
+		return nullptr;
+	Node *leftMost = root;
+	Node *prev = nullptr;
+	Node *cur = nullptr;
 
 	while (leftMost) {
 		prev = nullptr;

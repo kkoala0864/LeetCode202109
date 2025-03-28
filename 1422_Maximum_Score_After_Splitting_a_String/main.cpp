@@ -6,8 +6,7 @@ using std::endl;
 
 int main(void) {
 	string input = "011101";
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->maxScore(input) << endl;
 	return 0;
 }
-

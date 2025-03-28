@@ -2,8 +2,9 @@
 using std::queue;
 
 class MovingAverage {
-    public :
-	MovingAverage() {}
+public:
+	MovingAverage() {
+	}
 	MovingAverage(int size) {
 		this->size = size;
 		total = 0;
@@ -18,12 +19,13 @@ class MovingAverage {
 		}
 		return total / (double)que.size();
 	}
-    private :
+
+private:
 	double total;
 	int size;
 	queue<int> que;
-        virtual ~MovingAverage() {}
-        MovingAverage& operator=(const MovingAverage& source);
-        MovingAverage(const MovingAverage&);
+	virtual ~MovingAverage() {
+	}
+	MovingAverage &operator=(const MovingAverage &source);
+	MovingAverage(const MovingAverage &);
 };
-

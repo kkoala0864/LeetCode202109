@@ -21,36 +21,38 @@
 using std::vector;
 
 class NestedIterator {
-	public :
-		void flatten(vector<NestedInteger>& list) {
-			for (const auto& iter : list) {
-				if (iter.isInteger()) {
-					_vec.emplace_back(iter.getInteger());
-				} else {
-					flatten(iter.getList());
-				}
+public:
+	void flatten(vector<NestedInteger> &list) {
+		for (const auto &iter : list) {
+			if (iter.isInteger()) {
+				_vec.emplace_back(iter.getInteger());
+			} else {
+				flatten(iter.getList());
 			}
 		}
+	}
 
-		NestedIterator(vector<NestedInteger> &nestedList) {
-			_vec = vector<int>();
-			flatten(nestedList);
-			idx = 0;
-		}
+	NestedIterator(vector<NestedInteger> &nestedList) {
+		_vec = vector<int>();
+		flatten(nestedList);
+		idx = 0;
+	}
 
-		int next() {
-			if (idx < _vec.size()) return _vec[idx++];
-			return -1;
-		}
+	int next() {
+		if (idx < _vec.size())
+			return _vec[idx++];
+		return -1;
+	}
 
-		bool hasNext() {
-			return idx < _vec.size();
-		}
-	private :
-		vector<int> _vec;
-		int idx;
-		virtual ~NestedIterator() {}
-		NestedIterator& operator=(const NestedIterator& source);
-		NestedIterator(const NestedIterator&);
+	bool hasNext() {
+		return idx < _vec.size();
+	}
+
+private:
+	vector<int> _vec;
+	int idx;
+	virtual ~NestedIterator() {
+	}
+	NestedIterator &operator=(const NestedIterator &source);
+	NestedIterator(const NestedIterator &);
 };
-

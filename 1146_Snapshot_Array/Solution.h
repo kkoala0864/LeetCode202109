@@ -2,12 +2,13 @@
 #include <unordered_map>
 #include <map>
 
-using std::unordered_map;
 using std::map;
+using std::unordered_map;
 
 class SnapshotArray {
-    public :
-        SnapshotArray() {}
+public:
+	SnapshotArray() {
+	}
 	SnapshotArray(int length) {
 		cur_id = 0;
 	}
@@ -18,7 +19,6 @@ class SnapshotArray {
 
 	int snap() {
 		return cur_id++;
-
 	}
 
 	int get(int index, int snap_id) {
@@ -32,11 +32,12 @@ class SnapshotArray {
 		}
 		return iter->second;
 	}
-    private :
+
+private:
 	unordered_map<int, map<int, int>> m;
 	int cur_id;
-        virtual ~SnapshotArray() {}
-        SnapshotArray& operator=(const SnapshotArray& source);
-        SnapshotArray(const SnapshotArray&);
+	virtual ~SnapshotArray() {
+	}
+	SnapshotArray &operator=(const SnapshotArray &source);
+	SnapshotArray(const SnapshotArray &);
 };
-

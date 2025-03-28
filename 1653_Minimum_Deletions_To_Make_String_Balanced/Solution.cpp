@@ -11,8 +11,9 @@ int Solution::minimumDeletions(string s) {
 	int bCnt = 0;
 	int result = 0;
 
-	for (const auto& c : s) {
-		if (c == 'b') ++bCnt;
+	for (const auto &c : s) {
+		if (c == 'b')
+			++bCnt;
 		else {
 			// remove 'a' or keep 'a'
 			result = min(result + 1, bCnt);

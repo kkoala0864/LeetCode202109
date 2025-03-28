@@ -1,15 +1,15 @@
 #include <Solution.h>
 #include <iostream>
 
-bool crush(vector<vector<int>>& board) {
+bool crush(vector<vector<int>> &board) {
 	vector<vector<int>> mask = board;
 	int m = board.size();
 	int n = board[0].size();
 	bool ret = false;
 
-	for (int i = 0 ; i < m ; ++i) {
+	for (int i = 0; i < m; ++i) {
 		int iter = -1;
-		for (int j = 0 ; j < n ; ++j) {
+		for (int j = 0; j < n; ++j) {
 			if (iter == -1) {
 				iter = j;
 			} else if (board[i][j] == board[i][iter] && board[i][j] != 0) {
@@ -33,9 +33,9 @@ bool crush(vector<vector<int>>& board) {
 		}
 	}
 
-	for (int i = 0 ; i < n ; ++i) {
+	for (int i = 0; i < n; ++i) {
 		int iter = -1;
-		for (int j = 0 ; j < m ; ++j) {
+		for (int j = 0; j < m; ++j) {
 			if (iter == -1) {
 				iter = j;
 			} else if (board[j][i] == board[iter][i] && board[j][i] != 0) {
@@ -62,12 +62,12 @@ bool crush(vector<vector<int>>& board) {
 	return ret;
 }
 
-void drop(vector<vector<int>>& board) {
+void drop(vector<vector<int>> &board) {
 	int m = board.size();
 	int n = board[0].size();
-	for (int i = 0 ; i < n ; ++i) {
+	for (int i = 0; i < n; ++i) {
 		int iter = m - 1;
-		for (int j = m - 1 ; j >= 0 ; --j) {
+		for (int j = m - 1; j >= 0; --j) {
 			if (board[j][i] > 0) {
 				board[iter--][i] = board[j][i];
 			}
@@ -78,7 +78,7 @@ void drop(vector<vector<int>>& board) {
 	}
 }
 
-vector<vector<int>> Solution::candyCrush(vector<vector<int>>& board) {
+vector<vector<int>> Solution::candyCrush(vector<vector<int>> &board) {
 	while (crush(board)) {
 		drop(board);
 	}

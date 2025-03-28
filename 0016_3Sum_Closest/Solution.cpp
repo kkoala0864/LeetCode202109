@@ -5,11 +5,11 @@
 
 using std::min;
 
-int Solution::threeSumClosest(vector<int>& nums, int target) {
+int Solution::threeSumClosest(vector<int> &nums, int target) {
 	sort(nums.begin(), nums.end());
 	int result = -1;
 	int minDiff = INT_MAX;
-	for (int i = 0 ; i < nums.size() - 2 ; ++i) {
+	for (int i = 0; i < nums.size() - 2; ++i) {
 		int localTarget = target - nums[i];
 
 		int left = i + 1, right = nums.size() - 1;

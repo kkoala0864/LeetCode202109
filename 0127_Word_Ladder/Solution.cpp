@@ -3,16 +3,20 @@
 #include <unordered_set>
 #include <queue>
 
-using std::unordered_set;
 using std::queue;
+using std::unordered_set;
 
-int Solution::ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+int Solution::ladderLength(string beginWord, string endWord, vector<string> &wordList) {
 	bool endInList = false;
-	for (const auto& iter : wordList) if (iter == endWord) endInList = true;
-	if (!endInList) return false;
+	for (const auto &iter : wordList)
+		if (iter == endWord)
+			endInList = true;
+	if (!endInList)
+		return false;
 
 	unordered_set<string> set;
-	for (const auto& iter : wordList) set.emplace(iter);
+	for (const auto &iter : wordList)
+		set.emplace(iter);
 
 	queue<string> que, next;
 	que.emplace(beginWord);
@@ -22,12 +26,14 @@ int Solution::ladderLength(string beginWord, string endWord, vector<string>& wor
 		string cur = que.front();
 		que.pop();
 
-		for (int i = 0 ; i < cur.size() ; ++i) {
+		for (int i = 0; i < cur.size(); ++i) {
 			string tmp = cur;
-			for (char c = 'a' ; c <= 'z' ; ++c) {
+			for (char c = 'a'; c <= 'z'; ++c) {
 				tmp[i] = c;
-				if (tmp == cur) continue;
-				if (tmp == endWord) return result + 1;
+				if (tmp == cur)
+					continue;
+				if (tmp == endWord)
+					return result + 1;
 				if (set.find(tmp) != set.end()) {
 					next.emplace(tmp);
 					set.erase(tmp);

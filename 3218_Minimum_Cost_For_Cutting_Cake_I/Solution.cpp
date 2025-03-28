@@ -4,7 +4,7 @@
 
 using std::sort;
 
-int Solution::minimumCost(int m, int n, vector<int>& horizontalCut, vector<int>& verticalCut) {
+int Solution::minimumCost(int m, int n, vector<int> &horizontalCut, vector<int> &verticalCut) {
 	sort(horizontalCut.begin(), horizontalCut.end(), std::greater<int>());
 	sort(verticalCut.begin(), verticalCut.end(), std::greater<int>());
 	int hi = 0, vi = 0;

@@ -1,13 +1,14 @@
 #include <queue>
 #include <vector>
 
+using std::greater;
 using std::priority_queue;
 using std::vector;
-using std::greater;
 
 class MedianFinder {
-    public :
-	MedianFinder() : _count(0) {
+public:
+	MedianFinder()
+	    : _count(0) {
 	}
 
 	void addNum(int num) {
@@ -26,12 +27,12 @@ class MedianFinder {
 		return _count & 1 ? _minHeap.top() : ((double)_minHeap.top() + (double)_maxHeap.top()) / 2;
 	}
 
-    private :
+private:
 	int _count;
 	priority_queue<int, vector<int>, greater<int>> _minHeap;
 	priority_queue<int> _maxHeap;
-        virtual ~MedianFinder() {}
-        MedianFinder& operator=(const MedianFinder& source);
-        MedianFinder(const MedianFinder&);
+	virtual ~MedianFinder() {
+	}
+	MedianFinder &operator=(const MedianFinder &source);
+	MedianFinder(const MedianFinder &);
 };
-

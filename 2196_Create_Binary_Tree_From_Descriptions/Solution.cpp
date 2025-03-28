@@ -4,17 +4,17 @@
 
 using std::unordered_map;
 
-TreeNode* Solution::createBinaryTree(vector<vector<int>>& descriptions) {
+TreeNode *Solution::createBinaryTree(vector<vector<int>> &descriptions) {
 	unordered_map<int, int> id;
-	unordered_map<int, TreeNode*> tm;
+	unordered_map<int, TreeNode *> tm;
 
-	for (int i = 0 ; i < descriptions.size() ; ++i) {
-		TreeNode* cur = tm[descriptions[i][0]];
+	for (int i = 0; i < descriptions.size(); ++i) {
+		TreeNode *cur = tm[descriptions[i][0]];
 		if (!cur) {
 			cur = new TreeNode(descriptions[i][0]);
 			tm[descriptions[i][0]] = cur;
 		}
-		TreeNode* next = tm[descriptions[i][1]];
+		TreeNode *next = tm[descriptions[i][1]];
 		if (!next) {
 			next = new TreeNode(descriptions[i][1]);
 			tm[descriptions[i][1]] = next;
@@ -27,8 +27,9 @@ TreeNode* Solution::createBinaryTree(vector<vector<int>>& descriptions) {
 		}
 	}
 
-	for (const auto& node : tm) {
-		if (id[node.first] == 0) return node.second;
+	for (const auto &node : tm) {
+		if (id[node.first] == 0)
+			return node.second;
 	}
 	return nullptr;
 }

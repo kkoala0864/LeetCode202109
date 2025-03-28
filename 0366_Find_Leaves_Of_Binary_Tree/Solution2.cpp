@@ -3,11 +3,12 @@
 #include <unordered_map>
 #include <queue>
 
-using std::unordered_map;
 using std::queue;
+using std::unordered_map;
 
-void dfs(TreeNode* cur, unordered_map<TreeNode*, int>& outdegree, unordered_map<TreeNode*, vector<TreeNode*>>& parent, queue<TreeNode*>& que) {
-	if (!cur) return;
+void dfs(TreeNode *cur, unordered_map<TreeNode *, int> &outdegree, unordered_map<TreeNode *, vector<TreeNode *>> &parent, queue<TreeNode *> &que) {
+	if (!cur)
+		return;
 
 	if (cur->left) {
 		++outdegree[cur];
@@ -19,26 +20,29 @@ void dfs(TreeNode* cur, unordered_map<TreeNode*, int>& outdegree, unordered_map<
 		parent[cur->right].emplace_back(cur);
 		dfs(cur->right, outdegree, parent, que);
 	}
-	if (outdegree[cur] == 0) que.emplace(cur);
+	if (outdegree[cur] == 0)
+		que.emplace(cur);
 }
 
-vector<vector<int>> Solution::findLeaves2(TreeNode* root) {
-	unordered_map<TreeNode*, int> outdegree;
-	unordered_map<TreeNode*, vector<TreeNode*>> parent;
-	queue<TreeNode*> que, next;
+vector<vector<int>> Solution::findLeaves2(TreeNode *root) {
+	unordered_map<TreeNode *, int> outdegree;
+	unordered_map<TreeNode *, vector<TreeNode *>> parent;
+	queue<TreeNode *> que, next;
 
 	dfs(root, outdegree, parent, que);
 
 	vector<vector<int>> result;
 	vector<int> local;
 	while (!que.empty()) {
-		TreeNode* cur = que.front(); que.pop();
+		TreeNode *cur = que.front();
+		que.pop();
 
 		local.emplace_back(cur->val);
 
-		for (const auto& ele : parent[cur]) {
+		for (const auto &ele : parent[cur]) {
 			--outdegree[ele];
-			if (outdegree[ele] == 0) next.emplace(ele);
+			if (outdegree[ele] == 0)
+				next.emplace(ele);
 		}
 
 		if (que.empty()) {

@@ -11,7 +11,7 @@ string Solution::addBinary2(string a, string b) {
 	}
 
 	int carry = 0;
-	for (int i = a.size() - 1 ; i >= 0 ; --i) {
+	for (int i = a.size() - 1; i >= 0; --i) {
 		int sum = a[i] - '0' + b[i] - '0' + carry;
 		a[i] = (sum % 2) + '0';
 		carry = (sum) / 2;

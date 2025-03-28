@@ -4,10 +4,10 @@
 
 using std::max;
 
-int Solution::maxProfit2(vector<int>& prices) {
+int Solution::maxProfit2(vector<int> &prices) {
 	int hold = -prices[0], sell = 0, reset = 0;
 
-	for (int i = 1 ; i < prices.size() ; ++i) {
+	for (int i = 1; i < prices.size(); ++i) {
 		int tmp = hold;
 		hold = max(hold, reset - prices[i]);
 		reset = max(reset, sell);

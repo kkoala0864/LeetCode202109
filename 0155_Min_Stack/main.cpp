@@ -5,7 +5,6 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-    MinStack* test = new MinStack();
-    return 0;
+	MinStack *test = new MinStack();
+	return 0;
 }
-

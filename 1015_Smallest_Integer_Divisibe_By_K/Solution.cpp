@@ -2,7 +2,8 @@
 #include <iostream>
 
 int Solution::smallestRepunitDivByK(int k) {
-	if (((k & 1) == 0) || (k % 5 == 0)) return -1;
+	if (((k & 1) == 0) || (k % 5 == 0))
+		return -1;
 	int result = 1;
 	int rest = 1 % k;
 	while (rest > 0) {
@@ -11,5 +12,4 @@ int Solution::smallestRepunitDivByK(int k) {
 		++result;
 	}
 	return result;
-
 }

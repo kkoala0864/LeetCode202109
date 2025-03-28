@@ -5,10 +5,9 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<int> input = {1,1,1,1,1,1,1,1,5,5,5};
+	vector<int> input = {1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5};
 	int k = 3;
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->maxDistinctElements(input, k) << endl;
 	return 0;
 }
-

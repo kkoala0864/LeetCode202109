@@ -5,11 +5,11 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<vector<char>> input = {{'*','#','*','.','.','.','#','.','*','.'}};
-	Solution* test = new Solution();
+	vector<vector<char>> input = {{'*', '#', '*', '.', '.', '.', '#', '.', '*', '.'}};
+	Solution *test = new Solution();
 	auto result = test->rotateTheBox(input);
-	for (const auto& v : result) {
-		for (const auto& c : v) {
+	for (const auto &v : result) {
+		for (const auto &c : v) {
 			cout << c << " ";
 		}
 		cout << endl;
@@ -17,4 +17,3 @@ int main(void) {
 	cout << endl;
 	return 0;
 }
-

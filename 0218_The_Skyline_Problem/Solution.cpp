@@ -3,25 +3,25 @@
 #include <map>
 #include <set>
 
-using std::map;
-using std::pair;
-using std::multiset;
-using std::set;
 using std::cout;
 using std::endl;
+using std::map;
+using std::multiset;
+using std::pair;
+using std::set;
 
-vector<vector<int>> Solution::getSkyline(vector<vector<int>>& buildings) {
+vector<vector<int>> Solution::getSkyline(vector<vector<int>> &buildings) {
 	map<int, vector<pair<int, int>>> m;
 
-	for (const auto& b : buildings) {
+	for (const auto &b : buildings) {
 		m[b[0]].emplace_back(pair<int, int>(b[2], 1));
 		m[b[1]].emplace_back(pair<int, int>(b[2], -1));
 	}
 
 	multiset<int> ms;
 	vector<vector<int>> result;
-	for (const auto& e : m) {
-		for (const auto& iter : e.second) {
+	for (const auto &e : m) {
+		for (const auto &iter : e.second) {
 			if (iter.second == 1) {
 				ms.emplace(iter.first);
 			} else {
@@ -36,5 +36,3 @@ vector<vector<int>> Solution::getSkyline(vector<vector<int>>& buildings) {
 	}
 	return result;
 }
-
-

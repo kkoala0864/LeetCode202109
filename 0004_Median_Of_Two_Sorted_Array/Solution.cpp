@@ -5,9 +5,9 @@
 using std::max;
 using std::min;
 
-double Solution::findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-	vector<int>& A = nums1.size() <= nums2.size() ? nums1 : nums2;
-	vector<int>& B = nums1.size() <= nums2.size() ? nums2 : nums1;
+double Solution::findMedianSortedArrays(vector<int> &nums1, vector<int> &nums2) {
+	vector<int> &A = nums1.size() <= nums2.size() ? nums1 : nums2;
+	vector<int> &B = nums1.size() <= nums2.size() ? nums2 : nums1;
 
 	int m = A.size();
 	int n = B.size();
@@ -20,10 +20,10 @@ double Solution::findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) 
 		int i = l + ((r - l) >> 1);
 		int j = half - i;
 
-		int al = i > 0 ? A[i-1] : INT_MIN;
+		int al = i > 0 ? A[i - 1] : INT_MIN;
 		int ar = i < m ? A[i] : INT_MAX;
 
-		int bl = j > 0 ? B[j-1] : INT_MIN;
+		int bl = j > 0 ? B[j - 1] : INT_MIN;
 		int br = j < n ? B[j] : INT_MAX;
 
 		if (al <= br && bl <= ar) {

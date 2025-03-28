@@ -10,14 +10,13 @@ int main(void) {
 	ListNode *three = new ListNode(3, four);
 	ListNode *two = new ListNode(2, three);
 	ListNode *one = new ListNode(1, two);
-	//ListNode *one = new ListNode(1);
-	Solution* test = new Solution();
-	ListNode* result = test->removeNthFromEnd3(one, 2);
+	// ListNode *one = new ListNode(1);
+	Solution *test = new Solution();
+	ListNode *result = test->removeNthFromEnd3(one, 2);
 	while (result != nullptr) {
 		cout << result->val << " ";
 		result = result->next;
 	}
 	cout << endl;
-    return 0;
+	return 0;
 }
-

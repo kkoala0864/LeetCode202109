@@ -4,7 +4,7 @@
 
 using std::min;
 
-int Solution::findMin3(vector<int>& nums) {
+int Solution::findMin3(vector<int> &nums) {
 	int start = 0, end = nums.size() - 1;
 	int mid = 0;
 	while (start < end) {
@@ -17,4 +17,3 @@ int Solution::findMin3(vector<int>& nums) {
 	}
 	return nums[start];
 }
-

@@ -4,8 +4,9 @@
 
 using std::max;
 
-void robTree(TreeNode* node, int& prev, int& cur) {
-	if (!node) return;
+void robTree(TreeNode *node, int &prev, int &cur) {
+	if (!node)
+		return;
 	if (!node->left && !node->right) {
 		cur = node->val;
 		return;
@@ -15,12 +16,12 @@ void robTree(TreeNode* node, int& prev, int& cur) {
 	robTree(node->left, lprev, lcur);
 	robTree(node->right, rprev, rcur);
 
-	prev = max(lprev+rprev+node->val, lcur+rcur);
+	prev = max(lprev + rprev + node->val, lcur + rcur);
 	cur = prev;
-	prev = lcur+rcur;
+	prev = lcur + rcur;
 }
 
-int Solution::rob(TreeNode* root) {
+int Solution::rob(TreeNode *root) {
 	int prev = 0, cur = 0;
 	robTree(root, prev, cur);
 	return cur;

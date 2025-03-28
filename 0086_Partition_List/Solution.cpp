@@ -1,13 +1,14 @@
 #include <Solution.h>
 #include <iostream>
 
-ListNode* Solution::partition(ListNode* head, int x) {
-	if (!head) return nullptr;
-	ListNode* iter = head;
-	ListNode* smaller = nullptr;
-	ListNode* smallIter = nullptr;
-	ListNode* bigger = nullptr;
-	ListNode* bigIter = nullptr;
+ListNode *Solution::partition(ListNode *head, int x) {
+	if (!head)
+		return nullptr;
+	ListNode *iter = head;
+	ListNode *smaller = nullptr;
+	ListNode *smallIter = nullptr;
+	ListNode *bigger = nullptr;
+	ListNode *bigIter = nullptr;
 	while (iter) {
 		if (iter->val < x) {
 			if (!smaller) {
@@ -28,9 +29,12 @@ ListNode* Solution::partition(ListNode* head, int x) {
 		}
 		iter = iter->next;
 	}
-	if (bigIter) bigIter->next = nullptr;
-	if (smaller) smallIter->next = bigger;
-	else smaller = bigger;
+	if (bigIter)
+		bigIter->next = nullptr;
+	if (smaller)
+		smallIter->next = bigger;
+	else
+		smaller = bigger;
 
 	return smaller;
 }

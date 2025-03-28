@@ -3,15 +3,15 @@
 #include <set>
 #include <algorithm>
 
-using std::set;
 using std::max;
+using std::set;
 
-int Solution::twoSumLessThanK(vector<int>& nums, int k) {
+int Solution::twoSumLessThanK(vector<int> &nums, int k) {
 	set<int> s;
 	s.emplace(nums[0]);
 
 	int result = INT_MIN;
-	for (int i = 1 ; i < nums.size() ; ++i) {
+	for (int i = 1; i < nums.size(); ++i) {
 		auto iter = s.lower_bound(k - nums[i]);
 
 		if (iter != s.begin()) {
@@ -23,4 +23,3 @@ int Solution::twoSumLessThanK(vector<int>& nums, int k) {
 	}
 	return result == INT_MIN ? -1 : result;
 }
-

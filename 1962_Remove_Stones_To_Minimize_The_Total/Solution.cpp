@@ -5,15 +5,16 @@
 using std::priority_queue;
 
 // TC: O((n+k)logn);
-int Solution::minStoneSum(vector<int>& piles, int k) {
+int Solution::minStoneSum(vector<int> &piles, int k) {
 	priority_queue<int> pq;
-	for (const auto& p : piles) pq.emplace(p);
+	for (const auto &p : piles)
+		pq.emplace(p);
 
 	while (k-- > 0) {
 		double cur = pq.top();
 		pq.pop();
 
-		cur = ceil(cur/2);
+		cur = ceil(cur / 2);
 		pq.emplace(cur);
 	}
 

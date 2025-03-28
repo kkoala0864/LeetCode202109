@@ -4,7 +4,7 @@
 
 using std::max;
 
-int Solution::maxDistToClosest(vector<int>& seats) {
+int Solution::maxDistToClosest(vector<int> &seats) {
 	int result = 0;
 	int start = 0;
 	while (seats[start] == 0) {
@@ -12,16 +12,17 @@ int Solution::maxDistToClosest(vector<int>& seats) {
 		++result;
 	}
 	int end = seats.size() - 1;
-	while (seats[end] == 0) --end;
+	while (seats[end] == 0)
+		--end;
 	result = max((int)(seats.size() - 1 - end), result);
 
-	for (int i = start+1 ; i < end ; ++i) {
+	for (int i = start + 1; i < end; ++i) {
 		int cnt = 0;
 		while (i < end && seats[i] == 0) {
 			++cnt;
 			++i;
 		}
-		result = max(result, (cnt+1) >> 1);
+		result = max(result, (cnt + 1) >> 1);
 	}
 	return result;
 }

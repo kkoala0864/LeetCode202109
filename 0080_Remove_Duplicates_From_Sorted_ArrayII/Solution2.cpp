@@ -1,7 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 
-int Solution::removeDuplicates2(vector<int>& nums) {
+int Solution::removeDuplicates2(vector<int> &nums) {
 	int i = 0, iter = 1;
 	int cnt = 0;
 	while (iter < nums.size()) {

@@ -2,15 +2,15 @@
 #include <iostream>
 #include <algorithm>
 
-using std::sort;
 using std::cout;
 using std::endl;
+using std::sort;
 
-int getBou(const vector<int>& b, int k, int d) {
+int getBou(const vector<int> &b, int k, int d) {
 	int cnt = 0;
 	int result = 0;
 
-	for (const auto& v : b) {
+	for (const auto &v : b) {
 		if (v <= d) {
 			++cnt;
 		} else {
@@ -18,13 +18,14 @@ int getBou(const vector<int>& b, int k, int d) {
 			cnt = 0;
 		}
 	}
-	result += (cnt/k);
+	result += (cnt / k);
 	return result;
 }
 
-int Solution::minDays(vector<int>& bloomDay, int m, int k) {
+int Solution::minDays(vector<int> &bloomDay, int m, int k) {
 	long size = bloomDay.size();
-	if (((long)m * (long)k) > size) return -1;
+	if (((long)m * (long)k) > size)
+		return -1;
 
 	vector<int> list = bloomDay;
 	sort(list.begin(), list.end());

@@ -1,11 +1,12 @@
 #include <Solution.h>
 #include <iostream>
 
-ListNode* Solution::rotateRight(ListNode* head, int k) {
-	if (!head) return head;
+ListNode *Solution::rotateRight(ListNode *head, int k) {
+	if (!head)
+		return head;
 	int size = 0;
-	ListNode* iter = head;
-	ListNode* tail = nullptr;
+	ListNode *iter = head;
+	ListNode *tail = nullptr;
 
 	while (iter) {
 		++size;
@@ -14,9 +15,10 @@ ListNode* Solution::rotateRight(ListNode* head, int k) {
 	}
 
 	k %= size;
-	if (k == 0 || size == 1) return head;
+	if (k == 0 || size == 1)
+		return head;
 	k = (size - k);
-	ListNode* result = head;
+	ListNode *result = head;
 	while (k--) {
 		iter = result;
 		result = result->next;

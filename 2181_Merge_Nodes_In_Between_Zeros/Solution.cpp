@@ -1,9 +1,9 @@
 #include <Solution.h>
 #include <iostream>
 
-ListNode* Solution::mergeNodes(ListNode* head) {
-	ListNode* iter = head->next;
-	ListNode* curZero = head;
+ListNode *Solution::mergeNodes(ListNode *head) {
+	ListNode *iter = head->next;
+	ListNode *curZero = head;
 	while (iter) {
 		if (iter->val == 0) {
 			curZero->next = iter->next ? iter : nullptr;

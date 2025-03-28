@@ -3,11 +3,12 @@
 #include <vector>
 #include <algorithm>
 
-using std::vector;
 using std::max;
+using std::vector;
 
 int Solution::lengthOfLongestSubstringKDistinct2(string s, int k) {
-	if (k <= 0 || s.empty()) return 0;
+	if (k <= 0 || s.empty())
+		return 0;
 	vector<int> cnt(128, 0);
 	int start = 0, iter = 0, result = 0;
 	while (iter < s.size()) {
@@ -15,7 +16,8 @@ int Solution::lengthOfLongestSubstringKDistinct2(string s, int k) {
 			--k;
 			while (start < iter && k < 0) {
 				--cnt[s[start]];
-				if (cnt[s[start]] == 0) ++k;
+				if (cnt[s[start]] == 0)
+					++k;
 				++start;
 			}
 		}

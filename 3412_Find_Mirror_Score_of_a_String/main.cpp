@@ -6,8 +6,7 @@ using std::endl;
 
 int main(void) {
 	string input = "aczzx";
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->calculateScore(input) << endl;
 	return 0;
 }
-

@@ -2,15 +2,16 @@
 #include <iostream>
 #include <queue>
 
-using std::priority_queue;
 using std::cout;
 using std::endl;
+using std::priority_queue;
 
-int Solution::minOperations(vector<int>& nums, int k) {
+int Solution::minOperations(vector<int> &nums, int k) {
 	priority_queue<long, vector<long>, std::greater<>> pq;
 
-	for (const auto& v : nums) {
-		if (v >= k) continue;
+	for (const auto &v : nums) {
+		if (v >= k)
+			continue;
 		pq.emplace(v);
 	}
 

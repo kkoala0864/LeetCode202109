@@ -4,7 +4,7 @@
 
 using std::stack;
 
-int dfs(const string& s, int& idx) {
+int dfs(const string &s, int &idx) {
 	int result = 0;
 	while (idx < s.size()) {
 		if (s[idx] == '(') {

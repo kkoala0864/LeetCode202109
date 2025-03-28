@@ -4,12 +4,13 @@
 
 using std::queue;
 
-vector<int> Solution::findMinHeightTrees2(int n, vector<vector<int>>& edges) {
-	if (n == 1) return vector<int>(1, 0);
+vector<int> Solution::findMinHeightTrees2(int n, vector<vector<int>> &edges) {
+	if (n == 1)
+		return vector<int>(1, 0);
 	vector<vector<int>> relation(n, vector<int>());
 	vector<int> cnt(n, 0);
 
-	for (const auto& iter : edges) {
+	for (const auto &iter : edges) {
 		++cnt[iter[0]];
 		++cnt[iter[1]];
 		relation[iter[0]].emplace_back(iter[1]);
@@ -18,8 +19,9 @@ vector<int> Solution::findMinHeightTrees2(int n, vector<vector<int>>& edges) {
 
 	queue<int> cur, next;
 	vector<int> result;
-	for (int i = 0 ; i < n ; ++i) {
-		if (cnt[i] == 1) cur.emplace(i);
+	for (int i = 0; i < n; ++i) {
+		if (cnt[i] == 1)
+			cur.emplace(i);
 	}
 
 	while (!cur.empty()) {
@@ -29,9 +31,10 @@ vector<int> Solution::findMinHeightTrees2(int n, vector<vector<int>>& edges) {
 			cur.pop();
 			result.emplace_back(node);
 			--cnt[node];
-			for (const auto& iter : relation[node]) {
+			for (const auto &iter : relation[node]) {
 				--cnt[iter];
-				if (cnt[iter] == 1) next.emplace(iter);
+				if (cnt[iter] == 1)
+					next.emplace(iter);
 			}
 		}
 		cur = move(next);

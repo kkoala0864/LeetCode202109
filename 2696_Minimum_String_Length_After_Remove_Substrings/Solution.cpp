@@ -4,7 +4,7 @@
 int Solution::minLength(string s) {
 	string cur;
 
-	for (const auto& c : s) {
+	for (const auto &c : s) {
 		if (cur.empty()) {
 			cur.push_back(c);
 		} else {
@@ -16,5 +16,4 @@ int Solution::minLength(string s) {
 		}
 	}
 	return cur.size();
-
 }

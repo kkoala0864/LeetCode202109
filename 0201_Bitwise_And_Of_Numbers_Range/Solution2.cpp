@@ -2,11 +2,12 @@
 #include <iostream>
 
 int Solution::rangeBitwiseAnd2(int left, int right) {
-	if (left == right) return left;
+	if (left == right)
+		return left;
 
 	int cmp = true;
 	int result = 0;
-	for (int i = 31 ; i >= 0 ; --i) {
+	for (int i = 31; i >= 0; --i) {
 		result = result << 1;
 		if (cmp) {
 			int lBit = (left >> i) & 1;

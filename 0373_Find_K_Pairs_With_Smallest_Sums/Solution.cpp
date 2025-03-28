@@ -2,20 +2,21 @@
 #include <iostream>
 #include <queue>
 
-using std::priority_queue;
 using std::pair;
+using std::priority_queue;
 
-struct cmp {
-	bool operator() (const pair<int, int>& lhs, const pair<int, int>& rhs) {
+struct cmp
+{
+	bool operator()(const pair<int, int> &lhs, const pair<int, int> &rhs) {
 		return lhs.first > rhs.first;
 	}
 };
 
-vector<vector<int>> Solution::kSmallestPairs(vector<int>& nums1, vector<int>& nums2, int k) {
+vector<vector<int>> Solution::kSmallestPairs(vector<int> &nums1, vector<int> &nums2, int k) {
 	priority_queue<pair<int, int>, vector<pair<int, int>>, cmp> pq;
 	vector<int> idx(nums1.size(), 0);
 
-	for (int i = 0 ; i < nums1.size() ; ++i) {
+	for (int i = 0; i < nums1.size(); ++i) {
 		pq.push({nums1[i] + nums2[0], i});
 	}
 

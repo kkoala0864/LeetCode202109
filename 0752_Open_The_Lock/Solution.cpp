@@ -3,26 +3,29 @@
 #include <queue>
 #include <unordered_set>
 
-using std::unordered_set;
 using std::queue;
+using std::unordered_set;
 
-int Solution::openLock(vector<string>& deadends, string target) {
+int Solution::openLock(vector<string> &deadends, string target) {
 	queue<string> que, next;
 	unordered_set<string> uSet;
 	int result = 0;
 
-	for (const auto& d : deadends) uSet.emplace(d);
+	for (const auto &d : deadends)
+		uSet.emplace(d);
 
-	if (uSet.find("0000") != uSet.end()) return -1;
+	if (uSet.find("0000") != uSet.end())
+		return -1;
 	que.emplace("0000");
 
 	while (!que.empty()) {
 		string cur = que.front();
 		que.pop();
 
-		if (cur == target) return result;
+		if (cur == target)
+			return result;
 		string tmp = cur;
-		for (int i = 0 ; i < 4 ; ++i) {
+		for (int i = 0; i < 4; ++i) {
 			tmp = cur;
 			tmp[i] = (cur[i] - '0' + 1) % 10 + '0';
 			if (uSet.find(tmp) == uSet.end()) {

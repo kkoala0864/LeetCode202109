@@ -5,11 +5,12 @@
 using std::stack;
 using std::swap;
 
-Node* Solution::treeToDoublyList2(Node* root) {
-	if (!root) return nullptr;
-	stack<Node*> st;
-	Node* front = nullptr, *frontIter = nullptr;
-	Node* iter = root;
+Node *Solution::treeToDoublyList2(Node *root) {
+	if (!root)
+		return nullptr;
+	stack<Node *> st;
+	Node *front = nullptr, *frontIter = nullptr;
+	Node *iter = root;
 	while (iter) {
 		st.emplace(iter);
 		iter = iter->left;

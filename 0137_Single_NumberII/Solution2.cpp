@@ -3,11 +3,11 @@
 
 using namespace std;
 
-int Solution::singleNumber2(vector<int>& nums) {
+int Solution::singleNumber2(vector<int> &nums) {
 	int result = 0;
-	for (int i = 0 ; i < 32 ; ++i) {
+	for (int i = 0; i < 32; ++i) {
 		int cnt = 0;
-		for (const auto& v : nums) {
+		for (const auto &v : nums) {
 			cnt += ((v >> i) & 1);
 		}
 		cnt %= 3;

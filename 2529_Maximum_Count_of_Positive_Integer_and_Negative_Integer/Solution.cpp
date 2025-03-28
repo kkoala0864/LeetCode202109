@@ -4,7 +4,7 @@
 
 using std::max;
 
-int Solution::maximumCount(vector<int>& nums) {
+int Solution::maximumCount(vector<int> &nums) {
 	int size = nums.size();
 	int l = lower_bound(nums.begin(), nums.end(), 0) - nums.begin();
 	if (l == nums.size()) {

@@ -2,11 +2,11 @@
 #include <iostream>
 #include <climits>
 
-using std::min;
 using std::cout;
 using std::endl;
+using std::min;
 
-int Solution::minSubArrayLen(int target, vector<int>& nums) {
+int Solution::minSubArrayLen(int target, vector<int> &nums) {
 	int left = -1, right = 0;
 	int size = nums.size();
 	int result = INT_MAX;

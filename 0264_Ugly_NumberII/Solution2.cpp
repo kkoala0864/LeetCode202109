@@ -4,10 +4,10 @@
 #include <vector>
 #include <algorithm>
 
+using std::greater;
+using std::pair;
 using std::priority_queue;
 using std::vector;
-using std::pair;
-using std::greater;
 
 int Solution::nthUglyNumber2(int n) {
 	vector<int> dpIdx(3, 0);
@@ -15,7 +15,7 @@ int Solution::nthUglyNumber2(int n) {
 	vector<int> dp = {1};
 
 	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-	for (int i = 0 ; i < 3 ; ++i) {
+	for (int i = 0; i < 3; ++i) {
 		pq.emplace(pair<int, int>(v[i] * dp[dpIdx[i]], i));
 	}
 
@@ -24,7 +24,8 @@ int Solution::nthUglyNumber2(int n) {
 		int idx = pq.top().second;
 		pq.pop();
 
-		if (dp.back() != curV) dp.emplace_back(curV);
+		if (dp.back() != curV)
+			dp.emplace_back(curV);
 		++dpIdx[idx];
 		pq.emplace(pair<int, int>(v[idx] * dp[dpIdx[idx]], idx));
 	}

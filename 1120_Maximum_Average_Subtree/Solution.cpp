@@ -4,8 +4,9 @@
 
 using std::max;
 
-int dfs(TreeNode* node, int& cnt, double& result) {
-	if (!node) return 0;
+int dfs(TreeNode *node, int &cnt, double &result) {
+	if (!node)
+		return 0;
 	int curS = 0;
 	int lc = 0;
 	curS += dfs(node->left, lc, result);
@@ -18,7 +19,7 @@ int dfs(TreeNode* node, int& cnt, double& result) {
 	return curS;
 }
 
-double Solution::maximumAverageSubtree(TreeNode* root) {
+double Solution::maximumAverageSubtree(TreeNode *root) {
 	int sum = 0;
 	double result = 0;
 	int n = 0;

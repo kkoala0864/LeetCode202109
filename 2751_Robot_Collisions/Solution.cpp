@@ -2,16 +2,17 @@
 #include <iostream>
 #include <algorithm>
 
-using std::sort;
 using std::pair;
+using std::sort;
 
-vector<int> Solution::survivedRobotsHealths(vector<int>& positions, vector<int>& healths, string directions) {
+vector<int> Solution::survivedRobotsHealths(vector<int> &positions, vector<int> &healths, string directions) {
 	vector<pair<int, int>> robots;
-	for (int i = 0 ; i < positions.size() ; ++i) robots.emplace_back(pair<int, int>(positions[i], i));
+	for (int i = 0; i < positions.size(); ++i)
+		robots.emplace_back(pair<int, int>(positions[i], i));
 	sort(robots.begin(), robots.end());
 	vector<pair<int, int>> st;
 
-	for (auto& r : robots) {
+	for (auto &r : robots) {
 		int curIdx = r.second;
 		if (directions[curIdx] == 'R') {
 			st.emplace_back(r);
@@ -39,6 +40,8 @@ vector<int> Solution::survivedRobotsHealths(vector<int>& positions, vector<int>&
 		}
 	}
 	vector<int> result;
-	for (const auto& h : healths) if (h > 0) result.emplace_back(h);
+	for (const auto &h : healths)
+		if (h > 0)
+			result.emplace_back(h);
 	return result;
 }

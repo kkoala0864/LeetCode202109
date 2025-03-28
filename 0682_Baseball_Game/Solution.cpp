@@ -1,10 +1,10 @@
 #include <Solution.h>
 #include <iostream>
 
-int Solution::calPoints(vector<string>& ops) {
+int Solution::calPoints(vector<string> &ops) {
 	vector<int> st;
 	int result = 0;
-	for (const auto& op : ops) {
+	for (const auto &op : ops) {
 		if (op == "+") {
 			int val = st.back();
 			val += st[st.size() - 2];

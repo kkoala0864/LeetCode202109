@@ -4,7 +4,7 @@
 
 using std::queue;
 
-void insert(TreeNode*& node, TreeNode*& cur) {
+void insert(TreeNode *&node, TreeNode *&cur) {
 	if (!node) {
 		node = cur;
 	} else if (cur->val > node->val) {
@@ -14,14 +14,14 @@ void insert(TreeNode*& node, TreeNode*& cur) {
 	}
 }
 
-vector<TreeNode*> Solution::splitBST(TreeNode* root, int target) {
-	vector<TreeNode*> result(2, nullptr);
+vector<TreeNode *> Solution::splitBST(TreeNode *root, int target) {
+	vector<TreeNode *> result(2, nullptr);
 
-	queue<TreeNode*> que;
+	queue<TreeNode *> que;
 	que.emplace(root);
 
 	while (!que.empty()) {
-		TreeNode* cur = que.front();
+		TreeNode *cur = que.front();
 		que.pop();
 
 		if (cur->left) {

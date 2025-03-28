@@ -4,12 +4,13 @@
 #include <unordered_set>
 #include <queue>
 
+using std::queue;
 using std::unordered_map;
 using std::unordered_set;
-using std::queue;
 
-void dfs(TreeNode* node, unordered_map<int, vector<int>>& adj) {
-	if (!node) return;
+void dfs(TreeNode *node, unordered_map<int, vector<int>> &adj) {
+	if (!node)
+		return;
 	if (node->left) {
 		adj[node->val].emplace_back(node->left->val);
 		adj[node->left->val].emplace_back(node->val);
@@ -21,10 +22,9 @@ void dfs(TreeNode* node, unordered_map<int, vector<int>>& adj) {
 		adj[node->right->val].emplace_back(node->val);
 		dfs(node->right, adj);
 	}
-
 }
 
-vector<int> Solution::distanceK(TreeNode* root, TreeNode* target, int k) {
+vector<int> Solution::distanceK(TreeNode *root, TreeNode *target, int k) {
 	unordered_map<int, vector<int>> adj;
 
 	dfs(root, adj);
@@ -41,15 +41,17 @@ vector<int> Solution::distanceK(TreeNode* root, TreeNode* target, int k) {
 
 		result.emplace_back(cur);
 
-		for (const auto& n : adj[cur]) {
-			if (visited.count(n)) continue;
+		for (const auto &n : adj[cur]) {
+			if (visited.count(n))
+				continue;
 			next.emplace(n);
 			visited.emplace(n);
 		}
 
 		if (que.empty()) {
 			--k;
-			if (k < 0) break;
+			if (k < 0)
+				break;
 			que = move(next);
 			result.clear();
 		}

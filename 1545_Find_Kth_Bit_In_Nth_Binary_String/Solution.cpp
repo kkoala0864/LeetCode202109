@@ -10,7 +10,8 @@ char Solution::findKthBit(int n, int k) {
 
 	while (n > 0) {
 		int base = pow(2, n);
-		if (k == base) return flipCnt > 0 ? '0' : '1';
+		if (k == base)
+			return flipCnt > 0 ? '0' : '1';
 		if (k > base) {
 			flipCnt ^= 1;
 			k -= base;

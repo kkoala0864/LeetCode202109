@@ -2,19 +2,20 @@
 #include <vector>
 #include <iostream>
 
-using std::vector;
-using std::string;
-using std::to_string;
 using std::cout;
 using std::endl;
+using std::string;
+using std::to_string;
+using std::vector;
 
 class Solution {
-    public :
-        Solution() {}
+public:
+	Solution() {
+	}
 	// Encodes a list of strings to a single string.
-	string encode(vector<string>& strs) {
+	string encode(vector<string> &strs) {
 		string result = "";
-		for (const auto& iter : strs) {
+		for (const auto &iter : strs) {
 			int size = iter.size();
 			result += to_string(size) + "@" + iter;
 		}
@@ -27,7 +28,7 @@ class Solution {
 		int head = 0;
 		while (head < s.size()) {
 			int pos = s.find_first_of('@', head);
-			string lenStr = s.substr(head, pos-head);
+			string lenStr = s.substr(head, pos - head);
 			int len = stoi(lenStr);
 			head = pos + 1;
 			string word = s.substr(head, len);
@@ -36,9 +37,10 @@ class Solution {
 		}
 		return result;
 	}
-    private :
-        virtual ~Solution() {}
-        Solution& operator=(const Solution& source);
-        Solution(const Solution&);
-};
 
+private:
+	virtual ~Solution() {
+	}
+	Solution &operator=(const Solution &source);
+	Solution(const Solution &);
+};

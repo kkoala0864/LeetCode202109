@@ -6,8 +6,7 @@ using std::endl;
 
 int main(void) {
 	vector<string> input = {"0"};
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->numberOfBeams(input) << endl;
 	return 0;
 }
-

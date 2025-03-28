@@ -6,9 +6,9 @@ vector<string> Solution::validStrings(int n) {
 	result.emplace_back("0");
 	result.emplace_back("1");
 
-	for (int i = 1 ; i < n ; ++i) {
+	for (int i = 1; i < n; ++i) {
 		vector<string> tmp;
-		for (const auto& v : result) {
+		for (const auto &v : result) {
 			if (v.back() == '0') {
 				string s = v;
 				s.push_back('1');

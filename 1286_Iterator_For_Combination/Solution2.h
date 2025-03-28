@@ -1,20 +1,22 @@
 #include <string>
 #include <vector>
 
-using std::vector;
 using std::string;
+using std::vector;
 
 class CombinationIterator {
-    public :
+public:
 	CombinationIterator(string characters, int combinationLength) {
 		s = characters;
 		csize = combinationLength;
-		for (int i = 0 ; i < csize ; ++i) idx.emplace_back(i);
+		for (int i = 0; i < csize; ++i)
+			idx.emplace_back(i);
 	}
 
 	string next() {
 		string result;
-		for (const auto& c : idx) result.push_back(s[c]);
+		for (const auto &c : idx)
+			result.push_back(s[c]);
 		int carry = 1;
 		int i = idx.size() - 1;
 		while (i >= 0) {
@@ -27,8 +29,8 @@ class CombinationIterator {
 			}
 		}
 		if (idx[0] <= (s.size() - csize)) {
-			for (int j = i + 1 ; j < idx.size() ; ++j) {
-				idx[j] = idx[j-1] + 1;
+			for (int j = i + 1; j < idx.size(); ++j) {
+				idx[j] = idx[j - 1] + 1;
 			}
 		}
 		return result;
@@ -36,12 +38,13 @@ class CombinationIterator {
 	bool hasNext() {
 		return idx[0] <= (s.size() - csize);
 	}
-    private :
+
+private:
 	string s;
 	int csize;
 	vector<int> idx;
-        virtual ~CombinationIterator() {}
-        CombinationIterator& operator=(const CombinationIterator& source);
-        CombinationIterator(const CombinationIterator&);
+	virtual ~CombinationIterator() {
+	}
+	CombinationIterator &operator=(const CombinationIterator &source);
+	CombinationIterator(const CombinationIterator &);
 };
-

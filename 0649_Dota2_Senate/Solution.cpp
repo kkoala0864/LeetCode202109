@@ -2,16 +2,18 @@
 #include <iostream>
 #include <queue>
 
-using std::queue;
 using std::cout;
 using std::endl;
+using std::queue;
 
 string Solution::predictPartyVictory(string senate) {
 	queue<char> que;
 	int dc = 0, rc = 0;
-	for (const auto& s : senate) {
-		if (s == 'R') ++rc;
-		else ++dc;
+	for (const auto &s : senate) {
+		if (s == 'R')
+			++rc;
+		else
+			++dc;
 		que.emplace(s);
 	}
 	int dv = 0, rv = 0;

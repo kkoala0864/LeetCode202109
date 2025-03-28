@@ -2,7 +2,7 @@
 
 using std::swap;
 
-void Solution::sortColors3(vector<int>& nums) {
+void Solution::sortColors3(vector<int> &nums) {
 	int iter = 0;
 	int idx0 = 0;
 	int idx2 = nums.size() - 1;

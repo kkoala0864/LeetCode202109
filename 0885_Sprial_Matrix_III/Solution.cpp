@@ -2,8 +2,8 @@
 #include <iostream>
 #include <unordered_map>
 
-using std::unordered_map;
 using std::pair;
+using std::unordered_map;
 
 vector<vector<int>> Solution::spiralMatrixIII(int rows, int cols, int rStart, int cStart) {
 	unordered_map<int, unordered_map<int, int>> visited;

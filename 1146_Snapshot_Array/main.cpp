@@ -5,7 +5,6 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	SnapshotArray* test = new SnapshotArray();
+	SnapshotArray *test = new SnapshotArray();
 	return 0;
 }
-

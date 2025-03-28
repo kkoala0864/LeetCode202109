@@ -9,5 +9,5 @@ int Solution::getSum2(int a, int b) {
 		carry = (result & carry) << 1;
 		result = tmp;
 	}
-	return (int) result;
+	return (int)result;
 }

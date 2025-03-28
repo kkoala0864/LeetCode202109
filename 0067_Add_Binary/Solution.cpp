@@ -10,7 +10,7 @@ string Solution::addBinary(string a, string b) {
 		int second = b.back() - '0';
 		b.pop_back();
 		result = string(1, (first + second + carry) % 2 + '0') + result;
-		carry = ( first + second + carry ) / 2;
+		carry = (first + second + carry) / 2;
 	}
 	// difference size
 	string rest = a.empty() ? b : a;
@@ -21,9 +21,11 @@ string Solution::addBinary(string a, string b) {
 		carry = (val + carry) / 2;
 	}
 
-	if (!rest.empty()) result = rest + result;
+	if (!rest.empty())
+		result = rest + result;
 	// carry in handle
-	if (carry != 0) result = "1" + result;
+	if (carry != 0)
+		result = "1" + result;
 
 	return result;
 }

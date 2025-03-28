@@ -4,16 +4,17 @@
 using std::cout;
 using std::endl;
 
-ListNode* Solution::insertionSortList(ListNode* head) {
-	ListNode* ret = new ListNode(-1);
+ListNode *Solution::insertionSortList(ListNode *head) {
+	ListNode *ret = new ListNode(-1);
 	auto iter = head;
-	ListNode* prev = nullptr, *cur = nullptr, *next = nullptr;
+	ListNode *prev = nullptr, *cur = nullptr, *next = nullptr;
 
 	while (iter) {
 		prev = ret;
 		cur = ret->next;
 		while (cur) {
-			if (cur->val >= iter->val) break;
+			if (cur->val >= iter->val)
+				break;
 			prev = cur;
 			cur = cur->next;
 		}

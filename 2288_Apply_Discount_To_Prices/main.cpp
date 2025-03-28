@@ -6,8 +6,7 @@ using std::endl;
 
 int main(void) {
 	string input = "1 2 $3 4 $5 $6 7 8$ $9 $10$";
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->discountPrices(input, 100) << endl;
 	return 0;
 }
-

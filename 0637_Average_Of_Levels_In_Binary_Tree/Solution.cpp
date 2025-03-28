@@ -4,8 +4,8 @@
 
 using std::queue;
 
-vector<double> Solution::averageOfLevels(TreeNode* root) {
-	queue<TreeNode*> que, next;
+vector<double> Solution::averageOfLevels(TreeNode *root) {
+	queue<TreeNode *> que, next;
 
 	que.emplace(root);
 	vector<double> result;
@@ -18,8 +18,10 @@ vector<double> Solution::averageOfLevels(TreeNode* root) {
 
 		sum += cur->val;
 
-		if (cur->left) next.emplace(cur->left);
-		if (cur->right) next.emplace(cur->right);
+		if (cur->left)
+			next.emplace(cur->left);
+		if (cur->right)
+			next.emplace(cur->right);
 
 		if (que.empty()) {
 			result.emplace_back((long double)sum / size);

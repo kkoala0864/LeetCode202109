@@ -3,12 +3,14 @@
 using std::vector;
 
 class Solution {
-    public :
-        Solution() {}
-	vector<int> findOriginalArray(vector<int>& changed);
-    private :
-        virtual ~Solution() {}
-        Solution& operator=(const Solution& source);
-        Solution(const Solution&);
-};
+public:
+	Solution() {
+	}
+	vector<int> findOriginalArray(vector<int> &changed);
 
+private:
+	virtual ~Solution() {
+	}
+	Solution &operator=(const Solution &source);
+	Solution(const Solution &);
+};

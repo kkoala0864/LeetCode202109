@@ -4,11 +4,13 @@
 
 using std::unordered_map;
 
-void dfs(TreeNode* node, unordered_map<int, int>& uMap, int targetSum, int pathSum, int& result) {
-	if (!node) return;
+void dfs(TreeNode *node, unordered_map<int, int> &uMap, int targetSum, int pathSum, int &result) {
+	if (!node)
+		return;
 	pathSum += node->val;
 
-	if (uMap.find(pathSum - targetSum) != uMap.end()) result += uMap[pathSum - targetSum];
+	if (uMap.find(pathSum - targetSum) != uMap.end())
+		result += uMap[pathSum - targetSum];
 
 	++uMap[pathSum];
 	dfs(node->left, uMap, targetSum, pathSum, result);
@@ -16,8 +18,9 @@ void dfs(TreeNode* node, unordered_map<int, int>& uMap, int targetSum, int pathS
 	--uMap[pathSum];
 }
 
-int Solution::pathSum2(TreeNode* root, int targetSum) {
-	if (!root) return 0;
+int Solution::pathSum2(TreeNode *root, int targetSum) {
+	if (!root)
+		return 0;
 	unordered_map<int, int> uMap;
 	int result = 0;
 	++uMap[0];

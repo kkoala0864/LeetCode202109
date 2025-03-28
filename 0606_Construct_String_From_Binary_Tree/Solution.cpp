@@ -3,12 +3,14 @@
 
 using std::to_string;
 
-void dfs(TreeNode* node, string& result) {
-	if (!node) return;
+void dfs(TreeNode *node, string &result) {
+	if (!node)
+		return;
 
 	string val = to_string(node->val);
 	result += val;
-	if (!node->left && !node->right) return;
+	if (!node->left && !node->right)
+		return;
 	result.push_back('(');
 	dfs(node->left, result);
 	result.push_back(')');
@@ -19,9 +21,10 @@ void dfs(TreeNode* node, string& result) {
 	}
 }
 
-string Solution::tree2str(TreeNode* root) {
+string Solution::tree2str(TreeNode *root) {
 	string result;
-	if (!root) return result;
+	if (!root)
+		return result;
 	dfs(root, result);
 	return result;
 }

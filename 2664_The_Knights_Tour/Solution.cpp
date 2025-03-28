@@ -3,16 +3,19 @@
 
 vector<vector<int>> dir = {{1, 2}, {2, 1}, {-1, 2}, {-2, 1}, {1, -2}, {2, -1}, {-1, -2}, {-2, -1}};
 
-bool dfs(int r, int c, int m, int n, int cnt, vector<vector<int>>& result) {
-	if (cnt == m*n) return true;
+bool dfs(int r, int c, int m, int n, int cnt, vector<vector<int>> &result) {
+	if (cnt == m * n)
+		return true;
 
-	for (int i = 0 ; i < dir.size() ; ++i) {
+	for (int i = 0; i < dir.size(); ++i) {
 		int nx = r + dir[i][0];
 		int ny = c + dir[i][1];
 
-		if (nx < 0 || ny < 0 || nx >= m || ny >= n || result[nx][ny] != -1) continue;
+		if (nx < 0 || ny < 0 || nx >= m || ny >= n || result[nx][ny] != -1)
+			continue;
 		result[nx][ny] = cnt;
-		if (dfs(nx, ny, m, n, cnt + 1, result)) return true;
+		if (dfs(nx, ny, m, n, cnt + 1, result))
+			return true;
 		result[nx][ny] = -1;
 	}
 	return false;

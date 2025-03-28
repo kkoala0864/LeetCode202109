@@ -2,21 +2,22 @@
 #include <iostream>
 #include <algorithm>
 
-using std::max;
 using std::cout;
 using std::endl;
+using std::max;
 
-long long check(vector<int>& c, long long mid) {
+long long check(vector<int> &c, long long mid) {
 	long long result = 0;
-	for (const auto& v : c) {
+	for (const auto &v : c) {
 		result += ((long long)v / mid);
 	}
 	return result;
 }
 
-int Solution::maximumCandies(vector<int>& candies, long long k) {
+int Solution::maximumCandies(vector<int> &candies, long long k) {
 	long long sum = 0;
-	for (const auto& c : candies) sum += (long long)c;
+	for (const auto &c : candies)
+		sum += (long long)c;
 
 	long long l = 0, r = sum / k;
 	long long mid = 0;

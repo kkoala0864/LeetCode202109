@@ -3,22 +3,23 @@
 #include <algorithm>
 #include <iostream>
 
-using std::max;
-using std::map;
-using std::prev;
 using std::cout;
 using std::endl;
+using std::map;
+using std::max;
+using std::prev;
 
 class RangeModule {
-    public :
-	RangeModule() {}
+public:
+	RangeModule() {
+	}
 
 	void addRange(int left, int right) {
 		--right;
 		auto iter = m.lower_bound(left);
 		if (iter != m.begin()) {
 			auto last = prev(iter);
-			if (last->second >= (left-1)) {
+			if (last->second >= (left - 1)) {
 				left = last->first;
 				right = max(last->second, right);
 			}
@@ -41,7 +42,8 @@ class RangeModule {
 			return left >= iter->first && iter->second >= right;
 		}
 
-		if (iter == m.begin()) return false;
+		if (iter == m.begin())
+			return false;
 		auto last = prev(iter);
 		if (last->second >= left) {
 			return last->second >= right;
@@ -70,20 +72,22 @@ class RangeModule {
 			}
 			next.erase(iter->first);
 			if (right < iter->second) {
-				next[right+1] = iter->second;
+				next[right + 1] = iter->second;
 			}
 			++iter;
 		}
 		m = next;
 	}
 	void print() {
-		for (const auto& e : m) cout << "print : " << e.first << " : " << e.second << endl;
+		for (const auto &e : m)
+			cout << "print : " << e.first << " : " << e.second << endl;
 		cout << endl;
 	}
-    private :
-	map<int, int> m;
-        virtual ~RangeModule() {}
-        RangeModule& operator=(const RangeModule& source);
-        RangeModule(const RangeModule&);
-};
 
+private:
+	map<int, int> m;
+	virtual ~RangeModule() {
+	}
+	RangeModule &operator=(const RangeModule &source);
+	RangeModule(const RangeModule &);
+};

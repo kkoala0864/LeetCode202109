@@ -3,11 +3,12 @@
 #include <unordered_map>
 #include <queue>
 
-using std::unordered_map;
 using std::queue;
+using std::unordered_map;
 
-void dfs(TreeNode* node, unordered_map<TreeNode*, TreeNode*>& parent, queue<TreeNode*>& leaves) {
-	if (!node) return;
+void dfs(TreeNode *node, unordered_map<TreeNode *, TreeNode *> &parent, queue<TreeNode *> &leaves) {
+	if (!node)
+		return;
 
 	if (!node->left && !node->right) {
 		leaves.emplace(node);
@@ -23,22 +24,23 @@ void dfs(TreeNode* node, unordered_map<TreeNode*, TreeNode*>& parent, queue<Tree
 	dfs(node->right, parent, leaves);
 }
 
-vector<vector<int>> Solution::findLeaves(TreeNode* root) {
-	unordered_map<TreeNode*, TreeNode*> parent;
-	queue<TreeNode*> leaves;
+vector<vector<int>> Solution::findLeaves(TreeNode *root) {
+	unordered_map<TreeNode *, TreeNode *> parent;
+	queue<TreeNode *> leaves;
 
 	dfs(root, parent, leaves);
 	vector<vector<int>> result;
-	queue<TreeNode*> next;
+	queue<TreeNode *> next;
 	vector<int> insert;
 	while (!leaves.empty()) {
-		TreeNode* cur = leaves.front();
+		TreeNode *cur = leaves.front();
 		leaves.pop();
 		insert.emplace_back(cur->val);
-		TreeNode* pt = parent[cur];
+		TreeNode *pt = parent[cur];
 		if (pt) {
 			pt->left == cur ? pt->left = nullptr : pt->right = nullptr;
-			if (!pt->left && !pt->right) next.emplace(pt);
+			if (!pt->left && !pt->right)
+				next.emplace(pt);
 		}
 		if (leaves.empty()) {
 			result.emplace_back(insert);
