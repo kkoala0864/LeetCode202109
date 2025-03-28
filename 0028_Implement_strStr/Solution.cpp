@@ -2,18 +2,18 @@
 #include <iostream>
 #include <vector>
 
-using std::vector;
 using std::cout;
 using std::endl;
+using std::vector;
 
-vector<int> getLPS(const string& p) {
+vector<int> getLPS(const string &p) {
 	int size = p.size();
 	vector<int> lps(size, 0);
 
-	for (int i = 1 ; i < size ; ++i) {
-		int j = lps[i-1];
+	for (int i = 1; i < size; ++i) {
+		int j = lps[i - 1];
 		while (j > 0 && p[i] != p[j]) {
-			j = lps[j-1];
+			j = lps[j - 1];
 		}
 		lps[i] = j + (p[i] == p[j]);
 	}

@@ -19,8 +19,8 @@ using std::map;
 vector<Interval> Solution::employeeFreeTime(vector<vector<Interval>> schedule) {
 	map<int, int> timeline;
 
-	for (const auto& person : schedule) {
-		for (const auto& t : person) {
+	for (const auto &person : schedule) {
+		for (const auto &t : person) {
 			++timeline[t.start];
 			--timeline[t.end];
 		}
@@ -30,12 +30,13 @@ vector<Interval> Solution::employeeFreeTime(vector<vector<Interval>> schedule) {
 	vector<Interval> result;
 
 	int curSum = 0;
-	for (const auto& t : timeline) {
+	for (const auto &t : timeline) {
 		if (curSum == 0 && lastZero != INT_MIN) {
 			result.emplace_back(Interval(lastZero, t.first));
 		}
 		curSum += t.second;
-		if (curSum == 0) lastZero = t.first;
+		if (curSum == 0)
+			lastZero = t.first;
 	}
 	return result;
 }

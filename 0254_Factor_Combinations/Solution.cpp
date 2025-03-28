@@ -2,19 +2,21 @@
 #include <iostream>
 #include <math.h>
 
-void dfs(int target, int idx, vector<int>& local, vector<vector<int>>& result) {
+void dfs(int target, int idx, vector<int> &local, vector<vector<int>> &result) {
 	if (target == 1) {
-		if (local.size() > 1) result.emplace_back(local);
+		if (local.size() > 1)
+			result.emplace_back(local);
 		return;
 	}
 
-	for (int i = idx ; i * i <= target ; ++i) {
-		if (target % i != 0) continue;
+	for (int i = idx; i * i <= target; ++i) {
+		if (target % i != 0)
+			continue;
 		local.emplace_back(i);
-		local.emplace_back(target/i);
+		local.emplace_back(target / i);
 		result.emplace_back(local);
 		local.pop_back();
-		dfs(target/i, i, local, result);
+		dfs(target / i, i, local, result);
 		local.pop_back();
 	}
 }

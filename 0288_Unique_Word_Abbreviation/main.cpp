@@ -5,7 +5,6 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	ValidWordAbbr* test = new ValidWordAbbr();
+	ValidWordAbbr *test = new ValidWordAbbr();
 	return 0;
 }
-

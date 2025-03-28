@@ -6,8 +6,7 @@ using std::endl;
 
 int main(void) {
 	string input = "0101";
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->maximumOddBinaryNumber(input) << endl;
 	return 0;
 }
-

@@ -5,13 +5,13 @@
 using std::max;
 using std::min;
 
-vector<vector<int>> Solution::merge2(vector<vector<int>>& intervals) {
+vector<vector<int>> Solution::merge2(vector<vector<int>> &intervals) {
 	vector<vector<int>> tmp;
 	while (true) {
 		bool change = false;
-		for (int i = 0 ; i < intervals.size() ; ++i) {
+		for (int i = 0; i < intervals.size(); ++i) {
 			int j = i + 1;
-			for (; j < intervals.size() ; ++j) {
+			for (; j < intervals.size(); ++j) {
 				if (intervals[i][0] > intervals[j][1]) {
 					tmp.emplace_back(intervals[j]);
 					change = true;
@@ -26,7 +26,8 @@ vector<vector<int>> Solution::merge2(vector<vector<int>>& intervals) {
 			tmp.emplace_back(intervals[i]);
 			i = j - 1;
 		}
-		if (!change) break;
+		if (!change)
+			break;
 		intervals = move(tmp);
 	}
 	return intervals;

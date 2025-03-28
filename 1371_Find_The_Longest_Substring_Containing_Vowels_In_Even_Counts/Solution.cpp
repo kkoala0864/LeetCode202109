@@ -3,8 +3,8 @@
 #include <unordered_map>
 #include <algorithm>
 
-using std::unordered_map;
 using std::max;
+using std::unordered_map;
 
 bool isVowel(char c) {
 	return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
@@ -16,7 +16,7 @@ int Solution::findTheLongestSubstring(string s) {
 	int mask = 0;
 	unordered_map<int, int> m;
 
-	for (int i = 0 ; i < s.size() ; ++i) {
+	for (int i = 0; i < s.size(); ++i) {
 		if (isVowel(s[i])) {
 			mask ^= (1 << (s[i] - 'a'));
 		}
@@ -25,7 +25,8 @@ int Solution::findTheLongestSubstring(string s) {
 		} else if (m.count(mask)) {
 			result = max(result, i - m[mask]);
 		}
-		if (m.count(mask) == 0) m[mask] = i;
+		if (m.count(mask) == 0)
+			m[mask] = i;
 	}
 	return result;
 }

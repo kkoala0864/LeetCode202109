@@ -1,7 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 
-int Solution::getCommon(vector<int>& nums1, vector<int>& nums2) {
+int Solution::getCommon(vector<int> &nums1, vector<int> &nums2) {
 	int i1 = 0, i2 = 0;
 
 	while (i1 < nums1.size() && i2 < nums2.size()) {
@@ -14,5 +14,4 @@ int Solution::getCommon(vector<int>& nums1, vector<int>& nums2) {
 		}
 	}
 	return -1;
-
 }

@@ -8,10 +8,11 @@ using std::vector;
 int Solution::longestPalindrome(string s) {
 	vector<int> cnt(128, 0);
 
-	for (const auto& c : s) ++cnt[c-'A'];
+	for (const auto &c : s)
+		++cnt[c - 'A'];
 
 	int result = 0;
-	for (int i = 0 ; i < cnt.size() ; ++i) {
+	for (int i = 0; i < cnt.size(); ++i) {
 		if ((cnt[i] & 1) && (result & 1) == 0) {
 			result += cnt[i];
 		} else {

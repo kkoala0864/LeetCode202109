@@ -6,15 +6,16 @@
 using std::max;
 using std::queue;
 
-int Solution::maximumInvitations(vector<int>& favorite) {
+int Solution::maximumInvitations(vector<int> &favorite) {
 	int size = favorite.size();
 	vector<int> id(size, 0);
 	vector<int> depth(size, 1);
 	vector<bool> visited(size, false);
 
-	for (const auto& f : favorite) ++id[f];
+	for (const auto &f : favorite)
+		++id[f];
 	queue<int> que;
-	for (int i = 0 ; i < size ; ++i) {
+	for (int i = 0; i < size; ++i) {
 		if (id[i] == 0) {
 			que.emplace(i);
 			visited[i] = true;
@@ -35,8 +36,9 @@ int Solution::maximumInvitations(vector<int>& favorite) {
 
 	int max_multiple_cycle = 0;
 	int max_link = 0;
-	for (int i = 0 ; i < size ; ++i) {
-		if (visited[i]) continue;
+	for (int i = 0; i < size; ++i) {
+		if (visited[i])
+			continue;
 		int cnt = 1;
 		int cur = i;
 		visited[i] = true;

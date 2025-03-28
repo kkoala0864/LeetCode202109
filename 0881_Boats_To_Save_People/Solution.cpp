@@ -4,7 +4,7 @@
 
 using std::sort;
 
-int Solution::numRescueBoats(vector<int>& people, int limit) {
+int Solution::numRescueBoats(vector<int> &people, int limit) {
 	sort(people.begin(), people.end());
 
 	int l = 0, r = people.size() - 1;

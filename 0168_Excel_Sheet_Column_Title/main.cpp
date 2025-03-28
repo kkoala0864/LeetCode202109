@@ -5,8 +5,7 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-    Solution* test = new Solution();
-    cout << test->convertToTitle(701) << endl;
-    return 0;
+	Solution *test = new Solution();
+	cout << test->convertToTitle(701) << endl;
+	return 0;
 }
-

@@ -4,11 +4,12 @@
 #include <algorithm>
 #include <climits>
 
-using std::vector;
 using std::max;
+using std::vector;
 
 int Solution::lengthOfLongestSubstring2(string s) {
-	if (s.empty()) return 0;
+	if (s.empty())
+		return 0;
 	vector<int> location(128, -1);
 	int result = 0;
 
@@ -18,7 +19,7 @@ int Solution::lengthOfLongestSubstring2(string s) {
 		if (location[s[end]] != -1) {
 			int lastIdx = location[s[end]];
 			result = max(result, end - start);
-			for (int i = start ; i < lastIdx ; ++i) {
+			for (int i = start; i < lastIdx; ++i) {
 				location[s[i]] = -1;
 			}
 			start = lastIdx + 1;

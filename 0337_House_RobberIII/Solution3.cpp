@@ -4,8 +4,9 @@
 
 using std::max;
 
-void robb(TreeNode* node, int& child, int& grand) {
-	if (!node) return;
+void robb(TreeNode *node, int &child, int &grand) {
+	if (!node)
+		return;
 	if (!node->left && !node->right) {
 		child = node->val;
 		return;
@@ -19,7 +20,7 @@ void robb(TreeNode* node, int& child, int& grand) {
 	grand = lchild + rchild;
 }
 
-int Solution::rob3(TreeNode* root) {
+int Solution::rob3(TreeNode *root) {
 	int child = 0, grand = 0;
 	robb(root, child, grand);
 	return child;

@@ -3,10 +3,10 @@
 #include <queue>
 #include <climits>
 
-using std::queue;
 using std::pair;
+using std::queue;
 
-int Solution::shortestDistance(vector<vector<int>>& maze, vector<int>& start, vector<int>& destination) {
+int Solution::shortestDistance(vector<vector<int>> &maze, vector<int> &start, vector<int> &destination) {
 	int m = maze.size();
 	int n = maze[0].size();
 
@@ -23,20 +23,21 @@ int Solution::shortestDistance(vector<vector<int>>& maze, vector<int>& start, ve
 		int x = cur.first / n;
 		int y = cur.first % n;
 
-		if (cur.second > minStep[x][y]) continue;
+		if (cur.second > minStep[x][y])
+			continue;
 
-		for (int i = 0 ; i < 4 ; ++i){
+		for (int i = 0; i < 4; ++i) {
 			int step = 0;
 			int nx = x;
 			int ny = y;
 			while (nx >= 0 && ny >= 0 && nx < m && ny < n && maze[nx][ny] == 0) {
 				++step;
 				nx += axis[i];
-				ny += axis[i+1];
+				ny += axis[i + 1];
 			}
 
 			nx -= axis[i];
-			ny -= axis[i+1];
+			ny -= axis[i + 1];
 			--step;
 
 			if (minStep[nx][ny] > (cur.second + step)) {

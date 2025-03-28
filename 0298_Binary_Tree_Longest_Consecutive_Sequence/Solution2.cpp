@@ -4,7 +4,7 @@
 
 using std::max;
 
-void dfs(TreeNode* node, int local, int& result) {
+void dfs(TreeNode *node, int local, int &result) {
 	if (!node) {
 		result = max(result, local);
 		return;
@@ -25,7 +25,7 @@ void dfs(TreeNode* node, int local, int& result) {
 	}
 }
 
-int Solution::longestConsecutive2(TreeNode* root) {
+int Solution::longestConsecutive2(TreeNode *root) {
 	int result = 0;
 	dfs(root, 1, result);
 	return result;

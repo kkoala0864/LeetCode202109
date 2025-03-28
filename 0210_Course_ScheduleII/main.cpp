@@ -5,18 +5,17 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<vector<int>> input = {{1,0}};
-	Solution* test = new Solution();
+	vector<vector<int>> input = {{1, 0}};
+	Solution *test = new Solution();
 	vector<int> result = test->findOrder(2, input);
-	for (const auto& iter : result) {
+	for (const auto &iter : result) {
 		cout << iter << " ";
 	}
 	cout << endl;
 	result = test->findOrder4(2, input);
-	for (const auto& iter : result) {
+	for (const auto &iter : result) {
 		cout << iter << " ";
 	}
 	cout << endl;
 	return 0;
 }
-

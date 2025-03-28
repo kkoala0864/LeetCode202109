@@ -5,8 +5,8 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<vector<int>> input = {{1,2},{3},{4}};
-	Vector2D* test = new Vector2D(input);
+	vector<vector<int>> input = {{1, 2}, {3}, {4}};
+	Vector2D *test = new Vector2D(input);
 	cout << test->next() << endl;
 	cout << test->next() << endl;
 	cout << test->next() << endl;
@@ -16,4 +16,3 @@ int main(void) {
 	cout << test->hasNext() << endl;
 	return 0;
 }
-

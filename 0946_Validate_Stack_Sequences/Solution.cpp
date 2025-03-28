@@ -1,7 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 
-bool Solution::validateStackSequences(vector<int>& pushed, vector<int>& popped) {
+bool Solution::validateStackSequences(vector<int> &pushed, vector<int> &popped) {
 	vector<int> st;
 
 	int uIdx = 0, pIdx = 0;

@@ -11,9 +11,9 @@ vector<int> Solution::closestPrimes(int left, int right) {
 	isPrime[1] = false;
 	isPrime[2] = true;
 
-	for (int i = 2 ; (i * i) <= right ; ++i) {
+	for (int i = 2; (i * i) <= right; ++i) {
 		if (isPrime[i]) {
-			for (int j = i * i ; j <= right ; j += i) {
+			for (int j = i * i; j <= right; j += i) {
 				isPrime[j] = false;
 			}
 		}
@@ -22,7 +22,7 @@ vector<int> Solution::closestPrimes(int left, int right) {
 	int last = -1;
 	vector<int> result = {-1, -1};
 	int minV = INT_MAX;
-	for (int i = left ; i <= right ; ++i) {
+	for (int i = left; i <= right; ++i) {
 		if (isPrime[i]) {
 			if (last != -1) {
 				if (minV > (i - last)) {

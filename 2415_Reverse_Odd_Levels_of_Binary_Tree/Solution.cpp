@@ -4,16 +4,16 @@
 #include <queue>
 #include <algorithm>
 
-using std::vector;
-using std::queue;
-using std::reverse;
 using std::cout;
 using std::endl;
+using std::queue;
+using std::reverse;
+using std::vector;
 
-TreeNode* Solution::reverseOddLevels(TreeNode* root) {
-	vector<TreeNode*> last, cur;
+TreeNode *Solution::reverseOddLevels(TreeNode *root) {
+	vector<TreeNode *> last, cur;
 
-	queue<TreeNode*> que, next;
+	queue<TreeNode *> que, next;
 
 	que.emplace(root);
 	last.emplace_back(root);
@@ -36,10 +36,10 @@ TreeNode* Solution::reverseOddLevels(TreeNode* root) {
 				if (level & 1) {
 					reverse(cur.begin(), cur.end());
 				}
-				for (int i = 0 ; i < last.size() && !cur.empty() ; ++i) {
+				for (int i = 0; i < last.size() && !cur.empty(); ++i) {
 					int idx = 2 * i;
 					last[i]->left = cur[idx];
-					last[i]->right = cur[idx+1];
+					last[i]->right = cur[idx + 1];
 				}
 			}
 			++level;

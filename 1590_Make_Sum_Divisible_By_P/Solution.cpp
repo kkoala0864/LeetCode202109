@@ -6,23 +6,25 @@
 using std::min;
 using std::unordered_map;
 
-int Solution::minSubarray(vector<int>& nums, int p) {
+int Solution::minSubarray(vector<int> &nums, int p) {
 	unordered_map<int, int> mod;
 
 	int cur = 0;
-	for (const auto& v : nums) {
+	for (const auto &v : nums) {
 		cur += (v % p);
 		cur %= p;
 	}
 	int target = cur % p;
-	if (target == 0) return 0;
+	if (target == 0)
+		return 0;
 
 	cur = 0;
 	int result = nums.size();
-	for (int i = 0 ; i < nums.size() ; ++i) {
+	for (int i = 0; i < nums.size(); ++i) {
 		cur += (nums[i] % p);
 		cur %= p;
-		if (cur == target) result = min(result, i + 1);
+		if (cur == target)
+			result = min(result, i + 1);
 
 		int idx = (cur - target + p) % p;
 		if (mod.count(idx)) {

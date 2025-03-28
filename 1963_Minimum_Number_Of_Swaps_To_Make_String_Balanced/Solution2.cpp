@@ -10,12 +10,14 @@ int Solution::minSwaps2(string s) {
 	while (l < r) {
 		while (l < r) {
 			lcnt += s[l] == '[' ? 1 : -1;
-			if (lcnt < 0) break;
+			if (lcnt < 0)
+				break;
 			++l;
 		}
 		while (l < r) {
 			rcnt += s[r] == ']' ? 1 : -1;
-			if (rcnt < 0) break;
+			if (rcnt < 0)
+				break;
 			--r;
 		}
 		if (l < r) {

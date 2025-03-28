@@ -4,12 +4,13 @@
 #include <unordered_set>
 #include <vector>
 
-using std::vector;
-using std::unordered_set;
 using std::unordered_map;
+using std::unordered_set;
+using std::vector;
 
-void dfs2(TreeNode* node, unordered_map<int, vector<int>>& graph) {
-	if (!node) return;
+void dfs2(TreeNode *node, unordered_map<int, vector<int>> &graph) {
+	if (!node)
+		return;
 	if (node->left) {
 		graph[node->val].emplace_back(node->left->val);
 		graph[node->left->val].emplace_back(node->val);
@@ -22,32 +23,34 @@ void dfs2(TreeNode* node, unordered_map<int, vector<int>>& graph) {
 	}
 }
 
-vector<int> Solution::distanceK2(TreeNode* root, TreeNode* target, int k) {
+vector<int> Solution::distanceK2(TreeNode *root, TreeNode *target, int k) {
 	unordered_map<int, vector<int>> graph;
 
 	unordered_set<int> visited;
 	dfs2(root, graph);
 
-	vector<int> que,next;
+	vector<int> que, next;
 	que.emplace_back(target->val);
 	visited.emplace(target->val);
-	if (k == 0) return que;
+	if (k == 0)
+		return que;
 
 	while (!que.empty()) {
 		int node = que.back();
 		que.pop_back();
 
-		for (const auto& n : graph[node]) {
-			if (visited.count(n)) continue;
+		for (const auto &n : graph[node]) {
+			if (visited.count(n))
+				continue;
 			visited.emplace(n);
 			next.emplace_back(n);
 		}
 		if (que.empty()) {
 			--k;
-			if (k == 0) return next;
+			if (k == 0)
+				return next;
 			que = move(next);
 		}
 	}
 	return vector<int>();
-
 }

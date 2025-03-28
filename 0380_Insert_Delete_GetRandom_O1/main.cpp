@@ -5,7 +5,6 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-    RandomizedSet* test = new RandomizedSet();
-    return 0;
+	RandomizedSet *test = new RandomizedSet();
+	return 0;
 }
-

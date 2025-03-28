@@ -5,8 +5,9 @@ using std::map;
 using std::stack;
 
 class MinStack {
-    public :
-	MinStack() {}
+public:
+	MinStack() {
+	}
 
 	void push(int val) {
 		++_map[val];
@@ -17,7 +18,8 @@ class MinStack {
 		int val = _st.top();
 		_st.pop();
 		--_map[val];
-		if (_map[val] == 0) _map.erase(val);
+		if (_map[val] == 0)
+			_map.erase(val);
 	}
 
 	int top() {
@@ -27,11 +29,12 @@ class MinStack {
 	int getMin() {
 		return _map.begin()->first;
 	}
-    private :
+
+private:
 	map<int, int> _map;
 	stack<int> _st;
-        virtual ~MinStack() {}
-        MinStack& operator=(const MinStack& source);
-        MinStack(const MinStack&);
+	virtual ~MinStack() {
+	}
+	MinStack &operator=(const MinStack &source);
+	MinStack(const MinStack &);
 };
-

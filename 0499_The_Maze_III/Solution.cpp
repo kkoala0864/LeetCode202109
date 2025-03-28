@@ -4,11 +4,11 @@
 #include <climits>
 #include <algorithm>
 
-using std::queue;
-using std::pair;
 using std::min;
+using std::pair;
+using std::queue;
 
-string Solution::findShortestWay(vector<vector<int>>& maze, vector<int>& ball, vector<int>& hole) {
+string Solution::findShortestWay(vector<vector<int>> &maze, vector<int> &ball, vector<int> &hole) {
 	queue<pair<vector<int>, string>> que;
 	int m = maze.size();
 	int n = maze[0].size();
@@ -29,21 +29,23 @@ string Solution::findShortestWay(vector<vector<int>>& maze, vector<int>& ball, v
 		string is = que.front().second;
 		que.pop();
 
-		for (int i = 0 ; i < 4 ; ++i) {
+		for (int i = 0; i < 4; ++i) {
 			int nx = x;
 			int ny = y;
 			int tmpx = nx + dir[i];
-			int tmpy = ny + dir[i+1];
+			int tmpy = ny + dir[i + 1];
 			while (tmpx >= 0 && tmpy >= 0 && tmpx < m && tmpy < n && maze[tmpx][tmpy] != 1) {
 				nx = tmpx;
 				ny = tmpy;
-				if (nx == hole[0] && ny == hole[1]) break;
+				if (nx == hole[0] && ny == hole[1])
+					break;
 				tmpx += dir[i];
-				tmpy += dir[i+1];
+				tmpy += dir[i + 1];
 			}
 			if (nx != x || ny != y) {
 				int diff = ct + abs(nx - x) + abs(ny - y);
-				if (diff > cost[nx][ny]) continue;
+				if (diff > cost[nx][ny])
+					continue;
 				string tmp = is;
 				tmp.push_back(iss[i]);
 				if (diff < cost[nx][ny] || ins[nx][ny] > tmp) {

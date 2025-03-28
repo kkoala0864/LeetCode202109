@@ -4,13 +4,13 @@
 
 using std::vector;
 
-int Solution::sumSubarrayMins(vector<int>& arr) {
+int Solution::sumSubarrayMins(vector<int> &arr) {
 	int result = 0;
 	int mod = 1e9 + 7;
 	vector<int> dp(arr.size(), 0);
 	vector<int> st;
 
-	for (int i = 0 ; i < arr.size() ; ++i) {
+	for (int i = 0; i < arr.size(); ++i) {
 		while (!st.empty() && arr[st.back()] >= arr[i]) {
 			st.pop_back();
 		}

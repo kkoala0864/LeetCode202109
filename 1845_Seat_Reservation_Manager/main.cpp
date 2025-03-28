@@ -5,7 +5,6 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-    SeatManager* test = new SeatManager();
-    return 0;
+	SeatManager *test = new SeatManager();
+	return 0;
 }
-

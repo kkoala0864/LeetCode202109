@@ -1,7 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 
-vector<int> Solution::spiralOrder2(vector<vector<int>>& matrix) {
+vector<int> Solution::spiralOrder2(vector<vector<int>> &matrix) {
 	int rLow = 0, rHigh = matrix.size();
 	int cLow = 0, cHigh = matrix[0].size();
 	int count = rHigh * cHigh;
@@ -13,7 +13,8 @@ vector<int> Solution::spiralOrder2(vector<vector<int>>& matrix) {
 			result.emplace_back(matrix[x][y++]);
 			--count;
 		}
-		if (count == 0) break;
+		if (count == 0)
+			break;
 		++rLow;
 		++x;
 		--y;
@@ -21,7 +22,8 @@ vector<int> Solution::spiralOrder2(vector<vector<int>>& matrix) {
 			result.emplace_back(matrix[x++][y]);
 			--count;
 		}
-		if (count == 0) break;
+		if (count == 0)
+			break;
 		--cHigh;
 		--y;
 		--x;
@@ -29,7 +31,8 @@ vector<int> Solution::spiralOrder2(vector<vector<int>>& matrix) {
 			result.emplace_back(matrix[x][y--]);
 			--count;
 		}
-		if (count == 0) break;
+		if (count == 0)
+			break;
 		--rHigh;
 		--x;
 		++y;
@@ -37,7 +40,8 @@ vector<int> Solution::spiralOrder2(vector<vector<int>>& matrix) {
 			result.emplace_back(matrix[x--][y]);
 			--count;
 		}
-		if (count == 0) break;
+		if (count == 0)
+			break;
 		++cLow;
 		++y;
 		++x;

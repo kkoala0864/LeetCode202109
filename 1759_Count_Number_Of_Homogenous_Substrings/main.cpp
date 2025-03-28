@@ -6,8 +6,7 @@ using std::endl;
 
 int main(void) {
 	string input = "zzzzz";
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->countHomogenous(input) << endl;
 	return 0;
 }
-

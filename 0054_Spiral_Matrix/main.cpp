@@ -5,8 +5,8 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<vector<int>> input = {{1,2,3,4},{5,6,7,8},{9,10,11,12}};
-	Solution* test = new Solution();
+	vector<vector<int>> input = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
+	Solution *test = new Solution();
 	vector<int> result = test->spiralOrder(input);
 	for (const auto iter : result) {
 		cout << iter << " ";
@@ -24,4 +24,3 @@ int main(void) {
 	cout << endl;
 	return 0;
 }
-

@@ -4,12 +4,14 @@
 using std::vector;
 
 class Solution {
-    public :
-        Solution() {}
-	int firstCompleteIndex(vector<int>& arr, vector<vector<int>>& mat);
-    private :
-        virtual ~Solution() {}
-        Solution& operator=(const Solution& source);
-        Solution(const Solution&);
-};
+public:
+	Solution() {
+	}
+	int firstCompleteIndex(vector<int> &arr, vector<vector<int>> &mat);
 
+private:
+	virtual ~Solution() {
+	}
+	Solution &operator=(const Solution &source);
+	Solution(const Solution &);
+};

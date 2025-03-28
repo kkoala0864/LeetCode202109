@@ -3,9 +3,9 @@
 using std::cout;
 using std::endl;
 
-vector<int> Solution::asteroidCollision(vector<int>& asteroids) {
+vector<int> Solution::asteroidCollision(vector<int> &asteroids) {
 	vector<int> st;
-	for (int i = 0 ; i < asteroids.size() ; ++i) {
+	for (int i = 0; i < asteroids.size(); ++i) {
 		if (asteroids[i] < 0) {
 			while (!st.empty() && st.back() > 0) {
 				int top = st.back();
@@ -18,7 +18,8 @@ vector<int> Solution::asteroidCollision(vector<int>& asteroids) {
 				}
 			}
 		}
-		if(asteroids[i] != 0) st.emplace_back(asteroids[i]);
+		if (asteroids[i] != 0)
+			st.emplace_back(asteroids[i]);
 	}
 	return st;
 }

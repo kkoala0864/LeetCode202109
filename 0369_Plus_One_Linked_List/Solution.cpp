@@ -4,9 +4,9 @@
 
 using std::stack;
 
-ListNode* Solution::plusOne(ListNode* head) {
-	stack<ListNode*> st;
-	ListNode* it = head;
+ListNode *Solution::plusOne(ListNode *head) {
+	stack<ListNode *> st;
+	ListNode *it = head;
 	while (it) {
 		st.emplace(it);
 		it = it->next;
@@ -20,7 +20,7 @@ ListNode* Solution::plusOne(ListNode* head) {
 		st.pop();
 	}
 	if (st.empty() && carry > 0) {
-		ListNode* newHead = new ListNode(carry, head);
+		ListNode *newHead = new ListNode(carry, head);
 		head = newHead;
 	}
 	return head;

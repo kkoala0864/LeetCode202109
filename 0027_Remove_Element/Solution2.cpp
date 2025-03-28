@@ -2,7 +2,7 @@
 #include <iostream>
 
 using std::swap;
-int Solution::removeElement2(vector<int>& nums, int val) {
+int Solution::removeElement2(vector<int> &nums, int val) {
 	int i = 0;
 	int idx = 0;
 	while (idx < nums.size()) {

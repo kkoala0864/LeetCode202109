@@ -5,9 +5,8 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<int> input = {5,4,9};
-	Solution* test = new Solution();
+	vector<int> input = {5, 4, 9};
+	Solution *test = new Solution();
 	cout << test->minStoneSum(input, 2) << endl;
 	return 0;
 }
-

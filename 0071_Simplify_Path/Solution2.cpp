@@ -8,11 +8,12 @@ string Solution::simplifyPath2(string path) {
 	stack<string> st;
 	string s;
 	path.push_back('/');
-	for (int i = 0 ; i < path.size() ; ++i) {
+	for (int i = 0; i < path.size(); ++i) {
 		if (path[i] == '/') {
 			if (!s.empty()) {
 				if (s == "..") {
-					if (!st.empty()) st.pop();
+					if (!st.empty())
+						st.pop();
 				} else if (s != ".") {
 					st.emplace(s);
 				}

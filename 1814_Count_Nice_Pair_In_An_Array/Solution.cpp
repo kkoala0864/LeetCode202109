@@ -14,12 +14,12 @@ int rev(int n) {
 	return result;
 }
 
-int Solution::countNicePairs(vector<int>& nums) {
+int Solution::countNicePairs(vector<int> &nums) {
 	unordered_map<int, int> m;
 
 	int mod = 1e9 + 7;
 	int result = 0;
-	for (const auto& v : nums) {
+	for (const auto &v : nums) {
 		int target = v - rev(v);
 		result += m[target];
 		result %= mod;

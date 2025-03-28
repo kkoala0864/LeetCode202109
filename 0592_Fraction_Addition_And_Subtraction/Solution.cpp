@@ -2,15 +2,15 @@
 #include <iostream>
 #include <vector>
 
-using std::vector;
-using std::swap;
-using std::to_string;
 using std::cout;
 using std::endl;
+using std::swap;
+using std::to_string;
+using std::vector;
 
-void split(const string& exp, vector<string>& nums) {
+void split(const string &exp, vector<string> &nums) {
 	string cur;
-	for (const auto& c : exp) {
+	for (const auto &c : exp) {
 		if (c == '+' || c == '-') {
 			if (!cur.empty()) {
 				nums.emplace_back(cur);
@@ -23,22 +23,25 @@ void split(const string& exp, vector<string>& nums) {
 }
 
 int getGCD(int lhs, int rhs) {
-	if (lhs > rhs) swap(lhs, rhs);
-	if (lhs == 0) return rhs;
+	if (lhs > rhs)
+		swap(lhs, rhs);
+	if (lhs == 0)
+		return rhs;
 
 	rhs %= lhs;
 	return getGCD(rhs, lhs);
 }
 
-void getDenoAndNum(string& nums, int& deno, int& num, int& sign) {
+void getDenoAndNum(string &nums, int &deno, int &num, int &sign) {
 	sign = nums[0] == '-' ? -1 : 1;
-	if (nums[0] == '+' || nums[0] == '-') nums = nums.substr(1);
+	if (nums[0] == '+' || nums[0] == '-')
+		nums = nums.substr(1);
 	int idx = nums.find('/');
 	num = stoi(nums.substr(0, idx));
 	deno = stoi(nums.substr(idx + 1));
 }
 
-void calculate(int& deno, int& num, int& sign, int& curDeno, int& curNum, int& curSign) {
+void calculate(int &deno, int &num, int &sign, int &curDeno, int &curNum, int &curSign) {
 	int gcd = getGCD(deno, curDeno);
 	int t = deno / gcd;
 	int curT = curDeno / gcd;
@@ -67,7 +70,7 @@ string Solution::fractionAddition(string expression) {
 	int sign = 0;
 	getDenoAndNum(nums[0], deno, num, sign);
 
-	for (int i = 1 ; i < nums.size() ; ++i) {
+	for (int i = 1; i < nums.size(); ++i) {
 		int curDeno = 0;
 		int curNum = 0;
 		int curSign = 0;

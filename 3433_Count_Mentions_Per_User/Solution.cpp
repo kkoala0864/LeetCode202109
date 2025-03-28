@@ -2,13 +2,13 @@
 #include <iostream>
 #include <algorithm>
 
-using std::sort;
 using std::cout;
 using std::endl;
+using std::sort;
 
-void parseId(const string& s, vector<int>& result) {
+void parseId(const string &s, vector<int> &result) {
 	int v = 0;
-	for (int i = 0 ; i < s.size() ; ++i) {
+	for (int i = 0; i < s.size(); ++i) {
 		if (s[i] == ' ') {
 			++result[v];
 			v = 0;
@@ -20,8 +20,8 @@ void parseId(const string& s, vector<int>& result) {
 	++result[v];
 }
 
-vector<int> Solution::countMentions(int numberOfUsers, vector<vector<string>>& events) {
-	auto cmp = [](const vector<string>& lhs, const vector<string>& rhs) {
+vector<int> Solution::countMentions(int numberOfUsers, vector<vector<string>> &events) {
+	auto cmp = [](const vector<string> &lhs, const vector<string> &rhs) {
 		int lv = stoi(lhs[1]);
 		int rv = stoi(rhs[1]);
 		return lv == rv ? lhs[0] == "OFFLINE" ? true : false : lv < rv;
@@ -32,13 +32,15 @@ vector<int> Solution::countMentions(int numberOfUsers, vector<vector<string>>& e
 	int allCnt = 0;
 	vector<int> lastOffline(numberOfUsers, -1);
 
-	for (const auto& e : events) {
+	for (const auto &e : events) {
 		int t = stoi(e[1]);
 		if (e[0] == "MESSAGE") {
-			if (e[2] == "ALL") ++allCnt;
+			if (e[2] == "ALL")
+				++allCnt;
 			else if (e[2] == "HERE") {
-				for (int i = 0 ; i < numberOfUsers ; ++i) {
-					if (t > lastOffline[i]) ++result[i];
+				for (int i = 0; i < numberOfUsers; ++i) {
+					if (t > lastOffline[i])
+						++result[i];
 				}
 			} else {
 				parseId(e[2], result);
@@ -48,6 +50,7 @@ vector<int> Solution::countMentions(int numberOfUsers, vector<vector<string>>& e
 			lastOffline[id] = t + 59;
 		}
 	}
-	for (int i = 0 ; i < numberOfUsers ; ++i) result[i] += allCnt;
+	for (int i = 0; i < numberOfUsers; ++i)
+		result[i] += allCnt;
 	return result;
 }

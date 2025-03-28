@@ -5,11 +5,11 @@
 using std::max;
 using std::sort;
 
-int Solution::countDays(int days, vector<vector<int>>& meetings) {
+int Solution::countDays(int days, vector<vector<int>> &meetings) {
 	sort(meetings.begin(), meetings.end());
 	vector<int> cur = meetings[0];
 	int md = 0;
-	for (int i = 1 ; i < meetings.size() ; ++i) {
+	for (int i = 1; i < meetings.size(); ++i) {
 		if (cur[1] < meetings[i][0]) {
 			md += (cur[1] - cur[0] + 1);
 			cur = meetings[i];

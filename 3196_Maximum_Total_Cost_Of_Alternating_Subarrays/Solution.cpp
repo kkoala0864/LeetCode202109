@@ -6,8 +6,9 @@
 using std::max;
 using std::pair;
 
-long long dfs(int start, vector<int>& nums, int oper, vector<pair<long long, long long>>& dp) {
-	if (start >= nums.size()) return 0;
+long long dfs(int start, vector<int> &nums, int oper, vector<pair<long long, long long>> &dp) {
+	if (start >= nums.size())
+		return 0;
 
 	if (oper == 1 && dp[start].first != INT_MIN) {
 		return dp[start].first;
@@ -31,12 +32,15 @@ long long dfs(int start, vector<int>& nums, int oper, vector<pair<long long, lon
 	return curMax;
 }
 
-long long Solution::maximumTotalCost(vector<int>& nums) {
+long long Solution::maximumTotalCost(vector<int> &nums) {
 	vector<int> l;
-	for (int i = 0 ; i < nums.size() ; ++i) {
-		if (l.empty() || nums[i] != 0) l.emplace_back(nums[i]);
-		else if (l.back() == 0) continue;
-		else l.emplace_back(0);
+	for (int i = 0; i < nums.size(); ++i) {
+		if (l.empty() || nums[i] != 0)
+			l.emplace_back(nums[i]);
+		else if (l.back() == 0)
+			continue;
+		else
+			l.emplace_back(0);
 	}
 	vector<pair<long long, long long>> dp(l.size(), pair<long long, long long>(INT_MIN, INT_MIN));
 	return dfs(0, l, 1, dp);

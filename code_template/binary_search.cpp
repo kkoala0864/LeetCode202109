@@ -1,7 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 
-int Solution::binary_search(vector<int>& nums, int target) {
+int Solution::binary_search(vector<int> &nums, int target) {
 	int l = 0, r = nums.size() - 1;
 	int mid = -1;
 

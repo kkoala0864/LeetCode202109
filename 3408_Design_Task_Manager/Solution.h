@@ -2,14 +2,14 @@
 #include <queue>
 #include <unordered_map>
 
-using std::unordered_map;
-using std::priority_queue;
 using std::pair;
+using std::priority_queue;
+using std::unordered_map;
 
 class TaskManager {
-    public :
-	TaskManager(vector<vector<int>>& tasks) {
-		for (const auto& t : tasks) {
+public:
+	TaskManager(vector<vector<int>> &tasks) {
+		for (const auto &t : tasks) {
 			pq.emplace(vector<int>({t[2], t[1], t[0]}));
 			pm[t[1]] = pair<int, int>(t[0], t[2]);
 		}
@@ -18,7 +18,6 @@ class TaskManager {
 	void add(int userId, int taskId, int priority) {
 		pm[taskId] = pair<int, int>(userId, priority);
 		pq.emplace(vector<int>({priority, taskId, userId}));
-
 	}
 
 	void edit(int taskId, int newPriority) {
@@ -36,19 +35,22 @@ class TaskManager {
 			int taskId = pq.top()[1];
 			int userId = pq.top()[2];
 			pq.pop();
-			if (pm.count(taskId) == 0) continue;
-			if (pm[taskId].second != priority) continue;
+			if (pm.count(taskId) == 0)
+				continue;
+			if (pm[taskId].second != priority)
+				continue;
 			int ret = pm[taskId].first;
 			pm.erase(taskId);
 			return ret;
 		}
 		return -1;
 	}
-    private :
+
+private:
 	priority_queue<vector<int>> pq;
 	unordered_map<int, pair<int, int>> pm;
-        virtual ~TaskManager() {}
-        TaskManager& operator=(const TaskManager& source);
-        TaskManager(const TaskManager&);
+	virtual ~TaskManager() {
+	}
+	TaskManager &operator=(const TaskManager &source);
+	TaskManager(const TaskManager &);
 };
-

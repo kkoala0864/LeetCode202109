@@ -5,11 +5,11 @@
 #include <queue>
 #include <algorithm>
 
-using std::unordered_map;
-using std::set;
 using std::priority_queue;
+using std::set;
+using std::unordered_map;
 
-void traverse(unordered_map<string, priority_queue<string, vector<string>, std::greater<string>>>& uMap, const string& place, vector<string>& result) {
+void traverse(unordered_map<string, priority_queue<string, vector<string>, std::greater<string>>> &uMap, const string &place, vector<string> &result) {
 	while (!uMap[place].empty()) {
 		string next = uMap[place].top();
 		uMap[place].pop();
@@ -18,10 +18,11 @@ void traverse(unordered_map<string, priority_queue<string, vector<string>, std::
 	result.emplace_back(place);
 }
 
-vector<string> Solution::findItinerary3(vector<vector<string>>& tickets) {
+vector<string> Solution::findItinerary3(vector<vector<string>> &tickets) {
 	unordered_map<string, priority_queue<string, vector<string>, std::greater<string>>> uMap;
 
-	for (const auto& ticket : tickets) uMap[ticket[0]].emplace(ticket[1]);
+	for (const auto &ticket : tickets)
+		uMap[ticket[0]].emplace(ticket[1]);
 
 	vector<string> result;
 	traverse(uMap, "JFK", result);

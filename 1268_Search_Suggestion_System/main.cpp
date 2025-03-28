@@ -7,10 +7,10 @@ using std::endl;
 int main(void) {
 	vector<string> input = {"havana"};
 	string searchWord = "tatiana";
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	auto result = test->suggestedProducts(input, searchWord);
-	for (const auto& words : result) {
-		for (const auto& w : words) {
+	for (const auto &words : result) {
+		for (const auto &w : words) {
 			cout << w << " ";
 		}
 		cout << endl;
@@ -18,4 +18,3 @@ int main(void) {
 	cout << endl;
 	return 0;
 }
-

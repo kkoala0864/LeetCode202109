@@ -16,7 +16,7 @@ int getCnt(int v, int mask) {
 long long Solution::findMaximumNumber(long long k, int x) {
 	long long cnt = 0;
 	int mask = 0;
-	for (int i = x ; i <= 32 ; i += x) {
+	for (int i = x; i <= 32; i += x) {
 		mask = mask | (1 << (i - 1));
 	}
 	int curV = 0;
@@ -25,5 +25,4 @@ long long Solution::findMaximumNumber(long long k, int x) {
 		cnt += getCnt(curV, mask);
 	}
 	return cnt == k ? curV : curV - 1;
-
 }

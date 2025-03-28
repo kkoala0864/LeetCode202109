@@ -10,12 +10,14 @@ bool Solution::isOneEditDistance(string s, string t) {
 	string small = s.size() > t.size() ? t : s;
 
 	while (bIdx < big.size() && sIdx < small.size()) {
-		if (cnt > 1) return false;
+		if (cnt > 1)
+			return false;
 		if (big[bIdx] == small[sIdx]) {
 			++bIdx;
 			++sIdx;
 		} else {
-			if (big.size() == small.size()) ++sIdx;
+			if (big.size() == small.size())
+				++sIdx;
 			++cnt;
 			++bIdx;
 		}

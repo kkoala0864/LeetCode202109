@@ -6,11 +6,12 @@
 
 using std::unordered_map;
 
-Node* Copy(unordered_map<Node*, Node*>& uMap, Node* iter) {
-	if (!iter) return iter;
+Node *Copy(unordered_map<Node *, Node *> &uMap, Node *iter) {
+	if (!iter)
+		return iter;
 
 	if (uMap.find(iter) == uMap.end()) {
-		Node* newIter = new Node(iter->val);
+		Node *newIter = new Node(iter->val);
 		uMap[iter] = newIter;
 		newIter->next = Copy(uMap, iter->next);
 		newIter->random = Copy(uMap, iter->random);
@@ -20,8 +21,7 @@ Node* Copy(unordered_map<Node*, Node*>& uMap, Node* iter) {
 	}
 }
 
-
-Node* Solution::copyRandomList(Node* head) {
-	unordered_map<Node*, Node*> uMap;
+Node *Solution::copyRandomList(Node *head) {
+	unordered_map<Node *, Node *> uMap;
 	return Copy(uMap, head);
 }

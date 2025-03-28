@@ -4,14 +4,15 @@
 
 using std::unordered_map;
 
-vector<vector<string>> Solution::findDuplicate(vector<string>& paths) {
+vector<vector<string>> Solution::findDuplicate(vector<string> &paths) {
 	unordered_map<string, vector<string>> uMap;
 
-	for (auto& p : paths) {
+	for (auto &p : paths) {
 		vector<string> info;
 		string local;
-		for (const auto& c : p) {
-			if (c != ' ') local.push_back(c);
+		for (const auto &c : p) {
+			if (c != ' ')
+				local.push_back(c);
 			else {
 				if (local.size() > 0) {
 					info.emplace_back(local);
@@ -24,7 +25,7 @@ vector<vector<string>> Solution::findDuplicate(vector<string>& paths) {
 			local = "";
 		}
 
-		for (int i = 1 ; i < info.size() ; ++i) {
+		for (int i = 1; i < info.size(); ++i) {
 			int left = info[i].find("(");
 			string content = info[i].substr(left + 1, info[i].size() - left - 2);
 			info[i].resize(left);
@@ -34,7 +35,7 @@ vector<vector<string>> Solution::findDuplicate(vector<string>& paths) {
 	}
 
 	vector<vector<string>> result;
-	for (auto& e : uMap) {
+	for (auto &e : uMap) {
 		if (e.second.size() > 1) {
 			result.emplace_back(e.second);
 		}

@@ -4,11 +4,11 @@
 
 using std::vector;
 
-ListNode* Solution::removeNthFromEnd3(ListNode* head, int n) {
-	ListNode* dummy = new ListNode(0, head);
-	ListNode* first = dummy;
-	ListNode* second = dummy;
-	for (int i = 0 ; i < n ; ++i) {
+ListNode *Solution::removeNthFromEnd3(ListNode *head, int n) {
+	ListNode *dummy = new ListNode(0, head);
+	ListNode *first = dummy;
+	ListNode *second = dummy;
+	for (int i = 0; i < n; ++i) {
 		first = first->next;
 	}
 

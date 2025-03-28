@@ -5,7 +5,7 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	Excel* test = new Excel(5, 'E');
+	Excel *test = new Excel(5, 'E');
 	cout << test->get(1, 'A') << endl;
 	test->set(1, 'A', 1);
 	cout << test->get(1, 'A') << endl;
@@ -17,4 +17,3 @@ int main(void) {
 	cout << test->get(3, 'C') << endl;
 	return 0;
 }
-

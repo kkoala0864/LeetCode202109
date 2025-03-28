@@ -2,8 +2,9 @@
 using std::deque;
 
 class MovingAverage {
-    public :
-	MovingAverage() {}
+public:
+	MovingAverage() {
+	}
 	MovingAverage(int size) {
 		_size = size;
 		_curSum = 0;
@@ -18,12 +19,13 @@ class MovingAverage {
 		_curSum += val;
 		return _curSum / (double)_element.size();
 	}
-    private :
+
+private:
 	int _curSum;
 	int _size;
 	deque<int> _element;
-        virtual ~MovingAverage() {}
-        MovingAverage& operator=(const MovingAverage& source);
-        MovingAverage(const MovingAverage&);
+	virtual ~MovingAverage() {
+	}
+	MovingAverage &operator=(const MovingAverage &source);
+	MovingAverage(const MovingAverage &);
 };
-

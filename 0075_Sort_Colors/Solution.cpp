@@ -1,7 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 using std::swap;
-void Solution::sortColors(vector<int>& nums) {
+void Solution::sortColors(vector<int> &nums) {
 	int p0 = 0, cur = 0;
 	int p2 = nums.size() - 1;
 

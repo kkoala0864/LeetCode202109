@@ -1,10 +1,10 @@
 #include <Solution.h>
 #include <iostream>
 
-vector<int> Solution::sortedSquares(vector<int>& nums) {
+vector<int> Solution::sortedSquares(vector<int> &nums) {
 	vector<int> st;
 	int assing_idx = 0;
-	for (const auto& v : nums) {
+	for (const auto &v : nums) {
 		if (v < 0) {
 			st.emplace_back(v);
 		} else {

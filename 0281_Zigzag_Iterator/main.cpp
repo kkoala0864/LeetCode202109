@@ -5,7 +5,6 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	ZigzagIterator* test = new ZigzagIterator();
+	ZigzagIterator *test = new ZigzagIterator();
 	return 0;
 }
-

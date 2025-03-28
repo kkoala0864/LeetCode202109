@@ -18,12 +18,14 @@
  */
 
 class Solution {
-    public :
-        Solution() {}
-	void cleanRoom(Robot& robot);
-    private :
-        virtual ~Solution() {}
-        Solution& operator=(const Solution& source);
-        Solution(const Solution&);
-};
+public:
+	Solution() {
+	}
+	void cleanRoom(Robot &robot);
 
+private:
+	virtual ~Solution() {
+	}
+	Solution &operator=(const Solution &source);
+	Solution(const Solution &);
+};

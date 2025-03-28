@@ -2,10 +2,10 @@
 #include <iostream>
 #include <algorithm>
 
-using std::min;
 using std::max;
+using std::min;
 
-int Solution::maxArea2(vector<int>& height) {
+int Solution::maxArea2(vector<int> &height) {
 	int result = 0;
 	int left = 0, right = height.size() - 1;
 

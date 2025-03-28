@@ -3,18 +3,19 @@
 #include <queue>
 #include <algorithm>
 
-using std::queue;
-using std::max;
 using std::cout;
 using std::endl;
+using std::max;
+using std::queue;
 
-int getCenterLen(vector<vector<int>>& e1, int& diameter) {
+int getCenterLen(vector<vector<int>> &e1, int &diameter) {
 	int n = e1.size() + 1;
-	if (n < 3) return n;
+	if (n < 3)
+		return n;
 	vector<int> idc(n, 0);
 	vector<vector<int>> od(n, vector<int>());
 
-	for (const auto& e : e1) {
+	for (const auto &e : e1) {
 		++idc[e[0]];
 		++idc[e[1]];
 		od[e[0]].emplace_back(e[1]);
@@ -24,7 +25,9 @@ int getCenterLen(vector<vector<int>>& e1, int& diameter) {
 	queue<int> que, next;
 	int result = 0;
 
-	for (int i = 0 ; i < n ; ++i) if (idc[i] == 1) que.emplace(i);
+	for (int i = 0; i < n; ++i)
+		if (idc[i] == 1)
+			que.emplace(i);
 
 	int lsize = 0;
 	while (!que.empty()) {
@@ -32,7 +35,7 @@ int getCenterLen(vector<vector<int>>& e1, int& diameter) {
 		que.pop();
 		++lsize;
 
-		for (const auto& nn : od[cur]) {
+		for (const auto &nn : od[cur]) {
 			--idc[nn];
 			if (idc[nn] == 1) {
 				next.emplace(nn);
@@ -52,7 +55,7 @@ int getCenterLen(vector<vector<int>>& e1, int& diameter) {
 	return lsize == 2 ? result + 1 : result;
 }
 
-int Solution::minimumDiameterAfterMerge(vector<vector<int>>& edges1, vector<vector<int>>& edges2) {
+int Solution::minimumDiameterAfterMerge(vector<vector<int>> &edges1, vector<vector<int>> &edges2) {
 	int d1 = 0, d2 = 0;
 	int l1 = getCenterLen(edges1, d1);
 	int l2 = getCenterLen(edges2, d2);

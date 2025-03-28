@@ -3,18 +3,18 @@
 #include <vector>
 #include <queue>
 
-using std::pair;
-using std::queue;
 using std::cout;
 using std::endl;
+using std::pair;
+using std::queue;
 
-vector<int> Solution::timeTaken(vector<int>& arrival, vector<int>& state) {
+vector<int> Solution::timeTaken(vector<int> &arrival, vector<int> &state) {
 	vector<queue<int>> delayList(2, queue<int>());
 	vector<int> result(arrival.size(), 0);
 	int cs = 1;
 	int curT = -1;
 
-	for (int i = 0 ; i < arrival.size() ; ++i) {
+	for (int i = 0; i < arrival.size(); ++i) {
 		int os = (cs + 1) & 1;
 		while (curT < arrival[i]) {
 			if (delayList[0].empty() && delayList[1].empty()) {

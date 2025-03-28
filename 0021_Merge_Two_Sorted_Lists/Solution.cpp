@@ -3,12 +3,14 @@
 
 using std::cout;
 using std::endl;
-ListNode* Solution::mergeTwoLists(ListNode* l1, ListNode* l2) {
-	if (l1 == nullptr) return l2;
-	if (l2 == nullptr) return l1;
-	ListNode* iter1 = l1;
-	ListNode* iter2 = l2;
-	ListNode* head = nullptr;
+ListNode *Solution::mergeTwoLists(ListNode *l1, ListNode *l2) {
+	if (l1 == nullptr)
+		return l2;
+	if (l2 == nullptr)
+		return l1;
+	ListNode *iter1 = l1;
+	ListNode *iter2 = l2;
+	ListNode *head = nullptr;
 	if (iter1->val <= iter2->val) {
 		head = iter1;
 		iter1 = iter1->next;
@@ -16,7 +18,7 @@ ListNode* Solution::mergeTwoLists(ListNode* l1, ListNode* l2) {
 		head = iter2;
 		iter2 = iter2->next;
 	}
-	ListNode* resultIter = head;
+	ListNode *resultIter = head;
 	while (iter1 && iter2) {
 		if (iter1->val < iter2->val) {
 			resultIter->next = iter1;

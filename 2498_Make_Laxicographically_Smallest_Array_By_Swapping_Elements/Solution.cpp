@@ -2,15 +2,15 @@
 #include <iostream>
 #include <algorithm>
 
-using std::sort;
 using std::min;
 using std::pair;
+using std::sort;
 
-vector<int> Solution::lexicographicallySmallestArray(vector<int>& nums, int limit) {
+vector<int> Solution::lexicographicallySmallestArray(vector<int> &nums, int limit) {
 	int size = nums.size();
 
 	vector<pair<int, int>> idxs;
-	for (int i = 0 ; i < size ; ++i) {
+	for (int i = 0; i < size; ++i) {
 		idxs.push_back(pair<int, int>(nums[i], i));
 	}
 
@@ -20,7 +20,7 @@ vector<int> Solution::lexicographicallySmallestArray(vector<int>& nums, int limi
 
 	int l = 0;
 	vector<int> tmp;
-	for (int i = 0 ; i < size ; ++i) {
+	for (int i = 0; i < size; ++i) {
 		if (!tmp.empty() && (idxs[i].first - tmp.back()) > limit) {
 			sort(tmp.begin(), tmp.end(), std::greater<int>());
 			lists.emplace_back(tmp);
@@ -32,7 +32,7 @@ vector<int> Solution::lexicographicallySmallestArray(vector<int>& nums, int limi
 
 	sort(tmp.begin(), tmp.end(), std::greater<int>());
 	lists.emplace_back(tmp);
-	for (int i = 0 ; i < size ; ++i) {
+	for (int i = 0; i < size; ++i) {
 		int li = m[i];
 		nums[i] = lists[li].back();
 		lists[li].pop_back();

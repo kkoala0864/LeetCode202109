@@ -6,7 +6,6 @@ using std::endl;
 
 int main(void) {
 
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	return 0;
 }
-

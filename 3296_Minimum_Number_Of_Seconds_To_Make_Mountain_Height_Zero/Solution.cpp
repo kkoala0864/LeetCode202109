@@ -2,13 +2,13 @@
 #include <iostream>
 #include <queue>
 
-using std::priority_queue;
 using std::pair;
+using std::priority_queue;
 
-long long Solution::minNumberOfSeconds(int mountainHeight, vector<int>& workerTimes) {
+long long Solution::minNumberOfSeconds(int mountainHeight, vector<int> &workerTimes) {
 	priority_queue<pair<long long, int>, vector<pair<long long, int>>, std::greater<pair<long long, int>>> pq;
 
-	for (int i = 0 ; i < workerTimes.size() ; ++i) {
+	for (int i = 0; i < workerTimes.size(); ++i) {
 		pq.emplace(pair<long long, int>(workerTimes[i], i));
 	}
 

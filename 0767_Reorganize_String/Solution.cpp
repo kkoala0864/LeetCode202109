@@ -3,17 +3,18 @@
 #include <vector>
 #include <map>
 
-using std::vector;
 using std::map;
+using std::vector;
 
 string Solution::reorganizeString(string s) {
 	vector<int> cnt(26, 0);
 	int h = s.size() / 2;
-	for (const auto& c : s) ++cnt[c-'a'];
+	for (const auto &c : s)
+		++cnt[c - 'a'];
 
 	map<int, vector<char>, std::greater<int>> m;
 
-	for (int i = 0 ; i < 26 ; ++i) {
+	for (int i = 0; i < 26; ++i) {
 		m[cnt[i]].emplace_back('a' + i);
 	}
 	if (s.size() - m.begin()->first < (m.begin()->first - 1)) {
@@ -21,8 +22,8 @@ string Solution::reorganizeString(string s) {
 	}
 
 	string ss;
-	for (const auto& e : m) {
-		for (const auto& c : e.second) {
+	for (const auto &e : m) {
+		for (const auto &c : e.second) {
 			ss += string(e.first, c);
 		}
 	}

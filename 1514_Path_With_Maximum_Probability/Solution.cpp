@@ -3,19 +3,19 @@
 #include <queue>
 #include <unordered_map>
 
+using std::pair;
 using std::priority_queue;
 using std::unordered_map;
-using std::pair;
 
 // Bellman-Ford Algorithm
-double Solution::maxProbability(int n, vector<vector<int>>& edges, vector<double>& succProb, int start_node, int end_node) {
+double Solution::maxProbability(int n, vector<vector<int>> &edges, vector<double> &succProb, int start_node, int end_node) {
 	vector<double> maxProb(n, 0);
 
 	maxProb[start_node] = 1.0;
 
-	for (int i = 0 ; i < n - 1 ; ++i) {
+	for (int i = 0; i < n - 1; ++i) {
 		bool update = false;
-		for (int ei = 0 ; ei < edges.size() ; ++ei) {
+		for (int ei = 0; ei < edges.size(); ++ei) {
 			int n1 = edges[ei][0];
 			int n2 = edges[ei][1];
 
@@ -30,7 +30,8 @@ double Solution::maxProbability(int n, vector<vector<int>>& edges, vector<double
 				update = true;
 			}
 		}
-		if (!update) break;
+		if (!update)
+			break;
 	}
 	return maxProb[end_node];
 }

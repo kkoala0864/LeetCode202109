@@ -3,14 +3,16 @@
 using std::string;
 
 class Solution {
-    public :
-        Solution() {}
+public:
+	Solution() {
+	}
 	bool isAnagram(string s, string t);
 	bool isAnagram2(string s, string t);
 	bool isAnagram3(string s, string t);
-    private :
-        virtual ~Solution() {}
-        Solution& operator=(const Solution& source);
-        Solution(const Solution&);
-};
 
+private:
+	virtual ~Solution() {
+	}
+	Solution &operator=(const Solution &source);
+	Solution(const Solution &);
+};

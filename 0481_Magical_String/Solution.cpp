@@ -2,9 +2,9 @@
 #include <iostream>
 #include <string>
 
-using std::string;
 using std::cout;
 using std::endl;
+using std::string;
 
 int Solution::magicalString(int n) {
 	string s = "122";
@@ -19,12 +19,15 @@ int Solution::magicalString(int n) {
 	}
 	cnt = 0;
 	int result = 0;
-	for (int i = 0 ; i < s.size() ; ++i) {
+	for (int i = 0; i < s.size(); ++i) {
 		cnt += (s[i] - '0');
-		if ((i & 1) == 0) result += (s[i] - '0');
-		if (cnt == n) break;
+		if ((i & 1) == 0)
+			result += (s[i] - '0');
+		if (cnt == n)
+			break;
 		if (cnt > n) {
-			if ((i & 1) == 0) --result;
+			if ((i & 1) == 0)
+				--result;
 			break;
 		}
 	}

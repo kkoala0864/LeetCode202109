@@ -4,8 +4,8 @@
 using std::cout;
 using std::endl;
 int main(void) {
-	vector<int> input = {2,3,5};
-	FirstUnique* test = new FirstUnique(input);
+	vector<int> input = {2, 3, 5};
+	FirstUnique *test = new FirstUnique(input);
 	cout << test->showFirstUnique() << endl;
 	test->add(5);
 	cout << test->showFirstUnique() << endl;
@@ -16,4 +16,3 @@ int main(void) {
 
 	return 0;
 }
-

@@ -4,21 +4,22 @@
 #include <unordered_set>
 #include <map>
 
-using std::map;
-using std::unordered_map;
-using std::unordered_set;
-using std::pair;
 using std::cout;
 using std::endl;
+using std::map;
+using std::pair;
+using std::unordered_map;
+using std::unordered_set;
 
 // 0 1 2 3 4
-void CountScore(const vector<string>& webs, map<string, int>& Scores) {
+void CountScore(const vector<string> &webs, map<string, int> &Scores) {
 	unordered_set<string> us;
-	for (int i = 0 ; (i+2) < webs.size() ; ++i) {
-		for (int j = i + 1 ; (j + 1) < webs.size() ; ++j) {
-			for (int k = j + 1 ; k < webs.size() ; ++k) {
+	for (int i = 0; (i + 2) < webs.size(); ++i) {
+		for (int j = i + 1; (j + 1) < webs.size(); ++j) {
+			for (int k = j + 1; k < webs.size(); ++k) {
 				string tmp = webs[i] + "|" + webs[j] + "|" + webs[k];
-				if (us.count(tmp)) continue;
+				if (us.count(tmp))
+					continue;
 				us.emplace(tmp);
 				++Scores[tmp];
 			}
@@ -27,7 +28,7 @@ void CountScore(const vector<string>& webs, map<string, int>& Scores) {
 }
 
 // 0 1 2 | 4 5 | 7 8
-vector<string> getWeb(const string& webStr) {
+vector<string> getWeb(const string &webStr) {
 	vector<string> ret;
 	int idx = webStr.find("|");
 	ret.emplace_back(webStr.substr(0, idx));
@@ -37,10 +38,10 @@ vector<string> getWeb(const string& webStr) {
 	return ret;
 }
 
-vector<string> Solution::mostVisitedPattern(vector<string>& username, vector<int>& timestamp, vector<string>& website) {
+vector<string> Solution::mostVisitedPattern(vector<string> &username, vector<int> &timestamp, vector<string> &website) {
 	vector<pair<int, int>> tToIdx;
 	int size = username.size();
-	for (int i = 0 ; i < size ; ++i) {
+	for (int i = 0; i < size; ++i) {
 		tToIdx.emplace_back((pair<int, int>(timestamp[i], i)));
 	}
 
@@ -49,17 +50,18 @@ vector<string> Solution::mostVisitedPattern(vector<string>& username, vector<int
 	unordered_map<string, vector<string>> userToWeb;
 	map<string, int> Scores;
 
-	for (const auto& v : tToIdx) {
+	for (const auto &v : tToIdx) {
 		userToWeb[username[v.second]].emplace_back(website[v.second]);
 	}
 
-	for (const auto& e : userToWeb) {
-		if (e.second.size() < 3) continue;
+	for (const auto &e : userToWeb) {
+		if (e.second.size() < 3)
+			continue;
 		CountScore(e.second, Scores);
 	}
 	int MaxScore = 0;
 	string maxStr;
-	for (const auto& e : Scores) {
+	for (const auto &e : Scores) {
 		if (MaxScore < e.second) {
 			MaxScore = e.second;
 			maxStr = e.first;

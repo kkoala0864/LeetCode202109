@@ -3,12 +3,12 @@
 #include <vector>
 #include <ctime>
 
-using std::vector;
-using std::unordered_map;
 using std::swap;
+using std::unordered_map;
+using std::vector;
 
 class RandomizedSet {
-    public :
+public:
 	RandomizedSet() {
 		srand(time(NULL));
 	}
@@ -38,11 +38,12 @@ class RandomizedSet {
 		int ran = rand() % _vec.size();
 		return _vec[ran];
 	}
-	private :
+
+private:
 	unordered_map<int, int> _map;
 	vector<int> _vec;
-        virtual ~RandomizedSet() {}
-        RandomizedSet& operator=(const RandomizedSet& source);
-        RandomizedSet(const RandomizedSet&);
+	virtual ~RandomizedSet() {
+	}
+	RandomizedSet &operator=(const RandomizedSet &source);
+	RandomizedSet(const RandomizedSet &);
 };
-

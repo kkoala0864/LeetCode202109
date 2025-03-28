@@ -4,13 +4,13 @@
 
 using std::queue;
 
-
-Node* Solution::connect(Node* root) {
-	if ((!root) || (!root->left && !root->right)) return root;
+Node *Solution::connect(Node *root) {
+	if ((!root) || (!root->left && !root->right))
+		return root;
 
 	root->left->next = root->right;
-	Node* leftMostRight = root->left;
-	Node* rightMostLeft = root->right;
+	Node *leftMostRight = root->left;
+	Node *rightMostLeft = root->right;
 	while (leftMostRight->right) {
 		leftMostRight = leftMostRight->right;
 		rightMostLeft = rightMostLeft->left;
@@ -24,24 +24,24 @@ Node* Solution::connect(Node* root) {
 
 /*
 Node* connect(Node* root) {
-	if (!root) return nullptr;
-	queue<Node*> cur, next;
+        if (!root) return nullptr;
+        queue<Node*> cur, next;
 
-	cur.emplace(root);
+        cur.emplace(root);
 
-	while (!cur.empty()) {
-		Node* node = cur.front();
-		cur.pop();
+        while (!cur.empty()) {
+                Node* node = cur.front();
+                cur.pop();
 
-		if (!cur.empty()) node->next = cur.front();
+                if (!cur.empty()) node->next = cur.front();
 
-		if (node->left) next.emplace(node->left);
-		if (node->right) next.emplace(node->right);
+                if (node->left) next.emplace(node->left);
+                if (node->right) next.emplace(node->right);
 
-		if (cur.empty()) {
-			cur = move(next);
-		}
-	}
-	return root;
+                if (cur.empty()) {
+                        cur = move(next);
+                }
+        }
+        return root;
 }
 */

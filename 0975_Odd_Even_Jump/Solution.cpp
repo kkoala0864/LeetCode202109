@@ -3,11 +3,11 @@
 #include <climits>
 #include <map>
 
-using std::map;
 using std::cout;
 using std::endl;
+using std::map;
 
-int Solution::oddEvenJumps(vector<int>& arr) {
+int Solution::oddEvenJumps(vector<int> &arr) {
 	vector<vector<int>> dp(arr.size(), vector<int>(2, 2));
 	map<int, int> m;
 	int result = 1;
@@ -15,7 +15,7 @@ int Solution::oddEvenJumps(vector<int>& arr) {
 	dp.back()[1] = 1;
 	m[arr.back()] = arr.size() - 1;
 
-	for (int i = arr.size() - 2 ; i >= 0 ; --i) {
+	for (int i = arr.size() - 2; i >= 0; --i) {
 		auto iter = m.lower_bound(arr[i]);
 		if (iter == m.end()) {
 			dp[i][0] = 0;
@@ -31,11 +31,12 @@ int Solution::oddEvenJumps(vector<int>& arr) {
 					--iter;
 					dp[i][1] = dp[iter->second][0];
 				}
-			} else  {
+			} else {
 				dp[i][1] = dp[iter->second][0];
 			}
 		}
-		if (dp[i][0]) ++result;
+		if (dp[i][0])
+			++result;
 		m[arr[i]] = i;
 	}
 	return result;

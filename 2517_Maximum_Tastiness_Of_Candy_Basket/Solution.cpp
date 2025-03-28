@@ -2,15 +2,15 @@
 #include <iostream>
 #include <algorithm>
 
-using std::sort;
 using std::max;
+using std::sort;
 
-bool check(vector<int>& price, int diff, int k) {
+bool check(vector<int> &price, int diff, int k) {
 	int last = price[0];
 	--k;
 	int i = 1;
 
-	while (i < price.size()  && k > 0) {
+	while (i < price.size() && k > 0) {
 		if (price[i] - last >= diff) {
 			last = price[i];
 			--k;
@@ -20,7 +20,7 @@ bool check(vector<int>& price, int diff, int k) {
 	return k == 0;
 }
 
-int Solution::maximumTastiness(vector<int>& price, int k) {
+int Solution::maximumTastiness(vector<int> &price, int k) {
 	sort(price.begin(), price.end());
 
 	int limit = price.back() - price[0] + 1;

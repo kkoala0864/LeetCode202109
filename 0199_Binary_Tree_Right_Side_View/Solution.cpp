@@ -4,10 +4,11 @@
 
 using std::queue;
 
-vector<int> Solution::rightSideView(TreeNode* root) {
-	if (!root) return vector<int>();
-	queue<TreeNode*> cur;
-	queue<TreeNode*> next;
+vector<int> Solution::rightSideView(TreeNode *root) {
+	if (!root)
+		return vector<int>();
+	queue<TreeNode *> cur;
+	queue<TreeNode *> next;
 	vector<int> result;
 	cur.emplace(root);
 
@@ -15,10 +16,12 @@ vector<int> Solution::rightSideView(TreeNode* root) {
 		if (cur.size() == 1) {
 			result.emplace_back(cur.front()->val);
 		}
-		TreeNode* node = cur.front();
+		TreeNode *node = cur.front();
 		cur.pop();
-		if (node->left) next.emplace(node->left);
-		if (node->right) next.emplace(node->right);
+		if (node->left)
+			next.emplace(node->left);
+		if (node->right)
+			next.emplace(node->right);
 		if (cur.empty()) {
 			cur = move(next);
 		}

@@ -5,7 +5,7 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	AllOne* test = new AllOne();
+	AllOne *test = new AllOne();
 	test->inc("hello");
 	test->inc("hello");
 	cout << test->getMaxKey() << endl;
@@ -15,4 +15,3 @@ int main(void) {
 	cout << test->getMinKey() << endl;
 	return 0;
 }
-

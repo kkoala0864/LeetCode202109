@@ -5,7 +5,8 @@
 using std::vector;
 
 int Solution::numKLenSubstrNoRepeats(string s, int k) {
-	if (s.size() < k) return 0;
+	if (s.size() < k)
+		return 0;
 	vector<int> cnt(26, 1);
 
 	int start = 0, iter = 0;
@@ -13,7 +14,7 @@ int Solution::numKLenSubstrNoRepeats(string s, int k) {
 	while (iter < s.size() && start <= (s.size() - k + 1)) {
 		int idx = s[iter] - 'a';
 		while (cnt[idx] == 0) {
-			++cnt[s[start++] -'a'];
+			++cnt[s[start++] - 'a'];
 			++k;
 		}
 		--cnt[idx];
@@ -22,7 +23,8 @@ int Solution::numKLenSubstrNoRepeats(string s, int k) {
 			++cnt[s[start++] - 'a'];
 			++k;
 		}
-		if (k == 0) ++result;
+		if (k == 0)
+			++result;
 		++iter;
 	}
 	return result;

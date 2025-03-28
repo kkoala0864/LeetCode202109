@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 using std::vector;
-void getNext(const string& a, vector<int>& v) {
+void getNext(const string &a, vector<int> &v) {
 	int prev = 0;
 	int cur = 1;
 	v.emplace_back(0);
@@ -16,12 +16,13 @@ void getNext(const string& a, vector<int>& v) {
 			if (prev == 0) {
 				++cur;
 				v.emplace_back(0);
-			} else prev = v[prev - 1];
+			} else
+				prev = v[prev - 1];
 		}
 	}
 }
 
-void getIdx(const string& s, const string& a, const vector<int>& next, vector<int>& idx) {
+void getIdx(const string &s, const string &a, const vector<int> &next, vector<int> &idx) {
 	int sIdx = 0;
 	int aIdx = 0;
 	while (sIdx < s.size()) {
@@ -33,8 +34,10 @@ void getIdx(const string& s, const string& a, const vector<int>& next, vector<in
 				aIdx = 0;
 			}
 		} else {
-			if (aIdx == 0) ++sIdx;
-			else aIdx = next[aIdx - 1];
+			if (aIdx == 0)
+				++sIdx;
+			else
+				aIdx = next[aIdx - 1];
 		}
 	}
 }
@@ -47,10 +50,12 @@ vector<int> Solution::beautifulIndices(string s, string a, string b, int k) {
 	getIdx(s, a, next1, aIdx);
 	getIdx(s, b, next2, bIdx);
 	vector<int> result;
-	for (const auto& ai : aIdx) {
+	for (const auto &ai : aIdx) {
 		auto bi = lower_bound(bIdx.begin(), bIdx.end(), (ai - k));
-		if (bi == bIdx.end()) continue;
-		if (*bi <= (ai + k)) result.emplace_back(ai);
+		if (bi == bIdx.end())
+			continue;
+		if (*bi <= (ai + k))
+			result.emplace_back(ai);
 	}
 	return result;
 }

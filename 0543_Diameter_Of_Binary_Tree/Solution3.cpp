@@ -5,8 +5,9 @@
 
 using std::max;
 
-int dfs2(TreeNode* node, int& result) {
-	if (!node) return 0;
+int dfs2(TreeNode *node, int &result) {
+	if (!node)
+		return 0;
 	int l = dfs2(node->left, result);
 	int r = dfs2(node->right, result);
 
@@ -14,8 +15,9 @@ int dfs2(TreeNode* node, int& result) {
 	return max(l, r) + 1;
 }
 
-int Solution::diameterOfBinaryTree3(TreeNode* root) {
-	if (!root) return 0;
+int Solution::diameterOfBinaryTree3(TreeNode *root) {
+	if (!root)
+		return 0;
 	int result = 0;
 	dfs2(root, result);
 	return result;

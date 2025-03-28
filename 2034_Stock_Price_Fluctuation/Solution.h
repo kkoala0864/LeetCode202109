@@ -8,7 +8,7 @@ using std::unordered_map;
 using std::unordered_set;
 
 class StockPrice {
-    public :
+public:
 	StockPrice() {
 		curT = -1;
 		curP = 0;
@@ -18,7 +18,8 @@ class StockPrice {
 		if (tTop.count(timestamp)) {
 			int oriPrice = tTop[timestamp];
 			pTot[oriPrice].erase(timestamp);
-			if (pTot[oriPrice].empty()) pTot.erase(oriPrice);
+			if (pTot[oriPrice].empty())
+				pTot.erase(oriPrice);
 		}
 		tTop[timestamp] = price;
 		pTot[price].emplace(timestamp);
@@ -41,13 +42,14 @@ class StockPrice {
 		auto iter = pTot.begin();
 		return iter->first;
 	}
-    private :
+
+private:
 	int curT;
 	int curP;
 	unordered_map<int, int> tTop;
 	map<int, unordered_set<int>> pTot;
-        virtual ~StockPrice() {}
-        StockPrice& operator=(const StockPrice& source);
-        StockPrice(const StockPrice&);
+	virtual ~StockPrice() {
+	}
+	StockPrice &operator=(const StockPrice &source);
+	StockPrice(const StockPrice &);
 };
-

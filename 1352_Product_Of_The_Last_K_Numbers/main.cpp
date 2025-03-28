@@ -5,7 +5,7 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	ProductOfNumbers* test = new ProductOfNumbers();
+	ProductOfNumbers *test = new ProductOfNumbers();
 	test->add(3);
 	test->add(0);
 	test->add(2);
@@ -18,4 +18,3 @@ int main(void) {
 	cout << test->getProduct(2) << endl;
 	return 0;
 }
-

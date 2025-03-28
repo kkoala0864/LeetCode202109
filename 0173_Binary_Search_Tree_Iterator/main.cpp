@@ -5,6 +5,5 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-    return 0;
+	return 0;
 }
-

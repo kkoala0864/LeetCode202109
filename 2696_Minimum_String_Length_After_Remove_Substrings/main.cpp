@@ -6,8 +6,7 @@ using std::endl;
 
 int main(void) {
 	string input = "ABFCACDB";
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->minLength(input) << endl;
 	return 0;
 }
-

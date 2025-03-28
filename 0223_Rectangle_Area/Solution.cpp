@@ -2,8 +2,8 @@
 #include <iostream>
 #include <algorithm>
 
-using std::min;
 using std::max;
+using std::min;
 
 int Solution::computeArea(int ax1, int ay1, int ax2, int ay2, int bx1, int by1, int bx2, int by2) {
 	int x1 = max(ax1, bx1);

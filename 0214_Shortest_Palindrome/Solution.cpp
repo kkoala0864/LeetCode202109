@@ -31,7 +31,7 @@ int KMPCheck(string str) {
 				lps[i] = 0;
 				++i;
 			} else {
-				len = lps[len-1];
+				len = lps[len - 1];
 			}
 		}
 	}
@@ -41,7 +41,8 @@ int KMPCheck(string str) {
 string Solution::shortestPalindrome(string s) {
 	int longestSize = KMPCheck(s);
 
-	if (longestSize == s.size()) return s;
+	if (longestSize == s.size())
+		return s;
 	string result = s.substr(longestSize);
 	reverse(result.begin(), result.end());
 	result += s;

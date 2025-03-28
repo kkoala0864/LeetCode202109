@@ -1,10 +1,10 @@
 #include <Solution.h>
 #include <iostream>
 
-int getScore(string& s, const string& sub, int score) {
+int getScore(string &s, const string &sub, int score) {
 	string str;
 	int result = 0;
-	for (const auto& c : s) {
+	for (const auto &c : s) {
 		if (c == sub[1]) {
 			if (!str.empty() && str.back() == sub[0]) {
 				str.pop_back();

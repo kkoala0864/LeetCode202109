@@ -4,15 +4,15 @@
 #include <queue>
 #include <climits>
 
-using std::queue;
-using std::pair;
 using std::min;
+using std::pair;
+using std::queue;
 
-int Solution::minimumCost(int n, vector<vector<int>>& highways, int discounts) {
+int Solution::minimumCost(int n, vector<vector<int>> &highways, int discounts) {
 	vector<vector<int>> costs(n, vector<int>(n, 0));
 	vector<vector<int>> con(n, vector<int>());
 
-	for (const auto& h : highways) {
+	for (const auto &h : highways) {
 		costs[h[0]][h[1]] = h[2];
 		costs[h[1]][h[0]] = h[2];
 		con[h[1]].emplace_back(h[0]);
@@ -22,7 +22,8 @@ int Solution::minimumCost(int n, vector<vector<int>>& highways, int discounts) {
 	queue<pair<int, int>> que;
 	vector<vector<int>> minCost(n, vector<int>(discounts + 1, INT_MAX));
 
-	for (int i = 0 ; i <= discounts ; ++i) minCost[0][i] = 0;
+	for (int i = 0; i <= discounts; ++i)
+		minCost[0][i] = 0;
 	que.emplace(pair<int, int>(0, discounts));
 
 	while (!que.empty()) {
@@ -30,7 +31,7 @@ int Solution::minimumCost(int n, vector<vector<int>>& highways, int discounts) {
 		int curDC = que.front().second;
 		que.pop();
 
-		for (const auto& nextNode : con[curNode]) {
+		for (const auto &nextNode : con[curNode]) {
 			int nextCost = minCost[curNode][curDC] + costs[curNode][nextNode];
 			if (minCost[nextNode][curDC] > nextCost) {
 				minCost[nextNode][curDC] = nextCost;
@@ -46,9 +47,8 @@ int Solution::minimumCost(int n, vector<vector<int>>& highways, int discounts) {
 		}
 	}
 	int result = INT_MAX;
-	for (const auto& v : minCost.back()) {
+	for (const auto &v : minCost.back()) {
 		result = min(result, v);
 	}
 	return result == INT_MAX ? -1 : result;
-
 }

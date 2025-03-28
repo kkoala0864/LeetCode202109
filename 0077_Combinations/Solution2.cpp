@@ -1,9 +1,9 @@
 #include <Solution.h>
 #include <iostream>
 
-void dfs(int idx, int n, int k, vector<int>& local, vector<vector<int>>& result) {
+void dfs(int idx, int n, int k, vector<int> &local, vector<vector<int>> &result) {
 	if (k == 1) {
-		for (int i = idx ; i <= n ; ++i) {
+		for (int i = idx; i <= n; ++i) {
 			local.emplace_back(i);
 			result.emplace_back(local);
 			local.pop_back();
@@ -11,9 +11,9 @@ void dfs(int idx, int n, int k, vector<int>& local, vector<vector<int>>& result)
 		return;
 	}
 
-	for (int i = idx ; i <= (n - k + 1) ; ++i) {
+	for (int i = idx; i <= (n - k + 1); ++i) {
 		local.emplace_back(i);
-		dfs(i+1, n, k - 1, local, result);
+		dfs(i + 1, n, k - 1, local, result);
 		local.pop_back();
 	}
 }

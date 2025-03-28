@@ -2,12 +2,12 @@
 #include <iostream>
 #include <queue>
 
-using std::priority_queue;
-using std::pair;
 using std::cout;
 using std::endl;
+using std::pair;
+using std::priority_queue;
 
-int Solution::countPaths(int n, vector<vector<int>>& roads) {
+int Solution::countPaths(int n, vector<vector<int>> &roads) {
 	vector<long long> minCost(n, LLONG_MAX);
 	vector<int> way(n, 0);
 	int mod = 1e9 + 7;
@@ -28,11 +28,13 @@ int Solution::countPaths(int n, vector<vector<int>>& roads) {
 		int curNode = pq.top().second;
 		pq.pop();
 
-		if (curCost > minCost[curNode]) continue;
+		if (curCost > minCost[curNode])
+			continue;
 
-		for (const auto& a : ad[curNode]) {
+		for (const auto &a : ad[curNode]) {
 			long long nextCost = curCost + a.second;
-			if (nextCost > minCost[a.first]) continue;
+			if (nextCost > minCost[a.first])
+				continue;
 			if (nextCost < minCost[a.first]) {
 				way[a.first] = way[curNode] % mod;
 				minCost[a.first] = nextCost;

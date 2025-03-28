@@ -6,8 +6,7 @@ using std::endl;
 
 int main(void) {
 	string input = "GL";
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->isRobotBounded(input) << endl;
 	return 0;
 }
-

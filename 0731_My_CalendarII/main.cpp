@@ -5,7 +5,6 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	MyCalendarTwo* test = new MyCalendarTwo();
+	MyCalendarTwo *test = new MyCalendarTwo();
 	return 0;
 }
-

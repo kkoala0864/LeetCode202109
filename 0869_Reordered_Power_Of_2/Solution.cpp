@@ -8,7 +8,7 @@ bool Solution::reorderedPowerOf2(int n) {
 	vector<vector<int>> cnt(32, vector<int>(10, 0));
 
 	int base = 1;
-	for (int i = 0 ; i < 32 ; ++i) {
+	for (int i = 0; i < 32; ++i) {
 		int val = base << i;
 		while (val > 0) {
 			++cnt[i][val % 10];
@@ -22,12 +22,14 @@ bool Solution::reorderedPowerOf2(int n) {
 		n /= 10;
 	}
 
-	for (int i = 0 ; i < 32 ; ++i) {
+	for (int i = 0; i < 32; ++i) {
 		int j = 0;
-		for (; j < 10 ; ++j) {
-			if (target[j] != cnt[i][j]) break;
+		for (; j < 10; ++j) {
+			if (target[j] != cnt[i][j])
+				break;
 		}
-		if (j == 10) return true;
+		if (j == 10)
+			return true;
 	}
 	return false;
 }

@@ -3,17 +3,17 @@
 #include <queue>
 #include <algorithm>
 
-using std::priority_queue;
-using std::pair;
-using std::max;
 using std::greater;
+using std::max;
+using std::pair;
+using std::priority_queue;
 
-vector<int> Solution::getOrder(vector<vector<int>>& tasks) {
+vector<int> Solution::getOrder(vector<vector<int>> &tasks) {
 	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
 
 	vector<pair<int, int>> al;
 	int size = tasks.size();
-	for (int i = 0 ; i < size ; ++i) {
+	for (int i = 0; i < size; ++i) {
 		al.emplace_back(pair<int, int>(tasks[i][0], i));
 	}
 	sort(al.begin(), al.end());
@@ -46,5 +46,4 @@ vector<int> Solution::getOrder(vector<vector<int>>& tasks) {
 		}
 	}
 	return result;
-
 }

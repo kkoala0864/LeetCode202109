@@ -4,7 +4,7 @@
 using std::cout;
 using std::endl;
 
-vector<vector<int>> Solution::mergeArrays(vector<vector<int>>& nums1, vector<vector<int>>& nums2) {
+vector<vector<int>> Solution::mergeArrays(vector<vector<int>> &nums1, vector<vector<int>> &nums2) {
 	vector<vector<int>> result;
 
 	int i1 = 0, i2 = 0;

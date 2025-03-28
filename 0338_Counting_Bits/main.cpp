@@ -5,17 +5,16 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	vector<int> result = test->countBits(7);
-	for (const auto& iter : result) {
+	for (const auto &iter : result) {
 		cout << iter << " ";
 	}
 	cout << endl;
 	result = test->countBits3(7);
-	for (const auto& iter : result) {
+	for (const auto &iter : result) {
 		cout << iter << " ";
 	}
 	cout << endl;
 	return 0;
 }
-

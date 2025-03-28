@@ -4,7 +4,7 @@
 
 using std::sort;
 
-int Solution::bagOfTokensScore(vector<int>& tokens, int power) {
+int Solution::bagOfTokensScore(vector<int> &tokens, int power) {
 	sort(tokens.begin(), tokens.end());
 
 	int curPower = power;
@@ -16,11 +16,12 @@ int Solution::bagOfTokensScore(vector<int>& tokens, int power) {
 			curPower -= tokens[getScoreIdx++];
 		}
 		int oriScore = curScore;
-		while (getScoreIdx <= getPowerIdx && curScore > 0 && curPower < tokens[getScoreIdx])  {
+		while (getScoreIdx <= getPowerIdx && curScore > 0 && curPower < tokens[getScoreIdx]) {
 			--curScore;
 			curPower += tokens[getPowerIdx--];
 		}
-		if (getScoreIdx > getPowerIdx || curPower < tokens[getScoreIdx]) return oriScore;
+		if (getScoreIdx > getPowerIdx || curPower < tokens[getScoreIdx])
+			return oriScore;
 	}
 	return curScore;
 }

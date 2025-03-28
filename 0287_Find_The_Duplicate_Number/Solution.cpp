@@ -1,7 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 
-int Solution::findDuplicate(vector<int>& nums) {
+int Solution::findDuplicate(vector<int> &nums) {
 	int fast = nums[0];
 	int slow = nums[0];
 	do {

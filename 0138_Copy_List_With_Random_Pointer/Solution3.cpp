@@ -4,8 +4,9 @@
 
 using std::unordered_map;
 
-void dfs(Node* ori, Node*& copy, unordered_map<Node*, Node*>& uMap) {
-	if (!ori) return;
+void dfs(Node *ori, Node *&copy, unordered_map<Node *, Node *> &uMap) {
+	if (!ori)
+		return;
 
 	copy = new Node(ori->val);
 	uMap[ori] = copy;
@@ -13,11 +14,11 @@ void dfs(Node* ori, Node*& copy, unordered_map<Node*, Node*>& uMap) {
 	copy->random = uMap[ori->random];
 }
 
-
-Node* Solution::copyRandomList3(Node* head) {
-	if (!head) return head;
-	unordered_map<Node*, Node*> uMap;
-	Node* result = nullptr;
+Node *Solution::copyRandomList3(Node *head) {
+	if (!head)
+		return head;
+	unordered_map<Node *, Node *> uMap;
+	Node *result = nullptr;
 	dfs(head, result, uMap);
 	return result;
 }

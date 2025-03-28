@@ -4,8 +4,9 @@
 
 using std::max;
 
-void dfs(TreeNode* node, int& child, int& prev) {
-	if (!node) return;
+void dfs(TreeNode *node, int &child, int &prev) {
+	if (!node)
+		return;
 
 	if (!node->left && !node->right) {
 		child = node->val;
@@ -21,7 +22,7 @@ void dfs(TreeNode* node, int& child, int& prev) {
 	prev = lchild + rchild;
 }
 
-int Solution::rob2(TreeNode* root) {
+int Solution::rob2(TreeNode *root) {
 	int child = 0, prev = 0;
 
 	dfs(root, child, prev);

@@ -4,12 +4,14 @@
 
 using std::unordered_map;
 
-TreeNode* contruct(vector<int>& preorder, int ps, int pe, vector<int>& inorder, int is, int ie, unordered_map<int, int>& idx) {
-	if (ps > pe) return nullptr;
+TreeNode *contruct(vector<int> &preorder, int ps, int pe, vector<int> &inorder, int is, int ie, unordered_map<int, int> &idx) {
+	if (ps > pe)
+		return nullptr;
 
-	TreeNode* cur = new TreeNode(preorder[ps]);
+	TreeNode *cur = new TreeNode(preorder[ps]);
 
-	if (ps == pe) return cur;
+	if (ps == pe)
+		return cur;
 	int curIdx = idx[cur->val];
 	int leftChildSize = curIdx - is;
 
@@ -18,11 +20,12 @@ TreeNode* contruct(vector<int>& preorder, int ps, int pe, vector<int>& inorder, 
 	return cur;
 }
 
-TreeNode* Solution::buildTree3(vector<int>& preorder, vector<int>& inorder) {
+TreeNode *Solution::buildTree3(vector<int> &preorder, vector<int> &inorder) {
 	unordered_map<int, int> idx;
 	int n = preorder.size();
 
-	for (int i = 0 ; i < inorder.size() ; ++i) idx[inorder[i]] = i;
+	for (int i = 0; i < inorder.size(); ++i)
+		idx[inorder[i]] = i;
 
-	return contruct(preorder, 0, n-1, inorder, 0, n-1, idx);
+	return contruct(preorder, 0, n - 1, inorder, 0, n - 1, idx);
 }

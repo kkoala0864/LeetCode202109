@@ -3,24 +3,29 @@
 #include <vector>
 #include <unordered_set>
 
-using std::vector;
 using std::unordered_set;
+using std::vector;
 
-bool dfs(const string& p, int pIdx, const string& s, int sIdx, vector<string>& map, unordered_set<string>& uSet) {
-	if (pIdx == p.size()) return sIdx == s.size();
+bool dfs(const string &p, int pIdx, const string &s, int sIdx, vector<string> &map, unordered_set<string> &uSet) {
+	if (pIdx == p.size())
+		return sIdx == s.size();
 
 	int c = p[pIdx] - 'a';
 	if (map[c] != "") {
 		string sub = s.substr(sIdx, map[c].size());
-		if (map[c] == sub) return dfs(p, pIdx + 1, s, sIdx + map[c].size(), map, uSet);
-		else return false;
+		if (map[c] == sub)
+			return dfs(p, pIdx + 1, s, sIdx + map[c].size(), map, uSet);
+		else
+			return false;
 	} else {
-		for (int i = sIdx ; i < s.size() ; ++i) {
+		for (int i = sIdx; i < s.size(); ++i) {
 			string sub = s.substr(sIdx, i - sIdx + 1);
-			if (uSet.find(sub) != uSet.end()) continue;
+			if (uSet.find(sub) != uSet.end())
+				continue;
 			map[c] = sub;
 			uSet.emplace(sub);
-			if (dfs(p, pIdx + 1, s, i + 1, map, uSet)) return true;
+			if (dfs(p, pIdx + 1, s, i + 1, map, uSet))
+				return true;
 			map[c] = "";
 			uSet.erase(sub);
 		}

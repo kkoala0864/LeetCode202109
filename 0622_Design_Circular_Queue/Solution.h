@@ -3,19 +3,21 @@
 using std::deque;
 
 class MyCircularQueue {
-	public:
+public:
 	MyCircularQueue(int k) {
 		size = k;
 	}
 
 	bool enQueue(int value) {
-		if (_cq.size() >= size) return false;
+		if (_cq.size() >= size)
+			return false;
 		_cq.emplace_back(value);
 		return true;
 	}
 
 	bool deQueue() {
-		if (_cq.empty()) return false;
+		if (_cq.empty())
+			return false;
 		_cq.pop_front();
 		return true;
 	}
@@ -35,8 +37,8 @@ class MyCircularQueue {
 	bool isFull() {
 		return _cq.size() == size;
 	}
-	private:
+
+private:
 	deque<int> _cq;
 	int size;
 };
-

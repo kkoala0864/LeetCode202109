@@ -6,11 +6,11 @@
 using std::max;
 using std::unordered_set;
 
-int Solution::findMaxK(vector<int>& nums) {
+int Solution::findMaxK(vector<int> &nums) {
 	unordered_set<int> us;
 
 	int result = 0;
-	for (const auto& v : nums) {
+	for (const auto &v : nums) {
 		if (us.count(-v)) {
 			result = max(result, abs(v));
 		}

@@ -5,8 +5,8 @@
 
 using std::queue;
 
-int Solution::maxLevelSum(TreeNode* root) {
-	queue<TreeNode*> que, next;
+int Solution::maxLevelSum(TreeNode *root) {
+	queue<TreeNode *> que, next;
 
 	int maxSum = INT_MIN;
 	int curSum = 0;
@@ -15,13 +15,15 @@ int Solution::maxLevelSum(TreeNode* root) {
 	int result = 0;
 
 	while (!que.empty()) {
-		TreeNode* cur = que.front();
+		TreeNode *cur = que.front();
 		que.pop();
 
 		curSum += cur->val;
 
-		if (cur->left) next.emplace(cur->left);
-		if (cur->right) next.emplace(cur->right);
+		if (cur->left)
+			next.emplace(cur->left);
+		if (cur->right)
+			next.emplace(cur->right);
 		if (que.empty()) {
 			que = move(next);
 			if (curSum > maxSum) {

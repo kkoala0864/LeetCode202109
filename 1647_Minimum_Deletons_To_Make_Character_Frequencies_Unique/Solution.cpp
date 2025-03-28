@@ -3,18 +3,22 @@
 #include <vector>
 #include <map>
 
-using std::vector;
 using std::map;
+using std::vector;
 
 int Solution::minDeletions(string s) {
 	vector<int> freq(26, 0);
-	for (const auto& c: s) ++freq[c-'a'];
+	for (const auto &c : s)
+		++freq[c - 'a'];
 	map<int, int, std::greater<int>> oMap;
-	for (const auto& v : freq) if (v > 0) ++oMap[v];
+	for (const auto &v : freq)
+		if (v > 0)
+			++oMap[v];
 
 	int result = 0;
-	for (auto& ele : oMap) {
-		if (ele.second == 1) continue;
+	for (auto &ele : oMap) {
+		if (ele.second == 1)
+			continue;
 		int shift = ele.second - 1;
 		int idx = ele.first - 1;
 

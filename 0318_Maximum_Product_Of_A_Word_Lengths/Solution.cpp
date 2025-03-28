@@ -2,15 +2,15 @@
 #include <iostream>
 #include <algorithm>
 
-using std::max;
 using std::cout;
 using std::endl;
+using std::max;
 
-int Solution::maxProduct(vector<string>& words) {
+int Solution::maxProduct(vector<string> &words) {
 	vector<unsigned int> distribution;
-	for (const auto& word : words) {
+	for (const auto &word : words) {
 		unsigned int encode = 0;
-		for (const auto& ch : word) {
+		for (const auto &ch : word) {
 			int offset = ch - 'a';
 			encode = encode | (1 << offset);
 		}
@@ -18,12 +18,12 @@ int Solution::maxProduct(vector<string>& words) {
 	}
 
 	int result = 0;
-	for (int i = 0 ; i < words.size() ; ++i) {
-		for (int j = i + 1 ; j < words.size() ; ++j) {
-			if (distribution[i] & distribution[j]) continue;
+	for (int i = 0; i < words.size(); ++i) {
+		for (int j = i + 1; j < words.size(); ++j) {
+			if (distribution[i] & distribution[j])
+				continue;
 			result = max(result, (int)(words[i].size() * words[j].size()));
 		}
 	}
 	return result;
 }
-

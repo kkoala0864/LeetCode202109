@@ -2,22 +2,23 @@
 #include <iostream>
 #include <climits>
 
-bool check(vector<int>& ribbons, int s, int k) {
+bool check(vector<int> &ribbons, int s, int k) {
 	int result = 0;
-	for (const auto& r : ribbons) {
+	for (const auto &r : ribbons) {
 		result += (r / s);
 	}
 	return result >= k;
 }
 
-int Solution::maxLength(vector<int>& ribbons, int k) {
+int Solution::maxLength(vector<int> &ribbons, int k) {
 	long long sum = 0;
-	for (const auto& r : ribbons) sum += r;
+	for (const auto &r : ribbons)
+		sum += r;
 	int l = 1, r = sum / k;
 	int mid = 0;
 
 	while (l < r) {
-		mid = l + ((r-l) / 2);
+		mid = l + ((r - l) / 2);
 
 		if (check(ribbons, mid, k)) {
 			l = mid + 1;

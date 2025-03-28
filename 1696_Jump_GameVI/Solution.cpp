@@ -4,17 +4,17 @@
 #include <algorithm>
 #include <deque>
 
-using std::max;
 using std::deque;
+using std::max;
 
-int Solution::maxResult(vector<int>& nums, int k) {
+int Solution::maxResult(vector<int> &nums, int k) {
 	vector<int> dp;
 	deque<int> deq;
 
 	dp.emplace_back(nums[0]);
 	deq.emplace_back(0);
 
-	for (int i =  1 ; i < nums.size() ; ++i) {
+	for (int i = 1; i < nums.size(); ++i) {
 		while (!deq.empty() && deq.front() < i - k) {
 			deq.pop_front();
 		}

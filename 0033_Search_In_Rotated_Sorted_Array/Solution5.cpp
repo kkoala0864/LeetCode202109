@@ -1,14 +1,15 @@
 #include <Solution.h>
 #include <iostream>
 
-int Solution::search5(vector<int>& nums, int target) {
+int Solution::search5(vector<int> &nums, int target) {
 	int l = 0, r = nums.size() - 1;
 	int mid = 0;
 
 	while (l <= r) {
 		int mid = l + ((r - l) >> 1);
 
-		if (nums[mid] == target) return mid;
+		if (nums[mid] == target)
+			return mid;
 		else if (nums[mid] < nums[r]) {
 			if (nums[mid] < target && target <= nums[r]) {
 				l = mid + 1;

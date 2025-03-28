@@ -3,9 +3,9 @@
 
 using std::stoi;
 
-NestedInteger parseNum(const string& s, int& i) {
+NestedInteger parseNum(const string &s, int &i) {
 	string local("");
-	for (; i < s.size() ; ++i) {
+	for (; i < s.size(); ++i) {
 		if ((s[i] >= '0' && s[i] <= '9') || s[i] == '-') {
 			local.push_back(s[i]);
 		} else {
@@ -16,9 +16,9 @@ NestedInteger parseNum(const string& s, int& i) {
 	return local == "" ? NestedInteger() : NestedInteger(stoi(local));
 }
 
-NestedInteger parseList(const string& s, int& i) {
+NestedInteger parseList(const string &s, int &i) {
 	NestedInteger result;
-	for (; i < s.size() ; ++i) {
+	for (; i < s.size(); ++i) {
 		if (s[i] == '[') {
 			result.add(parseList(s, ++i));
 		} else if (s[i] == ']') {

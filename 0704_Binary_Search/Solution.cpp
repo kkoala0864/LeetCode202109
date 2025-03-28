@@ -1,12 +1,13 @@
 #include <Solution.h>
 #include <iostream>
 
-int Solution::search(vector<int>& nums, int target) {
+int Solution::search(vector<int> &nums, int target) {
 	int start = 0, end = nums.size() - 1;
 	int mid = 0;
 	while (start <= end) {
 		mid = (end - start) / 2 + start;
-		if (nums[mid] == target) return mid;
+		if (nums[mid] == target)
+			return mid;
 		else if (nums[mid] < target) {
 			start = mid + 1;
 		} else {

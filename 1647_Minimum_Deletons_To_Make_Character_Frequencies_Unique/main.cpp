@@ -6,8 +6,7 @@ using std::endl;
 
 int main(void) {
 	string input = "odofingjfdncnecmfdekekchbbicbflkoanohamkcjljbfmahhbnkiangdal";
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->minDeletions(input) << endl;
 	return 0;
 }
-

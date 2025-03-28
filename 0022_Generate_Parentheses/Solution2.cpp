@@ -1,7 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 
-void dfs2(int lcnt, int rcnt, string& local, vector<string>& result) {
+void dfs2(int lcnt, int rcnt, string &local, vector<string> &result) {
 	if (lcnt == 0 && rcnt == 0) {
 		result.emplace_back(local);
 		return;
@@ -15,7 +15,7 @@ void dfs2(int lcnt, int rcnt, string& local, vector<string>& result) {
 
 	if (lcnt < rcnt) {
 		local.push_back(')');
-		dfs2(lcnt, rcnt - 1, local,result);
+		dfs2(lcnt, rcnt - 1, local, result);
 		local.pop_back();
 	}
 }

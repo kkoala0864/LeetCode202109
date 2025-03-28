@@ -1,10 +1,11 @@
 #include <Solution.h>
 #include <iostream>
 
-ListNode* removeElements2(ListNode* head, int val) {
-	if (!head) return head;
-	ListNode* result = nullptr;
-	ListNode* iter = nullptr;
+ListNode *removeElements2(ListNode *head, int val) {
+	if (!head)
+		return head;
+	ListNode *result = nullptr;
+	ListNode *iter = nullptr;
 	while (head) {
 		if (head->val != val) {
 			if (result) {
@@ -12,11 +13,12 @@ ListNode* removeElements2(ListNode* head, int val) {
 				iter = iter->next;
 			} else {
 				result = head;
-				iter =  head;
+				iter = head;
 			}
 		}
 		head = head->next;
 	}
-	if (iter) iter->next = nullptr;
+	if (iter)
+		iter->next = nullptr;
 	return result;
 }

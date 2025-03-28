@@ -3,7 +3,7 @@
 
 using std::swap;
 
-void reverse(string& s, int start, int end) {
+void reverse(string &s, int start, int end) {
 	while (start < end) {
 		swap(s[start++], s[end--]);
 	}
@@ -14,7 +14,8 @@ string Solution::reverseWords(string s) {
 	while (idx < s.size()) {
 		if (s[idx] != ' ') {
 			int end = idx;
-			while (end < s.size() && s[end] != ' ') ++end;
+			while (end < s.size() && s[end] != ' ')
+				++end;
 			--end;
 			reverse(s, idx, end);
 			idx = end;

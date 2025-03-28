@@ -2,18 +2,18 @@
 #include <iostream>
 #include <vector>
 
-using std::vector;
 using std::cout;
 using std::endl;
+using std::vector;
 
-int IsPalindromic(string &s, int first, int second, int& startIndex) {
+int IsPalindromic(string &s, int first, int second, int &startIndex) {
 	if (first != second && s[first] != s[second]) {
 		startIndex = first;
 		return 1;
 	};
 
 	int leftIter = first == second ? first - 1 : first;
-	int rightIter = first == second ?  second + 1 : second;
+	int rightIter = first == second ? second + 1 : second;
 
 	while (leftIter >= 0 && rightIter < s.size()) {
 		if (s[leftIter] != s[rightIter]) {
@@ -27,12 +27,12 @@ int IsPalindromic(string &s, int first, int second, int& startIndex) {
 	return rightIter - leftIter - 1;
 }
 
-
 string Solution::longestPalindrome(string s) {
-	if (s.size() < 2) return s;
+	if (s.size() < 2)
+		return s;
 	int maxIndex(0);
 	int maxLen(0);
-	for (int i = 0 ; i < s.size() ; ++i) {
+	for (int i = 0; i < s.size(); ++i) {
 		int tmpIndex(0);
 		int single = IsPalindromic(s, i, i, tmpIndex);
 		if (single > maxLen) {
@@ -49,4 +49,3 @@ string Solution::longestPalindrome(string s) {
 	}
 	return s.substr(maxIndex, maxLen);
 }
-

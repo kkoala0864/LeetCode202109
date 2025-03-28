@@ -3,7 +3,7 @@
 
 using std::swap;
 
-void Solution::deleteNode2(ListNode* node) {
+void Solution::deleteNode2(ListNode *node) {
 	swap(node->val, node->next->val);
 	node->next = node->next->next;
 }

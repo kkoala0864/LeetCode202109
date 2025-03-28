@@ -1,10 +1,11 @@
 #include <Solution.h>
 #include <iostream>
 
-ListNode* Solution::deleteDuplicates2(ListNode* head) {
-	if (!head) return head;
-	ListNode* iter = nullptr;
-	ListNode* cur = head;
+ListNode *Solution::deleteDuplicates2(ListNode *head) {
+	if (!head)
+		return head;
+	ListNode *iter = nullptr;
+	ListNode *cur = head;
 
 	while (cur) {
 		iter = cur->next;

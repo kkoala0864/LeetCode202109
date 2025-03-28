@@ -17,10 +17,10 @@ int mypow(int base, int n) {
 	return result;
 }
 
-int Solution::superPow2(int a, vector<int>& b) {
+int Solution::superPow2(int a, vector<int> &b) {
 	int result = 1;
 
-	for (int i = b.size() - 1 ; i >= 0 ; --i) {
+	for (int i = b.size() - 1; i >= 0; --i) {
 		result *= mypow(a, b[i]);
 		result %= 1337;
 		a = mypow(a, 10);

@@ -4,8 +4,9 @@
 
 using std::max;
 
-int recur(TreeNode* node, int p, int q, int& result) {
-	if (!node) return 0;
+int recur(TreeNode *node, int p, int q, int &result) {
+	if (!node)
+		return 0;
 
 	int ld = recur(node->left, p, q, result);
 	int rd = recur(node->right, p, q, result);
@@ -27,7 +28,7 @@ int recur(TreeNode* node, int p, int q, int& result) {
 	return 0;
 }
 
-int Solution::findDistance(TreeNode* root, int p, int q) {
+int Solution::findDistance(TreeNode *root, int p, int q) {
 	int result = 0;
 	recur(root, p, q, result);
 	return result;

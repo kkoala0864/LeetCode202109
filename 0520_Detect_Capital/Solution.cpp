@@ -6,20 +6,23 @@ bool check(char ch) {
 }
 
 bool Solution::detectCapitalUse(string word) {
-	if (word.empty()) return false;
+	if (word.empty())
+		return false;
 
 	bool prev = true, cur = true;
-	for (int i = 1 ; i < word.size() ; ++i) {
+	for (int i = 1; i < word.size(); ++i) {
 		if (i == 1) {
 			prev = check(word[1]);
 		} else {
 			cur = check(word[i]);
-			if (cur != prev) return false;
+			if (cur != prev)
+				return false;
 			prev = cur;
 		}
 	}
 
-	if (word.size() > 1 && !check(word[0]) && check(word[1])) return false;
+	if (word.size() > 1 && !check(word[0]) && check(word[1]))
+		return false;
 
 	return true;
 }

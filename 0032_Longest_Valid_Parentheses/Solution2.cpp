@@ -23,8 +23,9 @@ int Solution::longestValidParentheses2(string s) {
 		++iter;
 	}
 	int local = 0;
-	for (const auto& iter : s) {
-		if (iter == '0') ++local;
+	for (const auto &iter : s) {
+		if (iter == '0')
+			++local;
 		else {
 			result = max(result, local);
 			local = 0;

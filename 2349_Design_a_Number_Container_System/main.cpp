@@ -5,7 +5,6 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	NumberContainers* test = new NumberContainers();
+	NumberContainers *test = new NumberContainers();
 	return 0;
 }
-

@@ -3,12 +3,12 @@
 #include <vector>
 #include <algorithm>
 
-using std::vector;
 using std::max;
+using std::vector;
 
-void parse(string& s, vector<int>& v) {
+void parse(string &s, vector<int> &v) {
 	string local("");
-	for (int i = 0 ; i < s.size() ; ++i) {
+	for (int i = 0; i < s.size(); ++i) {
 		if (s[i] != '.') {
 			local.push_back(s[i]);
 		} else {
@@ -16,7 +16,8 @@ void parse(string& s, vector<int>& v) {
 			local = "";
 		}
 	}
-	if (local != "") v.emplace_back(stoi(local));
+	if (local != "")
+		v.emplace_back(stoi(local));
 }
 
 int Solution::compareVersion(string version1, string version2) {
@@ -26,11 +27,13 @@ int Solution::compareVersion(string version1, string version2) {
 	parse(version2, v2);
 
 	int size = max(v1.size(), v2.size());
-	for (int i = 0 ; i < size ; ++i) {
+	for (int i = 0; i < size; ++i) {
 		int val1 = i >= v1.size() ? 0 : v1[i];
 		int val2 = i >= v2.size() ? 0 : v2[i];
-		if (val1 > val2) return 1;
-		else if (val1 < val2) return -1;
+		if (val1 > val2)
+			return 1;
+		else if (val1 < val2)
+			return -1;
 	}
 	return 0;
 }

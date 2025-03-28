@@ -1,12 +1,15 @@
-struct TreeNode {
+struct TreeNode
+{
 	int val;
 	TreeNode *left;
 	TreeNode *right;
-	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+	TreeNode(int x)
+	    : val(x), left(NULL), right(NULL) {
+	}
 };
 
-void inorderMorris(TreeNode* root) {
-	TreeNode* cur = root, *prev = nullptr;
+void inorderMorris(TreeNode *root) {
+	TreeNode *cur = root, *prev = nullptr;
 	while (cur) {
 		if (!cur->left) {
 			cout << cur->val << endl;

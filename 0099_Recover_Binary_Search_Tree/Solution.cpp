@@ -2,11 +2,12 @@
 #include <iostream>
 #include <vector>
 
-using std::vector;
 using std::swap;
+using std::vector;
 
-void inorder(TreeNode* node, TreeNode*& pre, vector<vector<TreeNode*>>& sVec) {
-	if (!node) return;
+void inorder(TreeNode *node, TreeNode *&pre, vector<vector<TreeNode *>> &sVec) {
+	if (!node)
+		return;
 	inorder(node->left, pre, sVec);
 	if (pre && pre->val > node->val) {
 		sVec.push_back({pre, node});
@@ -15,9 +16,9 @@ void inorder(TreeNode* node, TreeNode*& pre, vector<vector<TreeNode*>>& sVec) {
 	return inorder(node->right, pre, sVec);
 }
 
-void Solution::recoverTree(TreeNode* root) {
-	vector<vector<TreeNode*>> sVec;
-	TreeNode* pre = nullptr;
+void Solution::recoverTree(TreeNode *root) {
+	vector<vector<TreeNode *>> sVec;
+	TreeNode *pre = nullptr;
 	inorder(root, pre, sVec);
 	if (sVec.size() == 1) {
 		swap(sVec[0][0]->val, sVec[0][1]->val);
@@ -26,13 +27,14 @@ void Solution::recoverTree(TreeNode* root) {
 	}
 }
 
-void Solution::recoverTreeMorris(TreeNode* root) {
-	TreeNode* cur = root, *prev = nullptr, *pred = nullptr, *x = nullptr, *y = nullptr;
+void Solution::recoverTreeMorris(TreeNode *root) {
+	TreeNode *cur = root, *prev = nullptr, *pred = nullptr, *x = nullptr, *y = nullptr;
 	while (cur) {
 		if (!cur->left) {
 			if (pred && cur->val < pred->val) {
 				y = cur;
-				if (!x) x = pred;
+				if (!x)
+					x = pred;
 			}
 			pred = cur;
 			cur = cur->right;
@@ -47,7 +49,8 @@ void Solution::recoverTreeMorris(TreeNode* root) {
 			} else {
 				if (pred && cur->val < pred->val) {
 					y = cur;
-					if (!x) x = pred;
+					if (!x)
+						x = pred;
 				}
 				pred = cur;
 				prev->right = nullptr;

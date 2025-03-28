@@ -1,8 +1,9 @@
 #include <data_type.h>
 
 class Solution {
-    public :
-        Solution() {}
+public:
+	Solution() {
+	}
 	int rand10() {
 		int col, row, idx;
 		do {
@@ -12,9 +13,10 @@ class Solution {
 		} while (idx > 40);
 		return 1 + (idx - 1) % 10;
 	}
-    private :
-        virtual ~Solution() {}
-        Solution& operator=(const Solution& source);
-        Solution(const Solution&);
-};
 
+private:
+	virtual ~Solution() {
+	}
+	Solution &operator=(const Solution &source);
+	Solution(const Solution &);
+};

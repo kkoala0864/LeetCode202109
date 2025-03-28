@@ -14,10 +14,10 @@ using std::to_string;
 string Solution::countAndSay2(int n) {
 	string val = "1";
 	string tmpVal;
-	for (int idx = 2 ; idx <= n ; ++idx) {
-		for (int i = 0 ; i < val.size() ; ++i) {
+	for (int idx = 2; idx <= n; ++idx) {
+		for (int i = 0; i < val.size(); ++i) {
 			int cnt = 1;
-			while (i < val.size() - 1 && val[i] == val[i+1]) {
+			while (i < val.size() - 1 && val[i] == val[i + 1]) {
 				++cnt;
 				++i;
 			}

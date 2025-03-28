@@ -4,12 +4,14 @@
 using std::vector;
 
 class Solution {
-    public :
-        Solution() {}
+public:
+	Solution() {
+	}
 	vector<int> closestPrimes(int left, int right);
-    private :
-        virtual ~Solution() {}
-        Solution& operator=(const Solution& source);
-        Solution(const Solution&);
-};
 
+private:
+	virtual ~Solution() {
+	}
+	Solution &operator=(const Solution &source);
+	Solution(const Solution &);
+};

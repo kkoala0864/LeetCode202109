@@ -1,9 +1,10 @@
 #include <Solution.h>
 #include <iostream>
 
-bool check(const string& s, int i, int j) {
+bool check(const string &s, int i, int j) {
 	while (i <= j) {
-		if (s[i++] != s[j--]) return false;
+		if (s[i++] != s[j--])
+			return false;
 	}
 	return true;
 }

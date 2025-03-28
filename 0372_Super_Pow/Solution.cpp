@@ -4,16 +4,16 @@
 int myPow(int a, int b) {
 	a %= 1337;
 	int result = 1;
-	for (int i = 0 ; i < b ; ++i) {
+	for (int i = 0; i < b; ++i) {
 		result *= a;
 		result %= 1337;
 	}
 	return result;
 }
 
-int Solution::superPow(int a, vector<int>& b) {
+int Solution::superPow(int a, vector<int> &b) {
 	int res = 1, x, f;
-	for (const auto& iter : b) {
+	for (const auto &iter : b) {
 		x = myPow(a, iter);
 		x *= res;
 		x %= 1337;

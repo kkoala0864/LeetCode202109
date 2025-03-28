@@ -7,9 +7,9 @@ int Solution::totalMoney(int n) {
 
 	int result = 0;
 	if (m > 0) {
-		result += (28 * m + 7 * (m * (m-1) / 2));
+		result += (28 * m + 7 * (m * (m - 1) / 2));
 	}
-	for (int i = 0 ; i < mod ; ++i) {
+	for (int i = 0; i < mod; ++i) {
 		result += ++m;
 	}
 	return result;

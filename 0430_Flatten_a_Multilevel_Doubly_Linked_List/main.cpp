@@ -5,18 +5,18 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	Node* node1 = new Node(1);
-	Node* node2 = new Node(2);
-	Node* node3 = new Node(3);
-	Node* node4 = new Node(4);
-	Node* node5 = new Node(5);
-	Node* node6 = new Node(6);
-	Node* node7 = new Node(7);
-	Node* node8 = new Node(8);
-	Node* node9 = new Node(9);
-	Node* node10 = new Node(10);
-	Node* node11 = new Node(11);
-	Node* node12 = new Node(12);
+	Node *node1 = new Node(1);
+	Node *node2 = new Node(2);
+	Node *node3 = new Node(3);
+	Node *node4 = new Node(4);
+	Node *node5 = new Node(5);
+	Node *node6 = new Node(6);
+	Node *node7 = new Node(7);
+	Node *node8 = new Node(8);
+	Node *node9 = new Node(9);
+	Node *node10 = new Node(10);
+	Node *node11 = new Node(11);
+	Node *node12 = new Node(12);
 	node1->next = node2;
 	node2->prev = node1;
 	node2->next = node3;
@@ -40,19 +40,18 @@ int main(void) {
 
 	node3->child = node7;
 	node8->child = node11;
-	Solution* test = new Solution();
-	Node* result = test->flatten(node1);
-	Node* prev = nullptr;
-	Node* iter = result;
-	for ( ; iter ; prev = iter, iter = iter->next) {
+	Solution *test = new Solution();
+	Node *result = test->flatten(node1);
+	Node *prev = nullptr;
+	Node *iter = result;
+	for (; iter; prev = iter, iter = iter->next) {
 		cout << iter->val << " ";
 	}
 	cout << endl;
 	iter = prev;
-	for (; iter ; iter = iter->prev) {
+	for (; iter; iter = iter->prev) {
 		cout << iter->val << " ";
 	}
 	cout << endl;
 	return 0;
 }
-

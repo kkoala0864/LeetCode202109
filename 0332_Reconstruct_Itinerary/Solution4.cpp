@@ -4,11 +4,11 @@
 #include <queue>
 #include <algorithm>
 
-using std::unordered_map;
 using std::priority_queue;
 using std::reverse;
+using std::unordered_map;
 
-void traversal(unordered_map<string, priority_queue<string, vector<string>, std::greater<string>>>& toLoc, string& curLoc, vector<string>& result) {
+void traversal(unordered_map<string, priority_queue<string, vector<string>, std::greater<string>>> &toLoc, string &curLoc, vector<string> &result) {
 	while (!toLoc[curLoc].empty()) {
 		string nextLoc = toLoc[curLoc].top();
 		toLoc[curLoc].pop();
@@ -17,9 +17,10 @@ void traversal(unordered_map<string, priority_queue<string, vector<string>, std:
 	result.emplace_back(curLoc);
 }
 
-vector<string> Solution::findItinerary4(vector<vector<string>>& tickets) {
+vector<string> Solution::findItinerary4(vector<vector<string>> &tickets) {
 	unordered_map<string, priority_queue<string, vector<string>, std::greater<string>>> toLoc;
-	for (const auto& t : tickets) toLoc[t[0]].emplace(t[1]);
+	for (const auto &t : tickets)
+		toLoc[t[0]].emplace(t[1]);
 
 	vector<string> result;
 	string startLoc = "JFK";

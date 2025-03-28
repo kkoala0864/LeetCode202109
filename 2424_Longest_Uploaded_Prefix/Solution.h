@@ -4,8 +4,9 @@
 using std::vector;
 
 class LUPrefix {
-    public :
-        LUPrefix() {}
+public:
+	LUPrefix() {
+	}
 	LUPrefix(int n) {
 		size = n;
 		cur = 0;
@@ -13,24 +14,28 @@ class LUPrefix {
 	}
 
 	void upload(int video) {
-		if (video > size) return;
+		if (video > size)
+			return;
 
 		v[video] = true;
 		while (cur < size) {
-			if (v[cur+1]) ++cur;
-			else break;
+			if (v[cur + 1])
+				++cur;
+			else
+				break;
 		}
 	}
 
 	int longest() {
 		return cur;
 	}
-    private :
+
+private:
 	int size;
 	vector<bool> v;
 	int cur;
-        virtual ~LUPrefix() {}
-        LUPrefix& operator=(const LUPrefix& source);
-        LUPrefix(const LUPrefix&);
+	virtual ~LUPrefix() {
+	}
+	LUPrefix &operator=(const LUPrefix &source);
+	LUPrefix(const LUPrefix &);
 };
-

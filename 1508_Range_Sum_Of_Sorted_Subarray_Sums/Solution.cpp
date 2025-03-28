@@ -2,15 +2,15 @@
 #include <iostream>
 #include <queue>
 
-using std::priority_queue;
-using std::pair;
 using std::cout;
 using std::endl;
+using std::pair;
+using std::priority_queue;
 
-int Solution::rangeSum(vector<int>& nums, int n, int left, int right) {
+int Solution::rangeSum(vector<int> &nums, int n, int left, int right) {
 	priority_queue<pair<int, int>, vector<pair<int, int>>, std::greater<pair<int, int>>> pq;
 	vector<int> idxs;
-	for (int i = 0 ; i < n ; ++i) {
+	for (int i = 0; i < n; ++i) {
 		pq.emplace(pair<int, int>(nums[i], i));
 		idxs.emplace_back(i);
 	}
@@ -18,7 +18,7 @@ int Solution::rangeSum(vector<int>& nums, int n, int left, int right) {
 	int mod = 1e9 + 7;
 	int result = 0;
 
-	for (int i = 1 ; i <= right ; ++i) {
+	for (int i = 1; i <= right; ++i) {
 		int curV = pq.top().first;
 		int curIdx = pq.top().second;
 		pq.pop();
@@ -29,7 +29,8 @@ int Solution::rangeSum(vector<int>& nums, int n, int left, int right) {
 		}
 
 		++curIdx;
-		if (curIdx >= nums.size()) continue;
+		if (curIdx >= nums.size())
+			continue;
 		pq.emplace(pair<int, int>(curV + nums[curIdx], curIdx));
 	}
 	return result;

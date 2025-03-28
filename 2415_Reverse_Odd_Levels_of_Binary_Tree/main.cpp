@@ -18,8 +18,7 @@ int main(void) {
 	two->right = five;
 	three->left = six;
 	three->right = seven;
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	test->reverseOddLevels(one);
 	return 0;
 }
-

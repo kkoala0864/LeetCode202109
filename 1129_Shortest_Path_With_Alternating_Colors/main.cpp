@@ -5,20 +5,19 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<vector<int>> red = {{0,1}};
-	vector<vector<int>> blue = {{2,1}};
+	vector<vector<int>> red = {{0, 1}};
+	vector<vector<int>> blue = {{2, 1}};
 
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	auto result = test->shortestAlternatingPaths(3, red, blue);
-	for (const auto& v : result) {
+	for (const auto &v : result) {
 		cout << v << " ";
 	}
 	cout << endl;
 	result = test->shortestAlternatingPaths2(3, red, blue);
-	for (const auto& v : result) {
+	for (const auto &v : result) {
 		cout << v << " ";
 	}
 	cout << endl;
 	return 0;
 }
-

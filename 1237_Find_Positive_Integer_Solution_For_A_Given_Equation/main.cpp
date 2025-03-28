@@ -6,4 +6,3 @@ using std::endl;
 
 int main(void) {
 }
-

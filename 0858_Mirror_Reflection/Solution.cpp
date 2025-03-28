@@ -6,5 +6,5 @@ int Solution::mirrorReflection(int p, int q) {
 		q /= 2;
 		p /= 2;
 	}
-	return 1 - p%2 + q%2;
+	return 1 - p % 2 + q % 2;
 }

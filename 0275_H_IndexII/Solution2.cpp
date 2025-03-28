@@ -2,10 +2,10 @@
 #include <iostream>
 #include <algorithm>
 
-using std::min;
 using std::max;
+using std::min;
 
-int Solution::hIndex2(vector<int>& citations) {
+int Solution::hIndex2(vector<int> &citations) {
 	int start = 0, end = citations.size() - 1;
 	int mid = 0;
 	int result = -1;

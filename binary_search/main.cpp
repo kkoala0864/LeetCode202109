@@ -5,8 +5,8 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<int> input = {1,3,5,7,9,11,13,17,19};
-	Solution* test = new Solution();
+	vector<int> input = {1, 3, 5, 7, 9, 11, 13, 17, 19};
+	Solution *test = new Solution();
 	cout << test->general(input, 3) << endl;
 	cout << test->general(input, 1) << endl;
 	cout << test->general(input, 8) << endl;
@@ -16,4 +16,3 @@ int main(void) {
 	cout << test->findMinimalValInRotatedArray(input) << endl;
 	return 0;
 }
-

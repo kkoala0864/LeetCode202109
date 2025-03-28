@@ -1,7 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 
-void Solution::merge2(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+void Solution::merge2(vector<int> &nums1, int m, vector<int> &nums2, int n) {
 	int iter = m + n - 1;
 	int i1 = m - 1;
 	int i2 = n - 1;

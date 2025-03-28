@@ -4,9 +4,7 @@
 using std::cout;
 using std::endl;
 
-
 int main(void) {
-	MyCircularDeque* obj = new MyCircularDeque(8);
+	MyCircularDeque *obj = new MyCircularDeque(8);
 	return 0;
 }
-

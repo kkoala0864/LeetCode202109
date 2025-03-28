@@ -2,89 +2,93 @@
 #include <algorithm>
 #include <iostream>
 
-using std::vector;
-using std::min;
-using std::max;
 using std::cout;
 using std::endl;
+using std::max;
+using std::min;
+using std::vector;
 
-struct SNode {
+struct SNode
+{
 	int start;
 	int end;
 	int sum;
-	SNode* left;
-	SNode* right;
+	SNode *left;
+	SNode *right;
 
-	SNode(int s, int e, int sum) : start(s), end(e), sum(sum) {}
-	SNode(int s, int e, int sum, SNode* l, SNode* r) : start(s), end(e), sum(sum) {
+	SNode(int s, int e, int sum)
+	    : start(s), end(e), sum(sum) {
+	}
+	SNode(int s, int e, int sum, SNode *l, SNode *r)
+	    : start(s), end(e), sum(sum) {
 		left = l;
 		right = r;
 	}
 };
 
-
 class NumArray {
-	public :
-		SNode* build(int start, int end, const vector<int>& vec) {
-			if (start == end) {
-				auto node = new SNode(start, end, vec[start]);
-				return node;
-			}
-			int mid = start + ((end - start) >> 1);
-
-			auto l = build(start, mid, vec);
-			auto r = build(mid + 1, end, vec);
-			auto node = new SNode(start, end, l->sum + r->sum, l, r);
+public:
+	SNode *build(int start, int end, const vector<int> &vec) {
+		if (start == end) {
+			auto node = new SNode(start, end, vec[start]);
 			return node;
 		}
+		int mid = start + ((end - start) >> 1);
 
-		void modify(SNode* node, int idx, int val) {
-			if (node->start == node->end && node->start == idx) {
-				node->sum = val;
-				return;
-			}
+		auto l = build(start, mid, vec);
+		auto r = build(mid + 1, end, vec);
+		auto node = new SNode(start, end, l->sum + r->sum, l, r);
+		return node;
+	}
 
-			int mid = node->start + ((node->end - node->start) >> 1);
-			if (idx <= mid) {
-				modify(node->left, idx, val);
-			} else {
-				modify(node->right, idx, val);
-			}
-			node->sum = node->left->sum + node->right->sum;
+	void modify(SNode *node, int idx, int val) {
+		if (node->start == node->end && node->start == idx) {
+			node->sum = val;
+			return;
 		}
 
-		int query(SNode* node, int l, int r) {
-			if (node->start == l && node->end == r) {
-				return node->sum;
-			}
+		int mid = node->start + ((node->end - node->start) >> 1);
+		if (idx <= mid) {
+			modify(node->left, idx, val);
+		} else {
+			modify(node->right, idx, val);
+		}
+		node->sum = node->left->sum + node->right->sum;
+	}
 
-			int mid = node->start + ((node->end - node->start) >> 1);
-			if (r <= mid) {
-				return query(node->left, l, r);
-			} else if (l > mid) {
-				return query(node->right, l, r);
-			} else {
-				return query(node->left, l, mid) + query(node->right, mid + 1, r);
-			}
+	int query(SNode *node, int l, int r) {
+		if (node->start == l && node->end == r) {
+			return node->sum;
 		}
 
-		NumArray(vector<int>& nums) {
-			size = nums.size();
-			root = build(0, size - 1, nums);
+		int mid = node->start + ((node->end - node->start) >> 1);
+		if (r <= mid) {
+			return query(node->left, l, r);
+		} else if (l > mid) {
+			return query(node->right, l, r);
+		} else {
+			return query(node->left, l, mid) + query(node->right, mid + 1, r);
 		}
+	}
 
-		void update(int index, int val) {
-			modify(root, index, val);
-		}
+	NumArray(vector<int> &nums) {
+		size = nums.size();
+		root = build(0, size - 1, nums);
+	}
 
-		int sumRange(int left, int right) {
-			return query(root, left, right);
-		}
-	private :
-		SNode* root;
-		int size;
-		virtual ~NumArray() {}
-		NumArray& operator=(const NumArray& source);
-		NumArray(const NumArray&);
+	void update(int index, int val) {
+		modify(root, index, val);
+	}
+
+	int sumRange(int left, int right) {
+		return query(root, left, right);
+	}
+
+private:
+	SNode *root;
+	int size;
+	virtual ~NumArray() {
+	}
+	NumArray &operator=(const NumArray &source);
+	NumArray(const NumArray &);
 };
-

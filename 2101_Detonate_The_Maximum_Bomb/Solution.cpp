@@ -5,11 +5,11 @@
 #include <algorithm>
 #include <cmath>
 
+using std::max;
 using std::queue;
 using std::unordered_set;
-using std::max;
 
-void tryDetonate(int start, vector<vector<int>>& connect, int& result) {
+void tryDetonate(int start, vector<vector<int>> &connect, int &result) {
 	unordered_set<int> bomb;
 	queue<int> que;
 	que.emplace(start);
@@ -18,8 +18,9 @@ void tryDetonate(int start, vector<vector<int>>& connect, int& result) {
 		int cur = que.front();
 		que.pop();
 
-		for (const auto& n : connect[cur]) {
-			if (bomb.count(n)) continue;
+		for (const auto &n : connect[cur]) {
+			if (bomb.count(n))
+				continue;
 			bomb.emplace(n);
 			que.emplace(n);
 		}
@@ -32,11 +33,11 @@ double getDis(long long x1, long long y1, long long x2, long long y2) {
 	return sqrt(v);
 }
 
-int Solution::maximumDetonation(vector<vector<int>>& bombs) {
+int Solution::maximumDetonation(vector<vector<int>> &bombs) {
 	vector<vector<int>> connect(bombs.size(), vector<int>());
 
-	for (int i = 0 ; i < bombs.size() ; ++i) {
-		for (int j = i + 1 ; j < bombs.size() ; ++j) {
+	for (int i = 0; i < bombs.size(); ++i) {
+		for (int j = i + 1; j < bombs.size(); ++j) {
 			double dis = getDis(bombs[i][0], bombs[i][1], bombs[j][0], bombs[j][1]);
 			if ((double)bombs[i][2] >= dis) {
 				connect[i].emplace_back(j);
@@ -48,7 +49,7 @@ int Solution::maximumDetonation(vector<vector<int>>& bombs) {
 	}
 
 	int result = 0;
-	for (int i = 0 ; i < bombs.size() ; ++i) {
+	for (int i = 0; i < bombs.size(); ++i) {
 		tryDetonate(i, connect, result);
 	}
 	return result;

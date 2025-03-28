@@ -1,7 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 
-int Solution::searchInsert2(vector<int>& nums, int target) {
+int Solution::searchInsert2(vector<int> &nums, int target) {
 	int l = 0, r = nums.size();
 	int mid = 0;
 

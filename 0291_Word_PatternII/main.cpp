@@ -7,9 +7,8 @@ using std::endl;
 int main(void) {
 	string pattern("abba");
 	string s("dogcatcatdog");
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->wordPatternMatch(pattern, s) << endl;
 	cout << test->wordPatternMatch2(pattern, s) << endl;
 	return 0;
 }
-

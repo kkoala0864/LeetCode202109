@@ -4,7 +4,7 @@
 string Solution::largestGoodInteger(string num) {
 	string result;
 	string cur;
-	for (const auto& c : num) {
+	for (const auto &c : num) {
 		if (cur.empty()) {
 			cur.push_back(c);
 		} else {

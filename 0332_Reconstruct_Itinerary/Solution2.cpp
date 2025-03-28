@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void traverse(unordered_map<string, priority_queue<string, vector<string>, greater<string>>>& uMap, string cur, vector<string>& result) {
+void traverse(unordered_map<string, priority_queue<string, vector<string>, greater<string>>> &uMap, string cur, vector<string> &result) {
 	while (!uMap[cur].empty()) {
 		string next = uMap[cur].top();
 		uMap[cur].pop();
@@ -15,9 +15,9 @@ void traverse(unordered_map<string, priority_queue<string, vector<string>, great
 	result.emplace_back(cur);
 }
 
-vector<string> Solution::findItinerary2(vector<vector<string>>& tickets) {
+vector<string> Solution::findItinerary2(vector<vector<string>> &tickets) {
 	unordered_map<string, priority_queue<string, vector<string>, greater<string>>> uMap;
-	for (const auto& ticket : tickets) {
+	for (const auto &ticket : tickets) {
 		uMap[ticket[0]].emplace(ticket[1]);
 	}
 

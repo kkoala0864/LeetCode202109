@@ -3,11 +3,11 @@
 #include <algorithm>
 #include <vector>
 
+using std::cout;
+using std::endl;
 using std::max;
 using std::min;
 using std::vector;
-using std::cout;
-using std::endl;
 
 int Solution::maxDistance(string s, int k) {
 	int hv = 0;
@@ -17,7 +17,7 @@ int Solution::maxDistance(string s, int k) {
 	int hnc = 0;
 	int vnc = 0;
 	int result = 0;
-	for (const auto& c : s) {
+	for (const auto &c : s) {
 		if (c == 'E') {
 			++hpc;
 			++hv;

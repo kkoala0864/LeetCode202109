@@ -4,7 +4,7 @@
 
 using std::sort;
 
-int twoSumSmaller(vector<int>& nums, int start, int target) {
+int twoSumSmaller(vector<int> &nums, int start, int target) {
 	int l = start, r = nums.size() - 1;
 	int result = 0;
 
@@ -20,12 +20,12 @@ int twoSumSmaller(vector<int>& nums, int start, int target) {
 	return result;
 }
 
-int Solution::threeSumSmaller(vector<int>& nums, int target) {
+int Solution::threeSumSmaller(vector<int> &nums, int target) {
 	sort(nums.begin(), nums.end());
 	int result = 0;
 	int size = nums.size();
 
-	for (int i = 0 ; i < size - 2 ; ++i) {
+	for (int i = 0; i < size - 2; ++i) {
 		result += twoSumSmaller(nums, i + 1, target - nums[i]);
 	}
 	return result;

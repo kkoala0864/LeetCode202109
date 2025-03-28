@@ -6,8 +6,7 @@ using std::endl;
 
 int main(void) {
 	string input = "textbook";
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->halvesAreAlike(input) << endl;
 	return 0;
 }
-

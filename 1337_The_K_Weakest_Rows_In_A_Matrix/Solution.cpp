@@ -2,15 +2,16 @@
 #include <iostream>
 #include <queue>
 
-using std::priority_queue;
 using std::pair;
+using std::priority_queue;
 
-vector<int> Solution::kWeakestRows(vector<vector<int>>& mat, int k) {
+vector<int> Solution::kWeakestRows(vector<vector<int>> &mat, int k) {
 	priority_queue<pair<int, int>, vector<pair<int, int>>, std::greater<pair<int, int>>> minHeap;
 
-	for (int i = 0; i < mat.size() ; ++i) {
+	for (int i = 0; i < mat.size(); ++i) {
 		int cnt = 0;
-		for (const auto& iter : mat[i]) cnt += iter;
+		for (const auto &iter : mat[i])
+			cnt += iter;
 		minHeap.push(pair<int, int>(cnt, i));
 	}
 	vector<int> result;
@@ -23,22 +24,22 @@ vector<int> Solution::kWeakestRows(vector<vector<int>>& mat, int k) {
 
 /*
 vector<int> Solution::kWeakestRows(vector<vector<int>>& mat, int k) {
-	vector<vector<int>> cnt(mat[0].size()+1, vector<int>());
-	for (int i = 0 ; i < mat.size() ; ++i) {
-		int local = 0;
-		for (const auto& iter : mat[i]) {
-			local += iter;
-		}
-		cnt[local].emplace_back(i);
-	}
+        vector<vector<int>> cnt(mat[0].size()+1, vector<int>());
+        for (int i = 0 ; i < mat.size() ; ++i) {
+                int local = 0;
+                for (const auto& iter : mat[i]) {
+                        local += iter;
+                }
+                cnt[local].emplace_back(i);
+        }
 
-	vector<int> result;
-	int idx = 0;
-	while (idx < cnt.size() && k > 0) {
-		for (int i = 0 ; i < cnt[idx].size() && k-- > 0 ; ++i) {
-			result.emplace_back(cnt[idx][i]);
-		}
-		++idx;
-	}
-	return result;
+        vector<int> result;
+        int idx = 0;
+        while (idx < cnt.size() && k > 0) {
+                for (int i = 0 ; i < cnt[idx].size() && k-- > 0 ; ++i) {
+                        result.emplace_back(cnt[idx][i]);
+                }
+                ++idx;
+        }
+        return result;
 }*/

@@ -6,7 +6,7 @@ int Solution::hammingDistance(int x, int y) {
 	int val = x ^ y;
 	while (val) {
 		++result;
-		val = val & (val-1);
+		val = val & (val - 1);
 	}
 	return result;
 }

@@ -9,11 +9,11 @@ int Solution::numberOfSpecialSubstrings(string s) {
 	int result = 0;
 	vector<int> cnt(26, 0);
 
-	for (int i = 0 ; i < s.size() ; ++i) {
+	for (int i = 0; i < s.size(); ++i) {
 		++cnt[s[i] - 'a'];
 
-		while (cnt[s[i]-'a'] > 1) {
-			--cnt[s[l]-'a'];
+		while (cnt[s[i] - 'a'] > 1) {
+			--cnt[s[l] - 'a'];
 			++l;
 		}
 		result += (i - l + 1);

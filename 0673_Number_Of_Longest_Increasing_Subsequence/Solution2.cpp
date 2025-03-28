@@ -2,18 +2,19 @@
 #include <iostream>
 #include <algorithm>
 
-using std::pair;
 using std::max;
+using std::pair;
 
-int Solution::findNumberOfLIS2(vector<int>& nums) {
+int Solution::findNumberOfLIS2(vector<int> &nums) {
 	vector<pair<int, int>> dp;
 
 	int maxLen = 0;
 	int result = 0;
-	for (int i = 0 ; i < nums.size() ; ++i) {
+	for (int i = 0; i < nums.size(); ++i) {
 		pair<int, int> cur(1, 1);
-		for (int j = i - 1 ; j >= 0 ; --j) {
-			if (nums[i] <= nums[j]) continue;
+		for (int j = i - 1; j >= 0; --j) {
+			if (nums[i] <= nums[j])
+				continue;
 			if (dp[j].first + 1 > cur.first) {
 				cur.first = dp[j].first + 1;
 				cur.second = dp[j].second;

@@ -3,18 +3,19 @@
 #include <algorithm>
 #include <climits>
 
-using std::max;
 using std::cout;
 using std::endl;
+using std::max;
 
-bool gotoZero(vector<vector<int>>& od, int cur, vector<int>& bStep, int step, int prev) {
+bool gotoZero(vector<vector<int>> &od, int cur, vector<int> &bStep, int step, int prev) {
 	if (cur == 0) {
 		bStep[cur] = step;
 		return true;
 	}
 
-	for (const auto& n : od[cur]) {
-		if (n == prev) continue;
+	for (const auto &n : od[cur]) {
+		if (n == prev)
+			continue;
 		if (gotoZero(od, n, bStep, step + 1, cur)) {
 			bStep[cur] = step;
 			return true;
@@ -23,7 +24,7 @@ bool gotoZero(vector<vector<int>>& od, int cur, vector<int>& bStep, int step, in
 	return false;
 }
 
-void getVal(vector<vector<int>>& od, vector<int>& bStep, vector<int>& amount, int time, int cur, int prev, int profit, int& result) {
+void getVal(vector<vector<int>> &od, vector<int> &bStep, vector<int> &amount, int time, int cur, int prev, int profit, int &result) {
 	int cp = amount[cur];
 	if (bStep[cur] != -1) {
 		if (bStep[cur] < time) {
@@ -38,16 +39,17 @@ void getVal(vector<vector<int>>& od, vector<int>& bStep, vector<int>& amount, in
 		result = max(result, profit);
 		return;
 	}
-	for (const auto& n : od[cur]) {
-		if (n == prev) continue;
+	for (const auto &n : od[cur]) {
+		if (n == prev)
+			continue;
 		getVal(od, bStep, amount, time + 1, n, cur, profit, result);
 	}
 }
 
-int Solution::mostProfitablePath(vector<vector<int>>& edges, int bob, vector<int>& amount) {
+int Solution::mostProfitablePath(vector<vector<int>> &edges, int bob, vector<int> &amount) {
 	vector<vector<int>> od(edges.size() + 1, vector<int>());
 
-	for (const auto& e : edges) {
+	for (const auto &e : edges) {
 		od[e[0]].emplace_back(e[1]);
 		od[e[1]].emplace_back(e[0]);
 	}

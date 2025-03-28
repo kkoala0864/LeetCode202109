@@ -3,11 +3,12 @@
 #include <vector>
 #include <algorithm>
 
-using std::vector;
 using std::min;
+using std::vector;
 
-vector<int> solve(TreeNode* node) {
-	if (!node) return {0, 0, 1000};
+vector<int> solve(TreeNode *node) {
+	if (!node)
+		return {0, 0, 1000};
 
 	auto lr = solve(node->left);
 	auto rr = solve(node->right);
@@ -21,7 +22,7 @@ vector<int> solve(TreeNode* node) {
 	return {d0, d1, d2};
 }
 
-int Solution::minCameraCover(TreeNode* root) {
+int Solution::minCameraCover(TreeNode *root) {
 	auto result = solve(root);
 	return min(result[1], result[2]);
 }

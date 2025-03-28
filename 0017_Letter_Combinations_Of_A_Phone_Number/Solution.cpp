@@ -1,15 +1,15 @@
 #include <Solution.h>
 #include <iostream>
 
-void dfs(vector<vector<char>>& map, string& digits, int idx, vector<string>& result, string& local) {
+void dfs(vector<vector<char>> &map, string &digits, int idx, vector<string> &result, string &local) {
 	if (idx == digits.size()) {
 		result.emplace_back(local);
 		return;
 	}
 
-	for (int i = 0 ; i < map[digits[idx]-'0'].size() ; ++i) {
-		local.push_back(map[digits[idx]-'0'][i]);
-		dfs(map, digits, idx+1, result, local);
+	for (int i = 0; i < map[digits[idx] - '0'].size(); ++i) {
+		local.push_back(map[digits[idx] - '0'][i]);
+		dfs(map, digits, idx + 1, result, local);
 		local.pop_back();
 	}
 }
@@ -27,7 +27,8 @@ vector<string> Solution::letterCombinations(string digits) {
 	map[9] = {'w', 'x', 'y', 'z'};
 
 	vector<string> result;
-	if (digits.empty()) return result;
+	if (digits.empty())
+		return result;
 	string local("");
 	dfs(map, digits, 0, result, local);
 	return result;

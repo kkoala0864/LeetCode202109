@@ -13,7 +13,8 @@ string Solution::minRemoveToMakeValid(string s) {
 			if (cnt == 0) {
 				s.pop_back();
 				continue;
-			} else --cnt;
+			} else
+				--cnt;
 		} else if (s.back() == ')') {
 			++cnt;
 		}
@@ -28,7 +29,8 @@ string Solution::minRemoveToMakeValid(string s) {
 			if (cnt == 0) {
 				st.pop_back();
 				continue;
-			} else --cnt;
+			} else
+				--cnt;
 		} else if (st.back() == '(') {
 			++cnt;
 		}

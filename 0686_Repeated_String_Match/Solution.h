@@ -3,13 +3,15 @@
 using std::string;
 
 class Solution {
-    public :
-        Solution() {}
+public:
+	Solution() {
+	}
 	int repeatedStringMatch(string a, string b);
 	int repeatedStringMatch2(string a, string b);
-    private :
-        virtual ~Solution() {}
-        Solution& operator=(const Solution& source);
-        Solution(const Solution&);
-};
 
+private:
+	virtual ~Solution() {
+	}
+	Solution &operator=(const Solution &source);
+	Solution(const Solution &);
+};

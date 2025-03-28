@@ -4,14 +4,15 @@
 using std::cout;
 using std::endl;
 
-struct Node{
-	Node* next;
-	Node* prev;
+struct Node
+{
+	Node *next;
+	Node *prev;
 	int val;
 	Node(int v) {
 		val = v;
 	}
-	Node(int v, Node* n, Node* p) {
+	Node(int v, Node *n, Node *p) {
 		val = v;
 		next = n;
 		prev = p;
@@ -19,7 +20,7 @@ struct Node{
 };
 
 class MyCircularDeque {
-    public :
+public:
 	MyCircularDeque(int k) {
 		cap = k;
 		cnt = 0;
@@ -28,13 +29,14 @@ class MyCircularDeque {
 	}
 
 	bool insertFront(int value) {
-		if (cnt == cap) return false;
+		if (cnt == cap)
+			return false;
 		if (!front) {
 			Node *v = new Node(value, v, v);
 			front = v;
 			tail = v;
 		} else {
-			Node* v = new Node(value, front, tail);
+			Node *v = new Node(value, front, tail);
 			front->prev = v;
 			tail->next = v;
 			front = v;
@@ -44,13 +46,14 @@ class MyCircularDeque {
 	}
 
 	bool insertLast(int value) {
-		if (cnt == cap) return false;
+		if (cnt == cap)
+			return false;
 		if (!front) {
 			Node *v = new Node(value, v, v);
 			front = v;
 			tail = v;
 		} else {
-			Node* v = new Node(value, front, tail);
+			Node *v = new Node(value, front, tail);
 			front->prev = v;
 			tail->next = v;
 			tail = v;
@@ -60,7 +63,8 @@ class MyCircularDeque {
 	}
 
 	bool deleteFront() {
-		if (cnt == 0) return false;
+		if (cnt == 0)
+			return false;
 		if (cnt == 1) {
 			front = nullptr;
 			tail = nullptr;
@@ -74,7 +78,8 @@ class MyCircularDeque {
 	}
 
 	bool deleteLast() {
-		if (cnt == 0) return false;
+		if (cnt == 0)
+			return false;
 		if (cnt == 1) {
 			front = nullptr;
 			tail = nullptr;
@@ -102,13 +107,14 @@ class MyCircularDeque {
 	bool isFull() {
 		return cnt == cap;
 	}
-    private :
-	Node* front;
-	Node* tail;
+
+private:
+	Node *front;
+	Node *tail;
 	int cap;
 	int cnt;
-        virtual ~MyCircularDeque() {}
-        MyCircularDeque& operator=(const MyCircularDeque& source);
-        MyCircularDeque(const MyCircularDeque&);
+	virtual ~MyCircularDeque() {
+	}
+	MyCircularDeque &operator=(const MyCircularDeque &source);
+	MyCircularDeque(const MyCircularDeque &);
 };
-

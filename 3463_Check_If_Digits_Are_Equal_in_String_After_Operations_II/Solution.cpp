@@ -19,11 +19,10 @@
 // 1. p is prime => C(m,n) % 2, C(m,n) % 5
 // 2. (m-n)!n! can't be divisible by p => Lucas theorem
 
-
 // C(6, 2) = 6 * 5 / 2 * 1;
 long long C(int m, int n) {
 	long long v = 1;
-	for (int i = 0 ; i < n ; ++i) {
+	for (int i = 0; i < n; ++i) {
 		v *= (long long)(m - i);
 		v /= (long long)(i + 1);
 	}
@@ -31,21 +30,22 @@ long long C(int m, int n) {
 }
 
 long long lucas(int m, int n, int p) {
-	if (n == 0) return 1;
-	return (C(m % p, n % p) * lucas(m/p, n/p, p)) % p;
+	if (n == 0)
+		return 1;
+	return (C(m % p, n % p) * lucas(m / p, n / p, p)) % p;
 }
 
-bool check(const string& s, int p) {
+bool check(const string &s, int p) {
 	int v1 = 0;
 	int n = s.size();
 
-	for (int i = 0 ; i < n-1 ; ++i) {
-		v1 += (s[i] - '0') * lucas(n-2, i, p);
+	for (int i = 0; i < n - 1; ++i) {
+		v1 += (s[i] - '0') * lucas(n - 2, i, p);
 		v1 %= p;
 	}
 	int v2 = 0;
-	for (int i = 1 ; i < n ; ++i) {
-		v2 += (s[i] - '0') * lucas(n-2, i - 1, p);
+	for (int i = 1; i < n; ++i) {
+		v2 += (s[i] - '0') * lucas(n - 2, i - 1, p);
 		v2 %= p;
 	}
 	return v1 == v2;
@@ -54,4 +54,3 @@ bool check(const string& s, int p) {
 bool Solution::hasSameDigits(string s) {
 	return check(s, 2) && check(s, 5);
 }
-

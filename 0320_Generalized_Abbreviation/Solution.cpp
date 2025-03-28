@@ -9,8 +9,8 @@ vector<string> Solution::generateAbbreviations(string word) {
 
 	last.emplace_back(pair<string, int>("", 0));
 
-	for (int i = 0 ; i < word.size() ; ++i) {
-		for (const auto& l : last) {
+	for (int i = 0; i < word.size(); ++i) {
+		for (const auto &l : last) {
 			dp.emplace_back(l);
 			++dp.back().second;
 
@@ -26,7 +26,7 @@ vector<string> Solution::generateAbbreviations(string word) {
 		last = move(dp);
 	}
 	vector<string> result;
-	for (auto& l : last) {
+	for (auto &l : last) {
 		if (l.second > 0) {
 			l.first += to_string(l.second);
 		}

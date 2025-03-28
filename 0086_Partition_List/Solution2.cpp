@@ -1,10 +1,11 @@
 #include <Solution.h>
 #include <iostream>
 
-ListNode* Solution::partition2(ListNode* head, int x) {
-	if (!head || !head->next) return head;
-	ListNode* big = nullptr, *small = nullptr;
-	ListNode* sIter = nullptr, *bIter = nullptr;
+ListNode *Solution::partition2(ListNode *head, int x) {
+	if (!head || !head->next)
+		return head;
+	ListNode *big = nullptr, *small = nullptr;
+	ListNode *sIter = nullptr, *bIter = nullptr;
 
 	while (head) {
 		if (head->val < x) {
@@ -25,7 +26,9 @@ ListNode* Solution::partition2(ListNode* head, int x) {
 		head = head->next;
 	}
 
-	if (bIter) bIter->next = nullptr;
-	if (sIter) sIter->next = big;
+	if (bIter)
+		bIter->next = nullptr;
+	if (sIter)
+		sIter->next = big;
 	return small ? small : big;
 }

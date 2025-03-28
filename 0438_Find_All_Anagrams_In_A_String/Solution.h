@@ -1,16 +1,18 @@
 #include <vector>
 #include <string>
 
-using std::vector;
 using std::string;
+using std::vector;
 
 class Solution {
-    public :
-        Solution() {}
+public:
+	Solution() {
+	}
 	vector<int> findAnagrams(string s, string p);
-    private :
-        virtual ~Solution() {}
-        Solution& operator=(const Solution& source);
-        Solution(const Solution&);
-};
 
+private:
+	virtual ~Solution() {
+	}
+	Solution &operator=(const Solution &source);
+	Solution(const Solution &);
+};

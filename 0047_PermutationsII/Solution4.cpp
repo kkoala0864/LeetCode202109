@@ -2,18 +2,19 @@
 #include <iostream>
 #include <unordered_set>
 
-using std::unordered_set;
 using std::swap;
+using std::unordered_set;
 
-void dfs(int idx, vector<int>& nums, vector<vector<int>>& result) {
-	if (idx == nums.size()- 1) {
+void dfs(int idx, vector<int> &nums, vector<vector<int>> &result) {
+	if (idx == nums.size() - 1) {
 		result.emplace_back(nums);
 		return;
 	}
 
 	unordered_set<int> flag;
-	for (int i = idx ; i < nums.size() ; ++i) {
-		if (flag.count(nums[i]) > 0) continue;
+	for (int i = idx; i < nums.size(); ++i) {
+		if (flag.count(nums[i]) > 0)
+			continue;
 		flag.emplace(nums[i]);
 		swap(nums[i], nums[idx]);
 		dfs(idx + 1, nums, result);
@@ -21,7 +22,7 @@ void dfs(int idx, vector<int>& nums, vector<vector<int>>& result) {
 	}
 }
 
-vector<vector<int>> Solution::permuteUnique4(vector<int>& nums) {
+vector<vector<int>> Solution::permuteUnique4(vector<int> &nums) {
 	vector<vector<int>> result;
 	dfs(0, nums, result);
 	return result;

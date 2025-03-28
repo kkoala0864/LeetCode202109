@@ -4,17 +4,21 @@
 
 using std::queue;
 
-vector<vector<int>> Solution::levelOrder2(TreeNode* root) {
+vector<vector<int>> Solution::levelOrder2(TreeNode *root) {
 	vector<vector<int>> result;
-	if (!root) return result;
-	queue<TreeNode*> cur, next;
+	if (!root)
+		return result;
+	queue<TreeNode *> cur, next;
 	cur.emplace(root);
 	vector<int> local;
 	while (!cur.empty()) {
-		TreeNode* node = cur.front(); cur.pop();
+		TreeNode *node = cur.front();
+		cur.pop();
 
-		if (node->left) next.emplace(node->left);
-		if (node->right) next.emplace(node->right);
+		if (node->left)
+			next.emplace(node->left);
+		if (node->right)
+			next.emplace(node->right);
 		local.emplace_back(node->val);
 
 		if (cur.empty()) {

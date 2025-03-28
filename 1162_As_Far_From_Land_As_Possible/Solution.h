@@ -3,13 +3,15 @@
 using std::vector;
 
 class Solution {
-    public :
-        Solution() {}
-	int maxDistance(vector<vector<int>>& grid);
-	int maxDistance2(vector<vector<int>>& grid);
-    private :
-        virtual ~Solution() {}
-        Solution& operator=(const Solution& source);
-        Solution(const Solution&);
-};
+public:
+	Solution() {
+	}
+	int maxDistance(vector<vector<int>> &grid);
+	int maxDistance2(vector<vector<int>> &grid);
 
+private:
+	virtual ~Solution() {
+	}
+	Solution &operator=(const Solution &source);
+	Solution(const Solution &);
+};

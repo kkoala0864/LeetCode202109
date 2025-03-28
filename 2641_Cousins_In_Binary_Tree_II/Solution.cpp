@@ -3,16 +3,16 @@
 #include <queue>
 #include <vector>
 
-using std::vector;
 using std::queue;
+using std::vector;
 
-TreeNode* Solution::replaceValueInTree(TreeNode* root) {
+TreeNode *Solution::replaceValueInTree(TreeNode *root) {
 	vector<int> levelSum;
-	queue<TreeNode*> que, next;
-	vector<vector<TreeNode*>> level;
+	queue<TreeNode *> que, next;
+	vector<vector<TreeNode *>> level;
 	que.emplace(root);
 	int sum = 0;
-	level.emplace_back(vector<TreeNode*>());
+	level.emplace_back(vector<TreeNode *>());
 
 	while (!que.empty()) {
 		auto cur = que.front();
@@ -31,15 +31,15 @@ TreeNode* Solution::replaceValueInTree(TreeNode* root) {
 			sum = 0;
 			que = move(next);
 			if (!que.empty()) {
-				level.push_back(vector<TreeNode*>());
+				level.push_back(vector<TreeNode *>());
 			}
 		}
 	}
 
 	root->val = 0;
-	for (int i = 0 ; i < level.size() - 1 ; ++i) {
-		for (int j = 0 ; j < level[i].size() ; ++j) {
-			int sum = levelSum[i+1];
+	for (int i = 0; i < level.size() - 1; ++i) {
+		for (int j = 0; j < level[i].size(); ++j) {
+			int sum = levelSum[i + 1];
 			if (level[i][j]->left) {
 				sum -= level[i][j]->left->val;
 			}

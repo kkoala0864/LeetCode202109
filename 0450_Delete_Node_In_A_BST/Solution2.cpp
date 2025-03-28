@@ -2,9 +2,11 @@
 #include <iostream>
 using std::swap;
 
-TreeNode* search(TreeNode* node, int key, TreeNode*& lp) {
-	if (!node) return nullptr;
-	if (node->val == key) return node;
+TreeNode *search(TreeNode *node, int key, TreeNode *&lp) {
+	if (!node)
+		return nullptr;
+	if (node->val == key)
+		return node;
 	lp = node;
 	if (node->val > key) {
 		return search(node->left, key, lp);
@@ -13,13 +15,15 @@ TreeNode* search(TreeNode* node, int key, TreeNode*& lp) {
 	}
 }
 
-TreeNode* Solution::deleteNode2(TreeNode* root, int key) {
-	TreeNode* lp = nullptr;
-	TreeNode* dn = search(root, key, lp);
-	if (!dn) return root;
+TreeNode *Solution::deleteNode2(TreeNode *root, int key) {
+	TreeNode *lp = nullptr;
+	TreeNode *dn = search(root, key, lp);
+	if (!dn)
+		return root;
 
 	if (!dn->left) {
-		if (!lp) return dn->right;
+		if (!lp)
+			return dn->right;
 		if (lp->left == dn) {
 			lp->left = dn->right;
 		} else {

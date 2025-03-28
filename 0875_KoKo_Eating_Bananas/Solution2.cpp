@@ -2,16 +2,17 @@
 #include <iostream>
 #include <climits>
 
-int getHour(vector<int>& p, int t) {
+int getHour(vector<int> &p, int t) {
 	int result = 0;
-	for (const auto& v : p) {
+	for (const auto &v : p) {
 		result += (v / t);
-		if (v % t > 0) result += 1;
+		if (v % t > 0)
+			result += 1;
 	}
 	return result;
 }
 
-int Solution::minEatingSpeed2(vector<int>& piles, int h) {
+int Solution::minEatingSpeed2(vector<int> &piles, int h) {
 	int l = 1, r = INT_MAX;
 	int mid = 0;
 

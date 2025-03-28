@@ -9,9 +9,9 @@ int Solution::numTrees2(int n) {
 	dp[0] = 1;
 	dp[1] = 1;
 
-	for (int i = 2 ; i <= n ; ++i) {
+	for (int i = 2; i <= n; ++i) {
 		int val = 0;
-		for (int j = 0 ; j < i ; ++j) {
+		for (int j = 0; j < i; ++j) {
 			val += (dp[j] * dp[i - j - 1]);
 		}
 		dp.emplace_back(val);

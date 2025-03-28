@@ -4,12 +4,12 @@
 
 using std::stack;
 
-void parse(const string& s, vector<int>& oper) {
+void parse(const string &s, vector<int> &oper) {
 	int sp1 = s.find(":");
 	int sp2 = s.find(":", sp1 + 1);
 	oper[0] = stoi(s.substr(0, sp1));
 	oper[1] = s.substr(sp1 + 1, sp2 - sp1 - 1) == "start" ? 0 : 1;
-	oper[2] = stoi(s.substr(sp2 +1));
+	oper[2] = stoi(s.substr(sp2 + 1));
 }
 
 // if oper[1] = 0
@@ -20,7 +20,7 @@ void parse(const string& s, vector<int>& oper) {
 //      result[curId] += curT - startTime - occupy Time
 //	return curT - startTime
 
-int dfs(int& li, const vector<string>& logs, vector<int>& result) {
+int dfs(int &li, const vector<string> &logs, vector<int> &result) {
 	vector<int> start(3, 0);
 	parse(logs[li++], start);
 	int occupyT = 0;
@@ -34,7 +34,7 @@ int dfs(int& li, const vector<string>& logs, vector<int>& result) {
 	return end[2] - start[2] + 1;
 }
 
-vector<int> Solution::exclusiveTime(int n, vector<string>& logs) {
+vector<int> Solution::exclusiveTime(int n, vector<string> &logs) {
 	vector<int> result(n, 0);
 	int li = 0;
 	while (li < logs.size()) {

@@ -6,9 +6,9 @@
 using std::min;
 using std::sort;
 
-int Solution::maxBoxesInWarehouse(vector<int>& boxes, vector<int>& warehouse) {
+int Solution::maxBoxesInWarehouse(vector<int> &boxes, vector<int> &warehouse) {
 	int minVal = INT_MAX;
-	for (auto& w : warehouse) {
+	for (auto &w : warehouse) {
 		minVal = min(minVal, w);
 		w = minVal;
 	}

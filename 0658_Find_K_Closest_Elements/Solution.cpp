@@ -1,7 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 
-vector<int> Solution::findClosestElements(vector<int>& arr, int k, int x) {
+vector<int> Solution::findClosestElements(vector<int> &arr, int k, int x) {
 	auto idx = lower_bound(arr.begin(), arr.end(), x) - arr.begin();
 
 	vector<int> result;
@@ -21,6 +21,7 @@ vector<int> Solution::findClosestElements(vector<int>& arr, int k, int x) {
 			}
 		}
 	}
-	for (int i = prev + 1 ; i < next ; ++i) result.emplace_back(arr[i]);
+	for (int i = prev + 1; i < next; ++i)
+		result.emplace_back(arr[i]);
 	return result;
 }

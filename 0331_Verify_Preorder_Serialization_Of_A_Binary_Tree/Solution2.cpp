@@ -1,8 +1,9 @@
 #include <Solution.h>
 #include <iostream>
 
-bool dfs(const string& s, int& idx) {
-	if (idx >= s.size()) return false;
+bool dfs(const string &s, int &idx) {
+	if (idx >= s.size())
+		return false;
 
 	int start = idx;
 	while (idx < s.size() && s[idx] != ',') {
@@ -10,7 +11,8 @@ bool dfs(const string& s, int& idx) {
 	}
 	string val = s.substr(start, idx - start);
 	++idx;
-	if (val == "#") return true;
+	if (val == "#")
+		return true;
 	else {
 		return dfs(s, idx) && dfs(s, idx);
 	}

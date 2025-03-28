@@ -1,12 +1,12 @@
 #include <Solution.h>
 #include <iostream>
 
-ListNode* Solution::reverseKGroup(ListNode* head, int k) {
+ListNode *Solution::reverseKGroup(ListNode *head, int k) {
 	ListNode *iter = head, *prev = nullptr, *next = nullptr, *gtail = head, *ghead = nullptr;
 
-	ListNode* dummy = new ListNode();
+	ListNode *dummy = new ListNode();
 	dummy->next = head;
-	ListNode* lastTail = dummy;
+	ListNode *lastTail = dummy;
 	int cnt = k;
 
 	while (gtail) {

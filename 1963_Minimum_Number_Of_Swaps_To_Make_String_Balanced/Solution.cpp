@@ -8,13 +8,17 @@ int Solution::minSwaps(string s) {
 	while (start < end) {
 		while (sCnt >= 0 && start < end) {
 			++start;
-			if (s[start] == '[') ++sCnt;
-			else --sCnt;
+			if (s[start] == '[')
+				++sCnt;
+			else
+				--sCnt;
 		}
 		while (eCnt >= 0 && start < end) {
 			--end;
-			if (s[end] == ']') ++eCnt;
-			else --eCnt;
+			if (s[end] == ']')
+				++eCnt;
+			else
+				--eCnt;
 		}
 		if (start != end) {
 			++result;

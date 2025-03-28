@@ -1,10 +1,10 @@
 #include <Solution.h>
 #include <iostream>
 
-using std::min;
 using std::max;
+using std::min;
 
-vector<vector<int>> Solution::insert3(vector<vector<int>>& intervals, vector<int>& newInterval) {
+vector<vector<int>> Solution::insert3(vector<vector<int>> &intervals, vector<int> &newInterval) {
 	vector<vector<int>> result;
 	int idx = 0;
 	while (idx < intervals.size() && intervals[idx][1] < newInterval[0]) {

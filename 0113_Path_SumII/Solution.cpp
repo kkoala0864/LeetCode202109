@@ -1,8 +1,9 @@
 #include <Solution.h>
 #include <iostream>
 
-void traverse(TreeNode* node, int targetSum, vector<vector<int>>& result, vector<int>& cur) {
-	if (!node) return;
+void traverse(TreeNode *node, int targetSum, vector<vector<int>> &result, vector<int> &cur) {
+	if (!node)
+		return;
 	if (!node->left && !node->right && targetSum == node->val) {
 		cur.emplace_back(node->val);
 		result.emplace_back(cur);
@@ -16,7 +17,7 @@ void traverse(TreeNode* node, int targetSum, vector<vector<int>>& result, vector
 	cur.pop_back();
 }
 
-vector<vector<int>> Solution::pathSum(TreeNode* root, int targetSum) {
+vector<vector<int>> Solution::pathSum(TreeNode *root, int targetSum) {
 	vector<vector<int>> result;
 	vector<int> cur;
 	traverse(root, targetSum, result, cur);

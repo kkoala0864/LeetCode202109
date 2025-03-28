@@ -3,10 +3,10 @@
 #include <stack>
 #include <map>
 
-using std::stack;
 using std::map;
-using std::to_string;
 using std::pair;
+using std::stack;
+using std::to_string;
 
 string Solution::countOfAtoms(string formula) {
 	stack<pair<string, int>> st;
@@ -15,7 +15,8 @@ string Solution::countOfAtoms(string formula) {
 	while (i < formula.size()) {
 		if (isupper(formula[i])) {
 			string s(1, formula[i++]);
-			while (i < formula.size() && islower(formula[i])) s.push_back(formula[i++]);
+			while (i < formula.size() && islower(formula[i]))
+				s.push_back(formula[i++]);
 			st.emplace(pair<string, int>(s, 1));
 		} else if (formula[i] == '(' || formula[i] == ')') {
 			st.emplace(pair<string, int>(string(1, formula[i++]), 1));
@@ -51,7 +52,7 @@ string Solution::countOfAtoms(string formula) {
 		st.pop();
 	}
 	string result;
-	for (const auto& e : m) {
+	for (const auto &e : m) {
 		result += e.first;
 		if (e.second > 1) {
 			result += to_string(e.second);

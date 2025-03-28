@@ -3,7 +3,7 @@
 #include <vector>
 
 using std::vector;
-int getVal(string& s, int& idx) {
+int getVal(string &s, int &idx) {
 	string val("");
 	while (idx < s.size() && (s[idx] == ' ' || (s[idx] <= '9' && s[idx] >= '0'))) {
 		if (s[idx] == ' ') {
@@ -38,6 +38,7 @@ int Solution::calculate(string s) {
 		}
 	}
 	int result = 0;
-	for (const auto& iter : que) result += iter;
+	for (const auto &iter : que)
+		result += iter;
 	return result;
 }

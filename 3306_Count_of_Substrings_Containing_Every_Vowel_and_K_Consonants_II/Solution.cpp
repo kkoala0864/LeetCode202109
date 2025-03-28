@@ -4,9 +4,9 @@
 #include <unordered_map>
 #include <vector>
 
-using std::vector;
-using std::unordered_set;
 using std::unordered_map;
+using std::unordered_set;
+using std::vector;
 
 long long Solution::countOfSubstrings(string word, int k) {
 	long long result = 0;
@@ -16,13 +16,15 @@ long long Solution::countOfSubstrings(string word, int k) {
 	int j = 0;
 	vector<int> cc(word.size(), 0);
 	int cnt = 0;
-	for (int i = word.size() - 1 ; i >= 0 ; --i) {
-		if (us.count(word[i])) ++cnt;
-		else cnt = 0;
+	for (int i = word.size() - 1; i >= 0; --i) {
+		if (us.count(word[i]))
+			++cnt;
+		else
+			cnt = 0;
 		cc[i] = cnt;
 	}
 
-	for (int i = 0 ; i < word.size() ; ++i) {
+	for (int i = 0; i < word.size(); ++i) {
 		while (j < word.size() && (um.size() < 5 || conCnt < k)) {
 			if (us.count(word[j])) {
 				++um[word[j]];

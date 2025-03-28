@@ -2,20 +2,22 @@
 #include <iostream>
 #include <algorithm>
 
-using std::max;
 using std::cout;
 using std::endl;
+using std::max;
 
-int Solution::minimizeArrayValue(vector<int>& nums) {
+int Solution::minimizeArrayValue(vector<int> &nums) {
 	long long minVal = 0;
 	long long sum = 0;
 	int result = 0;
 	long long offset = 0;
 
-	for (const auto& v : nums) sum += v;
-	for (int i = nums.size() - 1 ; i > 0 ; --i) {
+	for (const auto &v : nums)
+		sum += v;
+	for (int i = nums.size() - 1; i > 0; --i) {
 		minVal = sum / (i + 1);
-		if (sum % (i+1)) minVal += 1;
+		if (sum % (i + 1))
+			minVal += 1;
 		if ((nums[i] + offset) > minVal) {
 			offset += (nums[i] - minVal);
 			nums[i] = minVal;

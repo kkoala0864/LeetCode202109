@@ -2,14 +2,14 @@
 #include <iostream>
 #include <unordered_map>
 
-using std::unordered_map;
 using std::cout;
 using std::endl;
+using std::unordered_map;
 
-ListNode* Solution::frequenciesOfElements(ListNode* head) {
-	unordered_map<int, ListNode*> m;
-	ListNode* dummy = new ListNode(0, head);
-	ListNode* iter = dummy;
+ListNode *Solution::frequenciesOfElements(ListNode *head) {
+	unordered_map<int, ListNode *> m;
+	ListNode *dummy = new ListNode(0, head);
+	ListNode *iter = dummy;
 
 	while (iter && iter->next) {
 		if (m.count(iter->next->val)) {

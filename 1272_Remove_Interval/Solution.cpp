@@ -2,13 +2,14 @@
 #include <iostream>
 #include <algorithm>
 
-using std::min;
 using std::max;
+using std::min;
 
-vector<vector<int>> Solution::removeInterval(vector<vector<int>>& intervals, vector<int>& toBeRemoved) {
+vector<vector<int>> Solution::removeInterval(vector<vector<int>> &intervals, vector<int> &toBeRemoved) {
 	vector<vector<int>> result;
 	int idx = 0;
-	while (idx < intervals.size() && intervals[idx][1] <= toBeRemoved[0]) result.emplace_back(intervals[idx++]);
+	while (idx < intervals.size() && intervals[idx][1] <= toBeRemoved[0])
+		result.emplace_back(intervals[idx++]);
 
 	while (idx < intervals.size() && toBeRemoved[0] <= intervals[idx][1]) {
 		if (intervals[idx][0] < toBeRemoved[0]) {
@@ -20,6 +21,7 @@ vector<vector<int>> Solution::removeInterval(vector<vector<int>>& intervals, vec
 		++idx;
 	}
 
-	while (idx < intervals.size()) result.emplace_back(intervals[idx++]);
+	while (idx < intervals.size())
+		result.emplace_back(intervals[idx++]);
 	return result;
 }

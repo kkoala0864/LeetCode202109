@@ -15,7 +15,7 @@ string Solution::kthLuckyNumber(int k) {
 
 	string result(bitSize + 1, '0');
 
-	for (int i = 0 ; i <= bitSize ; ++i) {
+	for (int i = 0; i <= bitSize; ++i) {
 		int idx = bitSize - i;
 		if ((k & 1) == 1) {
 			result[idx] = '7';

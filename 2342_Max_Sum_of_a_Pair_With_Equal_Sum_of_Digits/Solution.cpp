@@ -4,13 +4,13 @@
 #include <queue>
 #include <algorithm>
 
-using std::unordered_map;
-using std::priority_queue;
 using std::max;
+using std::priority_queue;
+using std::unordered_map;
 
-int Solution::maximumSum(vector<int>& nums) {
+int Solution::maximumSum(vector<int> &nums) {
 	unordered_map<int, priority_queue<int, vector<int>, std::greater<int>>> sum;
-	for (const auto& v : nums) {
+	for (const auto &v : nums) {
 		int curSum = 0;
 		int tmp = v;
 		while (tmp > 0) {
@@ -18,11 +18,13 @@ int Solution::maximumSum(vector<int>& nums) {
 			tmp /= 10;
 		}
 		sum[curSum].emplace(v);
-		while (sum[curSum].size() > 2) sum[curSum].pop();
+		while (sum[curSum].size() > 2)
+			sum[curSum].pop();
 	}
 	int result = -1;
-	for (auto& e : sum) {
-		if (e.second.size() < 2) continue;
+	for (auto &e : sum) {
+		if (e.second.size() < 2)
+			continue;
 		int cur = 0;
 		while (!e.second.empty()) {
 			cur += e.second.top();

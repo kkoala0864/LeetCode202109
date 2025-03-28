@@ -3,15 +3,15 @@
 #include <queue>
 #include <algorithm>
 
-using std::priority_queue;
 using std::max;
+using std::priority_queue;
 
-int Solution::furthestBuilding2(vector<int>& heights, int bricks, int ladders) {
+int Solution::furthestBuilding2(vector<int> &heights, int bricks, int ladders) {
 	priority_queue<int, vector<int>, std::greater<int>> pq;
 
 	int i = 0;
 	while (i < heights.size() - 1) {
-		int diff = max(0, heights[i+1] - heights[i]);
+		int diff = max(0, heights[i + 1] - heights[i]);
 		if (pq.size() < ladders) {
 			pq.emplace(diff);
 		} else {
@@ -30,4 +30,3 @@ int Solution::furthestBuilding2(vector<int>& heights, int bricks, int ladders) {
 	}
 	return i;
 }
-

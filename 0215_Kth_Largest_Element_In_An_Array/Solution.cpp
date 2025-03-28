@@ -2,7 +2,7 @@
 #include <iostream>
 #include <queue>
 using std::priority_queue;
-int Solution::findKthLargest(vector<int>& nums, int k) {
+int Solution::findKthLargest(vector<int> &nums, int k) {
 
 	priority_queue<int> maxHeap(nums.begin(), nums.end());
 

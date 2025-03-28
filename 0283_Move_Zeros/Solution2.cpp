@@ -3,7 +3,7 @@
 
 using std::swap;
 
-void Solution::moveZeroes2(vector<int>& nums) {
+void Solution::moveZeroes2(vector<int> &nums) {
 	int i = 0;
 	int idx = 0;
 	while (idx < nums.size()) {

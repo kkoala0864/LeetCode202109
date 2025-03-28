@@ -3,19 +3,19 @@
 #include <algorithm>
 #include <climits>
 
-using std::min;
 using std::max;
+using std::min;
 
 vector<int> Solution::partitionLabels2(string s) {
 	vector<int> map(26, 0);
-	for (int i = 0 ; i < s.size() ; ++i) {
-		map[s[i]-'a'] = max(map[s[i]-'a'], i);
+	for (int i = 0; i < s.size(); ++i) {
+		map[s[i] - 'a'] = max(map[s[i] - 'a'], i);
 	}
 
 	vector<int> result;
 	int curMax = 0;
 	int start = 0;
-	for (int i = 0 ; i < s.size() ; ++i) {
+	for (int i = 0; i < s.size(); ++i) {
 		int idx = s[i] - 'a';
 		curMax = max(map[idx], curMax);
 		if (i == curMax) {

@@ -6,8 +6,7 @@ using std::endl;
 
 int main(void) {
 	int n = 1777;
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->magicalString(n) << endl;
 	return 0;
 }
-

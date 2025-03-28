@@ -1,7 +1,7 @@
 #include <Solution.h>
 #include <iostream>
 
-TreeNode* Solution::insertIntoBST(TreeNode* root, int val) {
+TreeNode *Solution::insertIntoBST(TreeNode *root, int val) {
 	if (!root) {
 		return new TreeNode(val);
 	}

@@ -6,8 +6,7 @@ using std::endl;
 
 int main(void) {
 	string input = "0110";
-	Solution* test = new Solution();
+	Solution *test = new Solution();
 	cout << test->hasAllCodes(input, 2) << endl;
 	return 0;
 }
-

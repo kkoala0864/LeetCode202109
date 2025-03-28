@@ -1,18 +1,19 @@
 #include <string>
 #include <vector>
-using std::vector;
 using std::string;
+using std::vector;
 
 class CombinationIterator {
-    public :
-	void dfs(const string& chars, int idx, string& local, int comLen) {
+public:
+	void dfs(const string &chars, int idx, string &local, int comLen) {
 		if (local.size() == comLen) {
 			_combination.emplace_back(local);
 			return;
 		}
-		if (idx >= chars.size()) return;
+		if (idx >= chars.size())
+			return;
 
-		for (int i = idx ; i < chars.size() ; ++i) {
+		for (int i = idx; i < chars.size(); ++i) {
 			local.push_back(chars[i]);
 			dfs(chars, i + 1, local, comLen);
 			local.pop_back();
@@ -36,11 +37,12 @@ class CombinationIterator {
 	bool hasNext() {
 		return cIdx < _combination.size();
 	}
-    private :
+
+private:
 	vector<string> _combination;
 	int cIdx;
-        virtual ~CombinationIterator() {}
-        CombinationIterator& operator=(const CombinationIterator& source);
-        CombinationIterator(const CombinationIterator&);
+	virtual ~CombinationIterator() {
+	}
+	CombinationIterator &operator=(const CombinationIterator &source);
+	CombinationIterator(const CombinationIterator &);
 };
-

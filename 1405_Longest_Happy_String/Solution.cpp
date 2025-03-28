@@ -3,8 +3,8 @@
 #include <algorithm>
 #include <vector>
 
-using std::sort;
 using std::pair;
+using std::sort;
 using std::vector;
 
 string Solution::longestDiverseString(int a, int b, int c) {
@@ -19,8 +19,9 @@ string Solution::longestDiverseString(int a, int b, int c) {
 	while (true) {
 		find = false;
 		sort(list.begin(), list.end(), std::greater<pair<int, char>>());
-		for (int i = 0 ; i < 3 ; ++i) {
-			if (list[i].first == 0) continue;
+		for (int i = 0; i < 3; ++i) {
+			if (list[i].first == 0)
+				continue;
 			if (ret.empty() || ret.back().second != list[i].second) {
 				ret.emplace_back(list[i]);
 				ret.back().first = 1;
@@ -28,16 +29,19 @@ string Solution::longestDiverseString(int a, int b, int c) {
 				--list[i].first;
 				break;
 			} else {
-				if (ret.back().first == 2) continue;
+				if (ret.back().first == 2)
+					continue;
 				++ret.back().first;
 				--list[i].first;
 				find = true;
 				break;
 			}
 		}
-		if (!find) break;
+		if (!find)
+			break;
 	}
 	string result;
-	for (const auto& e : ret) result += string(e.first, e.second);
+	for (const auto &e : ret)
+		result += string(e.first, e.second);
 	return result;
 }

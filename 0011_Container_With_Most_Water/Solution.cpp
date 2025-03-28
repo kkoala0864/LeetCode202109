@@ -3,12 +3,12 @@
 #include <algorithm>
 #include <climits>
 
-using std::min;
-using std::max;
 using std::cout;
 using std::endl;
+using std::max;
+using std::min;
 
-int Solution::maxArea(vector<int>& height) {
+int Solution::maxArea(vector<int> &height) {
 	int left = 0;
 	int right = height.size() - 1;
 

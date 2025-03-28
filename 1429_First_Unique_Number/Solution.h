@@ -4,18 +4,18 @@
 #include <queue>
 #include <iostream>
 
-using std::vector;
-using std::unordered_set;
-using std::priority_queue;
-using std::pair;
 using std::cout;
 using std::endl;
+using std::pair;
+using std::priority_queue;
+using std::unordered_set;
+using std::vector;
 
 class FirstUnique {
-    public :
-	FirstUnique(vector<int>& nums) {
+public:
+	FirstUnique(vector<int> &nums) {
 		idx = 0;
-		for (int i = 0 ; i < nums.size() ; ++i) {
+		for (int i = 0; i < nums.size(); ++i) {
 			if (m.count(nums[i])) {
 				continue;
 			} else {
@@ -31,7 +31,8 @@ class FirstUnique {
 	}
 
 	int showFirstUnique() {
-		if (s.empty()) return -1;
+		if (s.empty())
+			return -1;
 		while (!pq.empty() && s.count(pq.top().second) == 0) {
 			pq.pop();
 		}
@@ -51,12 +52,13 @@ class FirstUnique {
 			}
 		}
 	}
-    private :
+
+private:
 	int idx;
 	unordered_set<int> m, s;
-	priority_queue<pair<int ,int>, vector<pair<int, int>>, std::greater<pair<int, int>>> pq;
-        virtual ~FirstUnique() {}
-        FirstUnique& operator=(const FirstUnique& source);
-        FirstUnique(const FirstUnique&);
+	priority_queue<pair<int, int>, vector<pair<int, int>>, std::greater<pair<int, int>>> pq;
+	virtual ~FirstUnique() {
+	}
+	FirstUnique &operator=(const FirstUnique &source);
+	FirstUnique(const FirstUnique &);
 };
-

@@ -5,32 +5,33 @@
 #include <unordered_map>
 #include <iostream>
 
-using std::map;
-using std::unordered_map;
-using std::unordered_set;
-using std::string;
 using std::cout;
 using std::endl;
+using std::map;
+using std::string;
+using std::unordered_map;
+using std::unordered_set;
 
 class AllOne {
-    public :
-	    AllOne() {}
+public:
+	AllOne() {
+	}
 
-	    void inc(string key) {
+	void inc(string key) {
 		if (sToc.count(key)) {
 			cTos[sToc[key]].erase(key);
 		}
 		++sToc[key];
 		cTos[sToc[key]].emplace(key);
-		for (const auto& c : cTos) {
+		for (const auto &c : cTos) {
 			cout << c.first << " : ";
-			for (const auto& b : c.second) {
+			for (const auto &b : c.second) {
 				cout << b << " ";
 			}
 		}
-	    }
+	}
 
-	    void dec(string key) {
+	void dec(string key) {
 		cTos[sToc[key]].erase(key);
 		--sToc[key];
 		if (sToc[key] > 0) {
@@ -38,30 +39,31 @@ class AllOne {
 		} else {
 			sToc.erase(key);
 		}
-	    }
+	}
 
-	    string getMaxKey() {
-		    for (auto ri = cTos.rbegin() ; ri != cTos.rend() ; ++ri) {
+	string getMaxKey() {
+		for (auto ri = cTos.rbegin(); ri != cTos.rend(); ++ri) {
 			if (!ri->second.empty()) {
 				return *(ri->second.begin());
 			}
-		    }
-		    return "";
-	    }
+		}
+		return "";
+	}
 
-	    string getMinKey() {
-		    for (auto i = cTos.begin() ; i != cTos.end() ; ++i) {
+	string getMinKey() {
+		for (auto i = cTos.begin(); i != cTos.end(); ++i) {
 			if (!i->second.empty()) {
 				return *(i->second.begin());
 			}
-		    }
-		    return "";
-	    }
-    private :
-	    unordered_map<string, int> sToc;
-	    map<int, unordered_set<string>> cTos;
-	    virtual ~AllOne() {}
-	    AllOne& operator=(const AllOne& source);
-	    AllOne(const AllOne&);
-};
+		}
+		return "";
+	}
 
+private:
+	unordered_map<string, int> sToc;
+	map<int, unordered_set<string>> cTos;
+	virtual ~AllOne() {
+	}
+	AllOne &operator=(const AllOne &source);
+	AllOne(const AllOne &);
+};

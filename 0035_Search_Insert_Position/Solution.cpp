@@ -1,9 +1,9 @@
 #include <Solution.h>
 #include <iostream>
 
-int BSearch(const vector<int>& nums, int target) {
+int BSearch(const vector<int> &nums, int target) {
 	int start = 0;
-	int end = nums.size() -1;
+	int end = nums.size() - 1;
 	int mid = 0;
 
 	while (start < end) {
@@ -19,7 +19,7 @@ int BSearch(const vector<int>& nums, int target) {
 	return start == end ? start : mid;
 }
 
-int Solution::searchInsert(vector<int>& nums, int target) {
+int Solution::searchInsert(vector<int> &nums, int target) {
 	int idx = BSearch(nums, target);
 	return (nums[idx] >= target) ? idx : idx + 1;
 }

@@ -3,19 +3,21 @@
 #include <unordered_map>
 #include <algorithm>
 
-using std::unordered_map;
 using std::max;
+using std::unordered_map;
 
-int Solution::maxPoints(vector<vector<int>>& points) {
-	if (points.size() < 2) return points.size();
+int Solution::maxPoints(vector<vector<int>> &points) {
+	if (points.size() < 2)
+		return points.size();
 
 	int result = 0;
-	for (int i = 0 ; i < points.size() ; ++i) {
+	for (int i = 0; i < points.size(); ++i) {
 		unordered_map<double, int> cnt;
 		unordered_map<int, int> ver;
 		unordered_map<int, int> hor;
-		for (int j = 0 ; j < points.size() ; ++j) {
-			if (i == j) continue;
+		for (int j = 0; j < points.size(); ++j) {
+			if (i == j)
+				continue;
 			if (points[i][0] - points[j][0] == 0) {
 				++ver[points[i][0]];
 				result = max(result, ver[points[i][0]] + 1);

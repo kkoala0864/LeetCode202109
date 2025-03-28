@@ -5,12 +5,12 @@
 
 using std::min;
 
-int Solution::canCompleteCircuit2(vector<int>& gas, vector<int>& cost) {
+int Solution::canCompleteCircuit2(vector<int> &gas, vector<int> &cost) {
 	int totalDiff = 0;
 	int curDiff = 0;
 	int start = INT_MAX;
 
-	for (int i = 0 ; i < gas.size() ; ++i) {
+	for (int i = 0; i < gas.size(); ++i) {
 		int idx = i;
 		int diff = gas[idx] - cost[idx];
 		if ((curDiff + diff) < 0) {
@@ -24,4 +24,3 @@ int Solution::canCompleteCircuit2(vector<int>& gas, vector<int>& cost) {
 	}
 	return start == INT_MAX || totalDiff < 0 ? -1 : start % gas.size();
 }
-

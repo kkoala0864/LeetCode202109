@@ -5,13 +5,12 @@ using std::cout;
 using std::endl;
 
 int main(void) {
-	vector<int> target = {1,3};
-	Solution* test = new Solution();
+	vector<int> target = {1, 3};
+	Solution *test = new Solution();
 	auto result = test->buildArray(target, 3);
-	for (const auto& v : result) {
+	for (const auto &v : result) {
 		cout << v << " ";
 	}
 	cout << endl;
 	return 0;
 }
-

@@ -3,13 +3,14 @@
 #include <unordered_set>
 #include <queue>
 
-using std::unordered_set;
 using std::pair;
 using std::queue;
+using std::unordered_set;
 
-int Solution::minimumJumps(vector<int>& forbidden, int a, int b, int x) {
+int Solution::minimumJumps(vector<int> &forbidden, int a, int b, int x) {
 	unordered_set<int> uSet;
-	for (const auto& f : forbidden) uSet.emplace(f);
+	for (const auto &f : forbidden)
+		uSet.emplace(f);
 
 	queue<pair<int, int>> que, nq;
 	int result = 0;
@@ -20,7 +21,8 @@ int Solution::minimumJumps(vector<int>& forbidden, int a, int b, int x) {
 		int isBack = que.front().second;
 		que.pop();
 
-		if (curStep == x) return result;
+		if (curStep == x)
+			return result;
 
 		if (isBack == 0) {
 			int next = curStep - b;
