@@ -1,30 +1,23 @@
 #include <Solution.h>
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
-using std::upper_bound;
 using std::vector;
 
 int Solution::shortestWay(string source, string target) {
-	vector<vector<int>> idxs(26, vector<int>());
-
-	for (int i = 0; i < source.size(); ++i) {
-		idxs[source[i] - 'a'].emplace_back(i);
-	}
-
-	int cur = source.size();
-	int result = 0;
-
-	for (const auto &c : target) {
-		if (idxs[c - 'a'].empty())
-			return -1;
-		int ni = upper_bound(idxs[c - 'a'].begin(), idxs[c - 'a'].end(), cur) - idxs[c - 'a'].begin();
-		if (ni == idxs[c - 'a'].size()) {
-			++result;
-			cur = idxs[c - 'a'][0];
+	int result = 1;
+	size_t idx = -1;
+	for (int i = 0; i < target.size(); ++i) {
+		idx = source.find(target[i], idx + 1);
+		if (idx != std::string::npos) {
+			continue;
 		} else {
-			cur = idxs[c - 'a'][ni];
+			idx = source.find(target[i]);
+			if (idx == std::string::npos) {
+				return -1;
+			} else {
+				++result;
+			}
 		}
 	}
 	return result;
