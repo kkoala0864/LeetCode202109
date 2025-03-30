@@ -3,24 +3,26 @@
 #include <algorithm>
 #include <climits>
 
+using std::cout;
+using std::endl;
 using std::max;
-using std::min;
 
 vector<int> Solution::partitionLabels(string s) {
-	vector<int> uMap(26, INT_MIN);
-
-	for (int i = 0; i < s.size(); ++i)
-		uMap[s[i] - 'a'] = max(uMap[s[i] - 'a'], i);
-
 	vector<int> result;
-	int start = 0;
-	int boundary = uMap[s[0] - 'a'];
+	vector<int> maxIdx(26, -1);
+	for (int i = 0; i < s.size(); ++i)
+		maxIdx[s[i] - 'a'] = i;
+
+	int l = 0;
+	int curMax = 0;
 	for (int i = 0; i < s.size(); ++i) {
-		boundary = max(boundary, uMap[s[i] - 'a']);
-		if (i == boundary) {
-			result.emplace_back(boundary - start + 1);
-			start = boundary + 1;
+		if (curMax < i) {
+			result.emplace_back(i - l);
+			curMax = i;
+			l = i;
 		}
+		curMax = max(curMax, maxIdx[s[i] - 'a']);
 	}
+	result.emplace_back(s.size() - l);
 	return result;
 }

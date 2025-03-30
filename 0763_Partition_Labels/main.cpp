@@ -12,10 +12,5 @@ int main(void) {
 		cout << iter << " ";
 	}
 	cout << endl;
-	result = test->partitionLabels3(input);
-	for (const auto &iter : result) {
-		cout << iter << " ";
-	}
-	cout << endl;
 	return 0;
 }
