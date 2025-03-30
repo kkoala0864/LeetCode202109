@@ -9,8 +9,6 @@ public:
 	Solution() {
 	}
 	vector<int> partitionLabels(string s);
-	vector<int> partitionLabels2(string s);
-	vector<int> partitionLabels3(string s);
 
 private:
 	virtual ~Solution() {
