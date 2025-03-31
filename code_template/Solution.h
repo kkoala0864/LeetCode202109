@@ -13,6 +13,7 @@ public:
 	int binary_search(vector<int> &nums, int target);
 	vector<int> dijstra(vector<vector<int>> &edges, int n, int start);
 	vector<int> KMPsearch(const string &text, const string &pattern);
+	vector<int> zAlgorithm(const string &text, const string &pattern);
 
 private:
 	virtual ~Solution() {
