@@ -41,5 +41,7 @@ int main(void) {
 	}
 	cout << endl;
 
+	test->zAlgorithm("aabxaabxcaabxaabxay", "aabxaabxcaabxaabxay");
+
 	return 0;
 }
