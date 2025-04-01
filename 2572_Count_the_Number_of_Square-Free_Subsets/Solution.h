@@ -7,7 +7,7 @@ class Solution {
 public:
 	Solution() {
 	}
-	int squareFreeSubsets(vector<int>& nums);
+	int squareFreeSubsets(vector<int> &nums);
 
 private:
 	virtual ~Solution() {

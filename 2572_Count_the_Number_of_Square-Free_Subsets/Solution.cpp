@@ -12,23 +12,23 @@ using std::pair;
 
 vector<int> getPS() {
 	vector<int> prime(31, true);
-	for (int i = 2 ; (i * i) <= 30 ; ++i) {
+	for (int i = 2; (i * i) <= 30; ++i) {
 		if (!prime[i]) continue;
-		for (int j = i ; (i * j) <= 30 ; ++j) {
-			prime[i*j] = false;
+		for (int j = i; (i * j) <= 30; ++j) {
+			prime[i * j] = false;
 		}
 	}
 	vector<int> ps;
-	for (int i = 2 ; i <= 30 ; ++i) {
+	for (int i = 2; i <= 30; ++i) {
 		if (!prime[i]) continue;
 		ps.emplace_back(i);
 	}
 	return ps;
 }
 
-bool getPrimeMask(int v, vector<int>& ps, int& mask) {
+bool getPrimeMask(int v, vector<int> &ps, int &mask) {
 
-	for (const auto& p : ps) {
+	for (const auto &p : ps) {
 		if (v % p) continue;
 		if (p * p > v) break;
 		int cnt = 0;
@@ -47,16 +47,16 @@ bool getPrimeMask(int v, vector<int>& ps, int& mask) {
 
 long long quickPow(long long x, long long n, long long mod) {
 	if (n == 0) return 1;
-	long long v = quickPow(x, n/2, mod);
+	long long v = quickPow(x, n / 2, mod);
 	long long vv = v * v % mod;
 	return n & 1 ? vv * x % mod : vv;
 }
 
-int Solution::squareFreeSubsets(vector<int>& nums) {
+int Solution::squareFreeSubsets(vector<int> &nums) {
 	unordered_map<int, pair<int, long long>> m;
 	vector<int> ps = getPS();
 	int cnt1 = 0;
-	for (const auto& v : nums) {
+	for (const auto &v : nums) {
 		if (v == 1) {
 			++cnt1;
 			continue;
@@ -75,12 +75,12 @@ int Solution::squareFreeSubsets(vector<int>& nums) {
 	long long mod = 1e9 + 7;
 
 	vector<pair<int, long long>> list;
-	list.emplace_back(pair<int, long long>(0,1));
-	for (const auto& e : m) {
+	list.emplace_back(pair<int, long long>(0, 1));
+	for (const auto &e : m) {
 		int curMask = e.second.first;
 		int curCnt = e.second.second;
 		int size = list.size();
-		for (int i = 0 ; i < size ; ++i) {
+		for (int i = 0; i < size; ++i) {
 			if (curMask & list[i].first) continue;
 			int mask = list[i].first | curMask;
 			long long cnt = list[i].second * curCnt % mod;
