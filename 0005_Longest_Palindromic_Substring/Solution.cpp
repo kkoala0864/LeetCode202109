@@ -1,51 +1,57 @@
 #include <Solution.h>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
+using std::min;
+using std::vector;
 using std::cout;
 using std::endl;
-using std::vector;
-
-int IsPalindromic(string &s, int first, int second, int &startIndex) {
-	if (first != second && s[first] != s[second]) {
-		startIndex = first;
-		return 1;
-	};
-
-	int leftIter = first == second ? first - 1 : first;
-	int rightIter = first == second ? second + 1 : second;
-
-	while (leftIter >= 0 && rightIter < s.size()) {
-		if (s[leftIter] != s[rightIter]) {
-			break;
-		}
-		--leftIter;
-		++rightIter;
-	}
-	startIndex = leftIter + 1;
-
-	return rightIter - leftIter - 1;
-}
-
+// manacher algorithm
+//
+// X {X X X X X X X X X X X X X X X X X X X X X} X X
+//          j             ctr           i     mr
+//
 string Solution::longestPalindrome(string s) {
-	if (s.size() < 2)
-		return s;
-	int maxIndex(0);
-	int maxLen(0);
-	for (int i = 0; i < s.size(); ++i) {
-		int tmpIndex(0);
-		int single = IsPalindromic(s, i, i, tmpIndex);
-		if (single > maxLen) {
-			maxIndex = tmpIndex;
-			maxLen = single;
-		}
-		if (i < (s.size() - 1)) {
-			int two = IsPalindromic(s, i, i + 1, tmpIndex);
-			if (two > maxLen) {
-				maxIndex = tmpIndex;
-				maxLen = two;
+	string t(1, '#');
+	for (int i = 0 ; i < s.size() ; ++i) {
+		t.push_back(s[i]);
+		t.push_back('#');
+	}
+	int n = t.size();
+
+	vector<int> p(n, 0);
+	int maxRight = -1;
+	int maxCenter = -1;
+
+	for (int i = 0 ; i < n ; ++i) {
+		int r = 0;
+		if (i <= maxRight) {
+			int j = (maxCenter << 1) - i;
+			r = min(p[j], maxRight - i);
+			while (i - r >= 0 && i + r < n && t[i-r] == t[i+r]) {
+				++r;
+			}
+		} else {
+			while (i - r >= 0 && i + r < n && t[i-r] == t[i+r]) {
+				++r;
 			}
 		}
+
+		p[i] = r - 1;
+		if (i + p[i] > maxRight) {
+			maxRight = i + p[i];
+			maxCenter = i;
+		}
 	}
-	return s.substr(maxIndex, maxLen);
+
+	maxCenter = 0;
+	int maxLen = -1;
+	for (int i = 0 ; i < n ; ++i) {
+		if (p[i] > maxLen) {
+			maxLen = p[i];
+			maxCenter = i;
+		}
+	}
+	return s.substr((maxCenter - maxLen) >> 1, maxLen);
 }
