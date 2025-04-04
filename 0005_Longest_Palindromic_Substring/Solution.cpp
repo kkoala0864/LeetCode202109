@@ -29,13 +29,9 @@ string Solution::longestPalindrome(string s) {
 		if (i <= maxRight) {
 			int j = (maxCenter << 1) - i;
 			r = min(p[j], maxRight - i);
-			while (i - r >= 0 && i + r < n && t[i-r] == t[i+r]) {
-				++r;
-			}
-		} else {
-			while (i - r >= 0 && i + r < n && t[i-r] == t[i+r]) {
-				++r;
-			}
+		}
+		while (i - r >= 0 && i + r < n && t[i-r] == t[i+r]) {
+			++r;
 		}
 
 		p[i] = r - 1;
