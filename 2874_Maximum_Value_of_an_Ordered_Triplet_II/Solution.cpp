@@ -1,9 +1,12 @@
 #include <Solution.h>
 #include <iostream>
-#include <algorithm>
 #include <climits>
+#include <algorithm>
 
-long long Solution::maximumTripletValue(vector<int> &nums) {
+using std::cout;
+using std::endl;
+
+long long Solution::maximumTripletValue(vector<int>& nums) {
 	vector<long long> postMax(nums.size(), LLONG_MIN);
 
 	postMax.back() = nums.back();
