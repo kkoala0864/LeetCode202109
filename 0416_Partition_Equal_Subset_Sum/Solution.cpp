@@ -5,23 +5,23 @@ using std::cout;
 using std::endl;
 
 bool Solution::canPartition(vector<int> &nums) {
-	int sum = 0;
-	for (const auto &v : nums)
-		sum += v;
+	int total = 0;
+	for (const auto& v : nums) total += v;
+	if (total & 1) return false;
+	total = total >> 1;
 
-	if (sum & 1)
-		return false;
-	sum >>= 1;
+	vector<int> dp(total + 1, false);
+	vector<int> next = dp;
+	next[0] = dp[0] = true;
 
-	vector<bool> dp(sum + 1, false);
-	dp[0] = true;
-	vector<bool> next = dp;
-	for (int i = 0; i < nums.size(); ++i) {
-		for (int j = nums[i]; j <= sum; ++j) {
-			if (dp[j - nums[i]])
-				next[j] = true;
+	for (const auto& v : nums) {
+		for (int i = v ; i <= total ; ++i) {
+			if (dp[i - v]) {
+				next[i] = true;
+			}
 		}
 		dp = next;
+		if (dp.back()) return true;
 	}
-	return dp[sum];
+	return false;
 }
