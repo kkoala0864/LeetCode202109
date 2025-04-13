@@ -1,23 +1,35 @@
 #include <Solution.h>
 #include <iostream>
-
-void isPalindromic(const string &s, int start, int end, int &cnt) {
-	while (start >= 0 && end < s.size()) {
-		if (s[start] == s[end]) {
-			++cnt;
-			--start;
-			++end;
-		} else
-			return;
-	}
-}
+#include <vector>
 
 int Solution::countSubstrings(string s) {
-	int size = s.size();
-	int cnt = 0;
-	for (int i = 0; i < size; ++i) {
-		isPalindromic(s, i, i, cnt);
-		isPalindromic(s, i, i + 1, cnt);
+	string t(1, '#');
+	for (const auto& c : s) {
+		t.push_back(c);
+		t.push_back('#');
 	}
-	return cnt;
+	int size = t.size();
+	vector<int> p(size, 0);
+
+	int result = 0;
+	int mr = -1;
+	int ctr = -1;
+
+	for (int i = 0 ; i < size ; ++i) {
+		if (i <= mr) {
+			int j = 2 * ctr - i;
+			p[i] = min(mr - i, p[j]);
+		}
+		while (i + p[i] < size && i - p[i] >= 0 && t[i+p[i]] == t[i-p[i]]) {
+			++p[i];
+		}
+		--p[i];
+		if (i + p[i] > mr) {
+			mr = i + p[i];
+			ctr = i;
+		}
+		result += (p[i] + 1) / 2;
+	}
+
+	return result;
 }

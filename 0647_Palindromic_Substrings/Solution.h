@@ -1,14 +1,12 @@
 #include <string>
 
-using std::string;
+using namespace std;
 
 class Solution {
 public:
 	Solution() {
 	}
 	int countSubstrings(string s);
-	int countSubstrings2(string s);
-	int countSubstrings3(string s);
 
 private:
 	virtual ~Solution() {
