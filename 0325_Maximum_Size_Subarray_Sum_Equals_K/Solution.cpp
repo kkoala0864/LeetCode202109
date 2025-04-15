@@ -1,30 +1,23 @@
 #include <Solution.h>
 #include <iostream>
 #include <unordered_map>
-#include <climits>
-#include <algorithm>
-
-using std::max;
-using std::unordered_map;
 
 int Solution::maxSubArrayLen(vector<int> &nums, int k) {
-	int size = nums.size();
-	unordered_map<int, int> uMap;
-	int sum = 0;
+	unordered_map<long long, int> m;
+
+	long long sum = 0;
+	m[0] = -1;
 	int result = 0;
-
-	for (int i = 0; i < size; ++i) {
-		sum += nums[i];
-
-		if (uMap.find(sum) == uMap.end())
-			uMap[sum] = i;
-
-		if (sum == k)
-			result = max(result, i + 1);
-		if (uMap.find(sum - k) != uMap.end()) {
-			result = max(result, i - uMap[sum - k]);
+	for (int i = 0 ; i < nums.size() ; ++i) {
+		sum += (long long)nums[i];
+		// sum - x = k
+		// sum - k = x
+		long long target = sum - k;
+		if (m.count(target)) {
+			result = max(result, i - m[target]);
 		}
+		if (m.count(sum) == 0) m[sum] = i;
 	}
-
 	return result;
 }
+
