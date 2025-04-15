@@ -2,6 +2,30 @@
 #include <vector>
 
 using namespace std;
+class FTree {
+	public:
+		FTree(int size) {
+			t = vector<int>(size + 1, 0);
+		}
+
+		void update(int val, int idx) {
+			while (idx < t.size()) {
+				t[idx] += val;
+				idx += (idx & -idx);
+			}
+		}
+
+		int query(int idx) {
+			int ret = 0;
+			while (idx > 0) {
+				ret += t[idx];
+				idx -= (idx & -idx);
+			}
+			return ret;
+		}
+	private:
+		vector<int> t;
+};
 
 class BTree{
 	public:
