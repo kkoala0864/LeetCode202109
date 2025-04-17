@@ -7,11 +7,12 @@ public:
 	fenwickTree(int size)
 	    : tree(size + 1, 0) {
 	}
-	int sum(int idx) {
+
+	int query(int idx) {
 		int result = 0;
 		while (idx > 0) {
 			result += tree[idx];
-			idx &= idx - 1;
+			idx -= (idx & -idx);
 		}
 		return result;
 	}
