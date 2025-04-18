@@ -1,13 +1,12 @@
 #include <string>
 
-using std::string;
+using namespace std;
 
 class Solution {
 public:
 	Solution() {
 	}
 	string countAndSay(int n);
-	string countAndSay2(int n);
 
 private:
 	virtual ~Solution() {
