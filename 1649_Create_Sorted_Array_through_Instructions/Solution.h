@@ -3,6 +3,33 @@
 
 using namespace std;
 
+class FTree {
+	public :
+		FTree(int size) {
+			tree = vector<int>(size + 1, 0);
+		}
+
+		void update(int idx, int val) {
+			++idx;
+			while (idx < tree.size()) {
+				tree[idx] += val;
+				idx += (idx & -idx);
+			}
+		}
+
+		int query(int idx) {
+			++idx;
+			int result = 0;
+			while (idx > 0) {
+				result += tree[idx];
+				idx -= (idx & -idx);
+			}
+			return result;
+		}
+	private:
+		vector<int> tree;
+};
+
 class BTree {
 	public :
 		BTree(int size) {

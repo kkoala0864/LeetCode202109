@@ -10,14 +10,13 @@ int Solution::createSortedArray(vector<int>& instructions) {
 		maxV = max(maxV, v);
 	}
 	++maxV;
-	BTree t(maxV);
+	FTree ft(maxV);
 
 	int result = 0;
-
-	for (const auto& v : instructions) {
-		t.update(v, 1, 1, 0, maxV);
-		int minCnt = t.query(0, v-1, 1, 0, maxV);
-		int maxCnt = t.query(v + 1, maxV, 1, 0, maxV);
+	for (int i = 0 ; i < instructions.size() ; ++i) {
+		ft.update(instructions[i], 1);
+		int minCnt = ft.query(instructions[i]-1);
+		int maxCnt = i + 1 - ft.query(instructions[i]);
 		result += min(minCnt, maxCnt);
 		result %= mod;
 	}

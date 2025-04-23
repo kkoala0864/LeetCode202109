@@ -9,6 +9,7 @@ public:
 	}
 
 	int query(int idx) {
+		++idx;
 		int result = 0;
 		while (idx > 0) {
 			result += tree[idx];
