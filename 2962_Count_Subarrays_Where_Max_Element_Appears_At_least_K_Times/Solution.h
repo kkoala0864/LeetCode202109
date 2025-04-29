@@ -1,7 +1,7 @@
 #include <data_type.h>
 #include <vector>
 
-using std::vector;
+using namespace std;
 
 class Solution {
 public:
