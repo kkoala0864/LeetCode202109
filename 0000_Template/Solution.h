@@ -1,5 +1,4 @@
 #include <data_type.h>
-#include <iostream>
 
 using namespace std;
 
