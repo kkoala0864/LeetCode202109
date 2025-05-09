@@ -17,8 +17,11 @@ void getFac(int size, long long mod, vector<long long>& f, vector<long long>& in
 	}
 }
 
-long long comb(long long m, long long n, long long mod, vector<long long>& f, vector<long long>& invf) {
-	return f[m] * invf[n] % mod * invf[m-n] % mod;
+long long comb(long long m, long long n, long long mod, vector<long long>& f, vector<long long>& invf, unordered_map<int, unordered_map<int, long long>>& combCache) {
+	if (m < n) return 0;
+	if (m == n || n == 0) return 1;
+	if (combCache.count(m) && combCache[m].count(n)) return combCache[m][n];
+	return combCache[m][n] = f[m] * invf[n] % mod * invf[m-n] % mod;
 }
 
 long long dfs(long long idx, long long sum, long long preSize, long long postSize, vector<int>& cnt,
@@ -39,7 +42,7 @@ long long dfs(long long idx, long long sum, long long preSize, long long postSiz
 	for (long long i = 0 ; i <= min(preSize, (long long)cnt[idx]) ; ++i) {
 		int rest = min((long long)cnt[idx] - i, postSize);
 		if (i * idx > sum) break;
-		result += (comb(preSize, i, mod, f, invf) * comb(postSize, rest, mod, f, invf) % mod
+		result += (comb(preSize, i, mod, f, invf, combCache) * comb(postSize, rest, mod, f, invf, combCache) % mod
 				* dfs(idx + 1, sum - (idx * i), preSize - i, postSize - rest, cnt, f, invf, mod, m, combCache) % mod);
 		result %= mod;
 
