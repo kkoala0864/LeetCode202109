@@ -8,6 +8,7 @@
 #include <set>
 #include <climits>
 #include <iostream>
+#include <numeric>
 
 using namespace std;
 
