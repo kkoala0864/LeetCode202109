@@ -1,15 +1,10 @@
-#include <vector>
-
-using std::vector;
+#include <data_type.h>
 
 class Solution {
 public:
 	Solution() {
 	}
 	int coinChange(vector<int> &coins, int amount);
-	int coinChange2(vector<int> &coins, int amount);
-	int coinChange3(vector<int> &coins, int amount);
-	int coinChange4(vector<int> &coins, int amount);
 
 private:
 	virtual ~Solution() {
