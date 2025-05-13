@@ -1,24 +1,22 @@
 #include <Solution.h>
-#include <iostream>
-#include <numeric>
 
-// target - (sum - target) = |2 * target - sum| = sum - (2 * target) = min(sum - 2 * target) = max(target);
+// this problem can be treated as find two subset which most closed to (sum / 2)
 int Solution::lastStoneWeightII(vector<int>& stones) {
 	int sum = accumulate(stones.begin(), stones.end(), 0);
 	int target = sum >> 1;
 
-	vector<bool> dp(target + 1, false);
-
+	vector<bool> dp(target + 1, false), next;
 	dp[0] = true;
+	next = dp;
 
-	for (const auto& s : stones) {
-		for (int i = target ; i >= s ; --i) {
-			dp[i] = dp[i] || dp[i-s];
+	int maxValue = 0;
+	for (const auto& v : stones) {
+		for (int i = v ; i <= target ; ++i) {
+			next[i] = dp[i] || dp[i-v];
+			if (next[i]) maxValue = max(maxValue, i);
 		}
+		dp = next;
 	}
 
-	for (int i = target ; i >= 0 ; --i) {
-		if (dp[i]) return sum - 2 * i;
-	}
-	return -1;
+	return sum - (2 * maxValue);
 }
