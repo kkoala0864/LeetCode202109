@@ -1,13 +1,10 @@
-#include <vector>
-
-using std::vector;
+#include <data_type.h>
 
 class Solution {
 public:
 	Solution() {
 	}
 	int findNumberOfLIS(vector<int> &nums);
-	int findNumberOfLIS2(vector<int> &nums);
 
 private:
 	virtual ~Solution() {
