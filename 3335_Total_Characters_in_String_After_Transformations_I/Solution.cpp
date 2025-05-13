@@ -1,10 +1,4 @@
 #include <Solution.h>
-#include <iostream>
-#include <vector>
-
-using std::cout;
-using std::endl;
-using std::vector;
 
 int Solution::lengthAfterTransformations(string s, int t) {
 	int mod = 1e9 + 7;
@@ -12,8 +6,7 @@ int Solution::lengthAfterTransformations(string s, int t) {
 	int rest = t % 26;
 	int base = 0;
 	vector<int> cnt(26, 0), next(26, 0);
-	for (const auto &c : s)
-		++cnt[c - 'a'];
+	for (const auto &c : s) ++cnt[c - 'a'];
 	next = cnt;
 	for (int j = 0; j < times; ++j) {
 		for (int i = 1; i < 26; ++i) {

@@ -44,7 +44,6 @@ First Transformation (t = 1):
 'k' becomes 'l'
 String after the first transformation: "babcl"
 Final Length of the string: The string is "babcl", which has 5 characters.
- 
 
 Constraints:
 
