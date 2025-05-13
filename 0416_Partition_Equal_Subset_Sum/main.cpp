@@ -1,8 +1,4 @@
 #include <Solution.h>
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 int main(void) {
 	vector<int> input = {14,9,8,4,3,2};

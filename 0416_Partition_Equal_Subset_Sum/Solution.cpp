@@ -1,21 +1,16 @@
 #include <Solution.h>
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 bool Solution::canPartition(vector<int> &nums) {
-	int total = 0;
-	for (const auto& v : nums) total += v;
-	if (total & 1) return false;
-	total = total >> 1;
+	int sum = accumulate(nums.begin(), nums.end(), 0);
+	if (sum & 1) return false;
 
-	vector<int> dp(total + 1, false);
-	vector<int> next = dp;
-	next[0] = dp[0] = true;
+	sum >>= 1;
 
+	vector<bool> dp(sum + 1, false), next;
+	dp[0] = true;
+	next = dp;
 	for (const auto& v : nums) {
-		for (int i = v ; i <= total ; ++i) {
+		for (int i = v ; i <= sum ; ++i) {
 			if (dp[i - v]) {
 				next[i] = true;
 			}
@@ -23,5 +18,5 @@ bool Solution::canPartition(vector<int> &nums) {
 		dp = next;
 		if (dp.back()) return true;
 	}
-	return false;
+	return dp[sum];
 }
