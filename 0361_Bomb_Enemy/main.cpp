@@ -1,11 +1,7 @@
 #include <Solution.h>
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 int main(void) {
-	vector<vector<char>> input = {{'E'}, {'E'}, {'E'}};
+	vector<vector<char>> input = {{'0','E','0','0'},{'E','0','W','E'},{'0','E','0','0'}};
 	Solution *test = new Solution();
 	cout << test->maxKilledEnemies(input) << endl;
 	return 0;

@@ -1,62 +1,47 @@
 #include <Solution.h>
-#include <iostream>
-#include <algorithm>
-
-using std::cout;
-using std::endl;
-using std::max;
-using std::pair;
 
 int Solution::maxKilledEnemies(vector<vector<char>> &grid) {
 	int m = grid.size();
 	int n = grid[0].size();
-	vector<vector<int>> row(m, vector<int>(n, 0));
-	vector<vector<int>> col(m, vector<int>(n, 0));
 
-	for (int i = 0; i < m; ++i) {
-		int cnt = 0;
-		for (int j = 0; j < n; ++j) {
-			if (grid[i][j] == 'E')
-				++cnt;
-			else if (grid[i][j] == 'W')
-				cnt = 0;
-			row[i][j] += cnt;
+	vector<vector<int>> cnt(m, vector<int>(n, 0));
+
+	for (int i = 0 ; i < m ; ++i) {
+		int preCnt = 0;
+		for (int j = 0 ; j < n ; ++j) {
+			if (grid[i][j] == 'W') preCnt = 0;
+			else if (grid[i][j] == 'E') ++preCnt;
+
+			cnt[i][j] += preCnt;
 		}
-		cnt = 0;
-		for (int j = n - 1; j >= 0; --j) {
-			if (j < n - 1)
-				row[i][j] += cnt;
-			if (grid[i][j] == 'E')
-				++cnt;
-			else if (grid[i][j] == 'W')
-				cnt = 0;
+		preCnt = grid[i][n-1] == 'E' ? 1 : 0;
+		for (int j = n - 2 ; j >= 0 ; --j) {
+			cnt[i][j] += preCnt;
+			if (grid[i][j] == 'W') preCnt = 0;
+			else if (grid[i][j] == 'E') ++preCnt;
 		}
 	}
-	for (int j = 0; j < n; ++j) {
-		int cnt = 0;
-		for (int i = 0; i < m; ++i) {
-			if (grid[i][j] == 'E')
-				++cnt;
-			else if (grid[i][j] == 'W')
-				cnt = 0;
-			col[i][j] += cnt;
+
+	for (int j = 0 ; j < n ; ++j) {
+		int preCnt = 0;
+		for (int i = 0 ; i < m ; ++i) {
+			if (grid[i][j] == 'W') preCnt = 0;
+			else if (grid[i][j] == 'E') ++preCnt;
+			cnt[i][j] += preCnt;
 		}
-		cnt = 0;
-		for (int i = m - 1; i >= 0; --i) {
-			if (i < m - 1)
-				col[i][j] += cnt;
-			if (grid[i][j] == 'E')
-				++cnt;
-			else if (grid[i][j] == 'W')
-				cnt = 0;
+		preCnt = grid[m-1][j] == 'E' ? 1 : 0;
+		for (int i = m - 2 ; i >= 0 ; --i) {
+			cnt[i][j] += preCnt;
+			if (grid[i][j] == 'W') preCnt = 0;
+			else if (grid[i][j] == 'E') ++preCnt;
 		}
 	}
+
 	int result = 0;
-	for (int i = 0; i < m; ++i) {
-		for (int j = 0; j < n; ++j) {
-			if (grid[i][j] != '0')
-				continue;
-			result = max(result, col[i][j] + row[i][j]);
+	for (int i = 0 ; i < m ; ++i) {
+		for (int j = 0 ; j < n ; ++j) {
+			if (grid[i][j] != '0') continue;
+			result = max(result, cnt[i][j]);
 		}
 	}
 	return result;
