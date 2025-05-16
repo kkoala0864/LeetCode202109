@@ -6,8 +6,6 @@ You are given an integer array jobDifficulty and an integer d. The difficulty of
 
 Return the minimum difficulty of a job schedule. If you cannot find a schedule for the jobs return -1.
 
- 
-
 Example 1:
 
 
