@@ -1,14 +1,10 @@
-#include <vector>
-
-using std::vector;
+#include <data_type.h>
 
 class Solution {
 public:
 	Solution() {
 	}
 	void sortColors(vector<int> &nums);
-	void sortColors2(vector<int> &nums);
-	void sortColors3(vector<int> &nums);
 
 private:
 	virtual ~Solution() {
