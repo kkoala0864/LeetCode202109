@@ -43,5 +43,10 @@ int main(void) {
 
 	test->zAlgorithm("aabxaabxcaabxaabxay", "aabxaabxcaabxaabxay");
 
+	vector<int> mp = test->Manacher("abcdcba");
+	for (const auto &v : mp)
+		cout << v << " ";
+	cout << endl;
+
 	return 0;
 }

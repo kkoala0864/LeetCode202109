@@ -19,7 +19,7 @@ exe : main.cpp $(STATIC_OBJ) $(HEADER)
 	$(CXX) $(CXXFLAGS) -o $@ -c $< -I$(INC_PATH) -I$(DATA_TYPE_INCLUDE_PATH) -MMD -MF .$@.d
 
 clean :
-	rm $(STATIC_OBJ) exe $(deps) &> /dev/null || true
+	rm -f $(STATIC_OBJ) exe $(deps) &> /dev/null || true
 ifeq ($(shell uname -s),Darwin)
 	rm -rf exe.dSYM
 endif

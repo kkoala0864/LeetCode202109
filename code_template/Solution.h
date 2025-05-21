@@ -1,8 +1,4 @@
 #include <data_type.h>
-#include <vector>
-#include <string>
-
-using namespace std;
 
 class Solution {
 public:
@@ -14,6 +10,7 @@ public:
 	vector<int> dijstra(vector<vector<int>> &edges, int n, int start);
 	vector<int> KMPsearch(const string &text, const string &pattern);
 	vector<int> zAlgorithm(const string &text, const string &pattern);
+	vector<int> Manacher(const string &s);
 
 private:
 	virtual ~Solution() {
