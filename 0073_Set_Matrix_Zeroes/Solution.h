@@ -1,14 +1,10 @@
-#include <vector>
-
-using std::vector;
+#include <data_type.h>
 
 class Solution {
 public:
 	Solution() {
 	}
 	void setZeroes(vector<vector<int>> &matrix);
-	void setZeroes2(vector<vector<int>> &matrix);
-	void setZeroes3(vector<vector<int>> &matrix);
 
 private:
 	virtual ~Solution() {
