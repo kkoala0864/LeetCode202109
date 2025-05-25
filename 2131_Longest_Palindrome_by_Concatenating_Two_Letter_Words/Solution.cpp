@@ -1,39 +1,32 @@
 #include <Solution.h>
-#include <iostream>
-#include <unordered_map>
-#include <algorithm>
-
-using std::min;
-using std::swap;
-using std::unordered_map;
 
 int Solution::longestPalindrome(vector<string> &words) {
-	unordered_map<string, int> uMap;
-	for (const auto &w : words)
-		++uMap[w];
+	unordered_map<string, int> self;
+	unordered_map<string, int> last;
 
 	int result = 0;
-	for (auto &e : uMap) {
-		if (e.first[0] == e.first[1]) {
-			if (e.second > 1) {
-				result += ((e.second / 2) * 4);
-				e.second %= 2;
+	for (const auto& w : words) {
+		string rs = w;
+		reverse(rs.begin(), rs.end());
+		if (last.count(rs) && last[rs] != 0) {
+			result += 4;
+			--last[rs];
+			if (self.count(rs) && self[rs] != 0) {
+				--self[rs];
 			}
 		} else {
-			string rev = {e.first[1], e.first[0]};
-			if (uMap.find(rev) != uMap.end() && uMap[rev] > 0) {
-				int val = min(uMap[rev], e.second);
-				uMap[rev] -= val;
-				e.second -= val;
-				result += (4 * val);
+			++last[w];
+			if (rs == w) {
+				++self[w];
 			}
 		}
 	}
-	for (const auto &e : uMap) {
-		if (e.second > 0 && e.first[0] == e.first[1]) {
-			result += 2;
+	int center = 0;
+	for (const auto& e : self) {
+		if (e.second != 0) {
+			center = 2;
 			break;
 		}
 	}
-	return result;
+	return result + center;
 }
