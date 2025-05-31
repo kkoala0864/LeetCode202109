@@ -1,52 +1,42 @@
 #include <Solution.h>
-#include <iostream>
-#include <queue>
-#include <algorithm>
 
-using std::queue;
-using std::reverse;
+pair<int, int> getCordinate(int v, int n) {
+	v -= 1;
+	int x = v / n;
+	int y = v % n;
+	if (x & 1) {
+		y = n - 1 - y;
+	}
+	return pair<int, int>(n - 1 - x, y);
+}
 
 int Solution::snakesAndLadders(vector<vector<int>> &board) {
-	int size = board.size();
-	reverse(board.begin(), board.end());
-	for (int i = 0; i < board.size(); ++i) {
-		if (i & 1) {
-			reverse(board[i].begin(), board[i].end());
-		}
-	}
-	vector<int> cost(size * size, INT_MAX);
-	queue<int> que, next;
-	int result = 0;
-	que.emplace(0);
-	cost[0] = 0;
+	int n = board.size();
+
+	queue<pair<int, int>> que;
+	que.emplace(pair<int, int>(0, 1));
+	vector<int> minStep(n * n + 1, INT_MAX);
+	minStep[1] = 0;
 
 	while (!que.empty()) {
-		int cur = que.front();
+		int curStep = que.front().first;
+		int curIdx = que.front().second;
 		que.pop();
 
-		if (cur == (size * size - 1))
-			return result;
-		for (int i = 1; i <= 6; ++i) {
-			if ((cur + i) >= (size * size))
-				break;
-			int nx = (cur + i) / size;
-			int ny = (cur + i) % size;
+		if (curIdx == (n * n)) break;
+		if (curStep > minStep[curIdx]) continue;
+
+		for (int i = 1 ; i <= 6 ; ++i) {
+			if ((curIdx + i) > (n * n)) break;
+			int next = curIdx + i;
+			auto [nx, ny] = getCordinate(next, n);
 			if (board[nx][ny] != -1) {
-				if (cost[board[nx][ny] - 1] > cost[cur] + 1) {
-					cost[board[nx][ny] - 1] = cost[cur] + 1;
-					next.emplace(board[nx][ny] - 1);
-				}
-			} else {
-				if (cost[cur + i] > cost[cur] + 1) {
-					cost[cur + i] = cost[cur] + 1;
-					next.emplace(cur + i);
-				}
+				next = board[nx][ny];
 			}
-		}
-		if (que.empty()) {
-			++result;
-			que = move(next);
+			if ((curStep + 1) >= minStep[next]) continue;
+			minStep[next] = curStep + 1;
+			que.emplace(pair<int, int>(curStep + 1, next));
 		}
 	}
-	return -1;
+	return minStep.back() == INT_MAX ? -1 : minStep.back();
 }
