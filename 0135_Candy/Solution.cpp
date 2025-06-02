@@ -1,58 +1,24 @@
 #include <Solution.h>
-#include <iostream>
-#include <algorithm>
-
-using std::max;
-using std::pair;
-using std::sort;
-
-int Solution::twoArray(vector<int> &ratings) {
-	vector<int> leftToRight(ratings.size(), 1), rightToLeft(ratings.size(), 1);
-
-	for (int i = 0; i < ratings.size() - 1; ++i) {
-		if (ratings[i] < ratings[i + 1]) {
-			leftToRight[i + 1] = leftToRight[i] + 1;
-		}
-
-		if (ratings[ratings.size() - 1 - i] < ratings[ratings.size() - 2 - i]) {
-			rightToLeft[ratings.size() - 2 - i] = rightToLeft[ratings.size() - 1 - i] + 1;
-		}
-	}
-
-	int result = 0;
-	for (int i = 0; i < ratings.size(); ++i) {
-		result += max(leftToRight[i], rightToLeft[i]);
-	}
-	return result;
-}
 
 int Solution::candy(vector<int> &ratings) {
-	vector<int> c(ratings.size(), 1);
-	vector<pair<int, int>> rl;
-	for (int i = 0; i < ratings.size(); ++i) {
-		rl.emplace_back(pair<int, int>(ratings[i], i));
-	}
+	int size = ratings.size();
+	vector<int> LToR(size, 1), RToL(size, 1);
 
-	sort(rl.begin(), rl.end());
-	int result = ratings.size();
-	for (int i = 0; i < rl.size() - 1; ++i) {
-		int idx = rl[i].second;
-		if (idx - 1 >= 0) {
-			if (ratings[idx - 1] > ratings[idx]) {
-				if (c[idx - 1] < c[idx] + 1) {
-					result = result - c[idx - 1] + c[idx] + 1;
-					c[idx - 1] = c[idx] + 1;
-				}
-			}
+	// compare with left side
+	for (int i = 1 ; i < size ; ++i) {
+		if (ratings[i] > ratings[i-1]) {
+			LToR[i] = LToR[i-1] + 1;
 		}
-		if (idx + 1 < ratings.size()) {
-			if (ratings[idx + 1] > ratings[idx]) {
-				if (c[idx + 1] < c[idx] + 1) {
-					result = result - c[idx + 1] + c[idx] + 1;
-					c[idx + 1] = c[idx] + 1;
-				}
-			}
+	}
+	// compare with right side
+	for (int i = size - 2 ; i >= 0 ; --i) {
+		if (ratings[i] > ratings[i+1]) {
+			RToL[i] = RToL[i+1] + 1;
 		}
+	}
+	int result = 0;
+	for (int i = 0 ; i < size ; ++i) {
+		result += max(LToR[i], RToL[i]);
 	}
 	return result;
 }

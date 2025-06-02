@@ -1,13 +1,10 @@
-#include <vector>
-
-using std::vector;
+#include <data_type.h>
 
 class Solution {
 public:
 	Solution() {
 	}
 	int candy(vector<int> &ratings);
-	int twoArray(vector<int> &ratings);
 
 private:
 	virtual ~Solution() {
