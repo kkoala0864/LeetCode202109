@@ -1,35 +1,25 @@
 #include <Solution.h>
-#include <iostream>
-#include <queue>
-#include <algorithm>
-#include <vector>
-
-using std::max;
-using std::priority_queue;
-using std::vector;
 
 string Solution::answerString(string word, int numFriends) {
-	if (numFriends == 1)
-		return word;
-	vector<vector<int>> idx(26, vector<int>());
-	int size = word.size();
+	if (numFriends == 1) return word;
+	string result;
+	vector<vector<int>> idxs(26, vector<int>());
 
 	int maxIdx = -1;
-	for (int i = 0; i < size; ++i) {
-		idx[word[i] - 'a'].emplace_back(i);
-		maxIdx = max(maxIdx, word[i] - 'a');
+	for (int i = 0 ; i < word.size() ; ++i) {
+		idxs[word[i]-'a'].emplace_back(i);
+		maxIdx = max(maxIdx, word[i]-'a');
 	}
 
-	priority_queue<string> pq;
-	for (const auto &i : idx[maxIdx]) {
-		string w;
-		if (i >= numFriends - 1) {
-			w = word.substr(i);
+	for (const auto& i : idxs[maxIdx]) {
+		string cur;
+		if (i >= (numFriends - 1)) {
+			cur = word.substr(i);
 		} else {
-			int sz = size - (numFriends - i - 1) - i;
-			w = word.substr(i, sz);
+			int size = word.size() - i - (numFriends - 1 - i);
+			cur = word.substr(i, size);
 		}
-		pq.push(w);
+		result = max(result, cur);
 	}
-	return pq.top();
+	return result;
 }
