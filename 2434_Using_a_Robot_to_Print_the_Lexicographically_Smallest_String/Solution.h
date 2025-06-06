@@ -1,6 +1,4 @@
-#include <string>
-
-using std::string;
+#include <data_type.h>
 
 class Solution {
 public:
