@@ -15,6 +15,5 @@ Constraints:
 1 <= preorder.length <= 104
 1 <= preorder[i] <= 104
 All the elements of preorder are unique.
- 
 
 Follow up: Could you do it using only constant space complexity?

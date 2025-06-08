@@ -1,23 +1,24 @@
 #include <Solution.h>
-#include <iostream>
-#include <climits>
 
-bool dfs(vector<int> &preorder, int start, int end, int lower_bound, int upper_bound) {
-	if (start > end)
-		return true;
+bool dfs(vector<int>& preorder, int rv, int ps, int pe, int lower, int upper) {
+	if (ps > pe) return true;
+	if (ps == pe) return preorder[ps] > lower && preorder[ps] < upper;
 
-	int root = preorder[start];
-	if (root < lower_bound || root > upper_bound)
-		return false;
-
-	int rightStart = start + 1;
-	for (; rightStart <= end; ++rightStart) {
-		if (preorder[rightStart] > root)
-			break;
+	int rs = ps;
+	for (; rs <= pe ; ++rs) {
+		if (preorder[rs] < lower || preorder[rs] > upper) return false;
+		if (preorder[rs] < rv) continue;
+		break;
 	}
-	return dfs(preorder, start + 1, rightStart - 1, lower_bound, root) && dfs(preorder, rightStart, end, root, upper_bound);
+	if (rs > ps) {
+		if (!dfs(preorder, preorder[ps], ps + 1, rs - 1, lower, rv)) return false;
+	}
+	if (rs <= pe) {
+		if (!dfs(preorder, preorder[rs], rs + 1, pe, rv, upper)) return false;
+	}
+	return true;
 }
 
 bool Solution::verifyPreorder(vector<int> &preorder) {
-	return dfs(preorder, 0, preorder.size() - 1, INT_MIN, INT_MAX);
+	return dfs(preorder, preorder[0], 1, preorder.size() - 1, 0, INT_MAX);
 }
