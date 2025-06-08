@@ -1,14 +1,10 @@
-#include <vector>
-
-using std::vector;
+#include <data_type.h>
 
 class Solution {
 public:
 	Solution() {
 	}
 	vector<int> lexicalOrder(int n);
-	vector<int> lexicalOrder2(int n);
-	vector<int> lexicalOrder3(int n);
 
 private:
 	virtual ~Solution() {
