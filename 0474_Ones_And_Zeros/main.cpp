@@ -1,8 +1,4 @@
 #include <Solution.h>
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 int main(void) {
 	vector<string> input = {"10", "0001", "111001", "1", "0"};
