@@ -1,12 +1,8 @@
 #include <Solution.h>
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 int main(void) {
-	vector<int> coins = {3};
+	vector<int> coins = {1, 2, 5};
 	Solution *test = new Solution();
-	cout << test->change(2, coins) << endl;
+	cout << test->change(5, coins) << endl;
 	return 0;
 }
