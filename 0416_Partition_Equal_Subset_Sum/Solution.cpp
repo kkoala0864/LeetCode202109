@@ -1,22 +1,18 @@
 #include <Solution.h>
 
 bool Solution::canPartition(vector<int> &nums) {
-	int sum = accumulate(nums.begin(), nums.end(), 0);
-	if (sum & 1) return false;
+	int target = 0;
+	target = accumulate(nums.begin(), nums.end(), target);
+	if (target & 1) return false;
 
-	sum >>= 1;
+	target >>= 1;
 
-	vector<bool> dp(sum + 1, false), next;
+	vector<bool> dp(target + 1, false);
 	dp[0] = true;
-	next = dp;
 	for (const auto& v : nums) {
-		for (int i = v ; i <= sum ; ++i) {
-			if (dp[i - v]) {
-				next[i] = true;
-			}
+		for (int i = target ; i >= v ; --i) {
+			dp[i] = dp[i] | dp[i-v];
 		}
-		dp = next;
-		if (dp.back()) return true;
 	}
-	return dp[sum];
+	return dp[target];
 }
