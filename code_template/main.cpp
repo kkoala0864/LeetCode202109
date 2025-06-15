@@ -48,5 +48,7 @@ int main(void) {
 		cout << v << " ";
 	cout << endl;
 
+	vector<vector<int>> tree = {{0,1,2},{0,2,5},{1,3,1},{2,4,3}};
+	test->binaryLifting(5, tree);
 	return 0;
 }
