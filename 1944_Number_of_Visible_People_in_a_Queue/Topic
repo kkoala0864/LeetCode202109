@@ -15,6 +15,7 @@ Person 2 can see person 3 and 4.
 Person 3 can see person 4.
 Person 4 can see person 5.
 Person 5 can see no one since nobody is to the right of them.
+
 Example 2:
 
 Input: heights = [5,1,2,3,10]
