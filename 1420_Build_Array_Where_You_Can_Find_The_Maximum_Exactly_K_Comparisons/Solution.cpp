@@ -11,6 +11,42 @@
 // dfs with memorize
 // 0 1 2 3 4
 
+// dp[curVal][k]
+int Solution::numOfArrays(int n, int m, int k) {
+	if (m < k) return 0;
+	long long mod = 1e9 + 7;
+	vector<vector<long long>> dp(m + 1, vector<long long>(k + 1, 0));
+	for (int i = 1 ; i <= m ; ++i) {
+		dp[i][1] = 1;
+	}
+	for (int i = 2 ; i <= n ; ++i) {
+		auto next = vector<vector<long long>>(m + 1, vector<long long>(k + 1, 0));
+		for (int mi = 1 ; mi <= m ; ++mi) {
+			for (int mj = mi ; mj <= m ; ++mj) {
+				for (int ki = 1 ; ki <= k ; ++ki) {
+					if (mi == mj) {
+						next[mi][ki] += ((long long)mi * dp[mi][ki]);
+						next[mi][ki] %= mod;
+					} else if (mi < mj) {
+						if ((ki + 1) > k) continue;
+						next[mj][ki+1] += (dp[mi][ki]);
+						next[mj][ki+1] %= mod;
+
+					}
+				}
+			}
+		}
+		dp = std::move(next);
+	}
+	long long result = 0;
+	for (int i = 1 ; i <= m ; ++i) {
+		result += dp[i][k];
+		result %= mod;
+	}
+	return result;
+}
+
+/*
 long long dfs(int idx, int n, int cm, int m, int k, long long mod, unordered_map<int, unordered_map<int, unordered_map<int, long long>>>& cache) {
 	if (idx == n) {
 		return k == 0;
@@ -40,3 +76,4 @@ int Solution::numOfArrays(int n, int m, int k) {
 	}
 	return cur;
 }
+*/
