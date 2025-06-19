@@ -1,13 +1,10 @@
-#include <vector>
-
-using std::vector;
+#include <data_type.h>
 
 class Solution {
 public:
 	Solution() {
 	}
 	int eraseOverlapIntervals(vector<vector<int>> &intervals);
-	int eraseOverlapIntervals2(vector<vector<int>> &intervals);
 
 private:
 	virtual ~Solution() {
