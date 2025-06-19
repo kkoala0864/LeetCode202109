@@ -1,27 +1,22 @@
 #include <Solution.h>
-#include <iostream>
-#include <algorithm>
-
-using std::max;
-using std::min;
 
 vector<vector<int>> Solution::removeInterval(vector<vector<int>> &intervals, vector<int> &toBeRemoved) {
 	vector<vector<int>> result;
-	int idx = 0;
-	while (idx < intervals.size() && intervals[idx][1] <= toBeRemoved[0])
-		result.emplace_back(intervals[idx++]);
+	sort(intervals.begin(), intervals.end());
 
-	while (idx < intervals.size() && toBeRemoved[0] <= intervals[idx][1]) {
-		if (intervals[idx][0] < toBeRemoved[0]) {
-			result.push_back({intervals[idx][0], min(intervals[idx][1], toBeRemoved[0])});
+	for (const auto& i : intervals) {
+		if ((i[0] >= toBeRemoved[1]) || (i[1] < toBeRemoved[0])) {
+			result.emplace_back(i);
+		} else if (toBeRemoved[0] <= i[0] && i[1] <= toBeRemoved[1]) {
+			continue;
+		} else if (i[0] < toBeRemoved[0] && toBeRemoved[1] < i[1]) {
+			result.emplace_back(vector<int>({i[0], toBeRemoved[0]}));
+			result.emplace_back(vector<int>({toBeRemoved[1], i[1]}));
+		} else if (i[0] < toBeRemoved[0]) {
+			result.emplace_back(vector<int>({i[0], toBeRemoved[0]}));
+		} else if (toBeRemoved[1] < i[1]) {
+			result.emplace_back(vector<int>({toBeRemoved[1], i[1]}));
 		}
-		if (intervals[idx][1] > toBeRemoved[1]) {
-			result.push_back({max(intervals[idx][0], toBeRemoved[1]), intervals[idx][1]});
-		}
-		++idx;
 	}
-
-	while (idx < intervals.size())
-		result.emplace_back(intervals[idx++]);
 	return result;
 }
