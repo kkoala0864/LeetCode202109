@@ -1,7 +1,4 @@
 #include <data_type.h>
-#include <string>
-
-using std::string;
 
 class Solution {
 public:

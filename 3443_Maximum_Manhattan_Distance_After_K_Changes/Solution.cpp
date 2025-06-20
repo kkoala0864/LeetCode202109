@@ -1,41 +1,24 @@
 #include <Solution.h>
-#include <iostream>
-#include <algorithm>
-#include <vector>
-
-using std::cout;
-using std::endl;
-using std::max;
-using std::min;
-using std::vector;
 
 int Solution::maxDistance(string s, int k) {
-	int hv = 0;
-	int vv = 0;
-	int hpc = 0;
-	int vpc = 0;
-	int hnc = 0;
-	int vnc = 0;
+	unordered_map<char, int> idxs = {{'N', 0}, {'S', 1}, {'W', 2}, {'E', 3}};
+	vector<int> cnt(4, 0);
+	vector<int> fac = {1, -1, 1, -1};
+	int ox = 0;
+	int oy = 0;
 	int result = 0;
-	for (const auto &c : s) {
-		if (c == 'E') {
-			++hpc;
-			++hv;
-		} else if (c == 'W') {
-			++hnc;
-			--hv;
-		} else if (c == 'S') {
-			++vpc;
-			++vv;
+
+	for (const auto& c : s) {
+		++cnt[idxs[c]];
+		if (c == 'W' || c == 'E') {
+			ox += fac[idxs[c]];
 		} else {
-			++vnc;
-			--vv;
+			oy += fac[idxs[c]];
 		}
-		int opp = 0;
-		opp += hv < 0 ? hpc : hnc;
-		opp += vv < 0 ? vpc : vnc;
-		int compensation = min(k, opp);
-		result = max(result, abs(vv) + abs(hv) + (compensation * 2));
+		int xo = ox > 0 ? cnt[3] : cnt[2];
+		int yo = oy > 0 ? cnt[1] : cnt[0];
+		int opp = min(xo + yo, k);
+		result = max(result, abs(ox) + abs(oy) + 2 * opp);
 	}
 	return result;
 }
