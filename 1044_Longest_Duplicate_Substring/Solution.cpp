@@ -10,6 +10,7 @@ bool check(const string& s, int len, unordered_map<int, int>& lm) {
 		powerLen *= base;
 	}
 
+	// sliding window to get string hash
 	for (int i = 0 ; i < s.size() ; ++i) {
 		v *= base;
 		v += (s[i] - 'a');
