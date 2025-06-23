@@ -5,12 +5,16 @@ int Solution::triangleNumber(vector<int>& nums) {
 
 	int result = 0;
 	int size = nums.size();
-	for (int i = 0 ; i < (size - 2); ++i) {
-		for (int j = i + 1 ; j < size ; ++j) {
-			int start = j + 1;
-			int idx = lower_bound(nums.begin() + start, nums.end(), nums[i] + nums[j]) - nums.begin();
-			if (idx == (start)) continue;
-			result += (idx - start);
+	for (int r = size - 1 ; r >= 2 ; --r) {
+		int l = 0;
+		int mid = r - 1;
+		while (l < mid) {
+			if ((nums[l] + nums[mid]) > nums[r]) {
+				result += (mid - l);
+				--mid;
+			} else {
+				++l;
+			}
 		}
 	}
 	return result;
