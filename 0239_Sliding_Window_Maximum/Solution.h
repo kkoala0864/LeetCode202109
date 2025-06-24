@@ -1,13 +1,11 @@
-#include <vector>
+#include <data_type.h>
 
-using std::vector;
 
 class Solution {
 public:
 	Solution() {
 	}
 	vector<int> maxSlidingWindow(vector<int> &nums, int k);
-	vector<int> dp(vector<int> &nums, int k);
 
 private:
 	virtual ~Solution() {
