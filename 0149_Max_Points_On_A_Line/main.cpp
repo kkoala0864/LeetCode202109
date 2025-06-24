@@ -1,12 +1,8 @@
 #include <Solution.h>
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 int main(void) {
 	Solution *test = new Solution();
-	vector<vector<int>> input = {{1, 1}, {2, 2}, {3, 3}};
+	vector<vector<int>> input = {{0,0},{4,5},{7,8},{8,9},{5,6},{3,4},{1,1}};
 	cout << test->maxPoints(input) << endl;
 	return 0;
 }
