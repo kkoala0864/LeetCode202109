@@ -1,8 +1,4 @@
 #include <Solution.h>
-#include <iostream>
-#include <algorithm>
-
-using std::max;
 
 int Solution::maxSatisfied(vector<int> &customers, vector<int> &grumpy, int minutes) {
 	int result = 0;

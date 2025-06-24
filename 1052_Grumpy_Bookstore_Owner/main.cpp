@@ -1,8 +1,4 @@
 #include <Solution.h>
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 int main(void) {
 	vector<int> customers = {1, 0, 1, 2, 1, 1, 7, 5};
