@@ -1,24 +1,25 @@
 #include <Solution.h>
-#include <iostream>
-#include <algorithm>
-#include <vector>
-
-using std::max;
-using std::vector;
 
 int Solution::longestSubsequence(string s, int k) {
-	int sum = 0, pow = 1, cnt = 0;
-	int i = s.size() - 1;
-	for (; i >= 0 && (sum + pow) <= k; --i) {
-		if (s[i] == '1') {
-			sum += pow;
+	int size = s.size();
+	int offset = 0;
+	int result = 0;
+	long long sum = 0;
+	for (int i = size - 1 ; i >= 0 ; --i, ++offset) {
+		if (s[i] == '0') {
+			++result;
+			continue;
 		}
-		++cnt;
-		pow <<= 1;
-	}
 
-	for (; i >= 0; --i)
-		if (s[i] == '0')
-			++cnt;
-	return cnt;
+		if (offset < 32) {
+			if ((sum | ((long long)1 << offset)) <= (long long)k) {
+				sum = sum | 1 << offset;
+				++result;
+			}
+		} else {
+			continue;
+		}
+	}
+	return result;
+
 }
