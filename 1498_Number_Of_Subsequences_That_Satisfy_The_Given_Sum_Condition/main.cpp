@@ -1,12 +1,8 @@
 #include <Solution.h>
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 int main(void) {
-	vector<int> input = {3, 3, 6, 8};
+	vector<int> input = {2,3,3,4,6,7};
 	Solution *test = new Solution();
-	cout << test->numSubseq(input, 10) << endl;
+	cout << test->numSubseq(input, 12) << endl;
 	return 0;
 }
