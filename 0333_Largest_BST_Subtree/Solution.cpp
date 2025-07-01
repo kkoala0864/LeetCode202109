@@ -1,32 +1,33 @@
 #include <Solution.h>
-#include <iostream>
-#include <algorithm>
 
-using std::max;
-using std::min;
+int dfs(TreeNode* node, int& result, int& minValue, int& maxValue) {
+	if (!node) return 0;
 
-int dfs(TreeNode *cur, int &maxV, int &minV, int &result) {
-	if (!cur)
-		return 0;
-
-	int lmax = INT_MIN, lmin = INT_MAX, rmax = INT_MIN, rmin = INT_MAX;
-	int lv = dfs(cur->left, lmax, lmin, result);
-	int rv = dfs(cur->right, rmax, rmin, result);
-
-	if (lv < 0 || rv < 0)
+	int lmin = INT_MAX;
+	int lmax = INT_MIN;
+	int rmin = INT_MAX;
+	int rmax = INT_MIN;
+	int leftCnt = dfs(node->left, result, lmin, lmax);
+	int rightCnt = dfs(node->right, result, rmin, rmax);
+	if (leftCnt == -1) return -1;
+	if (rightCnt == -1) return -1;
+	if (lmax >= node->val) {
 		return -1;
-	if (lmax >= cur->val || rmin <= cur->val)
+	}
+	if (rmin <= node->val) {
 		return -1;
-
-	result = max(result, lv + rv + 1);
-	maxV = max({lmax, rmax, cur->val});
-	minV = min({lmin, rmin, cur->val});
-	return lv + rv + 1;
+	}
+	result = max(result, leftCnt + rightCnt + 1);
+	minValue = min({minValue, node->val, lmin, rmin});
+	maxValue = max({maxValue, node->val, lmax, rmax});
+	return leftCnt + rightCnt + 1;
 }
 
 int Solution::largestBSTSubtree(TreeNode *root) {
-	int maxV = INT_MIN, minV = INT_MAX;
+	if (!root) return 0;
 	int result = 0;
-	dfs(root, maxV, minV, result);
+	int minValue = INT_MIN;
+	int maxValue = INT_MAX;
+	dfs(root, result, root->val, root->val);
 	return result;
 }
