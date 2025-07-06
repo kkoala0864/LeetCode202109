@@ -1,15 +1,10 @@
-#include <vector>
-#include <string>
-
-using std::string;
-using std::vector;
+#include <data_type.h>
 
 class Solution {
 public:
 	Solution() {
 	}
 	vector<double> calcEquation(vector<vector<string>> &equations, vector<double> &values, vector<vector<string>> &queries);
-	vector<double> calcEquation2(vector<vector<string>> &equations, vector<double> &values, vector<vector<string>> &queries);
 
 private:
 	virtual ~Solution() {
