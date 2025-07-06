@@ -3,7 +3,7 @@
 
 if [ $# -eq 0 ]; then
 	echo "please enter a string"
-	exit 1
+	return 0
 fi
 
 input_str="$*"
@@ -11,7 +11,7 @@ input_str="$*"
 number=$(echo "$input_str" | cut -d '.' -f 1)
 
 if ! [[ "$number" =~ ^[0-9]+$ ]]; then
-	echo "error : first part of the string must be a number"
+echo "error : first part of the string must be a number"
 	exit 1
 fi
 
