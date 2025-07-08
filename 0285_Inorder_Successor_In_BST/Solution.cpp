@@ -1,27 +1,18 @@
 #include <Solution.h>
-#include <iostream>
 
-void dfs(TreeNode *cur, int pVal, int &minVal, TreeNode *&result) {
-	if (!cur)
+void dfs(TreeNode* node, TreeNode* target, TreeNode*& result) {
+	if (!node) return;
+	dfs(node->left, target, result);
+	if (result) return;
+	if (node->val > target->val) {
+		result = node;
 		return;
-
-	dfs(cur->left, pVal, minVal, result);
-	if (minVal != INT_MAX)
-		return;
-	if (cur->val > pVal) {
-		if (cur->val < minVal) {
-			minVal = cur->val;
-			result = cur;
-		}
 	}
-	if (minVal != INT_MAX)
-		return;
-	dfs(cur->right, pVal, minVal, result);
+	dfs(node->right, target, result);
 }
 
-TreeNode *Solution::inorderSuccessor(TreeNode *root, TreeNode *p) {
-	int minVal = INT_MAX;
-	TreeNode *result = nullptr;
-	dfs(root, p->val, minVal, result);
+TreeNode* Solution::inorderSuccessor(TreeNode *root, TreeNode *p) {
+	TreeNode* result = nullptr;
+	dfs(root, p, result);
 	return result;
 }
