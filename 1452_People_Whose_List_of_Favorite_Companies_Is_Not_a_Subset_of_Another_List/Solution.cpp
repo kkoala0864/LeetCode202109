@@ -2,38 +2,30 @@
 
 vector<int> Solution::peopleIndexes(vector<vector<string>>& favoriteCompanies) {
 	vector<int> result;
-	unordered_map<string, unordered_set<int>> strToIdx;
 
 	int size = favoriteCompanies.size();
-	vector<pair<vector<string>, int>> clist;
+	vector<unordered_set<string>> fset;
+	for (const auto& c : favoriteCompanies) {
+		unordered_set<string> us;
+		for (const auto& s : c) us.emplace(s);
+		fset.emplace_back(us);
+	}
 
 	for (int i = 0 ; i < size ; ++i) {
-		clist.emplace_back(pair<vector<string>, int>(favoriteCompanies[i], i));
-	}
-	auto cmp = [](const pair<vector<string>, int>& lhs, const pair<vector<string>, int>& rhs) {
-		return lhs.first.size() > rhs.first.size();
-	};
-
-	sort(clist.begin(), clist.end(), cmp);
-	for (const auto& c : clist) {
-		unordered_set<int> cur = strToIdx[c.first[0]];
-		for (int i = 1 ; i < c.first.size() ; ++i) {
-			unordered_set<int> next;
-			for (const auto& idx : cur) {
-				if (strToIdx[c.first[i]].count(idx) == 0) continue;
-				next.emplace(idx);
+		int cnt = 0;
+		for (int j = 0 ; j < size ; ++j) {
+			if (i == j) continue;
+			if (favoriteCompanies[j].size() <= favoriteCompanies[i].size()) continue;
+			int idx = 0;
+			for (; idx < favoriteCompanies[i].size() ; ++idx) {
+				if (fset[j].count(favoriteCompanies[i][idx]) == 0) break;
 			}
-			cur = std::move(next);
-			if (cur.empty()) break;
-		}
-		if (cur.empty()) {
-			result.emplace_back(c.second);
-			for (const auto& s : c.first) {
-				strToIdx[s].emplace(c.second);
+			if (idx == favoriteCompanies[i].size()) {
+				++cnt;
 			}
 		}
+		if (cnt == 0) result.emplace_back(i);
 	}
-	sort(result.begin(), result.end());
 
 	return result;
 }
