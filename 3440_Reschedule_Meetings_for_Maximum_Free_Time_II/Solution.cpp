@@ -1,50 +1,33 @@
 #include <Solution.h>
-#include <iostream>
-#include <algorithm>
-#include <map>
-
-using std::cout;
-using std::endl;
-using std::map;
-using std::max;
-using std::sort;
 
 int Solution::maxFreeTime(int eventTime, vector<int> &startTime, vector<int> &endTime) {
-	vector<vector<int>> free;
-	map<int, vector<int>> fi;
+	vector<int> freeTime;
+	int lastEnd = 0;
 
-	int cur = 0;
-	for (int i = 0; i < startTime.size(); ++i) {
-		free.push_back({startTime[i] - cur, cur, startTime[i]});
-		fi[startTime[i] - cur].emplace_back(i);
-		cur = endTime[i];
+	for (int i = 0 ; i < startTime.size() ; ++i) {
+		freeTime.emplace_back(startTime[i] - lastEnd);
+		lastEnd = endTime[i];
+	}
+	freeTime.emplace_back(eventTime - lastEnd);
+	vector<pair<int, int>> fl;
+	for (int i = 0 ; i < freeTime.size() ; ++i) {
+		fl.emplace_back(pair<int, int>(freeTime[i], i));
 	}
 
-	free.push_back({eventTime - cur, cur, eventTime});
-	fi[eventTime - cur].emplace_back(free.size() - 1);
+	sort(fl.begin(), fl.end());
 
 	int result = 0;
-	for (int i = 0; (i + 1) < free.size(); ++i) {
-		int os = free[i + 1][1] - free[i][2];
-
-		auto iter = fi.lower_bound(os);
-
-		bool find = false;
-		while (iter != fi.end()) {
-			for (const auto &v : iter->second) {
-				if (v != i && v != (i + 1)) {
-					find = true;
-					break;
-				}
-			}
-			if (find)
-				break;
-			++iter;
+	for (int i = 0 ; i < freeTime.size() - 1 ; ++i) {
+		int curEvent = endTime[i] - startTime[i];
+		int curFree = freeTime[i] + freeTime[i+1];
+		int idx = lower_bound(fl.begin(), fl.end(), pair<int, int>(curEvent, INT_MIN)) - fl.begin();
+		while (idx < fl.size() && (fl[idx].second == i || fl[idx].second == (i+1))) {
+			++idx;
 		}
-		if (find)
-			result = max(result, free[i + 1][2] - free[i][1]);
-		else
-			result = max(result, free[i][0] + free[i + 1][0]);
+		if (idx < fl.size()) {
+			curFree += curEvent;
+		}
+		result = max(result, curFree);
 	}
 	return result;
 }
