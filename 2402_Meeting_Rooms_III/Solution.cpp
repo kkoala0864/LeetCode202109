@@ -1,15 +1,4 @@
 #include <Solution.h>
-#include <iostream>
-#include <queue>
-#include <algorithm>
-#include <climits>
-
-using std::cout;
-using std::endl;
-using std::max;
-using std::pair;
-using std::priority_queue;
-using std::sort;
 
 int Solution::mostBooked(int n, vector<vector<int>> &meetings) {
 	priority_queue<pair<long, long>, vector<pair<long, long>>, std::greater<>> pq, m;
