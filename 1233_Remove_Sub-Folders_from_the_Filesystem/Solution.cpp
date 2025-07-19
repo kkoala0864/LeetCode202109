@@ -1,33 +1,29 @@
 #include <Solution.h>
-#include <iostream>
-#include <algorithm>
-
-using std::sort;
 
 vector<string> Solution::removeSubfolders(vector<string> &folder) {
-	auto cmp = [](const string &lhs, const string &rhs) {
+	auto cmp = [](const string& lhs, const string& rhs) {
 		return lhs.size() == rhs.size() ? lhs < rhs : lhs.size() < rhs.size();
 	};
 
 	sort(folder.begin(), folder.end(), cmp);
 
-	Trie *root = new Trie();
-	Trie *iter = nullptr;
 	vector<string> result;
+	Trie* root = new Trie();
 
-	for (auto &f : folder) {
-		iter = root;
+	for (auto& f : folder) {
 		f.push_back('/');
-		for (const auto &i : f) {
-			int idx = i == '/' ? 26 : i - 'a';
-			if (!iter->child[idx])
-				iter->child[idx] = new Trie();
-			iter = iter->child[idx];
+		auto iter = root;
+		bool hasPrefix = false;
+		for (const auto& c : f) {
+			int idx = c == '/' ? 26 : c - 'a';
+			if (!iter->children[idx]) iter->children[idx] = new Trie();
+			iter = iter->children[idx];
 			if (iter->isEnd) {
+				hasPrefix = true;
 				break;
 			}
 		}
-		if (!iter->isEnd) {
+		if (!hasPrefix) {
 			iter->isEnd = true;
 			f.pop_back();
 			result.emplace_back(f);
