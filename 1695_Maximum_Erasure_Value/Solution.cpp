@@ -1,24 +1,19 @@
 #include <Solution.h>
-#include <iostream>
-#include <algorithm>
-#include <unordered_set>
-
-using std::max;
-using std::unordered_set;
 
 int Solution::maximumUniqueSubarray(vector<int> &nums) {
-	int result = 0;
+	unordered_set<int> us;
 	int l = 0;
-	unordered_set<int> uSet;
-	int local = 0;
-	for (int i = 0; i < nums.size(); ++i) {
-		while (l < i && uSet.find(nums[i]) != uSet.end()) {
-			uSet.erase(nums[l]);
-			local -= nums[l++];
+	int result = 0;
+	int sum = 0;
+	for (int r = 0 ; r < nums.size() ; ++r) {
+		while (l <= r && us.count(nums[r])) {
+			sum -= nums[l];
+			us.erase(nums[l]);
+			++l;
 		}
-		local += nums[i];
-		uSet.emplace(nums[i]);
-		result = max(result, local);
+		sum += nums[r];
+		us.emplace(nums[r]);
+		result = max(result, sum);
 	}
 	return result;
 }
