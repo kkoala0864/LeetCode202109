@@ -1,17 +1,13 @@
-#include <vector>
-#include <string>
+#include <data_type.h>
 
-using std::string;
-using std::vector;
-
-struct node
-{
-	int cnt;
-	vector<node *> child;
-	node() {
-		cnt = 0;
-		child = vector<node *>(26);
-	}
+class Trie {
+	public :
+		Trie() {
+			ch = vector<Trie*>(26, nullptr);
+			cnt = 0;
+		}
+		vector<Trie*> ch;
+		int cnt;
 };
 
 class Solution {

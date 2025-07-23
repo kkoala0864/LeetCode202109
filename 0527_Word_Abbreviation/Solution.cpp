@@ -1,55 +1,50 @@
 #include <Solution.h>
-#include <iostream>
-#include <algorithm>
-#include <unordered_map>
 
-using std::cout;
-using std::endl;
-using std::to_string;
-using std::unordered_map;
+string getAbbr(const string& s, int idx) {
+	int fs = s.size() - idx - 2;
 
-string abbrev(string &word, int i) {
-	int n = word.size();
-	if (n - i <= 3)
-		return word;
-	string result = word.substr(0, i + 1);
-	result += to_string(n - i - 2);
-	result.push_back(word.back());
-	return result;
+	string ret = s.substr(0, idx + 1);
+	if (fs > 0) {
+		ret += to_string(fs);
+	}
+	if (idx < s.size() - 1) {
+		ret.push_back(s.back());
+	}
+	return s.size() <= ret.size() ? s : ret;
 }
 
 vector<string> Solution::wordsAbbreviation(vector<string> &words) {
-	unordered_map<string, vector<int>> groups;
+	unordered_map<string, vector<string>> groups;
 
-	for (int i = 0; i < words.size(); ++i) {
-		if (words[i].size() < 4)
-			continue;
-		groups[abbrev(words[i], 0)].emplace_back(i);
+	for (const auto& s : words) {
+		string abbr = getAbbr(s, 0);
+		groups[abbr].emplace_back(s);
 	}
 
-	for (auto &ele : groups) {
-		node *root = new node();
-		node *iter = root;
-		for (const auto &wi : ele.second) {
-			iter = root;
-			for (const auto &c : words[wi]) {
-				if (!iter->child[c - 'a'])
-					iter->child[c - 'a'] = new node();
-				iter = iter->child[c - 'a'];
+	unordered_map<string, Trie*> roots;
+	for (const auto& e : groups) {
+		roots[e.first] = new Trie();
+		for (const auto& s : e.second) {
+			Trie* iter = roots[e.first];
+			for (const auto& c : s) {
+				if (!iter->ch[c-'a']) iter->ch[c-'a'] = new Trie();
+				iter = iter->ch[c-'a'];
 				++iter->cnt;
 			}
 		}
+	}
 
-		for (auto &wi : ele.second) {
-			iter = root;
-			int i = 0;
-			for (; i < words[wi].size(); ++i) {
-				if (iter->cnt == 1)
-					break;
-				iter = iter->child[words[wi][i] - 'a'];
+	vector<string> result;
+	for (const auto& w : words) {
+		string abbr = getAbbr(w, 0);
+		Trie* iter = roots[abbr];
+		for (int i = 0 ; i < w.size() ; ++i) {
+			iter = iter->ch[w[i]-'a'];
+			if (iter->cnt == 1) {
+				result.emplace_back(getAbbr(w, i));
+				break;
 			}
-			words[wi] = abbrev(words[wi], i - 1);
 		}
 	}
-	return words;
+	return result;
 }
