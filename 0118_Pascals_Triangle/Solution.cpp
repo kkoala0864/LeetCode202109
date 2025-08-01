@@ -1,19 +1,17 @@
 #include <Solution.h>
-#include <iostream>
 
 vector<vector<int>> Solution::generate(int numRows) {
-	vector<vector<int>> result = {{1}};
-	vector<int> local;
-	for (int i = 1; i < numRows; ++i) {
-		local.clear();
-		for (int j = 0; j < (i + 1); ++j) {
-			if (j == 0 || j == i) {
-				local.emplace_back(1);
-			} else {
-				local.emplace_back(result[i - 1][j - 1] + result[i - 1][j]);
-			}
+	vector<vector<int>> result;
+	vector<int> cur(1,1);
+	result.emplace_back(cur);
+	for (int i = 1 ; i < numRows ; ++i) {
+		vector<int> next(1, 1);
+		for (int j = 0 ; j < cur.size() - 1 ; ++j) {
+			next.emplace_back(cur[j] + cur[j+1]);
 		}
-		result.emplace_back(local);
+		next.emplace_back(1);
+		result.emplace_back(next);
+		cur = std::move(next);
 	}
 	return result;
 }
