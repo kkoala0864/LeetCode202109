@@ -1,31 +1,27 @@
 #include <Solution.h>
-#include <iostream>
-#include <map>
-#include <queue>
-
-using std::map;
-using std::pair;
-using std::queue;
 
 vector<vector<int>> Solution::verticalOrder(TreeNode *root) {
-	map<int, vector<int>> m;
-	queue<pair<TreeNode *, int>> que;
+	vector<vector<int>> result;
 
-	que.emplace(pair<TreeNode *, int>(root, 0));
+	map<int, vector<int>> m;
+
+	queue<pair<int, TreeNode*>> que;
+
+	if (!root) return result;
+
+	que.emplace(pair<int, TreeNode*>(0, root));
 
 	while (!que.empty()) {
-		auto cur = que.front();
+		auto [offset, node] = que.front();
 		que.pop();
 
-		m[cur.second].emplace_back(cur.first->val);
-		if (cur.first->left)
-			que.emplace(pair<TreeNode *, int>(cur.first->left, cur.second - 1));
-		if (cur.first->right)
-			que.emplace(pair<TreeNode *, int>(cur.first->right, cur.second + 1));
+		m[offset].emplace_back(node->val);
+		if (node->left) que.emplace(pair<int, TreeNode*>(offset - 1, node->left));
+		if (node->right) que.emplace(pair<int, TreeNode*>(offset + 1, node->right));
 	}
 
-	vector<vector<int>> result;
-	for (auto &v : m)
-		result.emplace_back(v.second);
+	for (const auto& e : m) {
+		result.emplace_back(e.second);
+	}
 	return result;
 }
