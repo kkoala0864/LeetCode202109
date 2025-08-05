@@ -1,26 +1,18 @@
 #include <Solution.h>
-#include <iostream>
-#include <algorithm>
-#include <unordered_map>
-
-using std::max;
-using std::unordered_map;
 
 int Solution::totalFruit(vector<int> &fruits) {
-	unordered_map<int, int> m;
 	int l = 0;
 	int result = 0;
-	for (int i = 0; i < fruits.size(); ++i) {
-		++m[fruits[i]];
-		while (m.size() > 2) {
-			--m[fruits[l]];
-			if (m[fruits[l]] == 0)
-				m.erase(fruits[l]);
+	unordered_map<int, int> cnt;
+	for (int r = 0 ; r < fruits.size() ; ++r) {
+		++cnt[fruits[r]];
+
+		while (l < r && cnt.size() > 2) {
+			--cnt[fruits[l]];
+			if (cnt[fruits[l]] == 0) cnt.erase(fruits[l]);
 			++l;
 		}
-		if (m.size() <= 2) {
-			result = max(result, i - l + 1);
-		}
+		result = max(result, r - l + 1);
 	}
 	return result;
 }
