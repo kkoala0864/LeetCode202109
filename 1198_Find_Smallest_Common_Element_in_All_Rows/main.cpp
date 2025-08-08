@@ -1,8 +1,4 @@
 #include <Solution.h>
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 int main(void) {
 	vector<vector<int>> input = {{1, 2, 3}, {2, 3, 4}, {2, 3, 5}};
