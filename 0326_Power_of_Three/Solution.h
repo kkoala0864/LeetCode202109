@@ -1,9 +1,10 @@
+#include <data_type.h>
+
 class Solution {
 public:
 	Solution() {
 	}
 	bool isPowerOfThree(int n);
-	bool isPowerOfThree2(int n);
 
 private:
 	virtual ~Solution() {
