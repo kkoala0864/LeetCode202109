@@ -1,21 +1,16 @@
 #include <Solution.h>
-#include <iostream>
-#include <algorithm>
-
-using std::max;
-using std::pair;
 
 int Solution::longestSubarray(vector<int> &nums) {
-	pair<int, int> last, cur;
-
+	int l = 0;
 	int result = 0;
-	for (int i = 0; i < nums.size(); ++i) {
-		cur.first = nums[i] == 0 ? 0 : last.first + 1;
-		cur.second = nums[i] == 0 ? last.first : last.second + 1;
-		result = max({result, cur.first, cur.second});
-		swap(cur, last);
+	int zeroCnt = 0;
+	for (int r = 0 ; r < nums.size() ; ++r) {
+		if (nums[r] == 0) ++zeroCnt;
+		while (l <= r && zeroCnt > 1) {
+			if (nums[l] == 0) --zeroCnt;
+			++l;
+		}
+		result = max(result, r - l);
 	}
-	if (last.first == nums.size())
-		return last.first - 1;
 	return result;
 }
