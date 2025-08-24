@@ -7,11 +7,11 @@ int getGCD(int lhs, int rhs) {
 	return getGCD(rhs, lhs);
 }
 
+int diffSum(int start, int end, int len) {
+	return (start + end) * len / 2;
+}
+
 int Solution::gcdOfOddEvenSums(int n) {
-	int odd = 0, even = 0;
-	for (int i = 1 ; i <= (2 * n) ; ++i) {
-		if (i & 1) odd += i;
-		else even += i;
-	}
+	int odd = diffSum(1, 2 * n - 1, n), even = diffSum(2, 2 * n, n);
 	return getGCD(odd, even);
 }
