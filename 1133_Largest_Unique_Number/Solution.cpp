@@ -1,14 +1,14 @@
 #include <Solution.h>
-#include <iostream>
 
 int Solution::largestUniqueNumber(vector<int> &nums) {
-	vector<int> cnt(1001, 0);
-	for (const auto &v : nums)
-		++cnt[v];
+	unordered_map<int, int> cnt;
+	for (const auto& v : nums) ++cnt[v];
 
-	for (int i = 1000; i >= 0; --i) {
-		if (cnt[i] == 1)
-			return i;
+	int result = -1;
+	for (const auto& e : cnt) {
+		if (e.second == 1) {
+			result = max(result, e.first);
+		}
 	}
-	return -1;
+	return result;
 }
