@@ -1,54 +1,50 @@
 #include <data_type.h>
-#include <queue>
-#include <unordered_map>
-
-using std::pair;
-using std::priority_queue;
-using std::unordered_map;
 
 class TaskManager {
 public:
-	TaskManager(vector<vector<int>> &tasks) {
-		for (const auto &t : tasks) {
-			pq.emplace(vector<int>({t[2], t[1], t[0]}));
-			pm[t[1]] = pair<int, int>(t[0], t[2]);
+	TaskManager(vector<vector<int>>& tasks) {
+		for (const auto& t : tasks) {
+			tp[t[2]].emplace(t[1]);
+			tu[t[1]] = pair<int, int>(t[0], t[2]);
 		}
 	}
 
 	void add(int userId, int taskId, int priority) {
-		pm[taskId] = pair<int, int>(userId, priority);
-		pq.emplace(vector<int>({priority, taskId, userId}));
+		tp[priority].emplace(taskId);
+		tu[taskId] = pair<int, int>(userId, priority);
 	}
 
 	void edit(int taskId, int newPriority) {
-		pm[taskId].second = newPriority;
-		pq.emplace(vector<int>({newPriority, taskId, pm[taskId].first}));
+		int op = tu[taskId].second;
+		tu[taskId].second = newPriority;
+		tp[op].erase(taskId);
+		if (tp[op].empty()) tp.erase(op);
+		tp[newPriority].emplace(taskId);
 	}
 
 	void rmv(int taskId) {
-		pm.erase(taskId);
+		int op = tu[taskId].second;
+		tp[op].erase(taskId);
+		if (tp[op].empty()) tp.erase(op);
+		tu.erase(taskId);
 	}
 
 	int execTop() {
-		while (!pq.empty()) {
-			int priority = pq.top()[0];
-			int taskId = pq.top()[1];
-			int userId = pq.top()[2];
-			pq.pop();
-			if (pm.count(taskId) == 0)
-				continue;
-			if (pm[taskId].second != priority)
-				continue;
-			int ret = pm[taskId].first;
-			pm.erase(taskId);
-			return ret;
-		}
-		return -1;
+		if (tp.empty()) return -1;
+		int p = tp.begin()->first;
+		int taskId = *(tp.begin()->second.begin());
+		int uid = tu[taskId].first;
+
+		tp.begin()->second.erase(taskId);
+		if (tp.begin()->second.empty()) tp.erase(p);
+		tu.erase(taskId);
+		return uid;
 	}
 
 private:
-	priority_queue<vector<int>> pq;
-	unordered_map<int, pair<int, int>> pm;
+	map<int, set<int, greater<>>, greater<>> tp;
+	unordered_map<int, pair<int, int>> tu;
+
 	virtual ~TaskManager() {
 	}
 	TaskManager &operator=(const TaskManager &source);

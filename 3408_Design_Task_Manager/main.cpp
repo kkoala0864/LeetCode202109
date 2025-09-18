@@ -1,20 +1,16 @@
 #include <Solution.h>
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 int main(void) {
-	//["TaskManager","add","edit","execTop","rmv","add","execTop"]
-	//[[[[1,101,8],[2,102,20],[3,103,5]]],[4,104,5],[102,9],[],[101],[50,101,8],[]]
-
-	vector<vector<int>> input = {{1, 101, 8}, {2, 102, 20}, {3, 103, 5}};
-	TaskManager *obj = new TaskManager(input);
-	obj->add(4, 104, 5);
-	obj->edit(102, 9);
-	cout << obj->execTop() << endl;
-	obj->rmv(101);
-	obj->add(50, 101, 8);
-	cout << obj->execTop() << endl;
+	//["TaskManager","rmv","add","execTop","edit","execTop"]
+	//[[[[8,11,1],[9,23,14],[2,6,4]]],[23],[6,12,42],[],[6,5],[]]
+	vector<vector<int>> input = {{8,11,1},{9,23,14},{2,6,4}};
+	TaskManager* obj = new TaskManager(input);
+	obj->rmv(23);
+	obj->add(6,12,42);
+	int param_4 = obj->execTop();
+	cout << param_4 << endl;
+	obj->edit(6,5);
+	int param_6 = obj->execTop();
+	cout << param_6 << endl;
 	return 0;
 }
