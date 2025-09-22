@@ -1,17 +1,14 @@
 #include <Solution.h>
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 int main(void) {
-	vector<string> username = {"him", "mxcmo", "jejuvvtye", "wphmqzn", "uwlblbrkqv", "flntc", "esdtyvfs", "nig", "jejuvvtye", "nig", "mxcmo", "flntc", "nig", "jejuvvtye", "odmspeq", "jiufvjy", "esdtyvfs", "mfieoxff", "nig", "flntc", "mxcmo", "qxbrmo"};
-	vector<int> timestamp = {113355592, 304993712, 80831183, 751306572, 34485202, 414560488, 667775008, 951168362, 794457022, 813255204, 922111713, 127547164, 906590066, 685654550, 430221607, 699844334, 358754380, 301537469, 561750506, 612256123, 396990840, 60109482};
-	vector<string> website = {"k", "o", "o", "nxpvmh", "dssdnkv", "kiuorlwdcw", "twwginujc", "evenodb", "qqlw", "mhpzoaiw", "jukowcnnaz", "m", "ep", "qn", "wxeffbcy", "ggwzd", "tawp", "gxm", "pop", "xipfkhac", "weiujzjcy", "x"};
-	Solution *test = new Solution();
-	auto result = test->mostVisitedPattern(username, timestamp, website);
-	for (const auto &v : result)
-		cout << v << " ";
+	vector<string> username = {"joe","joe","joe","james","james","james","james","mary","mary","mary"};
+	vector<int> timestamp = {1,2,3,4,5,6,7,8,9,10};
+	vector<string> website = {"home","about","career","home","cart","maps","home","home","about","career"};
+	Solution* test = new Solution();
+	vector<string> result = test->mostVisitedPattern(username, timestamp, website);
+	for (const auto& str : result) {
+		cout << str << " ";
+	}
 	cout << endl;
 	return 0;
 }

@@ -1,79 +1,72 @@
 #include <Solution.h>
-#include <iostream>
-#include <unordered_map>
-#include <unordered_set>
-#include <map>
 
-using std::cout;
-using std::endl;
-using std::map;
-using std::pair;
-using std::unordered_map;
-using std::unordered_set;
-
-// 0 1 2 3 4
-void CountScore(const vector<string> &webs, map<string, int> &Scores) {
-	unordered_set<string> us;
-	for (int i = 0; (i + 2) < webs.size(); ++i) {
-		for (int j = i + 1; (j + 1) < webs.size(); ++j) {
-			for (int k = j + 1; k < webs.size(); ++k) {
-				string tmp = webs[i] + "|" + webs[j] + "|" + webs[k];
-				if (us.count(tmp))
-					continue;
-				us.emplace(tmp);
-				++Scores[tmp];
-			}
-		}
+string getStr(const vector<string>& s) {
+	string result;
+	for (int i = 0 ; i < s.size() - 1 ; ++i) {
+		result += s[i];
+		result += "#";
 	}
-}
-
-// 0 1 2 | 4 5 | 7 8
-vector<string> getWeb(const string &webStr) {
-	vector<string> ret;
-	int idx = webStr.find("|");
-	ret.emplace_back(webStr.substr(0, idx));
-	int idx2 = webStr.find("|", idx + 1);
-	ret.emplace_back(webStr.substr(idx + 1, idx2 - idx - 1));
-	ret.emplace_back(webStr.substr(idx2 + 1));
-	return ret;
+	result += s.back();
+	return result;
 }
 
 vector<string> Solution::mostVisitedPattern(vector<string> &username, vector<int> &timestamp, vector<string> &website) {
-	vector<pair<int, int>> tToIdx;
+	vector<pair<int, int>> time;
 	int size = username.size();
-	for (int i = 0; i < size; ++i) {
-		tToIdx.emplace_back((pair<int, int>(timestamp[i], i)));
+	for (int i = 0 ; i < size ; ++i) {
+		time.emplace_back(pair<int, int>(timestamp[i], i));
+	}
+	sort(time.begin(), time.end());
+	unordered_map<string, vector<string>> patternPerUser;
+
+	for (const auto& t : time) {
+		patternPerUser[username[t.second]].emplace_back(website[t.second]);
 	}
 
-	sort(tToIdx.begin(), tToIdx.end());
+	unordered_map<string, int> cnt;
+	int mxCnt = 0;
+	string result;
 
-	unordered_map<string, vector<string>> userToWeb;
-	map<string, int> Scores;
-
-	for (const auto &v : tToIdx) {
-		userToWeb[username[v.second]].emplace_back(website[v.second]);
-	}
-
-	for (const auto &e : userToWeb) {
-		if (e.second.size() < 3)
-			continue;
-		CountScore(e.second, Scores);
-	}
-	int MaxScore = 0;
-	string maxStr;
-	for (const auto &e : Scores) {
-		if (MaxScore < e.second) {
-			MaxScore = e.second;
-			maxStr = e.first;
-		} else if (MaxScore == e.second) {
-			string s1 = e.first.substr(0, e.first.find("|"));
-			string s2 = maxStr.substr(0, maxStr.find("|"));
-			if (s1 < s2) {
-				maxStr = e.first;
+	for (const auto& e : patternPerUser) {
+		unordered_set<string> us;
+		vector<vector<string>> cur;
+		for (const auto& s : e.second) {
+			vector<vector<string>> next = cur;
+			vector<string> fh(1, s);
+			if (us.count(getStr(fh)) == 0) {
+				next.emplace_back(fh);
+				us.emplace(getStr(fh));
 			}
+			for (const auto& c : cur) {
+				vector<string> tmp = c;
+				tmp.emplace_back(s);
+				string h = getStr(tmp);
+				if (us.count(h)) continue;
+				us.emplace(h);
+				if (tmp.size() < 3) next.emplace_back(tmp);
+				if (tmp.size() == 3) {
+					++cnt[h];
+					if (cnt[h] > mxCnt) {
+						mxCnt = cnt[h];
+						result = h;
+					} else if (cnt[h] == mxCnt) {
+						result = min(result, h);
+					}
+				}
+			}
+			cur = std::move(next);
 		}
 	}
-
-	vector<string> result = getWeb(maxStr);
-	return result;
+	vector<string> ret;
+	string tmp;
+	for (const auto& c : result) {
+		if (c != '#') {
+			tmp.push_back(c);
+		} else {
+			ret.emplace_back(tmp);
+			tmp = "";
+		}
+	}
+	ret.emplace_back(tmp);
+	return ret;
 }

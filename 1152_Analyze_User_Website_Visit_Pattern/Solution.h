@@ -1,9 +1,4 @@
 #include <data_type.h>
-#include <vector>
-#include <string>
-
-using std::string;
-using std::vector;
 
 class Solution {
 public:
