@@ -1,13 +1,10 @@
-#include <string>
-
-using std::string;
+#include <data_type.h>
 
 class Solution {
 public:
 	Solution() {
 	}
 	int compareVersion(string version1, string version2);
-	int compareVersion2(string version1, string version2);
 
 private:
 	virtual ~Solution() {

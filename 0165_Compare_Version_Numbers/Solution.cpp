@@ -1,39 +1,32 @@
 #include <Solution.h>
-#include <iostream>
-#include <vector>
-#include <algorithm>
 
-using std::max;
-using std::vector;
-
-void parse(string &s, vector<int> &v) {
-	string local("");
-	for (int i = 0; i < s.size(); ++i) {
-		if (s[i] != '.') {
-			local.push_back(s[i]);
+void parse(const string& version, vector<int>& r) {
+	string tmp;
+	for (const auto& v : version) {
+		if (v == '.') {
+			r.emplace_back(stoi(tmp));
+			tmp = "";
 		} else {
-			v.emplace_back(stoi(local));
-			local = "";
+			tmp.push_back(v);
 		}
 	}
-	if (local != "")
-		v.emplace_back(stoi(local));
+	if (!tmp.empty()) {
+		r.emplace_back(stoi(tmp));
+	}
+	return;
 }
 
 int Solution::compareVersion(string version1, string version2) {
-	vector<int> v1, v2;
-	string local;
-	parse(version1, v1);
-	parse(version2, v2);
+	vector<int> r1, r2;
+	parse(version1, r1);
+	parse(version2, r2);
+	int size = max(r1.size(), r2.size());
 
-	int size = max(v1.size(), v2.size());
-	for (int i = 0; i < size; ++i) {
-		int val1 = i >= v1.size() ? 0 : v1[i];
-		int val2 = i >= v2.size() ? 0 : v2[i];
-		if (val1 > val2)
-			return 1;
-		else if (val1 < val2)
-			return -1;
+	for (int i = 0 ; i < size ; ++i) {
+		int v1 = i < r1.size() ? r1[i] : 0;
+		int v2 = i < r2.size() ? r2[i] : 0;
+		if (v1 == v2) continue;
+		return v1 < v2 ? -1 : 1;
 	}
 	return 0;
 }
