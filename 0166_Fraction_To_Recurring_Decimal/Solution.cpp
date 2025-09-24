@@ -1,45 +1,39 @@
 #include <Solution.h>
-#include <iostream>
-#include <unordered_map>
-
-using std::to_string;
-using std::unordered_map;
 
 string Solution::fractionToDecimal(int numerator, int denominator) {
-	if (numerator == 0)
-		return "0";
-	bool isNeg = ((numerator >> 31) & 1) != ((denominator >> 31) & 1);
-	long num = numerator;
-	long den = denominator;
-	num = num < 0 ? -num : num;
-	den = den < 0 ? -den : den;
-	string result;
-	long v = num / den;
-	result += to_string(v);
-	num %= den;
-	if (num == 0)
-		return isNeg ? "-" + result : result;
+	if (numerator == 0) return "0";
 
-	string rhs;
-	unordered_map<long, int> m;
-	while (num > 0) {
-		long v = num / den;
-		rhs.push_back(v + '0');
-		num %= den;
-		if (m.count(num))
-			break;
-		m[num] = rhs.size();
-		num *= 10;
+	bool isneg = (numerator < 0) != (denominator < 0);
+	long long num = numerator;
+	long long deno = denominator;
+	if (isneg) {
+		num = abs(num);
+		deno = abs(deno);
 	}
 
-	rhs[0] = '.';
-	if (num > 0) {
-		string tmp = rhs.substr(0, m[num]);
-		tmp.push_back('(');
-		tmp += rhs.substr(m[num]);
-		tmp.push_back(')');
-		rhs = move(tmp);
+	long long left = num / deno;
+	string result = to_string(left);
+	long long right = num % deno;
+
+	string fraction;
+	unordered_map<long long, int> idx;
+
+	while (right != 0 && idx.count(right) == 0) {
+		idx[right] = fraction.size();
+		right *= 10;
+		fraction += to_string(right / (long long)deno);
+		right %= (long long)deno;
 	}
-	result += rhs;
-	return isNeg ? "-" + result : result;
+
+	if (right == 0) {
+		if (!fraction.empty()) {
+			result += ("." + fraction);
+		 }
+	} else {
+		int pIdx = idx[right];
+		string repeat = fraction.substr(pIdx);
+		result = result + "." + fraction.substr(0, pIdx) + "(" + fraction.substr(pIdx) + ")";
+	}
+	if (isneg) result = "-" + result;
+	return result;
 }

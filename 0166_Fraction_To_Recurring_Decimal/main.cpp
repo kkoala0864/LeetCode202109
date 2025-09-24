@@ -1,11 +1,9 @@
 #include <Solution.h>
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 int main(void) {
 	Solution *test = new Solution();
-	cout << test->fractionToDecimal(-50, 8) << endl;
+	int numerator = 1;
+	int denominator = -1;
+	cout << test->fractionToDecimal(numerator, denominator) << endl;
 	return 0;
 }
