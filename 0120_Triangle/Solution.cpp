@@ -1,21 +1,24 @@
 #include <Solution.h>
-#include <iostream>
-#include <algorithm>
-#include <climits>
-
-using std::min;
 
 int Solution::minimumTotal(vector<vector<int>> &triangle) {
-	int size = triangle.size();
-	vector<int> dp(triangle[size - 1].size(), 0);
-	for (int i = 0; i < triangle[size - 1].size(); ++i) {
-		dp[i] = triangle[size - 1][i];
-	}
+	int m = triangle.size();
+	int n = triangle[0].size();
 
-	for (int i = size - 2; i >= 0; --i) {
-		for (int j = 0; j < triangle[i].size(); ++j) {
-			dp[j] = triangle[i][j] + min(dp[j], dp[j + 1]);
+	for (int i = 1 ; i < m ; ++i) {
+		for (int j = 0 ; j < triangle[i].size() ; ++j) {
+			int v = INT_MAX;
+			if (j < triangle[i].size() - 1) {
+				v = min(v, triangle[i-1][j]);
+			}
+			if (j > 0) {
+				v = min(v, triangle[i-1][j-1]);
+			}
+			triangle[i][j] += v;
 		}
 	}
-	return dp[0];
+	int result = INT_MAX;
+	for (const auto& v : triangle.back()) {
+		result = min(result, v);
+	}
+	return result;
 }
