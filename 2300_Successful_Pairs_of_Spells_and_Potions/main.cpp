@@ -1,8 +1,4 @@
 #include <Solution.h>
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 int main(void) {
 	vector<int> spells = {5, 1, 3};
