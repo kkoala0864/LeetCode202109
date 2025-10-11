@@ -6,8 +6,6 @@ In other words, you will choose a starting point and then teleport with k jumps 
 
 You are given an array energy and an integer k. Return the maximum possible energy you can gain.
 
- 
-
 Example 1:
 
 Input: energy = [5,2,-10,-5,1], k = 3

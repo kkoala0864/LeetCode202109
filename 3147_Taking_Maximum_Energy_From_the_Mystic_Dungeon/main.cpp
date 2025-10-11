@@ -1,12 +1,8 @@
 #include <Solution.h>
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 int main(void) {
-	vector<int> input = {-1, 3, -4, -7};
-	int k = 2;
+	vector<int> input = {5,2,-10,-5,1};
+	int k = 3;
 	Solution *test = new Solution();
 	cout << test->maximumEnergy(input, k) << endl;
 	return 0;
