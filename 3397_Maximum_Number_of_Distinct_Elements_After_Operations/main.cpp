@@ -1,12 +1,8 @@
 #include <Solution.h>
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 int main(void) {
-	vector<int> input = {1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5};
-	int k = 3;
+	vector<int> input = {4,4,4,4};
+	int k = 1;
 	Solution *test = new Solution();
 	cout << test->maxDistinctElements(input, k) << endl;
 	return 0;
