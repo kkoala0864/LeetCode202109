@@ -1,38 +1,26 @@
 #include <Solution.h>
-#include <iostream>
-#include <algorithm>
-
-using std::max;
-using std::min;
 
 int Solution::maxFrequency(vector<int> &nums, int k, int numOperations) {
-	int maxV = INT_MIN;
-	for (const auto &v : nums)
-		maxV = max(maxV, v);
-	vector<int> cnts(maxV + k + 1, 0);
+	int mxV = 0;
+	for (const auto& v : nums) mxV = max(mxV, v);
 
-	for (const auto &v : nums) {
-		++cnts[v];
-	}
-	vector<int> preSum(maxV + k + 1, 0);
-	for (int i = 1; i < cnts.size(); ++i) {
-		preSum[i] = preSum[i - 1] + cnts[i];
+	vector<int> cnt(mxV + k + 1, 0);
+
+	for (const auto& v : nums) ++cnt[v];
+
+	vector<int> preSum(cnt.size(), 0);
+	for (int i = 1 ; i < cnt.size() ; ++i) {
+		preSum[i] = preSum[i-1] + cnt[i];
 	}
 
 	int result = 0;
-	for (int i = 0; i < cnts.size(); ++i) {
+	for (int i = 0 ; i < cnt.size() ; ++i) {
 		int l = max(0, i - k);
-		int r = min(i + k, (int)cnts.size() - 1);
+		int r = min(i + k, mxV + k);
 
-		int same = cnts[i];
+		int convertable = preSum[r] - (l > 0 ? preSum[l-1] : 0) - cnt[i];
 
-		int convertable = preSum[r] - (l > 0 ? preSum[l - 1] : 0) - same;
-
-		if (convertable > numOperations) {
-			result = max(result, same + numOperations);
-		} else {
-			result = max(result, same + convertable);
-		}
+		result = max(result, cnt[i] + min(convertable, numOperations));
 	}
 	return result;
 }

@@ -18,6 +18,7 @@ We can achieve a maximum frequency of two by:
 
 Adding 0 to nums[1]. nums becomes [1, 4, 5].
 Adding -1 to nums[2]. nums becomes [1, 4, 4].
+
 Example 2:
 
 Input: nums = [5,11,20,20], k = 5, numOperations = 1
