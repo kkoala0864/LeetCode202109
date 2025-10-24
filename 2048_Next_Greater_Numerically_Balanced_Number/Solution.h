@@ -1,9 +1,10 @@
+#include <data_type.h>
+
 class Solution {
 public:
 	Solution() {
 	}
 	int nextBeautifulNumber(int n);
-	int nextBeautifulNumber2(int n);
 
 private:
 	virtual ~Solution() {
