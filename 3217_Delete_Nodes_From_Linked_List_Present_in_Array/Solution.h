@@ -1,14 +1,10 @@
 #include <data_type.h>
-#include <vector>
-
-using std::vector;
 
 class Solution {
 public:
 	Solution() {
 	}
-	ListNode *modifiedList(vector<int> &nums, ListNode *head);
-
+	ListNode* modifiedList(vector<int>& nums, ListNode* head);
 private:
 	virtual ~Solution() {
 	}
