@@ -1,8 +1,4 @@
 #include <Solution.h>
-#include <iostream>
-#include <queue>
-
-using std::priority_queue;
 
 long long Solution::maximumHappinessSum(vector<int> &happiness, int k) {
 	priority_queue<long long> pq;
